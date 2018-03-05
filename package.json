@@ -1,0 +1,22 @@
+{
+  "name": "notname",
+  "version": "1.0.0",
+  "description": "Ecommerce",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saintalex93/notname.git"
+  },
+  "keywords": [
+    "Ecommerce"
+  ],
+  "author": "BeardsWeb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saintalex93/notname/issues"
+  },
+  "homepage": "https://github.com/saintalex93/notname#readme"
+}
