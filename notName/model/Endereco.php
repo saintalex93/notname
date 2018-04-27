@@ -9,11 +9,32 @@ class Endereco{
 	private $tipo;
 
 	private $ufId;
+	private $uf;
 
 	public function getId(){
 		return $this->id;
 	}
-
+	public function getCep(){
+	    return $this->cep;
+	}
+	public function getLogradouro(){
+	    return $this->logradouro;	    
+	}
+	public function getCidade(){
+	    return $this->cidade;
+	}
+	public function getNumero(){
+	    return $this->numero;
+	}
+	public function getComplemento(){
+	    return $this->complemento;
+	}
+	public function getTipo(){
+	    return $this->tipo;
+	}
+	public function getUF(){
+	    return $this->uf;
+	}
 
 
 
