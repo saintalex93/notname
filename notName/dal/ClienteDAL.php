@@ -10,7 +10,7 @@ class ClienteDAL
      *
      * @return bool Essa função ira fazer a inserção do cliente no sistema.
      */
-    public static function insereCliente(Cliente $cliente): string
+    public static function insereCliente(): array
     {
         
         // Nova instancia do banco de dados.
@@ -32,9 +32,36 @@ class ClienteDAL
         
         //http://localhost/notname/notName/dal/ClienteDAL.php?nome=assss&rg=358772205&cpf=41203647808&nasc=1994-03-04&gen=m&telres=1139453415&telcel=11982524613&telcom=&email=sksdgkas@ksoakga.com&login=joaquim&senha=joaquina&status=0&prefsys=
         
-        $sql = "INSERT INTO CLIENTE (CLI_cNOME,CLI_cRG,CLI_nCPF,CLI_dDTNASC,CLI_cGENERO,CLI_nTRESIDENCIAL,CLI_cEMAIL,CLI_cLOGIN,CLI_cSENHA,CLI_cSTATUS)
-VALUES ('$nome','$rg','$cpf','$nasc','$genero','$telRes','$email','$login','$senha','$status')";
+        $sql = "INSERT INTO CLIENTE (CLI_cNOME,CLI_cRG,CLI_nCPF,CLI_dDTNASC,CLI_cGENERO,CLI_nTRESIDENCIAL,
+        CLI_cEMAIL,CLI_cLOGIN,CLI_cSENHA,CLI_cSTATUS)
+        VALUES ('$nome','$rg','$cpf','$nasc','$genero','$telRes','$email','$login','$senha','$status')";
         
         return $connection->executarSQL($sql);
     }
+    
+    public static function buscaCliente() : array{
+        
+        $sql = "";
+        
+        $connection = new Database();
+        
+        $resultado = $connection->executarSQL($sql);
+        
+        $arrayCli = array();
+        
+        foreach ($resultado as $resultado){
+            
+            $resultCli = new Cliente();
+            
+            $resultCli->setNomeCli($resultado['CLI_cNOME']);
+            $resultCli->setCpfCli($resultado['CLI_nCPF']);
+            $resultCli->setRgCli($resultado['CLI_cRG']);
+            $resultCli->setNascCli($resultado['CLI_dDTNASC']);
+            $resultCli->setGeneroCli($resultado['CLI_cGENERO']);
+            
+        }
+        
+        
+    }
+    
 }
