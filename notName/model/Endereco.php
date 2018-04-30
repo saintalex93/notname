@@ -67,6 +67,9 @@ class Endereco
     {
         return $this->uf;
     }
+    public function getIdUF(){
+        return $this->ufId;
+    }
 
     public function setId($id)
     {
