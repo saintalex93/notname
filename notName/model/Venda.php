@@ -9,6 +9,7 @@ class Venda{
     private $dtAtualizacaoVenda;
     private $idCli;
     private $idStatusVenda;
+    private $idStatus;
 
 
 
@@ -132,5 +133,21 @@ class Venda{
         $this->idCli = $idCli;
 
         return $this;
+    }
+    
+    public function getIdStatus(){
+        return $this->idStatus;
+    }
+    public function setIdStatus($idStatus){
+        
+        $this->idStatus = $idStatus;
+    }
+    public function getIdVendaStatus()
+    {
+        return $this->idStatusVenda;
+    }
+    public function setIdVendaStatus($idVendaStatus)
+    {
+        $this->idStatusVenda = $idVendaStatus;
     }
 }
