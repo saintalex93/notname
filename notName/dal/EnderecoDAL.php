@@ -77,8 +77,31 @@ class EnderecoDAL
         $sql = "";
         
         return $connection->executarSQL($sql);
+    }
+
+    public static function buscaUF(Endereco $end): string
+    {
+        $connection = new Database();
         
+        $idUF = $end->getIdUF();
+        $UF = $end->getUF();
         
+        $sql = "";
         
+        $resultado = $connection->executarSQL($sql);
+        
+        $arrayUF = array();
+        
+        foreach ($resultado as $resultado) {
+            
+            $resultadoUF = new Endereco();
+            
+            $resultadoUF->setUFid($resultado['UF_nID']);
+            $resultadoUF->setUF($resultado['UF_cUF']);
+            
+            $arrayUF[] = $resultadoUF;
+        }
+        
+        return $arrayUF;
     }
 }
