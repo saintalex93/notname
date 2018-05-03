@@ -1,153 +1,125 @@
 <?php
 
-class Venda{
+class Venda
+{
 
-	private $idVenda;
-	private $vlrTotalVenda;
-	private $dtCompraVenda;
-	private $CodRastVenda;
+    private $idVenda;
+
+    private $vlrTotalVenda;
+
+    private $dtCompraVenda;
+
+    private $CodRastVenda;
+
     private $dtAtualizacaoVenda;
+
     private $idCli;
+
     private $idStatusVenda;
+
     private $idStatus;
 
+    private $dtSeparacaoVendaProd;
 
+    private $qtdeVendaProd;
 
-  
-
-    /**
-     * @return mixed
-     */
     public function getIdVenda()
     {
         return $this->idVenda;
     }
 
-    /**
-     * @param mixed $idVenda
-     *
-     * @return self
-     */
     public function setIdVenda($idVenda)
     {
         $this->idVenda = $idVenda;
-
-        return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getVlrTotalVenda()
     {
         return $this->vlrTotalVenda;
     }
 
-    /**
-     * @param mixed $vlrTotalVenda
-     *
-     * @return self
-     */
     public function setVlrTotalVenda($vlrTotalVenda)
     {
         $this->vlrTotalVenda = $vlrTotalVenda;
-
-        return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getDtCompraVenda()
     {
         return $this->dtCompraVenda;
     }
 
-    /**
-     * @param mixed $dtCompraVenda
-     *
-     * @return self
-     */
     public function setDtCompraVenda($dtCompraVenda)
     {
         $this->dtCompraVenda = $dtCompraVenda;
-
-        return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getCodRastVenda()
     {
         return $this->CodRastVenda;
     }
 
-    /**
-     * @param mixed $CodRastVenda
-     *
-     * @return self
-     */
     public function setCodRastVenda($CodRastVenda)
     {
         $this->CodRastVenda = $CodRastVenda;
-
-        return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getDtAtualizacaoVenda()
     {
         return $this->dtAtualizacaoVenda;
     }
 
-    /**
-     * @param mixed $dtAtualizacaoVenda
-     *
-     * @return self
-     */
     public function setDtAtualizacaoVenda($dtAtualizacaoVenda)
     {
         $this->dtAtualizacaoVenda = $dtAtualizacaoVenda;
-
-        return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getIdCli()
     {
         return $this->idCli;
     }
 
-    /**
-     * @param mixed $idCli
-     *
-     * @return self
-     */
     public function setIdCli($idCli)
     {
         $this->idCli = $idCli;
-
-        return $this;
     }
-    
-    public function getIdStatus(){
+
+    public function getIdStatus()
+    {
         return $this->idStatus;
     }
-    public function setIdStatus($idStatus){
-        
+
+    public function setIdStatus($idStatus)
+    {
         $this->idStatus = $idStatus;
     }
+
     public function getIdVendaStatus()
     {
         return $this->idStatusVenda;
     }
+
     public function setIdVendaStatus($idVendaStatus)
     {
         $this->idStatusVenda = $idVendaStatus;
+    }
+
+    public function getDTSeparacaoVendaProduto()
+    {
+        return $this->dtSeparacaoVendaProd;
+    }
+
+    public function setDTSeparacaoVendaProduto($DTSeparacaoVendaProduto)
+    {
+        $this->dtSeparacaoVendaProd = $DTSeparacaoVendaProduto;
+    }
+
+    public function getQtdeVendaProduto()
+    {
+        return $this->qtdeVendaProd;
+    }
+
+    public function setQtdeVendaProduto($qtdeVendaProduto)
+    {
+        $this->qtdeVendaProd = $qtdeVendaProduto;
     }
 }

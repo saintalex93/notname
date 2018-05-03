@@ -8,10 +8,6 @@ class Produto{
 	private $idModelo;
     private $idCateg;
 
-    
-	
-
-    
 
     /**
      * @return mixed
