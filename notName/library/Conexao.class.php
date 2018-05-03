@@ -1,59 +1,59 @@
 <?php
 
 /**
- * Classe de conexÃ£o ao banco de dados usando PDO no padrão Singleton.
+ * Classe de conexÃ£o ao banco de dados usando PDO no padrï¿½o Singleton.
  * Modo de Usar:
  * require_once './Database.class.php';
  * $db = Database::conexao();
- * E agora use as funções do PDO (prepare, query, exec) em cima da variável $db.
+ * E agora use as funï¿½ï¿½es do PDO (prepare, query, exec) em cima da variï¿½vel $db.
  */
 class Database
 {
 
-    // Variável que guarda a conexão PDO.
+    // Variï¿½vel que guarda a conexï¿½o PDO.
     protected static $db;
 
-    // Variável de resultado do sql.
+    // Variï¿½vel de resultado do sql.
     private $resutado;
 
     // Private construct - garante que a classe possa ser instanciada internamente.
     private function __construct()
     {
-        // Informaçõees sobre o banco de dados:
+        // Informaï¿½ï¿½ees sobre o banco de dados:
         $db_host = "192.185.176.119";
         $db_nome = "notnamec_db";
         $db_usuario = "notnamec_usr";
         $db_senha = "hds24@carol";
         $db_driver = "mysql";
         
-        // Informaçõees sobre o sistema:
+        // Informaï¿½ï¿½ees sobre o sistema:
         $sistema_titulo = "Notname";
         $sistema_email = "gabibransford@icloud.com";
         
         try {
-            // Atribui o objeto PDO a variável $db.
+            // Atribui o objeto PDO a variï¿½vel $db.
             self::$db = new PDO("$db_driver:host=$db_host; dbname=$db_nome", $db_usuario, $db_senha);
-            // Garante que o PDO lance exceções durante erros.
+            // Garante que o PDO lance exceï¿½ï¿½es durante erros.
             self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            // Garante que os dados sejam armazenados com codificação UFT-8.
+            // Garante que os dados sejam armazenados com codificaï¿½ï¿½o UFT-8.
             self::$db->exec('SET NAMES utf8');
         } catch (PDOException $e) {
-            // Envia um e-mail para o e-mail oficial do sistema, em caso de erro de conexão.
+            // Envia um e-mail para o e-mail oficial do sistema, em caso de erro de conexï¿½o.
             mail($sistema_email, "PDOException em $sistema_titulo", $e->getMessage());
-            // Então não carrega nada mais da página.
+            // Entï¿½o nï¿½o carrega nada mais da pï¿½gina.
             die("Connection Error: " . $e->getMessage());
         }
     }
 
-    // Método estático - acessível sem instanciação.
+    // Mï¿½todo estï¿½tico - acessï¿½vel sem instanciaï¿½ï¿½o.
     public static function conexao()
     {
-        // Garante uma única instância. Se não existe uma conexão, criamos uma nova.
+        // Garante uma ï¿½nica instï¿½ncia. Se nï¿½o existe uma conexï¿½o, criamos uma nova.
         if (! self::$db) {
-            new Database();
+           self::$db = new Database();
         }
         
-        // Retorna a conexão.
+        // Retorna a conexï¿½o.
         return self::$db;
     }
 
@@ -68,7 +68,7 @@ class Database
         
         // Tratamento de erro
         try {
-            // Inicia Tranção
+            // Inicia Tranï¿½ï¿½o
             $this->conexao()->beginTransaction();
             
             // Prepara o banco para receber a string sql.
@@ -77,12 +77,12 @@ class Database
             // Executa a string sql.
             $this->resutado->execute();
         } catch (Exception $e) {
-            // Rollback é excutado em caso de erro.
+            // Rollback ï¿½ excutado em caso de erro.
             $this->conexao()->rollBack();
             return FALSE;
         }
         
-        // Se não houver erro executa o commit
+        // Se nï¿½o houver erro executa o commit
         $this->conexao()->commit();
         
         // Fecha a conexao.

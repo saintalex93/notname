@@ -4,11 +4,14 @@ require_once '../library/Conexao.class.php';
 
 class VendaDAL
 {
-   
+ 
+    public static $conn = Database::conexao();
     
     public static function efetuaVenda(Venda $venda): string
     {
-        $connection = new Database();
+        
+        $connection = self::$conn;
+       
         
         $idCli = $venda->getIdCli();
         $totalVenda = $venda->getVlrTotalVenda();
