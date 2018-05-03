@@ -1,5 +1,6 @@
 <?php
 require_once '../model/Venda.php';
+require_once '../model/Produto.php';
 require_once '../library/Conexao.class.php';
 
 class VendaDAL
@@ -28,7 +29,7 @@ class VendaDAL
 
     public static function insereClienteVenda(Venda $venda): string
     {
-        $connection = new Database();
+        $connection = self::$conn;
         
         $idVenda = $venda->getIdVenda();
         $idCli = $venda->getIdCli();
@@ -40,7 +41,7 @@ class VendaDAL
     
     public static function insereVendaStatus(Venda $venda) : string 
     {
-        $connection = new Database();   
+        $connection = self::$conn;
         
         $idStatus = $venda->getIdStatus();
         $idVenda = $venda->getIdVenda();
@@ -54,7 +55,7 @@ class VendaDAL
     
     public static function buscaVenda(Venda $venda) : array
     {
-        $connection = new Database();
+        $connection = self::$conn;
         
         $sql = "";
         
@@ -73,11 +74,12 @@ class VendaDAL
             
             $arrayVenda[] = $venda;
         }
+        return $arrayVenda;
     }
     
     public static function alteraVendaStatus(Venda $venda) : string
     {
-        $connection = new Database();
+        $connection = self::$conn;
         
         $idStatus = $venda->getIdStatus();
         $idVenda = $venda->getIdVenda();
@@ -88,10 +90,19 @@ class VendaDAL
         return $connection->executarSQL($sql);
         
     }
-    public static function insereVendaProduto(Venda $venda) : string
+    public static function insereVendaProduto(Venda $venda, Produto $prod) : string
     {
-        $connection = new Database();
+        $connection = self::$conn;
         
+        $venda->getIdVenda();
+        $prod->getIdProd();
+        $venda->getDTSeparacaoVendaProduto();
+        $venda->getQtdeVendaProduto();
         
-    }    
+        $sql = "";
+        
+        return $connection->executarSQL($sql);
+        
+    }
+    
 }
