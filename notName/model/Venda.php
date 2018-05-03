@@ -102,18 +102,22 @@ class Venda
     {
         $this->idStatusVenda = $idVendaStatus;
     }
+
     public function getDTSeparacaoVendaProduto()
     {
         return $this->DTSeparacaoVendaProduto;
     }
+
     public function setDTSeparacaoVendaProduto($DTSeparacaoVendaProduto)
     {
         $this->DTSeparacaoVendaProduto = $DTSeparacaoVendaProduto;
     }
+
     public function getQtdeVendaProduto()
     {
         return $this->QtdeVendaProduto;
     }
+
     public function setQtdeVendaProduto($QtdeVendaProduto)
     {
         $this->QtdeVendaProduto = $QtdeVendaProduto;
