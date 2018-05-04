@@ -9,6 +9,24 @@ class CategoriaDAL
     
     public static function insereCategoria(Categoria $cat) : string
     {
+     $connection = self::$conn;
+     
+     $nomeCat = $cat->getDescCateg();
+     
+     $sql = "";
+     
+     return $connection->executarSQL($sql);
+    }
+    
+    public static function alteraCategoria(Categoria $cat) : string
+    {
+        $connection = self::$conn;
+        $idCat = $cat->getIdCateg();
+        $descCat = $cat->getDescCateg();
+        
+        $sql = "";
+        
+        return $connection->executarSQL($sql);
         
     }
 
