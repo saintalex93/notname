@@ -1,61 +1,39 @@
 <?php
 
-/**
- * Classe de conexão ao banco de dados usando PDO no padr�o Singleton.
- * Modo de Usar:
- * require_once './Database.class.php';
- * $db = Database::conexao();
- * E agora use as fun��es do PDO (prepare, query, exec) em cima da vari�vel $db.
- */
 class Database
 {
 
-    // Vari�vel que guarda a conex�o PDO.
-    protected static $db;
-
+   
     // Vari�vel de resultado do sql.
     private $resutado;
 
-    // Private construct - garante que a classe possa ser instanciada internamente.
-    private function __construct()
+    private $connection;
+    
+    public function conexao()
     {
-        // Informa��ees sobre o banco de dados:
-        $db_host = "192.185.176.119";
-        $db_nome = "notnamec_db";
-        $db_usuario = "notnamec_usr";
-        $db_senha = "hds24@carol";
-        $db_driver = "mysql";
-        
-        // Informa��ees sobre o sistema:
-        $sistema_titulo = "Notname";
-        $sistema_email = "gabibransford@icloud.com";
-        
         try {
-            // Atribui o objeto PDO a vari�vel $db.
-            self::$db = new PDO("$db_driver:host=$db_host; dbname=$db_nome", $db_usuario, $db_senha);
-            // Garante que o PDO lance exce��es durante erros.
-            self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            // Garante que os dados sejam armazenados com codifica��o UFT-8.
-            self::$db->exec('SET NAMES utf8');
-        } catch (PDOException $e) {
-            // Envia um e-mail para o e-mail oficial do sistema, em caso de erro de conex�o.
-            mail($sistema_email, "PDOException em $sistema_titulo", $e->getMessage());
-            // Ent�o n�o carrega nada mais da p�gina.
-            die("Connection Error: " . $e->getMessage());
+            $srtDeConexao = "mysql:host=192.185.176.119;dbname=notnamec_db;";
+            
+            $arrConfig = array(
+                // Configura o comando de inicialização. - set names = Comando mysql
+                PDO::MYSQL_ATTR_INIT_COMMAND => "set names utf8"
+            );
+            $this->conexao = new PDO($srtDeConexao, "notnamec_usr", "", $arrConfig);
+            // Modo de erro: Só avisa quando fodeu.
+            $this->conexao->setAttribute(PDO::ATTR_ERRMODE, $value);
+        } catch (Exception $e) {
+            
+            // Comentar essa linha para produção;
+            echo $e->getMessage();
+            // Return para o Sistema operacional Windão
+            exit(1);
         }
     }
-
-    // M�todo est�tico - acess�vel sem instancia��o.
-    public static function conexao()
+    public function fecharConexao()
     {
-        // Garante uma �nica inst�ncia. Se n�o existe uma conex�o, criamos uma nova.
-        if (! self::$db) {
-           self::$db = new Database();
-        }
-        
-        // Retorna a conex�o.
-        return self::$db;
+        $this->connection = null;
     }
+  
 
     public function executarSQL(string $sql): bool
     {
@@ -86,7 +64,7 @@ class Database
         $this->conexao()->commit();
         
         // Fecha a conexao.
-        $this->fechaConexao();
+        $this->fecharConexao();
         
         return TRUE;
     }
