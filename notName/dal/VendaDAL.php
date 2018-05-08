@@ -5,31 +5,24 @@ require_once '../library/Conexao.class.php';
 
 class VendaDAL
 {
- 
-    public static $conn = Database::conexao();
-    
+
     public static function efetuaVenda(Venda $venda): string
     {
-        
-        $connection = self::$conn;
-       
+        $connection = new Database();
         
         $idCli = $venda->getIdCli();
         $totalVenda = $venda->getVlrTotalVenda();
         $dtCompra = $venda->getIdVenda();
         
-        $sql = "";
+        //exemplo de chamada de procedure
+        $sql = "CALL atualizando_Dados (‘$action’, ‘$tipoDados’, ‘$numComparativo’, ‘$codProduto’, ‘$valor’, ‘$nomeConcorrente’,‘$obs’, ‘$registro’)";
         
         $connection->executarSQL($sql);
-        
-        $idVenda = $connection->insert_id;
-        
-        $venda->setIdVenda($idVenda);
     }
 
     public static function insereClienteVenda(Venda $venda): string
     {
-        $connection = self::$conn;
+        $connection = new Database();
         
         $idVenda = $venda->getIdVenda();
         $idCli = $venda->getIdCli();
@@ -38,10 +31,10 @@ class VendaDAL
         
         return $connection->executarSQL($sql);
     }
-    
-    public static function insereVendaStatus(Venda $venda) : string 
+
+    public static function insereVendaStatus(Venda $venda): string
     {
-        $connection = self::$conn;
+        $connection = new Database();
         
         $idStatus = $venda->getIdStatus();
         $idVenda = $venda->getIdVenda();
@@ -50,12 +43,11 @@ class VendaDAL
         $sql = "";
         
         return $connection->executarSQL($sql);
-        
     }
-    
-    public static function buscaVenda(Venda $venda) : array
+
+    public static function buscaVenda(Venda $venda): array
     {
-        $connection = self::$conn;
+        $connection = new Database();
         
         $sql = "";
         
@@ -63,8 +55,7 @@ class VendaDAL
         
         $arrayVenda = array();
         
-        foreach ($restulado as $resultado)
-        {
+        foreach ($restulado as $resultado) {
             $venda->setIdVenda($resultado['VENDA_nID']);
             $venda->setVlrTotalVenda($resultado['VENDA_nVLRTOTALVENDA']);
             $venda->setDtCompraVenda($resultado['VENDA_dtDTCOMPRA']);
@@ -76,10 +67,10 @@ class VendaDAL
         }
         return $arrayVenda;
     }
-    
-    public static function alteraVendaStatus(Venda $venda) : string
+
+    public static function alteraVendaStatus(Venda $venda): string
     {
-        $connection = self::$conn;
+        $connection = new Database();
         
         $idStatus = $venda->getIdStatus();
         $idVenda = $venda->getIdVenda();
@@ -88,11 +79,11 @@ class VendaDAL
         $sql = "";
         
         return $connection->executarSQL($sql);
-        
     }
-    public static function insereVendaProduto(Venda $venda, Produto $prod) : string
+
+    public static function insereVendaProduto(Venda $venda, Produto $prod): string
     {
-        $connection = self::$conn;
+        $connection = new Database();
         
         $venda->getIdVenda();
         $prod->getIdProd();
@@ -102,7 +93,5 @@ class VendaDAL
         $sql = "";
         
         return $connection->executarSQL($sql);
-        
     }
-    
 }
