@@ -5,10 +5,23 @@ require_once '../library/Conexao.class.php';
 
 class VendaDAL
 {
+    
+    /**
+     * @var Database
+     */
+    private static $connection = null;
 
+    
+    
+    private static function connect(){
+        if(is_null(VendaDAL::$connection)){
+            VendaDAL::$connection = new Database();
+        }
+    }
+    
     public static function efetuaVenda(Venda $venda): string
     {
-        $connection = new Database();
+        VendaDAL::connect();
         
         $idCli = $venda->getIdCli();
         $totalVenda = $venda->getVlrTotalVenda();
@@ -17,10 +30,13 @@ class VendaDAL
         //exemplo de chamada de procedure
         $sql = "CALL atualizando_Dados (‘$action’, ‘$tipoDados’, ‘$numComparativo’, ‘$codProduto’, ‘$valor’, ‘$nomeConcorrente’,‘$obs’, ‘$registro’)";
         
-        $connection->executarSQL($sql);
+        VendaDAL::$connection->executarSQL($sql);
+        
+        VendaDAL::$connection->returnID();
+        
     }
 
-    public static function insereClienteVenda(Venda $venda): string
+    public static function insereClienteVenda(Venda $venda): bool
     {
         $connection = new Database();
         

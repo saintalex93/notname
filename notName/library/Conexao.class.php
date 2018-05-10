@@ -73,4 +73,12 @@ class Database
     {
         return $this->resutado->fetchAll();
     }
+    
+    public static function returnID() : int
+    {
+        
+     return $this->connection->lastInsertId();
+     
+        
+    }
 }
