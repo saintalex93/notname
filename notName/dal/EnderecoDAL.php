@@ -5,9 +5,22 @@ require_once "../library/Conexao.class.php";
 class EnderecoDAL
 {
 
+    /**
+     *
+     * @var Database
+     */
+    private static $connection = null;
+
+    private static function connect()
+    {
+        if (is_null(EnderecoDAL::$connection)) {
+            EnderecoDAL::$connection = new Database();
+        }
+    }
+
     public static function insereEndereco(Endereco $end): string
     {
-        $connection = new Database();
+        EnderecoDAL::connect();
         
         // pega as informacoes e atribui as variaves
         $cep = $end->getCep();
@@ -23,25 +36,20 @@ class EnderecoDAL
         $sql = "";
         
         // Executa a string sql
-        $connection->executarSQL($sql);
+        EnderecoDAL::$connection->executarSQL($sql);
         
-        // Pega o ultimo id
-        $idEnd = $connection->insert_id;
-        
-        // Seta o id do endereco
-        $end->setId($idEnd);
+        return EnderecoDAL::$connection->returnID();
     }
 
     public static function buscaEndereco(Endereco $end): array
     {
-        // abre uma nova instancia da classe Database()
-        $connection = new Database();
+        EnderecoDAL::connect();
         
         // String sql
         $sql = "";
         
         // Executa a string sql e atribui a variavel
-        $resultado = $connection->executarSQL($sql);
+        $resultado = EnderecoDAL::$connection->executarSQL($sql);
         
         // criar uma variavel globa do tipo array
         $arrayEnd = array();
@@ -70,25 +78,25 @@ class EnderecoDAL
 
     public static function atualizaEndereco(Endereco $end): string
     {
-        $connection = new Database();
+        EnderecoDAL::connect();
         
         $idEnd = $end->getId();
         
         $sql = "";
         
-        return $connection->executarSQL($sql);
+        return EnderecoDAL::$connection->executarSQL($sql);
     }
 
     public static function buscaUF(Endereco $end): string
     {
-        $connection = new Database();
+        EnderecoDAL::connect();
         
         $idUF = $end->getIdUF();
         $UF = $end->getUF();
         
         $sql = "";
         
-        $resultado = $connection->executarSQL($sql);
+        $resultado = EnderecoDAL::$connection->executarSQL($sql);
         
         $arrayUF = array();
         

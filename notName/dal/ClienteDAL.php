@@ -2,21 +2,31 @@
 require_once '../model/Cliente.php';
 require_once '../library/Conexao.class.php';
 
-
 class ClienteDAL
 {
-    
+
+    /**
+     *
+     * @var Database
+     */
+    private static $connection = null;
+
+    private static function connect()
+    {
+        if (is_null(ClienteDAL::$connection)) {
+            ClienteDAL::$connection = new Database();
+        }
+    }
+
     /**
      *
      * @return bool Essa funcao ira fazer a insercao do cliente no sistema.
      */
-       
     public static function insereCliente(Cliente $cliente): string
     {
         
         // Nova instancia do banco de dados.
-        $connection = new Database();
-        
+        ClienteDAL::connect();
         
         $nome = $cliente->getNomeCli();
         $rg = $cliente->getRgCli();
@@ -39,24 +49,19 @@ class ClienteDAL
         VALUES ('$nome','$rg','$cpf','$nasc','$genero','$telRes','$email','$login','$senha','$status')";
         
         // Executa a string sql
-        $connection->executarSQL($sql);
+        ClienteDAL::$connection->executarSQL($sql);
         
-        // Recupera o ultimo id inserido
-        $idCli = $connection->insert_id;
-        
-        //seta o id do cliente;
-        $cliente->setIdCli($idCli);
-        
+        return ClienteDAL::$connection->returnID();
     }
 
     public static function buscaCliente(): array
     {
         $sql = "";
         
-        $connection = new Database();
+        ClienteDAL::connect();
         
         // Executa a string sql e atribui a uma variavel
-        $resultado = $connection->executarSQL($sql);
+        $resultado = ClienteDAL::$connection->executarSQL($sql);
         
         $arrayCli = array();
         
@@ -80,7 +85,7 @@ class ClienteDAL
             $resultCli->setStatusCli($resultado['CLI_cSTATUS']);
             $resultCli->setPrefCli($resultado['CLI_tPREFERENCIA']);
             
-            //atribui todas as informacoes ao array
+            // atribui todas as informacoes ao array
             $arrayCli[] = $resultCli;
         }
         return $arrayCli;
@@ -88,21 +93,18 @@ class ClienteDAL
 
     public static function atualizaCliente(Cliente $cliente): string
     {
-        
-        
-        $connection = new Database();
+        ClienteDAL::connect();
         
         $id = $cliente->getIdCli();
         
         $sql = "";
         
-        return $connection->executarSQL($sql);
+        return ClienteDAL::$connection->executarSQL($sql);
     }
 
     public static function atualizaUltimoAcessoCliente(Cliente $cliente): string
     {
-
-        $connection = new Database();
+        ClienteDAL::connect();
         
         $id = $cliente->getIdCli();
         

@@ -5,20 +5,20 @@ require_once '../library/Conexao.class.php';
 
 class VendaDAL
 {
-    
+
     /**
+     *
      * @var Database
      */
     private static $connection = null;
 
-    
-    
-    private static function connect(){
-        if(is_null(VendaDAL::$connection)){
+    private static function connect()
+    {
+        if (is_null(VendaDAL::$connection)) {
             VendaDAL::$connection = new Database();
         }
     }
-    
+
     public static function efetuaVenda(Venda $venda): string
     {
         VendaDAL::connect();
@@ -27,30 +27,31 @@ class VendaDAL
         $totalVenda = $venda->getVlrTotalVenda();
         $dtCompra = $venda->getIdVenda();
         
-        //exemplo de chamada de procedure
+        // exemplo de chamada de procedure
         $sql = "CALL atualizando_Dados (‘$action’, ‘$tipoDados’, ‘$numComparativo’, ‘$codProduto’, ‘$valor’, ‘$nomeConcorrente’,‘$obs’, ‘$registro’)";
         
         VendaDAL::$connection->executarSQL($sql);
         
-        VendaDAL::$connection->returnID();
-        
+        return VendaDAL::$connection->returnID();
     }
 
-    public static function insereClienteVenda(Venda $venda): bool
+    public static function insereClienteVenda(Venda $venda)
     {
-        $connection = new Database();
+        VendaDAL::connect();
         
         $idVenda = $venda->getIdVenda();
         $idCli = $venda->getIdCli();
         
         $sql = "";
         
-        return $connection->executarSQL($sql);
+        VendaDAL::$connection->executarSQL($sql);
+        
+        return VendaDAL::$connection->returnID();
     }
 
-    public static function insereVendaStatus(Venda $venda): string
+    public static function insereVendaStatus(Venda $venda)
     {
-        $connection = new Database();
+        VendaDAL::connect();
         
         $idStatus = $venda->getIdStatus();
         $idVenda = $venda->getIdVenda();
@@ -58,16 +59,18 @@ class VendaDAL
         
         $sql = "";
         
-        return $connection->executarSQL($sql);
+        VendaDAL::$connection->executarSQL($sql);
+        
+        return VendaDAL::$connection->returnID();
     }
 
     public static function buscaVenda(Venda $venda): array
     {
-        $connection = new Database();
+        VendaDAL::connect();
         
         $sql = "";
         
-        $resultado = $connection->executarSQL($sql);
+        $resultado = VendaDAL::$connection->executarSQL($sql);
         
         $arrayVenda = array();
         
@@ -108,6 +111,8 @@ class VendaDAL
         
         $sql = "";
         
-        return $connection->executarSQL($sql);
+        VendaDAL::$connection->executarSQL($sql);
+        
+        return VendaDAL::$connection->returnID();
     }
 }

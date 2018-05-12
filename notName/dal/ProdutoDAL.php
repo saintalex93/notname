@@ -1,48 +1,62 @@
 <?php
 require_once '../model/Produto.php';
-require_once '../model/Categoria.php';
-require_once '../model/Marca.php';
-require_once '../model/Modelo.php';
 require_once '../library/Conexao.class.php';
 
 class ProdutoDAL
 {
 
-    public static $conn = Database::conexao();
+    /**
+     *
+     * @var Database
+     */
+    private static $connection = null;
 
-    public static function insereProduto(Produto $prod, Marca $marca, Modelo $mod): string
+    private static function connect()
     {
-        $connection = self::$conn;
-        
-        $descProd = $prod->getDescProd();
-        $descCompleta = $prod->getDescCompletaProd();
-        $statusProd = $prod->getStatusProd();
-        $marcaProd = $marca->getIdMarca();
-        $modeloProd = $mod->getIdModelo();
-        
-        $sql = "";
-        
-        $connection->executarSQL($sql);
-        
-        $idProd = $connection->insert_id;
-        
-        $prod->setIdProd($idProd);
+        if (is_null(ProdutoDAL::$connection)) {
+            ProdutoDAL::$connection = new Database();
+        }
     }
 
-    public static function atualizaProduto(Produto $prod, Marca $marca, Modelo $mod): string
+    public static function insereProduto(Produto $prod): string
     {
-        $connection = self::$conn;
+        ProdutoDAL::connect();
         
         $descProd = $prod->getDescProd();
-        $descCompleta = $prod->getDescCompletaProd();
-        $statusProd = $prod->getStatusProd();
-        $marcaProd = $marca->getIdMarca();
-        $modeloProd = $mod->getIdModelo();
-        $idProd = $prod->getIdProd();
+        $descComp = $prod->getDescCompletaProd();
+        $prodStatus = $prod->getStatusProd();
+        $marcaID = $prod->getIdMarca();
+        $modeloID = $prod->getIdModelo();
+        $categID = $prod->getIdCateg();
+        $categoriaDesc = $prod->getDescCateg();
         
         $sql = "";
         
-        return $connection->executarSQL($sql);
+        ProdutoDAL::$connection->executarSQL($sql);
+        
+        return ProdutoDAL::$connection->returnID();
+    }
+
+    public static function atualizaProduto(Produto $prod): string
+    {
+        ProdutoDAL::connect();
+        
+        $idProd = $prod->getIdProd();
+        $descProd = $prod->getDescProd();
+        $descComp = $prod->getDescCompletaProd();
+        $prodStatus = $prod->getStatusProd();
+        $marcaID = $prod->getIdMarca();
+        $modeloID = $prod->getIdModelo();
+        $categID = $prod->getIdCateg();
+        $categoriaDesc = $prod->getDescCateg();
+        
+        $sql = "";
+        
+        return ProdutoDAL::$connection->executarSQL($sql);
     }
     
+    public static function buscaProduto(Produto $prod)
+    {
+        
+    }
 }
