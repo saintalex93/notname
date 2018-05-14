@@ -54,5 +54,15 @@ class MarcaDAL
         
         return $arrayMarca;
     }
-    
+
+    public static function atualizaMArcac(Marca $marca): string
+    {
+        MarcaDAL::connect();
+        
+        $sql = "";
+        
+        MarcaDAL::$connection->executarSQL($sql);
+        
+        return MarcaDAL::$connection->returnID();
+    }
 }
