@@ -54,9 +54,27 @@ class ProdutoDAL
         
         return ProdutoDAL::$connection->executarSQL($sql);
     }
-    
+
     public static function buscaProduto(Produto $prod)
     {
+        ProdutoDAL::connect();
         
+        $idProd = $prod->getIdProd();
+        
+        $sql = "";
+        
+        $resultado = ProdutoDAL::$connection->executarSQL($sql);
+        
+        $arrayProd = array();
+        
+        foreach ($resultado as $resultado) {
+            
+            $idProd = $prod->setIdProd($resultado['PRODUTO_nID']);
+            $descProd = $prod->setDescProd($resultado['PRODUTO_cDESC']);
+            $decCompProd = $prod->setDescCompletaProd($resultado['PRODUTO_cDESCCOMPLETA']);
+            $statusProd = $prod->setStatusProd($resultado['PRODUTO_nSTATUS']);
+            $marcaID = $prod->setIdMarca($resultado['MARCA_nID']);
+            $modeloID = $prod->setIdModelo($resultado['MODELO_nID']);
+        }
     }
 }
