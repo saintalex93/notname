@@ -1,5 +1,5 @@
 <?php
-abstract class Database{
+abstract class Database2{
     /*Método construtor do banco de dados*/
     private function __construct(){}
      

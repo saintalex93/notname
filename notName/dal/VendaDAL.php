@@ -1,6 +1,5 @@
 <?php
 require_once '../model/Venda.php';
-require_once '../model/Produto.php';
 require_once '../library/Conexao.class.php';
 
 class VendaDAL
@@ -75,21 +74,24 @@ class VendaDAL
         $arrayVenda = array();
         
         foreach ($restulado as $resultado) {
-            $venda->setIdVenda($resultado['VENDA_nID']);
-            $venda->setVlrTotalVenda($resultado['VENDA_nVLRTOTALVENDA']);
-            $venda->setDtCompraVenda($resultado['VENDA_dtDTCOMPRA']);
-            $venda->setCodRastVenda($resultado['VENDA_cCODRASTREIO']);
-            $venda->setIdVendaStatus($resultado['VENDA_STA_nID']);
-            $venda->setDtAtualizacaoVenda($resultado['VENDA_STATUS_dDT_ATUALIZACAO']);
             
-            $arrayVenda[] = $venda;
+            $resultVenda = new Venda();
+            
+            $resultVenda->setIdVenda($resultado['VENDA_nID']);
+            $resultVenda->setVlrTotalVenda($resultado['VENDA_nVLRTOTALVENDA']);
+            $resultVenda->setDtCompraVenda($resultado['VENDA_dtDTCOMPRA']);
+            $resultVenda->setCodRastVenda($resultado['VENDA_cCODRASTREIO']);
+            $resultVenda->setIdVendaStatus($resultado['VENDA_STA_nID']);
+            $resultVenda->setDtAtualizacaoVenda($resultado['VENDA_STATUS_dDT_ATUALIZACAO']);
+            
+            $arrayVenda[] = $resultVenda;
         }
         return $arrayVenda;
     }
 
     public static function alteraVendaStatus(Venda $venda): string
     {
-        $connection = new Database();
+        VendaDAL::connect();
         
         $idStatus = $venda->getIdStatus();
         $idVenda = $venda->getIdVenda();

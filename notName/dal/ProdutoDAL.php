@@ -69,12 +69,18 @@ class ProdutoDAL
         
         foreach ($resultado as $resultado) {
             
-            $idProd = $prod->setIdProd($resultado['PRODUTO_nID']);
-            $descProd = $prod->setDescProd($resultado['PRODUTO_cDESC']);
-            $decCompProd = $prod->setDescCompletaProd($resultado['PRODUTO_cDESCCOMPLETA']);
-            $statusProd = $prod->setStatusProd($resultado['PRODUTO_nSTATUS']);
-            $marcaID = $prod->setIdMarca($resultado['MARCA_nID']);
-            $modeloID = $prod->setIdModelo($resultado['MODELO_nID']);
+            $resultProduto = new Produto();
+            
+            $resultProduto->setIdProd($resultado['PRODUTO_nID']);
+            $resultProduto->setDescProd($resultado['PRODUTO_cDESC']);
+            $resultProduto->setDescCompletaProd($resultado['PRODUTO_cDESCCOMPLETA']);
+            $resultProduto->setStatusProd($resultado['PRODUTO_nSTATUS']);
+            $resultProduto->setIdMarca($resultado['MARCA_nID']);
+            $resultProduto->setIdModelo($resultado['MODELO_nID']);
+            
+            $arrayProd = $resultProduto;
         }
+        
+        return $arrayProd;
     }
 }
