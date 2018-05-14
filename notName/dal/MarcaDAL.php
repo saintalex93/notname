@@ -4,21 +4,21 @@ require_once '../library/Conexao.class.php';
 
 class MarcaDAL
 {
-    
+
     /**
+     *
      * @var Database
      */
     private static $connection = null;
-    
+
     private static function connect()
     {
-        if(is_null(MarcaDAL::connect()))
-        {
+        if (is_null(MarcaDAL::connect())) {
             MarcaDAL::$connection = new Database();
         }
     }
-    
-    public static function insereMarca(Marca $marca) : string 
+
+    public static function insereMarca(Marca $marca): string
     {
         MarcaDAL::connect();
         
@@ -31,8 +31,8 @@ class MarcaDAL
         
         return MarcaDAL::$connection->returnID();
     }
-    
-    public static function buscaMarca(Marca $marca) : array
+
+    public static function buscaMarca(Marca $marca): array
     {
         MarcaDAL::connect();
         
@@ -42,8 +42,7 @@ class MarcaDAL
         
         $arrayMarca = array();
         
-        foreach ($resultado as $resultado)
-        {
+        foreach ($resultado as $resultado) {
             $resultMarca = new Marca();
             
             $resultMarca->setIdMarca($resultado['MARCA_nID']);
@@ -53,8 +52,7 @@ class MarcaDAL
             $arrayMarca = $resultMarca;
         }
         
-        return
-        
+        return $arrayMarca;
     }
     
 }
