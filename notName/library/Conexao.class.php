@@ -25,8 +25,8 @@ class Database
             $this->connection = new PDO($srtDeConexao, "notnamec_usr", "hds24@carol", $arrConfig);
             
             // Modo de erro: Só avisa quando fodeu.
-//             $this->connection->setAttribute(PDO::ATTR_ERRMOD,$value);
 //             $this->connection->setAttribute(PDO::ATTR_ERRMODE,$value);
+//             $this->conectar()->setAttribute(PDO::ATTR_ERRMODE,$value);
         } catch (Exception $e) {
             
             // Comentar essa linha para produção;
@@ -41,7 +41,7 @@ class Database
         $this->connection = null;
     }
 
-    public function executarSQL($sql)
+    public function executarSQL(string $sql)
     {
         
         // Conecta no banco
@@ -53,7 +53,7 @@ class Database
         // Tratamento de erro
         try {
             // Inicia Tran��o
-//             $this->conectar()->beginTransaction();
+            $this->connection->beginTransaction();
             
             // Prepara o banco para receber a string sql.
             $this->resutado = $this->connection->prepare($sql);
@@ -62,12 +62,12 @@ class Database
             $this->resutado->execute();
         } catch (Exception $e) {
             // Rollback � excutado em caso de erro.
-//             $this->conexao()->rollBack();
+            $this->connection->rollBack();
             return FALSE;
         }
         
         // Se n�o houver erro executa o commit
-//         $this->conexao()->commit();
+        $this->connection->commit();
         
         // Fecha a conexao.
         $this->fecharConexao();

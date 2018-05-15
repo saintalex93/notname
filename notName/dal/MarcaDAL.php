@@ -35,16 +35,16 @@ class MarcaDAL
     public static function buscaMarca()
     {
               
-        $bd = new Database();
+//         $bd = new Database();
         
-        $bd->executarSQL("SELECT * FROM MARCA");
+//         $bd->executarSQL("SELECT * FROM MARCA");
         
-        $resultado = $bd->getResultados();
-//         MarcaDAL::connect();
+//         $resultado = $bd->getResultados();
+        MarcaDAL::connect();
         
-//         MarcaDAL::$connection->executarSQL($sql);
+        MarcaDAL::$connection->executarSQL("SELECT * FROM MARCA");
         
-//         $resultado = MarcaDAL::$connection->getResultados();
+        $resultado = MarcaDAL::$connection->getResultados();
         
         $arrayMarca = array();
         
