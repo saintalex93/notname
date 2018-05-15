@@ -32,25 +32,29 @@ class MarcaDAL
         return MarcaDAL::$connection->returnID();
     }
 
-    public static function buscaMarca() : array
+    public static function buscaMarca()
     {
-        MarcaDAL::connect();
+              
+        $bd = new Database();
         
-        $sql = "SELECT * FROM MARCA";
+        $bd->executarSQL("SELECT * FROM MARCA");
         
-        MarcaDAL::$connection->executarSQL($sql);
+        $resultado = $bd->getResultados();
+//         MarcaDAL::connect();
         
-        $resultado = MarcaDAL::$connection->getResultados();
+//         MarcaDAL::$connection->executarSQL($sql);
+        
+//         $resultado = MarcaDAL::$connection->getResultados();
         
         $arrayMarca = array();
         
-        foreach ($resultado as $resultado) {
+        foreach ($resultado as $linha) {
             
             $resultMarca = new Marca();
             
-            $resultMarca->setIdMarca($resultado['MARCA_nID']);
-            $resultMarca->setDescMarca($resultado['MARCA_cDESC']);
-            $resultMarca->setStatusMarca($resultado['MARCA_nSTATUS']);
+            $resultMarca->setIdMarca($linha['MARCA_nID']);
+            $resultMarca->setDescMarca($linha['MARCA_cDESC']);
+            $resultMarca->setStatusMarca($linha['MARCA_nSTATUS']);
             
             $arrayMarca[] = $resultMarca;
         }

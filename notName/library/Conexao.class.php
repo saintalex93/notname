@@ -3,29 +3,30 @@
 class Database
 {
 
-   
     // Vari�vel de resultado do sql.
     private $resutado;
-/**
- * 
- * @var PDO
- */
+
+    /**
+     *
+     * @var PDO
+     */
     private $connection;
-    
-    public function conexao()
+
+    public function conectar()
     {
+       
         try {
-//             $srtDeConexao = "mysql:host=192.185.176.119;dbname=notnamec_db;";
-            $srtDeConexao = "mysql:host=127.0.0.1;dbname=notnamec_db;";
+            $srtDeConexao = "mysql:host=192.185.176.119;dbname=notnamec_db;";
             
             $arrConfig = array(
                 // Configura o comando de inicialização. - set names = Comando mysql
                 PDO::MYSQL_ATTR_INIT_COMMAND => "set names utf8"
             );
-//             $this->connection = new PDO($srtDeConexao, "notnamec_usr", "hds24@carol", $arrConfig);
-            $this->connection = new PDO($srtDeConexao, "root", "macaco22", $arrConfig);
+            $this->connection = new PDO($srtDeConexao, "notnamec_usr", "hds24@carol", $arrConfig);
+            
             // Modo de erro: Só avisa quando fodeu.
 //             $this->connection->setAttribute(PDO::ATTR_ERRMOD,$value);
+//             $this->connection->setAttribute(PDO::ATTR_ERRMODE,$value);
         } catch (Exception $e) {
             
             // Comentar essa linha para produção;
@@ -34,17 +35,17 @@ class Database
             exit(1);
         }
     }
+
     public function fecharConexao()
     {
         $this->connection = null;
     }
-  
 
-    public function executarSQL($sql): bool
+    public function executarSQL($sql)
     {
         
         // Conecta no banco
-        $this->conexao();
+        $this->conectar();
         
         // Limpando a variavel resultado.
         $this->resutado = null;
@@ -52,10 +53,10 @@ class Database
         // Tratamento de erro
         try {
             // Inicia Tran��o
-//             $this->conexao()->beginTransaction();
+//             $this->conectar()->beginTransaction();
             
             // Prepara o banco para receber a string sql.
-            $this->resutado = $this->conexao()->prepare($sql);
+            $this->resutado = $this->connection->prepare($sql);
             
             // Executa a string sql.
             $this->resutado->execute();
@@ -74,16 +75,14 @@ class Database
         return TRUE;
     }
 
-    public static function getResultados(): array
+    public function getResultados(): array
     {
+        
         return $this->resutado->fetchAll();
     }
-    
-    public static function returnID() : int
+
+    public function returnID(): int
     {
-        
-     return $this->connection->lastInsertId();
-     
-        
+        return $this->connection->lastInsertId();
     }
 }

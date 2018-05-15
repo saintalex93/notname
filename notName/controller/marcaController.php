@@ -1,8 +1,8 @@
-<?php 
+<?php
 require_once '../dal/MarcaDAL.php';
 
+$putinhaloira = MarcaDAL::buscaMarca();
 
-$testando = MarcaDAL::buscaMarca();
+echo $putinhaloira;
 
-echo $testando[1];
 ?>
