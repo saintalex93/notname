@@ -25,8 +25,8 @@ class Database
             $this->connection = new PDO($srtDeConexao, "notnamec_usr", "hds24@carol", $arrConfig);
             
             // Modo de erro: Só avisa quando fodeu.
-//             $this->connection->setAttribute(PDO::ATTR_ERRMODE,$value);
-//             $this->conectar()->setAttribute(PDO::ATTR_ERRMODE,$value);
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
         } catch (Exception $e) {
             
             // Comentar essa linha para produção;
