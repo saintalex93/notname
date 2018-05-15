@@ -13,7 +13,7 @@ class MarcaDAL
 
     private static function connect()
     {
-        if (is_null(MarcaDAL::connect())) {
+        if (is_null(MarcaDAL::$connection)) {
             MarcaDAL::$connection = new Database();
         }
     }
@@ -32,24 +32,27 @@ class MarcaDAL
         return MarcaDAL::$connection->returnID();
     }
 
-    public static function buscaMarca(Marca $marca): array
+    public static function buscaMarca() : array
     {
         MarcaDAL::connect();
         
-        $sql = "";
+        $sql = "SELECT * FROM MARCA";
         
-        $resultado = MarcaDAL::$connection->executarSQL($sql);
+        MarcaDAL::$connection->executarSQL($sql);
+        
+        $resultado = MarcaDAL::$connection->getResultados();
         
         $arrayMarca = array();
         
         foreach ($resultado as $resultado) {
+            
             $resultMarca = new Marca();
             
             $resultMarca->setIdMarca($resultado['MARCA_nID']);
-            $resultMarca->setDescMarca($resultado);
-            $resultMarca->setStatusMarca($resultado['MARCA_nSTATU']);
+            $resultMarca->setDescMarca($resultado['MARCA_cDESC']);
+            $resultMarca->setStatusMarca($resultado['MARCA_nSTATUS']);
             
-            $arrayMarca = $resultMarca;
+            $arrayMarca[] = $resultMarca;
         }
         
         return $arrayMarca;
