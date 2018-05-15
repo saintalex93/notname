@@ -1,6 +1,7 @@
 <?php
 require_once '../dal/MarcaDAL.php';
 
+
 $putinhaloira = MarcaDAL::buscaMarca();
 
 foreach ($putinhaloira as $p) {
@@ -10,5 +11,6 @@ foreach ($putinhaloira as $p) {
     echo "Nome da Marca: " . $p->getDescMarca() . "<br />";
     echo "Status da Marca: " . $p->getStatusMarca() . "<br />";
 }
+
 
 ?>

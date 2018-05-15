@@ -25,21 +25,15 @@ class MarcaDAL
         $descMarca = $marca->getDescMarca();
         $statusMarca = $marca->getStatusMarca();
         
-        $sql = "";
+        $sql = "INSERT INTO MARCA (MARCA_cDESC, MARCA_nSTATUS) VALUES ('$descMarca',$statusMarca)";
         
-        MarcaDAL::$connection->executarSQL($sql);
+//         MarcaDAL::$connection->executarSQL($sql);
         
-        return MarcaDAL::$connection->returnID();
+        return MarcaDAL::$connection->executarSQL($sql);
     }
 
     public static function buscaMarca()
     {
-              
-//         $bd = new Database();
-        
-//         $bd->executarSQL("SELECT * FROM MARCA");
-        
-//         $resultado = $bd->getResultados();
         MarcaDAL::connect();
         
         MarcaDAL::$connection->executarSQL("SELECT * FROM MARCA");
