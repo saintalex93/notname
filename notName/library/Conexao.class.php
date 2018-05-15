@@ -18,9 +18,9 @@ class Database
                 // Configura o comando de inicialização. - set names = Comando mysql
                 PDO::MYSQL_ATTR_INIT_COMMAND => "set names utf8"
             );
-            $this->conexao = new PDO($srtDeConexao, "notnamec_usr", "", $arrConfig);
+            $this->conexao = new PDO($srtDeConexao, "notnamec_usr", "hds24@carol", $arrConfig);
             // Modo de erro: Só avisa quando fodeu.
-            $this->conexao->setAttribute(PDO::ATTR_ERRMODE, $value);
+            // $this->conexao->setAttribute(PDO::ATTR_ERRMODE, $value);
         } catch (Exception $e) {
             
             // Comentar essa linha para produção;
