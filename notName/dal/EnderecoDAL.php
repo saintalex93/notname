@@ -49,7 +49,10 @@ class EnderecoDAL
         $sql = "";
         
         // Executa a string sql e atribui a variavel
-        $resultado = EnderecoDAL::$connection->executarSQL($sql);
+        EnderecoDAL::$connection->executarSQL($sql);
+        
+        // Pega os resultados
+        $resultado = EnderecoDAL::$connection->getResultados();
         
         // criar uma variavel globa do tipo array
         $arrayEnd = array();
@@ -96,7 +99,9 @@ class EnderecoDAL
         
         $sql = "";
         
-        $resultado = EnderecoDAL::$connection->executarSQL($sql);
+        EnderecoDAL::$connection->executarSQL($sql);
+        
+        $resultado = EnderecoDAL::$connection->getResultados();
         
         $arrayUF = array();
         

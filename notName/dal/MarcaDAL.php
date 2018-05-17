@@ -34,6 +34,7 @@ class MarcaDAL
 
     public static function buscaMarca()
     {
+       
         MarcaDAL::connect();
         
         MarcaDAL::$connection->executarSQL("SELECT * FROM MARCA");

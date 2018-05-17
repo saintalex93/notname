@@ -69,7 +69,9 @@ class VendaDAL
         
         $sql = "";
         
-        $resultado = VendaDAL::$connection->executarSQL($sql);
+        VendaDAL::$connection->executarSQL($sql);
+        
+        $resultado = VendaDAL::$connection->getResultados();
         
         $arrayVenda = array();
         

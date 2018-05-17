@@ -61,7 +61,9 @@ class ClienteDAL
         ClienteDAL::connect();
         
         // Executa a string sql e atribui a uma variavel
-        $resultado = ClienteDAL::$connection->executarSQL($sql);
+        ClienteDAL::$connection->executarSQL($sql);
+        
+        $resultado = ClienteDAL::$connection->getResultados();
         
         $arrayCli = array();
         

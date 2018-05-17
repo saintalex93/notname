@@ -47,6 +47,7 @@ class CategoriaDAL
         $sql = "";
         
         CategoriaDAL::$connection->executarSQL($sql);
+        
         $resultado = CategoriaDAL::$connection->getResultados();
         
         $arrayCategoria = array();

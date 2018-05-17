@@ -46,7 +46,9 @@ class ModeloDAL
         
         $sql = "";
         
-        $resultado = ModeloDAL::$connection->executarSQL($sql);
+        ModeloDAL::$connection->executarSQL($sql);
+        
+        $resultado = ModeloDAL::$connection->getResultados();
         
         $arrayModelo = array();
         

@@ -63,7 +63,9 @@ class ProdutoDAL
         
         $sql = "";
         
-        $resultado = ProdutoDAL::$connection->executarSQL($sql);
+        ProdutoDAL::$connection->executarSQL($sql);
+        
+        $resultado = ProdutoDAL::$connection->getResultados();
         
         $arrayProd = array();
         
