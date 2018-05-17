@@ -74,6 +74,28 @@ class Database
         
         return TRUE;
     }
+    
+    public function executaProcedure(string $sql)
+    {
+        
+        // Conecta no banco
+        $this->conectar();
+        
+        // Limpando a variavel resultado.
+        $this->resutado = null;
+             
+      
+            $this->resutado = $this->connection->prepare($sql);
+            
+            // Executa a string sql.
+            $this->resutado->execute();
+       
+        
+        // Fecha a conexao.
+        $this->fecharConexao();
+        
+        return TRUE;
+    }
 
     public function getResultados(): array
     {
