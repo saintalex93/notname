@@ -1,4 +1,5 @@
 <?php
+
 class Database
 {
 
@@ -6,12 +7,10 @@ class Database
     private $resutado;
 
     /**
-     *  
+     *
      * @var PDO
      */
     private $connection;
-    
-    
 
     public function conectar()
     {
@@ -107,6 +106,5 @@ class Database
     {
         return $this->connection->lastInsertId();
     }
-
 }
    
