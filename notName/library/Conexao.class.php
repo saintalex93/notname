@@ -10,6 +10,8 @@ class Database
      * @var PDO
      */
     private $connection;
+    
+    
 
     public function conectar()
     {
@@ -81,11 +83,15 @@ class Database
         // Limpando a variavel resultado.
         $this->resutado = null;
         
-        $this->resutado = $this->connection->prepare($sql);
-        
-        // Executa a string sql.
-        $this->resutado->execute();
-        
+        // Tratamento de erro
+        try {
+            $this->resutado = $this->connection->prepare($sql);
+            
+            // Executa a string sql.
+            $this->resutado->execute();
+        } catch (Exception $e) {
+            return FALSE;
+        }
         // Fecha a conexao.
         $this->fecharConexao();
         
@@ -101,5 +107,6 @@ class Database
     {
         return $this->connection->lastInsertId();
     }
-}
 
+}
+   
