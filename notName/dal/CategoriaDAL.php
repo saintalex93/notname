@@ -5,38 +5,49 @@ require_once '../library/Conexao.class.php';
 class CategoriaDAL
 {
 
-    public static $conn = Database::conexao();
-    
-    public static function insereCategoria(Categoria $cat) : string
+    /**
+     *
+     * @var Database
+     */
+    private static $connection = null;
+
+    private static function connect()
     {
-     $connection = self::$conn;
-     
-     $nomeCat = $cat->getDescCateg();
-     
-     $sql = "";
-     
-     return $connection->executarSQL($sql);
+        if (is_null(CategoriaDAL::$connection)) {
+            ClienteDAL::$connection = new Database();
+        }
     }
-    
-    public static function alteraCategoria(Categoria $cat) : string
+
+    public static function insereCategoria(Categoria $cat): string
     {
-        $connection = self::$conn;
+        CategoriaDAL::connect();
+        
+        $nomeCat = $cat->getDescCateg();
+        
+        $sql = "";
+        
+        return CategoriaDAL::$connection->executarSQL($sql);
+    }
+
+    public static function alteraCategoria(Categoria $cat): string
+    {
+        CategoriaDAL::connect();
         $idCat = $cat->getIdCateg();
         $descCat = $cat->getDescCateg();
         
         $sql = "";
         
-        return $connection->executarSQL($sql);
-        
+        return CategoriaDAL::$connection->executarSQL($sql);
     }
 
     public static function buscaCategoria(Categoria $cat): array
     {
-        $connection = self::$conn;
+        CategoriaDAL::connect();
         
         $sql = "";
         
-        $resultado = $connection->executarSQL($sql);
+        CategoriaDAL::$connection->executarSQL($sql);
+        $resultado = CategoriaDAL::$connection->getResultados();
         
         $arrayCategoria = array();
         

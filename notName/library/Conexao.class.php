@@ -14,7 +14,6 @@ class Database
 
     public function conectar()
     {
-       
         try {
             $srtDeConexao = "mysql:host=192.185.176.119;dbname=notnamec_db;";
             
@@ -25,8 +24,7 @@ class Database
             $this->connection = new PDO($srtDeConexao, "notnamec_usr", "hds24@carol", $arrConfig);
             
             // Modo de erro: Só avisa quando fodeu.
-            $this->connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (Exception $e) {
             
             // Comentar essa linha para produção;
@@ -74,7 +72,7 @@ class Database
         
         return TRUE;
     }
-    
+
     public function executaProcedure(string $sql)
     {
         
@@ -83,13 +81,11 @@ class Database
         
         // Limpando a variavel resultado.
         $this->resutado = null;
-             
-      
-            $this->resutado = $this->connection->prepare($sql);
-            
-            // Executa a string sql.
-            $this->resutado->execute();
-       
+        
+        $this->resutado = $this->connection->prepare($sql);
+        
+        // Executa a string sql.
+        $this->resutado->execute();
         
         // Fecha a conexao.
         $this->fecharConexao();
@@ -99,7 +95,6 @@ class Database
 
     public function getResultados(): array
     {
-        
         return $this->resutado->fetchAll();
     }
 

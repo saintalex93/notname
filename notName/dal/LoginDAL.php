@@ -18,11 +18,14 @@ class LoginDAL
         }
     }
 
-    public static function login()
+    public static function login(Login $login)
     {
         LoginDal::connect();
         
-        $sql = "call USP_LOGIN('gabriela', '123')";
+        $user = $login->getLogin();
+        $password = $login->getSenha();
+        
+        $sql = "call USP_LOGIN('$user', '$password')";
         
         LoginDal::$connection->executaProcedure($sql);
         
@@ -30,7 +33,10 @@ class LoginDAL
     }
 }
 
-$teste = LoginDal::login();
+$usuario = new Login();
+$usuario->setLogin("gabriela");
+$usuario->setSenha("123");
+$teste = LoginDal::login($usuario);
 var_dump($teste);
 
 
