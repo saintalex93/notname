@@ -87,6 +87,11 @@ echo $url;
 <!-- Não apagar essa porra, se não duplicar o caralho do menú não funciona -->
 <script src="js/custom.min.js"></script>
 
+<!-- Scripts Globais -->
+<script src="./../js/jquery.blockUI.js"></script>
+<script src="./../js/ajaxLoading.js"></script>
+
+<script src="./../js/jquery.maskedinput.min.js"></script>
 
 
 </body>

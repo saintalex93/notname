@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['user'])){
+    header("Location: ./index.html");
+    die();
+}
 
 $url =basename($_SERVER['PHP_SELF']);
 
@@ -50,10 +56,10 @@ $url =basename($_SERVER['PHP_SELF']);
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
-           <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
-       </div>
-       <!-- Main wrapper  -->
-       <div id="main-wrapper">
+         <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+     </div>
+     <!-- Main wrapper  -->
+     <div id="main-wrapper">
         <!-- header header  -->
         <div class="header">
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
@@ -78,7 +84,7 @@ $url =basename($_SERVER['PHP_SELF']);
                         
                     </li>
                 </ul>
-                    <!-- End Messages -->
+                <!-- End Messages -->
                 <!-- User profile and search -->
                 <ul class="navbar-nav my-lg-0">
 
@@ -138,121 +144,121 @@ $url =basename($_SERVER['PHP_SELF']);
                         <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                             <ul class="dropdown-user">
                                 <li><a href="app-profile.php"><i class="ti-user"></i> Perfil</a></li>
-                                <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                <li><a href="./../controller/logout.php"><i class="fa fa-power-off"></i> Logout</a></li>
                             </ul>
                         </div>
                     </li>
                 </ul>
             </div>
         </nav>
-</div>
-<!-- End header header -->
-<!-- Left Sidebar  -->
-<div class="left-sidebar">
-    <!-- Sidebar scroll-->
-    <div class="scroll-sidebar">
-        <!-- Sidebar navigation-->
-        <nav class="sidebar-nav">
-            <ul id="sidebarnav">
-                <li class="nav-devider"></li>
-                <li class="nav-label">Home</li>
-                <li> <a href="dashboard.php" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a></li>
-
-                <li class="nav-label">Loja</li>
-                <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Produtos</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">Cadastro</a></li>
-                        <li><a href="#">Compras</a></li>
-                        <li><a href="#">Promoções</a></li>
-                        <li><a href="#">Relatórios</a></li>
-
-                    </ul>
-                </li>
-
-                <li class="nav-label">Gerenciamento</li>
-
-                <li> <a href="app-profile.php" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Contas</span></a></li>
-                <li class="nav-label">Charts</li>
-
-                <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Charts</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="chart-morris.php">Morris</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-label">Features</li>
-
-                <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Components <span class="label label-rouded label-danger pull-right">6</span></span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="uc-nestedable.php">Nestedable</a></li>
-                        <li><a href="uc-sweetalert.php">Sweetalert</a></li>
-                        <li><a href="uc-toastr.php">Toastr</a></li>
-                    </ul>
-                </li>
-                <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-wpforms"></i><span class="hide-menu">Forms</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="form-editor.php">Editor</a></li>
-                        <li><a href="form-dropzone.php">Dropzone</a></li>
-                    </ul>
-                </li>
-                <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Tables</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="table-bootstrap.php">Basic Tables</a></li>
-                        <li><a href="table-datatable.php">Data Tables</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-label">EXTRA</li>
-                <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu">Pages <span class="label label-rouded label-success pull-right">8</span></span></a>
-                    <ul aria-expanded="false" class="collapse">
-
-                        <li><a href="#" class="has-arrow">Authentication <span class="label label-rounded label-success">6</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="page-login.php">Login</a></li>
-                                <li><a href="page-invoice.php">Invoice</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#" class="has-arrow">Error Pages</a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="page-error-404.php">404</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-
-                <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-level-down"></i><span class="hide-menu">Multi level dd</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">item 1.1</a></li>
-                        <li><a href="#">item 1.2</a></li>
-                        <li> <a class="has-arrow" href="#" aria-expanded="false">Menu 1.3</a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="#">item 1.3.1</a></li>
-                                <li><a href="#">item 1.3.2</a></li>
-                                <li><a href="#">item 1.3.3</a></li>
-                                <li><a href="#">item 1.3.4</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">item 1.4</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <!-- End Sidebar navigation -->
     </div>
-    <!-- End Sidebar scroll-->
-</div>
-<!-- End Left Sidebar  -->
-<!-- Page wrapper  -->
-<div class="page-wrapper">
-    <!-- Bread crumb -->
-    <div class="row page-titles">
-        <div class="col-md-5 align-self-center">
-            <h3 class="text-primary">Dashboard</h3> </div>
-            <div class="col-md-7 align-self-center">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
-            </div>
+    <!-- End header header -->
+    <!-- Left Sidebar  -->
+    <div class="left-sidebar">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                    <li class="nav-devider"></li>
+                    <li class="nav-label">Home</li>
+                    <li> <a href="dashboard.php" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a></li>
+
+                    <li class="nav-label">Loja</li>
+                    <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Produtos</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="#">Cadastro</a></li>
+                            <li><a href="#">Compras</a></li>
+                            <li><a href="#">Promoções</a></li>
+                            <li><a href="#">Relatórios</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-label">Gerenciamento</li>
+
+                    <li> <a href="app-profile.php" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Contas</span></a></li>
+                    <li class="nav-label">Charts</li>
+
+                    <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Charts</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="chart-morris.php">Morris</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-label">Features</li>
+
+                    <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Components <span class="label label-rouded label-danger pull-right">6</span></span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="uc-nestedable.php">Nestedable</a></li>
+                            <li><a href="uc-sweetalert.php">Sweetalert</a></li>
+                            <li><a href="uc-toastr.php">Toastr</a></li>
+                        </ul>
+                    </li>
+                    <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-wpforms"></i><span class="hide-menu">Forms</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="form-editor.php">Editor</a></li>
+                            <li><a href="form-dropzone.php">Dropzone</a></li>
+                        </ul>
+                    </li>
+                    <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Tables</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="table-bootstrap.php">Basic Tables</a></li>
+                            <li><a href="table-datatable.php">Data Tables</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-label">EXTRA</li>
+                    <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu">Pages <span class="label label-rouded label-success pull-right">8</span></span></a>
+                        <ul aria-expanded="false" class="collapse">
+
+                            <li><a href="#" class="has-arrow">Authentication <span class="label label-rounded label-success">6</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a href="page-login.php">Login</a></li>
+                                    <li><a href="page-invoice.php">Invoice</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="has-arrow">Error Pages</a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a href="page-error-404.php">404</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-level-down"></i><span class="hide-menu">Multi level dd</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="#">item 1.1</a></li>
+                            <li><a href="#">item 1.2</a></li>
+                            <li> <a class="has-arrow" href="#" aria-expanded="false">Menu 1.3</a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a href="#">item 1.3.1</a></li>
+                                    <li><a href="#">item 1.3.2</a></li>
+                                    <li><a href="#">item 1.3.3</a></li>
+                                    <li><a href="#">item 1.3.4</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">item 1.4</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <!-- End Sidebar navigation -->
         </div>
+        <!-- End Sidebar scroll-->
+    </div>
+    <!-- End Left Sidebar  -->
+    <!-- Page wrapper  -->
+    <div class="page-wrapper">
+        <!-- Bread crumb -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-primary">Dashboard</h3> </div>
+                <div class="col-md-7 align-self-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+                        <li class="breadcrumb-item active">Dashboard</li>
+                    </ol>
+                </div>
+            </div>
                             <!-- End Bread crumb -->
