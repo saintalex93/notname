@@ -29,29 +29,16 @@ class ClienteDAL
         ClienteDAL::connect();
         
         $nome = $cliente->getNomeCli();
-        $rg = $cliente->getRgCli();
-        $cpf = $cliente->getCpfCli();
-        $nasc = $cliente->getNascCli();
-        $genero = $cliente->getGeneroCli();
-        $telRes = $cliente->getTelResiCli();
-        $telCel = $cliente->getTelCelCli();
-        $telCom = $cliente->getTelComCli();
         $email = $cliente->getEmailCli();
         $login = $cliente->getLoginCli();
         $senha = $cliente->getSenhaCli();
         $status = $cliente->getStatusCli();
-        $preferenciaSys = $cliente->getPrefCli();
         
-        // http://localhost/notname/notName/dal/ClienteDAL.php?nome=assss&rg=358772205&cpf=41203647808&nasc=1994-03-04&gen=m&telres=1139453415&telcel=11982524613&telcom=&email=sksdgkas@ksoakga.com&login=joaquim&senha=joaquina&status=0&prefsys=
-        
-        $sql = "INSERT INTO CLIENTE (CLI_cNOME,CLI_cRG,CLI_nCPF,CLI_dDTNASC,CLI_cGENERO,CLI_nTRESIDENCIAL,
-        CLI_cEMAIL,CLI_cLOGIN,CLI_cSENHA,CLI_cSTATUS)
-        VALUES ('$nome','$rg','$cpf','$nasc','$genero','$telRes','$email','$login','$senha','$status')";
+        $sql = "INSERT INTO CLIENTE (CLI_cNOME,CLI_cEMAIL,CLI_cLOGIN,CLI_cSENHA,CLI_cSTATUS)
+        VALUES ('$nome','$email','$login','$senha','$status')";
         
         // Executa a string sql
-        ClienteDAL::$connection->executarSQL($sql);
-        
-        return ClienteDAL::$connection->returnID();
+        return ClienteDAL::$connection->executarSQL($sql);
     }
 
     public static function buscaCliente(): array
