@@ -7,6 +7,7 @@ if(!isset($_SESSION['user'])){
 }
 
 $url =basename($_SERVER['PHP_SELF']);
+$pageName = ucfirst(str_replace(".php", "", $url));
 
 ?>
 
@@ -41,6 +42,8 @@ $url =basename($_SERVER['PHP_SELF']);
     <link href="css/lib/owl.theme.default.min.css" rel="stylesheet" />
     <link href="css/helper.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/stylePainel.css" rel="stylesheet">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -56,10 +59,10 @@ $url =basename($_SERVER['PHP_SELF']);
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
-         <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
-     </div>
-     <!-- Main wrapper  -->
-     <div id="main-wrapper">
+           <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+       </div>
+       <!-- Main wrapper  -->
+       <div id="main-wrapper">
         <!-- header header  -->
         <div class="header">
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
@@ -143,7 +146,7 @@ $url =basename($_SERVER['PHP_SELF']);
                         <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/users/5.jpg" alt="user" class="profile-pic" /></a>
                         <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                             <ul class="dropdown-user">
-                                <li><a href="app-profile.php"><i class="ti-user"></i> Perfil</a></li>
+                                <li><a href="perfil.php"><i class="ti-user"></i> Perfil</a></li>
                                 <li><a href="./../controller/logout.php"><i class="fa fa-power-off"></i> Logout</a></li>
                             </ul>
                         </div>
@@ -167,7 +170,7 @@ $url =basename($_SERVER['PHP_SELF']);
                     <li class="nav-label">Loja</li>
                     <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Produtos</span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href="#">Cadastro</a></li>
+                            <li><a href="cadastro.php">Cadastro</a></li>
                             <li><a href="#">Compras</a></li>
                             <li><a href="#">Promoções</a></li>
                             <li><a href="#">Relatórios</a></li>
@@ -177,7 +180,7 @@ $url =basename($_SERVER['PHP_SELF']);
 
                     <li class="nav-label">Gerenciamento</li>
 
-                    <li> <a href="app-profile.php" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Contas</span></a></li>
+                    <li> <a href="perfil.php" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Contas</span></a></li>
                     <li class="nav-label">Charts</li>
 
                     <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Charts</span></a>
@@ -253,12 +256,13 @@ $url =basename($_SERVER['PHP_SELF']);
         <!-- Bread crumb -->
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
-                <h3 class="text-primary">Dashboard</h3> </div>
-                <div class="col-md-7 align-self-center">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
-                    </ol>
-                </div>
+                <h3 class="text-primary"><?php echo $pageName;?></h3>
             </div>
+            <div class="col-md-7 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+                    <li class="breadcrumb-item active"><?php echo $pageName;?></li>
+                </ol>
+            </div>
+        </div>
                             <!-- End Bread crumb -->
