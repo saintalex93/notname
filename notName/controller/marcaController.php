@@ -1,17 +1,9 @@
 <?php
-require_once '../dal/MarcaDAL.php';
+
+require_once '../dal/CategoriaDAL.php';
 
 
-$putinhaloira = MarcaDAL::buscaMarca();
+$putinhaloira = CategoriaDAL::buscaCategoria();
 
-
-foreach ($putinhaloira as $p) {
-    // echo "Codigo da Marca: " + $p->getIdMarca()+"<br/>";
-    // echo "Nome da Marca: "+ $p->getDescMarca()+"<br/>";
-    echo "Codigo da Marca: " . $p->getIdMarca() . "<br />";
-    echo "Nome da Marca: " . $p->getDescMarca() . "<br />";
-    echo "Status da Marca: " . $p->getStatusMarca() . "<br />";
-}
-
-
+var_dump($putinhaloira);
 ?>

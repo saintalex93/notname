@@ -26,3 +26,8 @@
 #img-upload{
     width: 100%;
 }
+
+#radioBtn .notActive{
+    color: #000;
+    background-color: #fff;
+}

@@ -1,6 +1,17 @@
 <?php
 include_once 'header.php';
+
+
+
+
+require_once '../dal/MarcaDAL.php';
+$marcas = MarcaDAL::buscaMarca();
+
+
+
 ?>
+
+
 
 <div class="container-fluid">
 	<div class="row">
@@ -18,21 +29,20 @@ include_once 'header.php';
 						<div class="card-body">
 							<div class="form-body">
 								<h3 class="box-title m-t-40">Produtos</h3>
-								<hr>
 								<form action="#">
 									<div class="row p-t-20">
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label">Descrição do Produto</label>
-												<input type="text" id="firstName" class="form-control" placeholder="John doe">
-												<small class="form-control-feedback"> This is inline help </small> </div>
+												<input type="text" id="firstName" class="form-control" placeholder="Calça destacadora de perseguida">
+												<small class="form-control-feedback text-danger"> This is inline help </small> </div>
 											</div>
 											<!--/span-->
 											<div class="col-md-6">
 												<div class="form-group has-danger">
 													<label class="control-label">Descrição Completa</label>
 													<textarea class="form-control form-control-danger"> </textarea>
-													<small class="form-control-feedback"> This field has error. </small> </div>
+													<small class="form-control-feedback text-danger"> This field has error. </small> </div>
 												</div>
 												<!--/span-->
 											</div>
@@ -42,25 +52,30 @@ include_once 'header.php';
 												<div class="col-md-6">
 													<div class="form-group">
 														<label class="control-label">Marca</label>
-														<select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
-															<option value="Category 1">Category 1</option>
-															<option value="Category 2">Category 2</option>
-															<option value="Category 3">Category 5</option>
-															<option value="Category 4">Category 4</option>
+														<select class="form-control " data-placeholder="Choose a Category" tabindex="1">
+															<option value="">Selecione...</option>
+															<option value="">Category 2</option>
+															<option value="">Category 5</option>
+															<option value="">Category 4</option>
 														</select>
 													</div>
 												</div>
 												<div class="col-md-6">
-													<label class="control-label">Marca</label>
+													<div class="form-group">
 
-													<div class="form-actions">
+														<label class="control-label mb-3">Status</label>
 
-														<button type="button" class="btn btn-success"> 
-															<i class="fa fa-check"></i> Save
-														</button>
-														<button type="button" class="btn btn-inverse">
-															<i class="fa fa-check"></i> Cancel
-														</button>
+														<div class="form-group">
+															<div class="col-sm-7 col-md-7">
+																<div class="input-group">
+																	<div id="radioBtn" class="btn-group">
+																		<a class="btn btn-primary btn-sm active" data-toggle="statusProduto" data-title="A">Ativo</a>
+																		<a class="btn btn-secondary btn-sm notActive" data-toggle="statusProduto" data-title="I">Inativo</a>
+																	</div>
+																	<input type="" name="statusProduto" id="statusProduto">
+																</div>
+															</div>
+														</div>
 													</div>
 												</div>
 
@@ -70,11 +85,20 @@ include_once 'header.php';
 												<h3 class="box-title m-t-40 text-center">Categorias</h3>
 												<hr>
 												<div class="text-center">
-													<button class="btn btn-primary">asdasd</button>
-													<button class="btn btn-primary">asd</button>
-													<button class="btn btn-primary">asd</button>
-													<button class="btn btn-primary">asd</button>
-													<button class="btn btn-primary">asd</button>
+													<div class="col-md-12 mb-3">
+
+														<span class="button-checkbox">
+															<button type="button" class="btn" data-color="primary">Primary</button>
+															<input type="checkbox" class="hidden" />
+														</span>
+
+														<span class="button-checkbox">
+															<button type="button" class="btn" data-color="primary">Primary</button>
+															<input type="checkbox" class="hidden"/>
+														</span>
+
+
+													</div>
 												</div>
 											</div>
 
@@ -99,7 +123,7 @@ include_once 'header.php';
 
 										<div class="form-actions text-center">
 											<button type="button" class="btn btn-success"> 
-												<i class="fa fa-check"></i> Save
+												<i class="fa fa-check"></i> Cadastrar
 											</button>
 											<button type="button" class="btn btn-inverse">
 												<i class="fa fa-check"></i> CANCEL
@@ -125,9 +149,9 @@ include_once 'header.php';
 												</ul>
 											</nav>
 											<div class="form-group mt-4">
-											<select name="" id="" class="form-control  col-md-4 offset-md-4">
-												<option value="">Selecione...</option>
-											</select>
+												<select name="" id="" class="form-control  col-md-4 offset-md-4">
+													<option value="">Selecione...</option>
+												</select>
 											</div>
 										</div>
 										<!-- Pagination -->
@@ -197,50 +221,31 @@ include_once 'header.php';
 									<div class="form-body">
 
 										<h3 class="box-title m-t-40">Categoria</h3>
-										<hr>
+										<form action="#">
 										<div class="row">
-											<div class="col-md-12 ">
-												<form action="#">
+												<div class="col-md-6 ">
 													<div class="form-group">
-														<label>Street</label>
+														<label>Categoria</label>
 														<input type="text" class="form-control">
 													</div>
 												</div>
-											</div>
-											<div class="row">
+
 												<div class="col-md-6">
 													<div class="form-group">
-														<label>City</label>
-														<input type="text" class="form-control">
-													</div>
-												</div>
-												<!--/span-->
-												<div class="col-md-6">
-													<div class="form-group">
-														<label>State</label>
-														<input type="text" class="form-control">
-													</div>
-												</div>
-												<!--/span-->
-											</div>
-											<!--/row-->
-											<div class="row">
-												<div class="col-md-6">
-													<div class="form-group">
-														<label>Post Code</label>
-														<input type="text" class="form-control">
-													</div>
-												</div>
-												<!--/span-->
-												<div class="col-md-6">
-													<div class="form-group">
-														<label>Country</label>
-														<select class="form-control custom-select">
-															<option>--Select your Country--</option>
-															<option>India</option>
-															<option>Sri Lanka</option>
-															<option>USA</option>
-														</select>
+
+														<label class="control-label mb-4">Status</label>
+
+														<div class="form-group">
+															<div class="col-sm-7 col-md-7">
+																<div class="input-group">
+																	<div id="radioBtn" class="btn-group">
+																		<a class="btn btn-primary btn-sm active" data-toggle="statusCategoria" data-title="Ativo">Ativo</a>
+																		<a class="btn btn-secondary btn-sm notActive" data-toggle="statusCategoria" data-title="Inativo">Inativo</a>
+																	</div>
+																	<input type="hidden" name="statusCategoria" id="statusCategoria">
+																</div>
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -250,65 +255,124 @@ include_once 'header.php';
 											<button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
 											<button type="button" class="btn btn-inverse">Cancel</button>
 										</div>
+
+
+										<div class="table-responsive m-t-40">
+											<h6 class="card-subtitle">Categorias Cadastradas</h6>
+
+											<table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+												<thead>
+													<tr>
+														<th>ID</th>
+														<th>Categoria</th>
+														<th>Status</th>
+														<th class="text-center">Ações</th>
+
+													</tr>
+												</thead>
+
+												<tbody>
+
+													<?php
+
+													foreach ($marcas as $marca) {
+														echo "
+														<tr>
+
+														<td>".$marca->getIdMarca()."</td>
+														<td>".$marca->getDescMarca()."</td>
+														<td>".$marca->getStatusMarca()."</td>
+														<td class='text-center'><button class='btn btn-inverse' id = '".$marca->getIdMarca()."'>Alterar</button></td>
+														</tr>
+														";
+													}
+
+													
+
+													?>
+												</tbody>
+											</table>
+										</div>
+
 									</div>
 								</div>
 							</div>
 							<div class="tab-pane" id="marca" role="tabpanel">
 								<div class="card-body">
 									<div class="form-body">
-										<h3 class="box-title m-t-40">Address</h3>
-										<hr>
-										<div class="row">
-											<div class="col-md-12 ">
-												<form action="#">
-													<div class="form-group">
-														<label>Street</label>
-														<input type="text" class="form-control">
-													</div>
-												</div>
-											</div>
+										<h3 class="box-title m-t-40">Marca</h3>
+										<form action="#">
+
 											<div class="row">
-												<div class="col-md-6">
+												<div class="col-md-6 ">
 													<div class="form-group">
-														<label>City</label>
+														<label>Marca</label>
 														<input type="text" class="form-control">
 													</div>
 												</div>
-												<!--/span-->
+
 												<div class="col-md-6">
 													<div class="form-group">
-														<label>State</label>
-														<input type="text" class="form-control">
-													</div>
-												</div>
-												<!--/span-->
-											</div>
-											<!--/row-->
-											<div class="row">
-												<div class="col-md-6">
-													<div class="form-group">
-														<label>Post Code</label>
-														<input type="text" class="form-control">
-													</div>
-												</div>
-												<!--/span-->
-												<div class="col-md-6">
-													<div class="form-group">
-														<label>Country</label>
-														<select class="form-control custom-select">
-															<option>--Select your Country--</option>
-															<option>India</option>
-															<option>Sri Lanka</option>
-															<option>USA</option>
-														</select>
+
+														<label class="control-label mb-4">Status</label>
+
+														<div class="form-group">
+															<div class="col-sm-7 col-md-7">
+																<div class="input-group">
+																	<div id="radioBtn" class="btn-group">
+																		<a class="btn btn-primary btn-sm active" data-toggle="statusMarca" data-title="Ativo">Ativo</a>
+																		<a class="btn btn-secondary btn-sm notActive" data-toggle="statusMarca" data-title="Inativo">Inativo</a>
+																	</div>
+																	<input type="hidden" name="statusMarca" id="statusMarca">
+																</div>
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>
+											
 										</form>
 
 										<div class="form-actions">
 											<button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
 											<button type="button" class="btn btn-inverse">Cancel</button>
+										</div>
+
+										<div class="table-responsive m-t-40">
+											<h6 class="card-subtitle">Marcas Cadastradas</h6>
+
+											<table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+												<thead>
+													<tr>
+														<th>ID</th>
+														<th>Marca</th>
+														<th>Status</th>
+														<th class="text-center">Ações</th>
+
+													</tr>
+												</thead>
+
+												<tbody>
+
+													<?php
+
+													foreach ($marcas as $marca) {
+														echo "
+														<tr>
+
+														<td>".$marca->getIdMarca()."</td>
+														<td>".$marca->getDescMarca()."</td>
+														<td>".$marca->getStatusMarca()."</td>
+														<td class='text-center'><button class='btn btn-inverse' id = '".$marca->getIdMarca()."'>Alterar</button></td>
+														</tr>
+														";
+													}
+
+													
+
+													?>
+												</tbody>
+											</table>
 										</div>
 									</div>
 								</div>
@@ -412,5 +476,90 @@ include_once 'header.php';
 				$("#imgInp").change(function(){
 					readURL(this);
 				}); 	
+			});
+		</script>
+
+
+
+
+		<script>
+			$(function () {
+
+				$("#statusProduto").val("Ativo");
+				$("#statusCategoria").val("Ativo");
+
+				$("#statusMarca").val("Ativo");
+
+
+				
+
+				$('.button-checkbox').each(function () {
+					// Vê se é "Radio" ou Check
+					var $widget = $(this),
+					$button = $widget.find('button'),
+					$checkbox = $widget.find('input:checkbox'),
+					color = $button.data('color'),
+					settings = {
+						on: {
+							icon: 'fa fa-check-square'
+						},
+						off: {
+							icon: 'fa fa-square'
+						}
+					};
+
+					$button.on('click', function () {
+						$checkbox.prop('checked', !$checkbox.is(':checked'));
+						$checkbox.triggerHandler('change');
+						updateDisplay();
+					});
+					$checkbox.on('change', function () {
+						updateDisplay();
+					});
+
+
+
+					function updateDisplay() {
+						var isChecked = $checkbox.is(':checked');
+
+						$button.data('state', (isChecked) ? "on" : "off");
+
+						$button.find('.state-icon')
+						.removeClass()
+						.addClass('state-icon ' + settings[$button.data('state')].icon);
+
+						if (isChecked) {
+							$button
+							.removeClass('btn-secondary')
+							.addClass('btn-' + color + ' active');
+						}
+						else {
+							$button
+							.removeClass('btn-' + color + ' active')
+							.addClass('btn-secondary');
+						}
+					}
+
+					function init() {
+
+						updateDisplay();
+
+						if ($button.find('.state-icon').length == 0) {
+							$button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+						}
+					}
+					init();
+				});
+
+
+				$('#radioBtn a').on('click', function(){
+					var sel = $(this).data('title');
+					var tog = $(this).data('toggle');
+					$('#'+tog).prop('value', sel);
+
+					$('a[data-toggle="'+tog+'"]').not('[data-title="'+sel+'"]').removeClass('active').addClass('notActive');
+					$('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').addClass('active');
+				})
+
 			});
 		</script>
