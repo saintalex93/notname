@@ -1,4 +1,4 @@
-<?php include "superior.php";?>
+<?php include "./superior.php";?>
 
 
 
@@ -63,7 +63,7 @@
                            
                             <div class="col-sm-12 col-md-4 mb-3 ">
                                 <div class="card bg-info">
-                                    <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="">
+                                    <img class="card-img-top" src="./assets/produtos/frenteProduto1.jpg" alt="">
                                     <div class="card-body text-center">
                                         <h4 class="card-title">
                                             Produto 6
@@ -82,7 +82,7 @@
 
                             <div class="col-sm-12 col-md-4 mb-3">
                                 <div class="card bg-info">
-                                    <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="">
+                                    <img class="card-img-top" src="./assets/produtos/frenteProduto1.jpg" alt="">
                                     <div class="card-body text-center">
                                         <h4 class="card-title">
                                             Produto 6
@@ -113,7 +113,7 @@
 
                             <div class="col-sm-12 col-md-4 mb-3">
                                 <div class="card bg-info">
-                                    <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="">
+                                    <img class="card-img-top" src="./assets/produtos/frenteProduto1.jpg" alt="">
                                     <div class="card-body text-center">
                                         <h4 class="card-title">
                                             Produto 6
@@ -134,7 +134,7 @@
 
                             <div class="col-sm-12 col-md-4 mb-3">
                                 <div class="card bg-info">
-                                    <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="Card image cap">
+                                    <img class="card-img-top" src="./assets/produtos/frenteProduto1.jpg" alt="Card image cap">
                                     <div class="card-body text-center">
                                         <h4 class="card-title">
                                             Produto 6
@@ -170,7 +170,7 @@
 
                             <div class="col-sm-12 col-md-4 mb-3 ">
                                 <div class="card bg-info">
-                                    <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="">
+                                    <img class="card-img-top" src="./assets/produtos/frenteProduto1.jpg" alt="">
                                     <div class="card-body text-center">
                                         <h4 class="card-title">
                                             Produto 6
@@ -188,7 +188,7 @@
 
                             <div class="col-sm-12 col-md-4 mb-3 ">
                                 <div class="card bg-info">
-                                    <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="">
+                                    <img class="card-img-top" src="./assets/produtos/frenteProduto1.jpg" alt="">
                                     <div class="card-body text-center">
                                         <h4 class="card-title">
                                             Produto 6
@@ -236,5 +236,5 @@
             </div>
 
 
-     <?php include_once "inferior.php";?>
+     <?php include_once "./inferior.php";?>
 

@@ -1,54 +1,22 @@
-<!doctype html>
-<html lang="pt-br">
+<?php include "./superior.php";?>
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/fontawesome-free-5.0.10/web-fonts-with-css/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">-->
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        a {
-            text-decoration: none;
-
-        }
-
-        a:link {
-            text-decoration: none;
-
-        }
-
-        a:hover {
-            text-decoration: none;
-
-        }
-
-    </style>
-
-    <title>Not name</title>
-</head>
-
-<body>
+    <div id="content">
     <div class="container">
         <div class="row">
             <div class="col-md-9">
 
                 <div class="card">
-                    <form method="post" action="checkout2.html">
+                    <form method="post" action="checkout2.php">
                         <h1>Checkout</h1>
                         <ul class="nav nav-pills nav-justified">
-                            <li class="active"><a href="#"><i class="fas fa-map-marker"></i><br>Address</a>
+                            <li class="active"><a href="#"><i class="fas fa-map-marker"></i><br>Endereço</a>
                             </li>
-                            <li class="disabled"><a href="#"><i class="fas fa-truck"></i><br>Delivery Method</a>
+                            <li class="disabled"><a href="#"><i class="fas fa-truck"></i><br>Método de Entrega</a>
                             </li>
-                            <li class="disabled"><a href="#"><i class="far fa-money-bill-alt"></i><br>Payment Method</a>
+                            <li class="disabled"><a href="#"><i class="far fa-money-bill-alt"></i><br>Método de pagamento</a>
                             </li>
-                            <li class="disabled"><a href="#"><i class="fas fa-eye"></i><br>Order Review</a>
+                            <li class="disabled"><a href="#"><i class="fas fa-eye"></i><br>Revisão da encomenda</a>
                             </li>
                         </ul>
 
@@ -56,52 +24,51 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="firstname">Primeiro nome</label>
-                                        <input type="text" class="form-control" id="firstname">
+                                        <label for="">Primeiro nome</label>
+                                        <input type="text" class="form-control" id="primeiroNome">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="lastname">Último nome</label>
-                                        <input type="text" class="form-control" id="lastname">
+                                        <label for="">Último nome</label>
+                                        <input type="text" class="form-control" id="segundoNome">
                                     </div>
                                 </div>
                             </div>
-                            <!-- /.row -->
+
 
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="company">Company</label>
-                                        <input type="text" class="form-control" id="company">
+                                        <label for="">Texto</label>
+                                        <input type="text" class="form-control" id="">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="street">Rua</label>
-                                        <input type="text" class="form-control" id="street">
+                                        <label for="">Rua</label>
+                                        <input type="text" class="form-control" id="">
                                     </div>
                                 </div>
                             </div>
-                            <!-- /.row -->
 
                             <div class="row">
                                 <div class="col-sm-6 col-md-3">
                                     <div class="form-group">
-                                        <label for="city">Company</label>
-                                        <input type="text" class="form-control" id="city">
+                                        <label for="">Texto</label>
+                                        <input type="text" class="form-control" id="">
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-3">
                                     <div class="form-group">
-                                        <label for="zip">ZIP</label>
-                                        <input type="text" class="form-control" id="zip">
+                                        <label for="">Texto</label>
+                                        <input type="text" class="form-control" id="">
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-3">
                                     <div class="form-group">
-                                        <label for="state">Estado</label>
-                                        <select class="form-control" id="state">
+                                        <label for="">Estado</label>
+                                        <select class="form-control" id="">
                                                 <option value="">..</option>
                                                 <option value="">São Paulo</option>
                                                 <option value="">Rio de Janeiro</option>
@@ -112,8 +79,8 @@
                                 </div>
                                 <div class="col-sm-6 col-md-3">
                                     <div class="form-group">
-                                        <label for="country">Pais</label>
-                                        <select class="form-control" id="country">
+                                        <label for="">Pais</label>
+                                        <select class="form-control" id="">
                                                 
                                                 
                                                 
@@ -123,8 +90,8 @@
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="phone">Telephone</label>
-                                        <input type="text" class="form-control" id="phone">
+                                        <label for="">Telefone</label>
+                                        <input type="text" class="form-control" id="">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -135,52 +102,50 @@
                                 </div>
 
                             </div>
-                            <!-- /.row -->
+
                         </div>
 
                         <div class="card-footer">
                             <div class="pull-left">
-                                <a href="basket.html" class="btn btn-default"><i class="fa fa-chevron-left"></i>Back to basket</a>
+                                <a href="carrinho.php" class="btn btn-default"><i class="fa fa-chevron-left"></i>Voltar ao carrinho</a>
                             </div>
                             <div class="pull-right">
-                                <button type="submit" class="btn btn-primary">Continue to Delivery Method<i class="fa fa-chevron-right"></i>
+                                <button type="submit" class="btn btn-primary">Continuar para o método de entrega<i class="fa fa-chevron-right"></i>
                                     </button>
                             </div>
                         </div>
                     </form>
                 </div>
-                <!-- /.box -->
+
 
 
             </div>
-            <!-- /.col-md-9 -->
-
             <div class="col-md-3">
 
-                <div class="card" id="order-summary">
+                <div class="card">
                     <div class="card-header">
-                        <h3>Order summary</h3>
+                        <h3>Resumo do pedido</h3>
                     </div>
-                    <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+                    <p class="text-muted">Envio e custos adicionais são calculados com base nos valores que você inseriu.</p>
 
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <td>Order subtotal</td>
-                                    <th>$446.00</th>
+                                    <td>Subtotal do pedido</td>
+                                    <th>R$446.00</th>
                                 </tr>
                                 <tr>
-                                    <td>Shipping and handling</td>
-                                    <th>$10.00</th>
+                                    <td>Envio e manipulação</td>
+                                    <th>R$10.00</th>
                                 </tr>
                                 <tr>
-                                    <td>Tax</td>
-                                    <th>$0.00</th>
+                                    <td>Imposto</td>
+                                    <th>R$0.00</th>
                                 </tr>
                                 <tr class="total">
                                     <td>Total</td>
-                                    <th>$456.00</th>
+                                    <th>R$456.00</th>
                                 </tr>
                             </tbody>
                         </table>
@@ -189,17 +154,8 @@
                 </div>
 
             </div>
-            <!-- /.col-md-3 -->
-
         </div>
-
+        </div>
     </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-</body>
-
-</html>
+    <?php include_once "./inferior.php";?>

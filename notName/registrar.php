@@ -32,7 +32,7 @@
 
                     <hr>
 
-                    <form action="customer-orders.html" method="post">
+                    <form action="" method="post">
                         <div class="form-group">
                             <label for="nome">Nome</label>
                             <input type="text" class="form-control" id="nome">

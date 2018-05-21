@@ -1,4 +1,4 @@
-<?php include "superior.php";?>
+<?php include "./superior.php";?>
 
 
     <div id="content">
@@ -81,7 +81,7 @@
 
                             <div class="card-footer">
                                 <div class="pull-left">
-                                    <a href="checkout2.php" class="btn btn-default"><i class="fa fa-chevron-left"></i>Voltar ao método de envio</a>
+                                    <a href="./checkout2.php" class="btn btn-default"><i class="fa fa-chevron-left"></i>Voltar ao método de envio</a>
                                 </div>
                                 <div class="pull-right">
                                     <button type="submit" class="btn btn-primary">Continuar com a revisão do pedido<i class="fa fa-chevron-right"></i>
@@ -133,4 +133,4 @@
             </div>
         </div>
     </div>
-    <?php include_once "inferior.php";?>
+    <?php include_once "./inferior.php";?>

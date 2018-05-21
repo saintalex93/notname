@@ -1,4 +1,4 @@
-<?php include "superior.php";?>
+<?php include "./superior.php";?>
        
        
         <div id="carouselSite" class="carousel slide my-4" data-ride="carousel">
@@ -108,14 +108,14 @@
 
             <div class="col-sm-6 col-md-3 mb-3 col-xs-6 ">
                 <div class="card">
-                    <img class="card-img-top" src="assets/produtos/1.jpg" alt="">
+                    <img class="card-img-top" src="./assets/produtos/1.jpg" alt="">
                     <div class="card-body text-center">
                         <h4 class="card-title">
                             Go Vegan
 
                         </h4>
                         <p class="card-text">R$35,00</p>
-                        <a class="card-link" href="produto.php">ver mais detalhes</a>
+                        <a class="card-link" href="./produto.php">ver mais detalhes</a>
 
                     </div>
                 </div>
@@ -124,7 +124,7 @@
 
             <div class="col-sm-6 col-md-3 mb-3">
                 <div class="card">
-                    <img class="card-img-top" src="assets/produtos/2.jpg" alt="">
+                    <img class="card-img-top" src="./assets/produtos/2.jpg" alt="">
                     <div class="card-body text-center">
                         <h4 class="card-title">
                             Fight Like a Girl
@@ -152,7 +152,7 @@
 
             <div class="col-sm-6 col-md-3 mb-3">
                 <div class="card ">
-                    <img class="card-img-top" src="assets/produtos/3.jpg" alt="">
+                    <img class="card-img-top" src="./assets/produtos/3.jpg" alt="">
                     <div class="card-body text-center">
                         <h4 class="card-title">
                             Believe
@@ -170,7 +170,7 @@
 
             <div class="col-sm-6 col-md-3 mb-3">
                 <div class="card ">
-                    <img class="card-img-top" src="assets/produtos/5.jpg" alt="">
+                    <img class="card-img-top" src="./assets/produtos/5.jpg" alt="">
                     <div class="card-body text-center">
                         <h4 class="card-title">
                             Amarola
@@ -203,4 +203,4 @@
 
 
     
-   <?php include_once "inferior.php";?>
+   <?php include_once "./inferior.php";?>

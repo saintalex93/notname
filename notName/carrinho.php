@@ -1,44 +1,11 @@
-<!doctype html>
-<html lang="pt-br">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/fontawesome-free-5.0.10/web-fonts-with-css/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">-->
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        a {
-            text-decoration: none;
-
-        }
-
-        a:link {
-            text-decoration: none;
-
-        }
-
-        a:hover {
-            text-decoration: none;
-
-        }
-
-    </style>
-
-    <title>Not name</title>
-</head>
-
-<body>
+<?php include "./superior.php";?>
 
 
 
 
 
+
+ <div id="content">
 
     <div class="container">
 
@@ -47,7 +14,7 @@
 
                 <div class="card ">
 
-                    <form method="post" action="checkout1.html">
+                    <form method="post" action="checkout1.php">
 
                         <h1>Carrinho de compras</h1>
                         <p>Você tem atualmente 3 item (s) no seu carrinho.</p>
@@ -66,7 +33,7 @@
                                     <tr>
                                         <td>
                                             <a href="#">
-                                                    <img src="assets/produtos/frenteProduto1.jpg" alt="">
+                                                    <img src="./assets/produtos/frenteProduto1.jpg" alt="">
                                                 </a>
                                         </td>
                                         <td><a href="#">Produto 1</a>
@@ -74,16 +41,16 @@
                                         <td>
                                             <input type="number" value="2" class="form-control">
                                         </td>
-                                        <td>$123.00</td>
-                                        <td>$0.00</td>
-                                        <td>$246.00</td>
+                                        <td>R$123.00</td>
+                                        <td>R$0.00</td>
+                                        <td>R$246.00</td>
                                         <td><a href="#"><i class="far fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <a href="#">
-                                                    <img src="assets/produtos/versoProduto2.jpg" alt="Black Blouse Armani">
+                                                    <img src="./assets/produtos/versoProduto2.jpg" alt="Black Blouse Armani">
                                                 </a>
                                         </td>
                                         <td><a href="#">Produto 2</a>
@@ -91,9 +58,9 @@
                                         <td>
                                             <input type="number" value="1" class="form-control">
                                         </td>
-                                        <td>$200.00</td>
-                                        <td>$0.00</td>
-                                        <td>$200.00</td>
+                                        <td>R$200.00</td>
+                                        <td>R$0.00</td>
+                                        <td>R$200.00</td>
                                         <td><a href="#"><i class="far fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
@@ -101,17 +68,17 @@
                                 <tfoot>
                                     <tr>
                                         <th colspan="5">Total</th>
-                                        <th colspan="2">$446.00</th>
+                                        <th colspan="2">R$446.00</th>
                                     </tr>
                                 </tfoot>
                             </table>
 
                         </div>
-                        <!-- /.table-responsive -->
+                   
 
                         <div class="card-footer">
                             <div class="pull-left">
-                                <a href="category.html" class="btn btn-default"><i class="fa fa-chevron-left"></i> Continue comprando</a>
+                                <a href="categoria.php" class="btn btn-default"><i class="fa fa-chevron-left"></i> Continue comprando</a>
                             </div>
                             <div class="pull-right">
                                 <button class="btn btn-default"><i class="fas fa-sync-alt"></i>  Atualizar cesta</button>
@@ -123,7 +90,7 @@
                     </form>
 
                 </div>
-                <!-- /.box -->
+            
 
 
                 <div class="row same-height-row my-4">
@@ -143,7 +110,7 @@
 
                     <div class="col-md-3 col-sm-6">
                         <div class="card">
-                            <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="">
+                            <img class="card-img-top" src="./assets/produtos/frenteProduto1.jpg" alt="">
                             <div class="card-body text-center">
                                 <h4 class="card-title">
                                     Produto 6
@@ -157,7 +124,7 @@
 
                     <div class="col-md-3 col-sm-6">
                         <div class="card">
-                            <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="">
+                            <img class="card-img-top" src="./assets/produtos/frenteProduto1.jpg" alt="">
                             <div class="card-body text-center">
                                 <h4 class="card-title">
                                     Produto 6
@@ -172,7 +139,7 @@
 
                     <div class="col-md-3 col-sm-6">
                         <div class="card">
-                            <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="">
+                            <img class="card-img-top" src="./assets/produtos/frenteProduto1.jpg" alt="">
                             <div class="card-body text-center">
                                 <h4 class="card-title">
                                     Produto 6
@@ -188,8 +155,7 @@
 
 
             </div>
-            <!-- /.col-md-9 -->
-
+       
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-header">
@@ -202,19 +168,19 @@
                             <tbody>
                                 <tr>
                                     <td>Subtotal do pedido</td>
-                                    <th>$446.00</th>
+                                    <th>R$446.00</th>
                                 </tr>
                                 <tr>
                                     <td>Envio e manipulação</td>
-                                    <th>$10.00</th>
+                                    <th>R$10.00</th>
                                 </tr>
                                 <tr>
                                     <td>Imposto</td>
-                                    <th>$0.00</th>
+                                    <th>R$0.00</th>
                                 </tr>
                                 <tr class="total">
                                     <td>Total</td>
-                                    <th>$456.00</th>
+                                    <th>R$456.00</th>
                                 </tr>
                             </tbody>
                         </table>
@@ -244,13 +210,7 @@
             </div>
         </div>
     </div>
+    </div>
 
+    <?php include_once "./inferior.php";?>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-</body>
-
-</html>
