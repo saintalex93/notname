@@ -5,8 +5,10 @@ include_once 'header.php';
 
 
 require_once '../dal/MarcaDAL.php';
-$marcas = MarcaDAL::buscaMarca();
+require_once '../dal/CategoriaDAL.php';
 
+$marcas = MarcaDAL::buscaMarca();
+$categorias = CategoriaDAL::buscaCategoria();
 
 
 ?>
@@ -87,15 +89,29 @@ $marcas = MarcaDAL::buscaMarca();
 												<div class="text-center">
 													<div class="col-md-12 mb-3">
 
-														<span class="button-checkbox">
-															<button type="button" class="btn" data-color="primary">Primary</button>
-															<input type="checkbox" class="hidden" />
-														</span>
+														<?php 
 
-														<span class="button-checkbox">
-															<button type="button" class="btn" data-color="primary">Primary</button>
-															<input type="checkbox" class="hidden"/>
-														</span>
+														foreach ($marcas as $marca) {
+
+															// if($marca->getStatusMarca == "Ativo"){
+
+																echo "
+																<span class='button-checkbox'>
+																<button type='button' class='btn' data-color='secondary'>{$marca->getDescMarca()}</button>
+																<input type='checkbox' class='hidden' name='categoriProtudo' id = '{$marca->getIdMarca()}' />
+																</span>
+
+																";
+															}
+
+														// }
+
+														?>
+
+														
+
+
+
 
 
 													</div>
@@ -222,7 +238,7 @@ $marcas = MarcaDAL::buscaMarca();
 
 										<h3 class="box-title m-t-40">Categoria</h3>
 										<form action="#">
-										<div class="row">
+											<div class="row">
 												<div class="col-md-6 ">
 													<div class="form-group">
 														<label>Categoria</label>
