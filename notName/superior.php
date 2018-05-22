@@ -1,3 +1,19 @@
+<?php
+session_start();
+if(!isset( $_SESSION['USERCOM']['ID'])){
+    
+    echo "script redirect";
+}
+
+
+else{
+
+
+?>
+
+
+
+
 <!doctype html>
 <html lang="pt-br">
 
@@ -207,3 +223,12 @@
 
             </div>
         </div>
+        
+        
+        
+        
+        <?php
+}
+
+
+?>

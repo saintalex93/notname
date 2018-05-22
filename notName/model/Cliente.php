@@ -3,35 +3,35 @@
 class Cliente
 {
 
-    private $idCli;
+    public $idCli;
 
-    private $nomeCli;
+    public $nomeCli;
 
-    private $rgCli;
+    public $rgCli;
 
-    private $cpfCli;
+    public $cpfCli;
 
-    private $nascCli;
+    public $nascCli;
 
-    private $generoCli;
+    public $generoCli;
 
-    private $telResiCli;
+    public $telResiCli;
 
-    private $telCelCli;
+    public $telCelCli;
 
-    private $telComCli;
+    public $telComCli;
 
-    private $emailCli;
+    public $emailCli;
 
-    private $senhaCli;
+    public $senhaCli;
 
-    private $dtUltAccessCli;
+    public $dtUltAccessCli;
 
-    private $statusCli;
+    public $statusCli;
 
-    private $prefCli;
+    public $prefCli;
 
-    private $enderecoCli;
+    public $enderecoCli;
 
     public function getIdCli()
     {

@@ -16,16 +16,23 @@ if (isset($_POST['insereCli'])) {
     } else {
         echo "Erro";
     }
-}
-else if(isset($_POST['logaCli']))
-{
-    var_dump($_POST['logaCli']);
-    $login = ClienteDAL::loginCliente();
+} else if (isset($_POST['logaCli'])) {
+    $cliente = new Cliente();
     
-   echo json_encode($login, JSON_UNESCAPED_UNICODE);
+    $cliente->setEmailCli($_POST['emailLog']);
+    $cliente->setSenhaCli($_POST['senha']);
     
-}else{
-
-    echo "Erro";
+    $login = ClienteDAL::loginCliente($cliente);
+    
+    echo $login[0]->getIdCli();
+    
+    session_start();
+    
+    $_SESSION['USERCOM']['ID'] = $login[0]->getIdCli();
+   
+    
+} else {
+    
+    echo json_encode("Erro", JSON_UNESCAPED_UNICODE);
 }
 

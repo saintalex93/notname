@@ -100,7 +100,7 @@ class ClienteDAL
         return $connection->executarSQL($sql);
     }
 
-    public static function loginCliente(Cliente $cliente): string
+    public static function loginCliente(Cliente $cliente): array
     {
         $email = $cliente->getEmailCli();
         $senha = $cliente->getSenhaCli();
@@ -114,14 +114,15 @@ class ClienteDAL
        
        $arrayLoginCli = array();
        
-       foreach ($resultado as $resultado)
+       foreach ($resultado as $linha)
        {
+           
            $loginCli = new Cliente();
            
-           $loginCli->setIdCli($resultado[" CLI_nCOD"]);
-           $loginCli->setEmailCli($resultado["CLI_cEMAIL"]);
-           $loginCli->setSenhaCli($resultado["CLI_cSENHA"]);
-           $loginCli->setStatusCli($restultado["CLI_cSTATUS"]);
+           $loginCli->setIdCli($linha["CLI_nCOD"]);
+           $loginCli->setEmailCli($linha["CLI_cEMAIL"]);
+           $loginCli->setSenhaCli($linha["CLI_cSENHA"]);
+           $loginCli->setStatusCli($linha["CLI_cSTATUS"]);
            
            $arrayLoginCli[] = $loginCli;
        }

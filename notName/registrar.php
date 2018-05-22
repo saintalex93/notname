@@ -1,5 +1,4 @@
 <?php
-
 include "superior.php";
 
 ?>
@@ -57,12 +56,14 @@ include "superior.php";
 								class="form-control" id="password" name="password">
 						</div>
 						<div class="text-center">
-							<button type="button" class="btn btn-primary" id="insereCli" name="insereCli">
+							<input type="hidden" name="insereCli" value="Cadastrar">
+							<button type="button" class="btn btn-primary" id="insereCli"
+								name="insereCli">
 								<i class="fa fa-user-md"></i> Registrar
-							</button><br>
-							<label name="returnFormRegistrar" id="returnFormRegistrar"></label>
+							</button>
+							<br> <label name="returnFormRegistrar" id="returnFormRegistrar"></label>
 						</div>
-			
+
 					</form>
 				</div>
 			</div>
@@ -83,7 +84,7 @@ include "superior.php";
 
 					<form id="formLogCli">
 						<div class="form-group">
-							<label for="email" >Email</label> <input type="text"
+							<label for="email">Email</label> <input type="text"
 								class="form-control" id="emailLog" name="emailLog">
 						</div>
 						<div class="form-group">
@@ -91,7 +92,10 @@ include "superior.php";
 								class="form-control" id="senha" name="senha">
 						</div>
 						<div class="text-center">
-							<button type="button" class="btn btn-primary" name="logaCli" id="logaCli">
+							<input type="hidden" name="logaCli" value="Entrar">
+
+							<button type="button" class="btn btn-primary" name="logaCli"
+								id="logaCli">
 								<i class="fa fa-sign-in"></i>Entrar
 							</button>
 						</div>

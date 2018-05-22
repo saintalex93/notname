@@ -5,11 +5,11 @@ $("#logaCli").click(
 				var data = $("#formLogCli").serialize();
 
 				$.ajax({
-					type: 'post',
+					type: 'POST',
 					url: './controller/controllerCliente.php',
 					data: data,
 					success: function(response){
-						if (response != "erro"){
+						if (response != "Erro"){
 							alert(response);
 
 						}
