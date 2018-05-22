@@ -10,7 +10,6 @@ require_once '../dal/CategoriaDAL.php';
 $marcas = MarcaDAL::buscaMarca();
 $categorias = CategoriaDAL::buscaCategoria();
 
-
 ?>
 
 
@@ -91,14 +90,14 @@ $categorias = CategoriaDAL::buscaCategoria();
 
 														<?php 
 
-														foreach ($marcas as $marca) {
+														foreach ($categorias as $categoria) {
 
 															// if($marca->getStatusMarca == "Ativo"){
 
 																echo "
 																<span class='button-checkbox'>
-																<button type='button' class='btn' data-color='secondary'>{$marca->getDescMarca()}</button>
-																<input type='checkbox' class='hidden' name='categoriProtudo' id = '{$marca->getIdMarca()}' />
+																<button type='button' class='btn' data-color='secondary'>{$categoria->getDescCateg()}</button>
+																<input type='checkbox' class='hidden' name='categoriProtudo' id = '{$categoria->getIdCateg()}' />
 																</span>
 
 																";

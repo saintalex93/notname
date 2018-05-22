@@ -44,23 +44,35 @@ class CategoriaDAL {
     public static function buscaCategoria(): array {
         CategoriaDAL::connect();
 
-        $sql = "";
+
+        $sql = "SELECT * FROM CATEGORIA";
 
         CategoriaDAL::$connection->executarSQL($sql);
 
-        $resultado = CategoriaDAL::$connection->getResultados();
+        $resultados = CategoriaDAL::$connection->getResultados();
+
 
         $arrayCategoria = array();
 
-        foreach ($resultado as $resultado) {
-            $cat->setIdCateg($resultado['CATEGORIA_nID']);
-            $cat->setDescCateg($resultado['CATEGORIA_cDESC']);
-            $cat->setStatusCateg($resultado['CATEGORIA_cStatus']);
+        foreach ($resultados as $resultado) {
+            $cat = new Categoria();
+            
+            $id = $resultado['CATEGORIA_nID'];
+            $descricao = $resultado['CATEGORIA_cDESC'];
+            $status = $resultado['CATEGORIA_cSTATUS'];
 
+            $cat->setIdCateg($id);
+            $cat->setDescCateg($descricao);
+            $cat->setStatusCateg($status);
 
             $arrayCategoria[] = $cat;
         }
         return $arrayCategoria;
+
     }
 
 }
+
+
+$categoria = new CategoriaDAL();
+$categoria::buscaCategoria();
