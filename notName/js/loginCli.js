@@ -10,8 +10,12 @@ $("#logaCli").click(
 					data: data,
 					success: function(response){
 						if (response != "erro"){
-							
+							alert(response);
 
+						}
+						else{
+							
+							alert("erro");
 						}
 					}
 				});

@@ -19,7 +19,10 @@ if (isset($_POST['insereCli'])) {
 }
 else if(isset($_POST['logaCli']))
 {
-    echo "<script>alert('caiu certo');</script>";
+    var_dump($_POST['logaCli']);
+    $login = ClienteDAL::loginCliente();
+    
+   echo json_encode($login, JSON_UNESCAPED_UNICODE);
     
 }else{
 
