@@ -1,6 +1,6 @@
 <?php
-require_once '../model/Cliente.php';
-require_once '../library/Conexao.class.php';
+require_once __DIR__ .  '/../model/Cliente.php';
+require_once __DIR__ . '/../library/Conexao.class.php';
 
 class ClienteDAL
 {
@@ -30,12 +30,11 @@ class ClienteDAL
         
         $nome = $cliente->getNomeCli();
         $email = $cliente->getEmailCli();
-        $login = $cliente->getLoginCli();
         $senha = $cliente->getSenhaCli();
         $status = $cliente->getStatusCli();
         
-        $sql = "INSERT INTO CLIENTE (CLI_cNOME,CLI_cEMAIL,CLI_cLOGIN,CLI_cSENHA,CLI_cSTATUS)
-        VALUES ('$nome','$email','$login','$senha','$status')";
+        $sql = "INSERT INTO CLIENTE (CLI_cNOME,CLI_cEMAIL,CLI_cSENHA,CLI_cSTATUS)
+        VALUES ('$nome','$email','$senha','$status')";
         
         // Executa a string sql
         return ClienteDAL::$connection->executarSQL($sql);
@@ -68,7 +67,6 @@ class ClienteDAL
             $resultCli->setTelCelCli($resultado['CLI_nTCELULAR']);
             $resultCli->setTelComCli($resultado['CLI_nTCOMERCIAL']);
             $resultCli->setEmailCli($resultado['CLI_cEMAIL']);
-            $resultCli->setLoginCli($resultado['CLI_cLOGIN']);
             $resultCli->setSenhaCli($resultado['CLI_cSENHA']);
             $resultCli->setDtUltAccessCli($resultado['CLI_dDTULTIMO_ACESSO']);
             $resultCli->setStatusCli($resultado['CLI_cSTATUS']);
