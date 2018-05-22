@@ -202,3 +202,4 @@ DELIMITER $$
 	END $$
 DELIMITER ;
 
+Select * from CLIENTE;

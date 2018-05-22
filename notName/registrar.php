@@ -59,9 +59,10 @@ include "superior.php";
 						<div class="text-center">
 							<button type="button" class="btn btn-primary" id="insereCli" name="insereCli">
 								<i class="fa fa-user-md"></i> Registrar
-							</button>
+							</button><br>
+							<label name="returnFormRegistrar" id="returnFormRegistrar"></label>
 						</div>
-						<label name="returnFormRegistrar" id="returnFormRegistrar"></label>
+			
 					</form>
 				</div>
 			</div>
@@ -90,7 +91,7 @@ include "superior.php";
 								class="form-control" id="senha">
 						</div>
 						<div class="text-center">
-							<button type="submit" class="btn btn-primary">
+							<button type="button" class="btn btn-primary" name="logaCli" id="logaCli">
 								<i class="fa fa-sign-in"></i>Entrar
 							</button>
 						</div>
@@ -107,3 +108,4 @@ include "superior.php";
 
 <?php include_once "inferior.php";?>
 <script src="./js/cadastraCli.js"></script>
+<script src="./js/loginCli.js"></script>
