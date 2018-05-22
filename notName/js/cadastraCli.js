@@ -8,10 +8,10 @@ $("#insereCli").click(
 
 		$.ajax({
 			type : 'post',
-			url : './controller/cadastraCliente.php',
+			url : './controller/controllerCliente.php',
 			data : data,
 			success : function(response) {
-				alert(response);
+				
 				if (response == "Cadastrado") {
 					$("#returnFormRegistrar").text(
 						"Cadastrado com sucesso");

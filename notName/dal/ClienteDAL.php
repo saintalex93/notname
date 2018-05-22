@@ -99,4 +99,33 @@ class ClienteDAL
         
         return $connection->executarSQL($sql);
     }
+
+    public static function loginCliente(Cliente $cliente): string
+    {
+        $email = $cliente->getEmailCli();
+        $senha = $cliente->getSenhaCli();
+        
+        $sql = "SELECT CLI_nCOD,CLI_cEMAIL, CLI_cSENHA, CLI_cSTATUS FROM CLIENTE WHERE CLI_cEMAIL LIKE '$email' AND CLI_cSENHA LIKE '$senha'";
+        ClienteDAL::connect();
+        
+       ClienteDAL::$connection->executarSQL($sql);
+       
+       $resultado = ClienteDAL::$connection->getResultados(); 
+       
+       $arrayLoginCli = array();
+       
+       foreach ($resultado as $resultado)
+       {
+           $loginCli = new Cliente();
+           
+           $loginCli->setIdCli($resultado[" CLI_nCOD"]);
+           $loginCli->setEmailCli($resultado["CLI_cEMAIL"]);
+           $loginCli->setSenhaCli($resultado["CLI_cSENHA"]);
+           $loginCli->setStatusCli($restultado["CLI_cSTATUS"]);
+           
+           $arrayLoginCli[] = $loginCli;
+       }
+       
+       return $arrayLoginCli;
+    }
 }

@@ -81,14 +81,14 @@ include "superior.php";
 
 					<hr>
 
-					<form action="customer-orders.html" method="post">
+					<form id="formLogCli">
 						<div class="form-group">
-							<label for="email">Email</label> <input type="text"
-								class="form-control" id="email">
+							<label for="email" >Email</label> <input type="text"
+								class="form-control" id="emailLog" name="emailLog">
 						</div>
 						<div class="form-group">
 							<label for="senha">Senha</label> <input type="password"
-								class="form-control" id="senha">
+								class="form-control" id="senha" name="senha">
 						</div>
 						<div class="text-center">
 							<button type="button" class="btn btn-primary" name="logaCli" id="logaCli">

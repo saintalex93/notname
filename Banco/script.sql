@@ -202,4 +202,7 @@ DELIMITER $$
 	END $$
 DELIMITER ;
 
+use notnamec_db;
+
 Select * from CLIENTE;
+SELECT CLI_nCOD, CLI_cEMAIL, CLI_cSENHA FROM CLIENTE WHERE CLI_cEMAIL LIKE "gustavo@beardsweb.com.br" AND CLI_cSENHA LIKE "010101";
