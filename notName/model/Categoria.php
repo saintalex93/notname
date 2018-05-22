@@ -27,7 +27,7 @@ class Categoria {
     }
 
     public function setStatusCateg($statusCateg) {
-        $this->statusCateg = $descCateg;
+        $this->statusCateg = $statusCateg;
     }
 
 }
