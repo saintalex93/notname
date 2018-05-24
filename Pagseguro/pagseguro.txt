@@ -1,0 +1,5 @@
+https://dev.pagseguro.uol.com.br/modulos
+
+https://dev.pagseguro.uol.com.br/bibliotecas/php
+
+https://github.com/pagseguro/
