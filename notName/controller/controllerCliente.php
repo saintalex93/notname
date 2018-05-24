@@ -25,10 +25,10 @@ if (isset($_POST['insereCli'])) {
     
     
     $login = ClienteDAL::loginCliente($cliente);
-    
-    echo $login[0]->getIdCli(); 
-    
     var_dump($login);
+    
+    echo $login[0]->getIdCli();
+   
     
     session_start();
     
