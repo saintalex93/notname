@@ -111,6 +111,6 @@ include "superior.php";
 
 <?php include_once "inferior.php";?>
 <script src="./js/cadastraCli.js"></script>
-<script src="./js/loginCli.js"></script>
+
 
 
