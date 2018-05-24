@@ -1,12 +1,16 @@
 <?php
 session_start();
-if(!isset( $_SESSION['USERCOM']['ID'])){
+if(isset($_SESSION['USERCOM']['ID'])){
     
-    echo "script redirect";
+   $id = $_SESSION['USERCOM']['ID']; 
+   $nome = $_SESSION['USERCOM']['NOME'];
+   
+   print_r($_SESSION);
+   
+
 }
 
 
-else{
 
 
 ?>
@@ -60,7 +64,9 @@ else{
                 <div class="col-md-6  animated fadeInDown">
                     <ul class="menu">
                         <li><a href="#" data-toggle="modal" data-target="#loginMoldal">Login</a></li> |
-                        <li><a href="registrar.php">Cadastro</a></li> |
+                       <?php  if(!isset($id)){
+                           echo "<li><a href='registrar.php'>Cadastro</a></li>  |";
+                       }?>
                         <li><a href="contato.php">Contato</a></li> |
                         <li><a href="#">Visto recentemente</a></li>
                     </ul>
@@ -226,9 +232,4 @@ else{
         
         
         
-        
-        <?php
-}
 
-
-?>

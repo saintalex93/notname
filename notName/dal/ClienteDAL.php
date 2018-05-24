@@ -105,7 +105,7 @@ class ClienteDAL
         $email = $cliente->getEmailCli();
         $senha = $cliente->getSenhaCli();
         
-        $sql = "SELECT CLI_nCOD,CLI_cEMAIL, CLI_cSENHA, CLI_cSTATUS FROM CLIENTE WHERE CLI_cEMAIL LIKE '$email' AND CLI_cSENHA LIKE '$senha'";
+        $sql = "SELECT CLI_cNOME, CLI_nCOD,CLI_cEMAIL, CLI_cSENHA, CLI_cSTATUS FROM CLIENTE WHERE CLI_cEMAIL LIKE '$email' AND CLI_cSENHA LIKE '$senha'";
         ClienteDAL::connect();
         
        ClienteDAL::$connection->executarSQL($sql);
@@ -123,6 +123,8 @@ class ClienteDAL
            $loginCli->setEmailCli($linha["CLI_cEMAIL"]);
            $loginCli->setSenhaCli($linha["CLI_cSENHA"]);
            $loginCli->setStatusCli($linha["CLI_cSTATUS"]);
+           $loginCli->setNomeCli($linha["CLI_cNOME"]);
+           
            
            $arrayLoginCli[] = $loginCli;
        }

@@ -10,7 +10,7 @@ $("#logaCli").click(
 					data: data,
 					success: function(response){
 						if (response != "Erro"){
-							alert(response);
+							window.location.href = './index.php';
 
 						}
 						else{

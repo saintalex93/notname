@@ -16,19 +16,24 @@ if (isset($_POST['insereCli'])) {
     } else {
         echo "Erro";
     }
-} else if (isset($_POST['logaCli'])) {
+} else if (isset($_REQUEST['logaCli'])) {
     $cliente = new Cliente();
     
-    $cliente->setEmailCli($_POST['emailLog']);
-    $cliente->setSenhaCli($_POST['senha']);
+    $cliente->setEmailCli($_REQUEST['emailLog']);
+    $cliente->setSenhaCli($_REQUEST['senha']);
+    
+    
     
     $login = ClienteDAL::loginCliente($cliente);
     
-    echo $login[0]->getIdCli();
+    echo $login[0]->getIdCli(); 
+    
+    var_dump($login);
     
     session_start();
     
     $_SESSION['USERCOM']['ID'] = $login[0]->getIdCli();
+    $_SESSION['USERCOM']['NOME'] = $login[0]->getNomeCli();
    
     
 } else {
