@@ -1,9 +1,6 @@
 <?php
 include_once 'header.php';
 
-
-
-
 require_once '../dal/MarcaDAL.php';
 require_once '../dal/CategoriaDAL.php';
 
@@ -92,26 +89,20 @@ $categorias = CategoriaDAL::buscaCategoria();
 
 														foreach ($categorias as $categoria) {
 
-															// if($marca->getStatusMarca == "Ativo"){
+															if($categoria->getStatusCateg() == "Ativo"){
 
-															echo "
-															<span class='button-checkbox'>
-															<button type='button' class='btn' data-color='secondary'>{$categoria->getDescCateg()}</button>
-															<input type='checkbox' class='hidden' name='categoriProtudo' id = '{$categoria->getIdCateg()}' />
-															</span>
+																echo "
+																<span class='button-checkbox'>
+																<button type='button' class='btn' data-color='secondary'>{$categoria->getDescCateg()}</button>
+																<input type='checkbox' class='hidden' name='categoriProtudo' id = '{$categoria->getIdCateg()}' />
+																</span>
 
-															";
+																";
+															}
+
 														}
 
-														// }
-
 														?>
-
-														
-
-
-
-
 
 													</div>
 												</div>
@@ -236,12 +227,12 @@ $categorias = CategoriaDAL::buscaCategoria();
 									<div class="form-body">
 
 										<h3 class="box-title m-t-40">Categoria</h3>
-										<form action="#">
+										<form action="#" method="POST" id="formCategoria">
 											<div class="row">
 												<div class="col-md-6 ">
 													<div class="form-group">
 														<label>Categoria</label>
-														<input type="text" class="form-control">
+														<input type="text" class="form-control" id="txtCategoria" name="txtCategoria">
 													</div>
 												</div>
 
@@ -267,7 +258,7 @@ $categorias = CategoriaDAL::buscaCategoria();
 										</form>
 
 										<div class="form-actions">
-											<button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+											<button type="submit" class="btn btn-success" id="btnCadastroCategoria"> <i class="fa fa-check"></i> Save</button>
 											<button type="button" class="btn btn-inverse">Cancel</button>
 										</div>
 
@@ -275,7 +266,7 @@ $categorias = CategoriaDAL::buscaCategoria();
 										<div class="table-responsive m-t-40">
 											<h6 class="card-subtitle">Categorias Cadastradas</h6>
 
-											<table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+											<table id="tableCategoria" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
 												<thead>
 													<tr>
 														<th>ID</th>
@@ -290,19 +281,19 @@ $categorias = CategoriaDAL::buscaCategoria();
 
 													<?php
 
-													foreach ($marcas as $marca) {
+													foreach ($categorias as $categoriaTabela) {
 														echo "
 														<tr>
 
-														<td>".$marca->getIdMarca()."</td>
-														<td>".$marca->getDescMarca()."</td>
-														<td>".$marca->getStatusMarca()."</td>
-														<td class='text-center'><button class='btn btn-inverse' id = '".$marca->getIdMarca()."'>Alterar</button></td>
+														<td>".$categoriaTabela->getIdCateg()."</td>
+														<td>".$categoriaTabela->getDescCateg()."</td>
+														<td>".$categoriaTabela->getStatusCateg()."</td>
+														<td class='text-center'><button class='btn btn-inverse' id = '".$categoriaTabela->getIdCateg()."'>Alterar</button></td>
 														</tr>
 														";
 													}
 
-													
+
 
 													?>
 												</tbody>
@@ -345,7 +336,7 @@ $categorias = CategoriaDAL::buscaCategoria();
 													</div>
 												</div>
 											</div>
-											
+
 										</form>
 
 										<div class="form-actions">
@@ -356,7 +347,7 @@ $categorias = CategoriaDAL::buscaCategoria();
 										<div class="table-responsive m-t-40">
 											<h6 class="card-subtitle">Marcas Cadastradas</h6>
 
-											<table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+											<table id="tableMarca" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
 												<thead>
 													<tr>
 														<th>ID</th>
@@ -383,7 +374,7 @@ $categorias = CategoriaDAL::buscaCategoria();
 														";
 													}
 
-													
+
 
 													?>
 												</tbody>
@@ -451,150 +442,10 @@ $categorias = CategoriaDAL::buscaCategoria();
 
 
 
-		<?php
-		include_once 'footer.php';
-		?>
-		<script>
-			$("#btnCadastroMarca").click(function() {
-				carregando();
-
-				var form = $('#formMarca');
-
-				$.ajax( {
-					type: "POST",
-					url: './controller/controllerProduto.php?action=insereCategoria',
-					data: form.serialize(),
-					success: function( response ) {
-						alert( response );
-
-						parar();
-					}
-				} );
-
-				
-
-			});
-		</script>
-
-		<script>
-			$(document).ready( function() {
-				$(document).on('change', '.btn-file :file', function() {
-					var input = $(this),
-					label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-					input.trigger('fileselect', [label]);
-				});
-
-				$('.btn-file :file').on('fileselect', function(event, label) {
-
-					var input = $(this).parents('.input-group').find(':text'),
-					log = label;
-
-					if( input.length ) {
-						input.val(log);
-					} else {
-						if( log ) alert(log);
-					}
-
-				});
-				function readURL(input) {
-					if (input.files && input.files[0]) {
-						var reader = new FileReader();
-
-						reader.onload = function (e) {
-							$('#img-upload').attr('src', e.target.result);
-						}
-
-						reader.readAsDataURL(input.files[0]);
-					}
-				}
-
-				$("#imgInp").change(function(){
-					readURL(this);
-				}); 	
-			});
-		</script>
+		<?php include_once 'footer.php';?>
+		<script src="js/cadastroProduto.js"></script>
 
 
 
 
-		<script>
-			$(function () {
 
-				$("#statusProduto").val("Ativo");
-				$("#statusCategoria").val("Ativo");
-
-				$("#statusMarca").val("Ativo");
-
-
-				
-
-				$('.button-checkbox').each(function () {
-					// Vê se é "Radio" ou Check
-					var $widget = $(this),
-					$button = $widget.find('button'),
-					$checkbox = $widget.find('input:checkbox'),
-					color = $button.data('color'),
-					settings = {
-						on: {
-							icon: 'fa fa-check-square'
-						},
-						off: {
-							icon: 'fa fa-square'
-						}
-					};
-
-					$button.on('click', function () {
-						$checkbox.prop('checked', !$checkbox.is(':checked'));
-						$checkbox.triggerHandler('change');
-						updateDisplay();
-					});
-					$checkbox.on('change', function () {
-						updateDisplay();
-					});
-
-
-
-					function updateDisplay() {
-						var isChecked = $checkbox.is(':checked');
-
-						$button.data('state', (isChecked) ? "on" : "off");
-
-						$button.find('.state-icon')
-						.removeClass()
-						.addClass('state-icon ' + settings[$button.data('state')].icon);
-
-						if (isChecked) {
-							$button
-							.removeClass('btn-secondary')
-							.addClass('btn-' + color + ' active');
-						}
-						else {
-							$button
-							.removeClass('btn-' + color + ' active')
-							.addClass('btn-secondary');
-						}
-					}
-
-					function init() {
-
-						updateDisplay();
-
-						if ($button.find('.state-icon').length == 0) {
-							$button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
-						}
-					}
-					init();
-				});
-
-
-				$('#radioBtn a').on('click', function(){
-					var sel = $(this).data('title');
-					var tog = $(this).data('toggle');
-					$('#'+tog).prop('value', sel);
-
-					$('a[data-toggle="'+tog+'"]').not('[data-title="'+sel+'"]').removeClass('active').addClass('notActive');
-					$('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').addClass('active');
-				})
-
-			});
-		</script>
