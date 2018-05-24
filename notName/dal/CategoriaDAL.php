@@ -1,7 +1,7 @@
 <?php
 
-require_once '../model/Categoria.php';
-require_once '../library/Conexao.class.php';
+require_once __DIR__ . '/../model/Categoria.php';
+require_once __DIR__ . '/../library/Conexao.class.php';
 
 class CategoriaDAL {
 
@@ -21,10 +21,10 @@ class CategoriaDAL {
         CategoriaDAL::connect();
 
         $nomeCat = $cat->getDescCateg();
-        $nomeCat = $cat->getStatusCateg();
+        $descCat = $cat->getStatusCateg();
 
 
-        $sql = "";
+        $sql = "INSERT INTO CATEGORIA (CATEGORIA_cDESC, CATEGORIA_cSTATUS) VALUES('$nomeCat','$descCat')";
 
         return CategoriaDAL::$connection->executarSQL($sql);
     }
@@ -72,7 +72,3 @@ class CategoriaDAL {
     }
 
 }
-
-
-$categoria = new CategoriaDAL();
-$categoria::buscaCategoria();

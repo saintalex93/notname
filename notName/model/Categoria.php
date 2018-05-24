@@ -23,7 +23,7 @@ class Categoria {
     }
 
     public function getStatusCateg() {
-        return $this->$statusCateg;
+        return $this->statusCateg;
     }
 
     public function setStatusCateg($statusCateg) {
