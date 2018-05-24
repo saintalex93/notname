@@ -5,7 +5,7 @@ if (isset($_SESSION['USERCOM']['ID'])) {
     $id = $_SESSION['USERCOM']['ID'];
     $nome = $_SESSION['USERCOM']['NOME'];
     
-    // var_dump($_SESSION);
+    $firstName = explode(" ", $nome);
 }
 
 ?>
@@ -61,7 +61,7 @@ a:hover {
                         <?php
                         
                         if (isset($id)) {
-                            echo "<li><a href='#'>Olá " . $nome . "</a></li> |";
+                            echo "<li><a href='#'>Olá " . $firstName[0] . "</a></li> |";
                         } else {
                             echo "<li><a href='#' data-toggle='modal' data-target='#loginMoldal'>Login</a></li> |";
                         }
