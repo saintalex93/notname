@@ -57,7 +57,7 @@ class MarcaDAL
         return $arrayMarca;
     }
 
-    public static function atualizaMArcac(Marca $marca): string
+    public static function atualizaMarca(Marca $marca): string
     {
         MarcaDAL::connect();
         

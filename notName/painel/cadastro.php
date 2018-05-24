@@ -94,14 +94,14 @@ $categorias = CategoriaDAL::buscaCategoria();
 
 															// if($marca->getStatusMarca == "Ativo"){
 
-																echo "
-																<span class='button-checkbox'>
-																<button type='button' class='btn' data-color='secondary'>{$categoria->getDescCateg()}</button>
-																<input type='checkbox' class='hidden' name='categoriProtudo' id = '{$categoria->getIdCateg()}' />
-																</span>
+															echo "
+															<span class='button-checkbox'>
+															<button type='button' class='btn' data-color='secondary'>{$categoria->getDescCateg()}</button>
+															<input type='checkbox' class='hidden' name='categoriProtudo' id = '{$categoria->getIdCateg()}' />
+															</span>
 
-																";
-															}
+															";
+														}
 
 														// }
 
@@ -316,13 +316,13 @@ $categorias = CategoriaDAL::buscaCategoria();
 								<div class="card-body">
 									<div class="form-body">
 										<h3 class="box-title m-t-40">Marca</h3>
-										<form action="#">
+										<form action="#" method="POST" id="formMarca">
 
 											<div class="row">
 												<div class="col-md-6 ">
 													<div class="form-group">
 														<label>Marca</label>
-														<input type="text" class="form-control">
+														<input type="text" class="form-control" name="txtMarca">
 													</div>
 												</div>
 
@@ -349,7 +349,7 @@ $categorias = CategoriaDAL::buscaCategoria();
 										</form>
 
 										<div class="form-actions">
-											<button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+											<button type="submit" class="btn btn-success" name="btnCadastroMarca" id="btnCadastroMarca"> <i class="fa fa-check"></i> Save</button>
 											<button type="button" class="btn btn-inverse">Cancel</button>
 										</div>
 
@@ -454,7 +454,27 @@ $categorias = CategoriaDAL::buscaCategoria();
 		<?php
 		include_once 'footer.php';
 		?>
+		<script>
+			$("#btnCadastroMarca").click(function() {
+				carregando();
 
+				var form = $('#formMarca');
+
+				$.ajax( {
+					type: "POST",
+					url: './controller/controllerProduto.php?action=insereCategoria',
+					data: form.serialize(),
+					success: function( response ) {
+						alert( response );
+
+						parar();
+					}
+				} );
+
+				
+
+			});
+		</script>
 
 		<script>
 			$(document).ready( function() {
