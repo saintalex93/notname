@@ -25,6 +25,7 @@ class Database
             
             // Modo de erro: Só avisa quando fodeu.
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
         } catch (Exception $e) {
             
             // Comentar essa linha para produção;
@@ -72,6 +73,10 @@ class Database
         
         return TRUE;
     }
+    
+    public function executeSQLwithoutTransaction(string $sql){
+        
+    }
 
     public function executaProcedure(string $sql)
     {
@@ -102,7 +107,7 @@ class Database
         return $this->resutado->fetchAll();
     }
 
-    public function returnID(): int
+    public function returnID()
     {
         return $this->connection->lastInsertId();
     }

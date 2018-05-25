@@ -27,8 +27,8 @@ alert("vai entrar o ajax");
 $(".logaCli").click(function(event) {
 	alert("Apertou o botao");
 
-		if ($("#emailLog").val() != '' && $("#senha").val() != '') {
-			var data = $("#formLogCli").serialize();
+		if ($(".emailLog").val() != '' && $(".senha").val() != '') {
+			var data = $(".formLogCli").serialize();
 	alert("vai entrar o ajax");
 			$.ajax({
 				type : 'POST',
@@ -41,8 +41,8 @@ $(".logaCli").click(function(event) {
 
 					} else {
 						alert("Cagou tudo");
-						$("#returnFormLogCli").text("Usuario ou senha Invalidos");
-						$("#returnFormLogCli").attr("class","text-center text-danger");
+						$(".returnFormLogCli").text("Usuario ou senha Invalidos");
+						$(".returnFormLogCli").attr("class","text-center text-danger");
 						
 					}
 				}

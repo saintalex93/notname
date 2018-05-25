@@ -81,23 +81,23 @@ include "superior.php";
 
 					<hr>
 
-					<form id="formLogCli">
+					<form class="formLogCli">
 						<div class="form-group">
 							<label for="email">Email</label> <input type="text"
-								class="form-control" id="emailLog" name="emailLog">
+								class="form-control emailLog"  name="emailLog">
 						</div>
 						<div class="form-group">
 							<label for="senha">Senha</label> <input type="password"
-								class="form-control" id="senha" name="senha">
+								class="form-control senha" name="senha">
 						</div>
 						<div class="text-center">
 							<input type="hidden" name="logaCli" value="Entrar">
 
-							<button type="button" class="btn btn-primary" name="logaCli"
-								id="logaCli">
+							<button type="button" class="btn btn-primary logaCli" name="logaCli"
+								
 								<i class="fa fa-sign-in"></i>Entrar
 							</button>
-							<br> <label name="returnFormLogCli" id="returnFormLogCli"></label>
+							<br> <label name="returnFormLogCli" class="returnFormLogCli"></label>
 						</div>
 					</form>
 				</div>
