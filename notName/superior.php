@@ -74,7 +74,7 @@ a:hover {
                     ?>
                         <li><a href="contato.php">Contato</a></li> |
 						<li><a href="#">Visto recentemente</a></li>
-                          <?php if(isset($id)){  echo "| <li><a href='./controller/logoutEcom.php'>logout</a></li>";}?>
+                          <?php if(isset($id)){  echo "| <li><a href='./controller/logoutEcom.php'>Sair</a></li>";}?>
                     </ul>
 				</div>
 			</div>

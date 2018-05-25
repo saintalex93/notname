@@ -1,6 +1,6 @@
 <?php
 include "superior.php";
-
+//Resolver problema de acesso a pagina, ele nao direciona para a index e e possivel acessar ele atraves da barra
 
 ?>
 
@@ -97,6 +97,7 @@ include "superior.php";
 								id="logaCli">
 								<i class="fa fa-sign-in"></i>Entrar
 							</button>
+							<br> <label name="returnFormLogCli" id="returnFormLogCli"></label>
 						</div>
 					</form>
 				</div>
