@@ -39,6 +39,44 @@ $("#btnCadastroCategoria").click(function() {
 
 });
 
+$("#btnCadastroProduto").click(function() {
+
+	carregando();
+
+	$('#formProduto').submit();
+
+
+});
+
+
+$("#formProduto").submit(function () {
+
+	var formData = new FormData(this);
+
+	$.ajax({
+		url: './controller/controllerProduto.php?action=insereProduto',
+		type: 'POST',
+		data: formData,
+		success: function (data) {
+			parar();
+			alert(data);
+
+		},
+		cache: false,
+		contentType: false,
+		processData: false,
+        xhr: function() {  // Custom XMLHttpRequest
+        	var myXhr = $.ajaxSettings.xhr();
+            if (myXhr.upload) { // Avalia se tem suporte a propriedade upload
+            	myXhr.upload.addEventListener('progress', function () {
+            		/* faz alguma coisa durante o progresso do upload */
+            	}, false);
+            }
+            return myXhr;
+        }
+    });
+});
+
 
 
 
