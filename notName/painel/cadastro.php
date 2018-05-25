@@ -3,6 +3,8 @@ include_once 'header.php';
 
 require_once '../dal/MarcaDAL.php';
 require_once '../dal/CategoriaDAL.php';
+require_once '../dal/ProdutoDAL.php';
+
 
 $marcas = MarcaDAL::buscaMarca();
 $categorias = CategoriaDAL::buscaCategoria();
@@ -27,19 +29,19 @@ $categorias = CategoriaDAL::buscaCategoria();
 						<div class="card-body">
 							<div class="form-body">
 								<h3 class="box-title m-t-40">Produtos</h3>
-								<form action="#">
+								<form action="#" method="POST" enctype="multipart/form-data" id="formProduto">
 									<div class="row p-t-20">
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label">Descrição do Produto</label>
-												<input type="text" id="firstName" class="form-control" placeholder="Calça destacadora de perseguida">
+												<input type="text" id="firstName" class="form-control" placeholder="Calça destacadora de perseguida" name="txtNomeProduto">
 												<small class="form-control-feedback text-danger"> This is inline help </small> </div>
 											</div>
 											<!--/span-->
 											<div class="col-md-6">
 												<div class="form-group has-danger">
 													<label class="control-label">Descrição Completa</label>
-													<textarea class="form-control form-control-danger"> </textarea>
+													<textarea class="form-control form-control-danger" name="txtDescricaoProduto"> </textarea>
 													<small class="form-control-feedback text-danger"> This field has error. </small> </div>
 												</div>
 												<!--/span-->
@@ -50,11 +52,16 @@ $categorias = CategoriaDAL::buscaCategoria();
 												<div class="col-md-6">
 													<div class="form-group">
 														<label class="control-label">Marca</label>
-														<select class="form-control " data-placeholder="Choose a Category" tabindex="1">
+														<select class="form-control " data-placeholder="Choose a Category" tabindex="1" name="marcaProduto">
 															<option value="">Selecione...</option>
-															<option value="">Category 2</option>
-															<option value="">Category 5</option>
-															<option value="">Category 4</option>
+															<?php
+															foreach ($marcas as $marcaCmb) {
+																if($marcaCmb->getStatusMarca() == "Ativo"){
+																	echo "<option value = '{$marcaCmb->getIdMarca()}'>{$marcaCmb->getDescMarca()}</option>";
+																}
+															}
+
+															?>
 														</select>
 													</div>
 												</div>
@@ -67,10 +74,10 @@ $categorias = CategoriaDAL::buscaCategoria();
 															<div class="col-sm-7 col-md-7">
 																<div class="input-group">
 																	<div id="radioBtn" class="btn-group">
-																		<a class="btn btn-primary btn-sm active" data-toggle="statusProduto" data-title="A">Ativo</a>
-																		<a class="btn btn-secondary btn-sm notActive" data-toggle="statusProduto" data-title="I">Inativo</a>
+																		<a class="btn btn-primary btn-sm active" data-toggle="statusProduto" data-title="Ativo">Ativo</a>
+																		<a class="btn btn-secondary btn-sm notActive" data-toggle="statusProduto" data-title="Inativo">Inativo</a>
 																	</div>
-																	<input type="" name="statusProduto" id="statusProduto">
+																	<input type="hidden" name="statusProduto" id="statusProduto">
 																</div>
 															</div>
 														</div>
@@ -84,7 +91,7 @@ $categorias = CategoriaDAL::buscaCategoria();
 												<hr>
 												<div class="text-center">
 													<div class="col-md-12 mb-3">
-
+														
 														<?php 
 
 														foreach ($categorias as $categoria) {
@@ -94,7 +101,7 @@ $categorias = CategoriaDAL::buscaCategoria();
 																echo "
 																<span class='button-checkbox'>
 																<button type='button' class='btn' data-color='secondary'>{$categoria->getDescCateg()}</button>
-																<input type='checkbox' class='hidden' name='categoriProtudo' id = '{$categoria->getIdCateg()}' />
+																<input type='checkbox' class='hidden' name='categoriaIdProduto[]' id = '{$categoria->getIdCateg()}' value = '{$categoria->getIdCateg()}' />
 																</span>
 
 																";
@@ -107,7 +114,6 @@ $categorias = CategoriaDAL::buscaCategoria();
 													</div>
 												</div>
 											</div>
-
 											<div class="content">
 												<h3 class="box-title m-t-40 text-center">Foto do Produto</h3>
 												<hr>
@@ -116,7 +122,7 @@ $categorias = CategoriaDAL::buscaCategoria();
 														<div class="input-group">
 															<span class="input-group-btn">
 																<span class="btn btn-primary btn-file">
-																	Browse… <input type="file" id="imgInp">
+																	Browse… <input type="file" id="imgInp" name="fotoProduto">
 																</span>
 															</span>
 															<input type="text" class="form-control" readonly>
@@ -128,7 +134,7 @@ $categorias = CategoriaDAL::buscaCategoria();
 										</form>
 
 										<div class="form-actions text-center">
-											<button type="button" class="btn btn-success"> 
+											<button type="button" class="btn btn-success" id="btnCadastroProduto"> 
 												<i class="fa fa-check"></i> Cadastrar
 											</button>
 											<button type="button" class="btn btn-inverse">

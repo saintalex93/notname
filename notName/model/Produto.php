@@ -13,8 +13,6 @@ class Produto
 
     private $idMarca;
 
-    private $idModelo;
-
     private $idCateg;
 
     private $descCateg;
