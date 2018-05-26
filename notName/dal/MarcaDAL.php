@@ -29,11 +29,8 @@ class MarcaDAL
         
         // MarcaDAL::$connection->executarSQL($sql);
         
-         MarcaDAL::$connection->executarSQL($sql);
+         return MarcaDAL::$connection->executarSQL($sql);
          
-         $lastid = MarcaDAL::$connection->returnID();
-         
-         return $lastid;
     }
 
     public static function buscaMarca()
@@ -69,6 +66,25 @@ class MarcaDAL
         MarcaDAL::$connection->executarSQL($sql);
         
         return MarcaDAL::$connection->returnID();
+    }
+    
+    /**
+     * Essa merda e pra recupar o id
+     */
+    
+    public static function insereMarcaReturnID(Marca $marca):string{
+        
+        MarcaDAL::connect();
+        
+        $descMarca = $marca->getDescMarca();
+        $statusMarca = $marca->getStatusMarca();
+        
+        $sql = "INSERT INTO MARCA (MARCA_cDESC, MARCA_nSTATUS) VALUES ('$descMarca','$statusMarca')";
+            
+        MarcaDAL::$connection->executeSQLwithoutTransaction($sql);
+        
+        return MarcaDAL::$connection->returnID();
+        
     }
 }
 

@@ -76,6 +76,20 @@ class Database
     
     public function executeSQLwithoutTransaction(string $sql){
         
+        $this->conectar();
+        
+        $this->resutado = null;
+        
+        try{
+            
+            $this->resutado = $this->connection->prepare($sql);
+            
+            $this->resutado->execute();
+        }catch (Exception $e){
+            
+            return false;
+        }
+        
     }
 
     public function executaProcedure(string $sql)
@@ -109,7 +123,11 @@ class Database
 
     public function returnID()
     {
-        return $this->connection->lastInsertId();
+        $lastid = $this->connection->lastInsertId();
+        $this->fecharConexao();
+        
+        return $lastid;
+        
     }
 }
    

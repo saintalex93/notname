@@ -6,7 +6,7 @@ $marca = new Marca();
 $marca->setDescMarca($_GET['desc']);
 $marca->setStatusMarca($_GET['status']);
 
-$lastid = MarcaDAL::insereMarca($marca);
+$lastid = MarcaDAL::insereMarcaReturnID($marca);
 
     
 echo $lastid;
