@@ -103,7 +103,6 @@ $produtos = ProdutoDAL::buscaProduto();
 									<!-- CATEGORIA -->
 									<div class="content">
 										<h3 class="box-title m-t-40 text-center">Categorias</h3>
-										<hr>
 										<div class="text-center">
 											<div class="col-md-12 mb-3">
 
@@ -114,8 +113,8 @@ $produtos = ProdutoDAL::buscaProduto();
 													if ($categoria->getStatusCateg() == "Ativo") {
 
 														echo "
-														<span class='button-checkbox'>
-														<button type='button' class='btn' data-color='secondary'>{$categoria->getDescCateg()}</button>
+														<span class='button-checkbox mb-2 mx-1'>
+														<button type='button' class='btn mb-3' data-color='secondary'>{$categoria->getDescCateg()}</button>
 														<input type='checkbox' class='hidden' name='categoriaIdProduto[]' id = '{$categoria->getIdCateg()}' value = '{$categoria->getIdCateg()}' />
 														</span>
 
@@ -130,12 +129,11 @@ $produtos = ProdutoDAL::buscaProduto();
 									</div>
 									<div class="content">
 										<h3 class="box-title m-t-40 text-center">Foto do Produto</h3>
-										<hr>
 										<div class="col-md-6 offset-md-3">
 											<div class="form-group">
 												<div class="input-group">
 													<span class="input-group-btn"> <span
-														class="btn btn-primary btn-file"> Browse… <input
+														class="btn btn-primary btn-file"> Procurar... <input
 														type="file" id="imgInp" name="fotoProduto">
 													</span>
 												</span> <input type="text" class="form-control" readonly>
