@@ -7,7 +7,7 @@
     <div id="content">
         <div class="container">
 
-            <div class="col-md-12">
+            <div class="col-md-12 my-3">
 
 
                 <nav aria-label="breadcrumb">

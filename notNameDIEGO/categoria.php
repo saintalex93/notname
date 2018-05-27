@@ -1,4 +1,4 @@
-<?php include "./superior.php";?>
+<?php include "superior.php";?>
 
 
 
@@ -8,7 +8,7 @@
         <div id="content">
             <div class="container">
 
-                <div class="col-md-12">
+                <div class="col-md-12 my-3">
 
 
                     <nav aria-label="breadcrumb">
@@ -62,8 +62,8 @@
                         <div class="row">
                            
                             <div class="col-sm-12 col-md-4 mb-3 ">
-                                <div class="card bg-info">
-                                    <img class="card-img-top" src="./assets/produtos/frenteProduto1.jpg" alt="">
+                                <div class="card card4">
+                                    <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="">
                                     <div class="card-body text-center">
                                         <h4 class="card-title">
                                             Produto 6
@@ -80,9 +80,9 @@
                             </div>
 
 
-                            <div class="col-sm-12 col-md-4 mb-3">
-                                <div class="card bg-info">
-                                    <img class="card-img-top" src="./assets/produtos/frenteProduto1.jpg" alt="">
+                            <div class="col-sm-12 col-md-4 mb-3 ">
+                                <div class="card card4">
+                                    <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="">
                                     <div class="card-body text-center">
                                         <h4 class="card-title">
                                             Produto 6
@@ -112,8 +112,8 @@
 
 
                             <div class="col-sm-12 col-md-4 mb-3">
-                                <div class="card bg-info">
-                                    <img class="card-img-top" src="./assets/produtos/frenteProduto1.jpg" alt="">
+                                <div class="card card4">
+                                    <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="">
                                     <div class="card-body text-center">
                                         <h4 class="card-title">
                                             Produto 6
@@ -133,8 +133,8 @@
 
 
                             <div class="col-sm-12 col-md-4 mb-3">
-                                <div class="card bg-info">
-                                    <img class="card-img-top" src="./assets/produtos/frenteProduto1.jpg" alt="Card image cap">
+                                <div class="card card4">
+                                    <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="Card image cap">
                                     <div class="card-body text-center">
                                         <h4 class="card-title">
                                             Produto 6
@@ -169,8 +169,8 @@
 
 
                             <div class="col-sm-12 col-md-4 mb-3 ">
-                                <div class="card bg-info">
-                                    <img class="card-img-top" src="./assets/produtos/frenteProduto1.jpg" alt="">
+                                <div class="card crad4">
+                                    <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="">
                                     <div class="card-body text-center">
                                         <h4 class="card-title">
                                             Produto 6
@@ -187,8 +187,8 @@
                             </div>
 
                             <div class="col-sm-12 col-md-4 mb-3 ">
-                                <div class="card bg-info">
-                                    <img class="card-img-top" src="./assets/produtos/frenteProduto1.jpg" alt="">
+                                <div class="card card4">
+                                    <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="">
                                     <div class="card-body text-center">
                                         <h4 class="card-title">
                                             Produto 6
@@ -236,5 +236,5 @@
             </div>
 
 
-     <?php include_once "./inferior.php";?>
+     <?php include_once "inferior.php";?>
 

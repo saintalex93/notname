@@ -2,48 +2,61 @@
                     <!-- *** menus e Filtros *** -->
                     <div class="card card-default sidebar-menu">
 
-                        <div class="card-heading">
-                            <h3 class="cardcard-title">Categories</h3>
+                        <div class="card-heading titulo-categoria-menu">
+                            <h3 class="cardcard-title">Categoria</h3>
                         </div>
 
                         <div class="card-body">
                             <ul class="nav nav-pills flex-column category-menu">
                                 <li>
-                                    <a href="category.html">Homem <span class="badge pull-right badge-primary badge-pill">42</span></a>
+                                    <a href="category.html">Camisetas <span class="badge pull-right badge-primary badge-pill">42</span></a>
                                     <ul>
-                                        <li><a href="">categoria 1</a>
+                                        <li class="text-black"><a href="">Series</a>
                                         </li>
-                                        <li><a href="">categoria 2</a>
+                                        <li class="text-black"><a href="">Amarola</a>
                                         </li>
-                                        <li><a href="">categoria 3</a>
+                                        <li class="text-black"><a href="">Believe</a>
                                         </li>
-                                        <li><a href="">categoria 4</a>
+                                        <li class="text-black"><a href="">Bela Recatada e do Lar</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="active">
-                                    <a href="category.html">Mulher  <span class="badge pull-right badge badge-primary badge-pill">123</span></a>
+                                    <a href="category.html">Pirralhos  <span class="badge pull-right badge-primary badge-pill">123</span></a>
                                     <ul>
-                                        <li><a href="">categoria 1</a>
+                                        <li class="text-black"><a href="">categoria 1</a>
                                         </li>
-                                        <li><a href="">categoria 2</a>
+                                        <li class="text-black"><a href="">categoria 2</a>
                                         </li>
-                                        <li><a href="">categoria 3</a>
+                                        <li class="text-black"><a href="">categoria 3</a>
                                         </li>
-                                        <li><a href="">categoria 4</a>
+                                        <li class="text-black"><a href="">categoria 4</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="category.html">Criança  <span class="badge pull-right badge badge-primary badge-pill">11</span></a>
+                                    <a href="category.html">Acessórios  <span class="badge pull-right badge-primary badge-pill">11</span></a>
                                     <ul>
-                                        <li><a href="">categoria 1</a>
+                                        <li class="text-black"><a href="">categoria 1</a>
                                         </li>
-                                        <li><a href="">categoria 2</a>
+                                        <li class="text-black"><a href="">categoria 2</a>
                                         </li>
-                                        <li><a href="">categoria 3</a>
+                                        <li class="text-black"><a href="">categoria 3</a>
                                         </li>
-                                        <li><a href="">categoria 4</a>
+                                        <li class="text-black"><a href="">categoria 4</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                 <li >
+                                    <a href="category.html">Pirralhos  <span class="badge pull-right badge-primary badge-pill">50</span></a>
+                                    <ul>
+                                        <li class="text-black" ><a href="">categoria 1</a>
+                                        </li>
+                                        <li class="text-black" ><a href="">categoria 2</a>
+                                        </li>
+                                        <li class="text-black" ><a href="">categoria 3</a>
+                                        </li>
+                                        <li class="text-black"  ><a href="">categoria 4</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -55,7 +68,7 @@
 
                     <div class="card card-default sidebar-menu my-4">
 
-                        <div class="card-heading">
+                        <div class="card-heading titulo-categoria-menu">
                             <h3 class="card-title">Marcas <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> Clear</a></h3>
                         </div>
 
@@ -94,7 +107,7 @@
 
                     <div class="card card-default sidebar-menu my-4">
 
-                        <div class="card-heading">
+                        <div class="card-heading titulo-categoria-menu">
                             <h3 class="card-title">Cores <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> Limpar</a></h3>
                         </div>
 

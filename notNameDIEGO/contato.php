@@ -1,10 +1,10 @@
-<?php include "./superior.php";?>
+<?php include "superior.php";?>
 
 
     <div id="content">
-        <div class="container">
+        <div class="container mb-4">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 my-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -68,7 +68,7 @@
                                 <h3><i class="fa fa-map-marker"></i> Endereço</h3>
                                 <p>
                                     <br>São Paulo - SP
-                                    <br>
+                                    <br
                                     <br>
                                     <strong>Brasil</strong>
                                 </p>
@@ -152,4 +152,4 @@
     </div>
 
 
-    <?php include_once "./inferior.php";?>
+    <?php include_once "inferior.php";?>
