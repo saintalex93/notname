@@ -46,13 +46,36 @@
 
 button.btn.btn-success{
     background: #6610f2;
-    border-color: #4e555b;
+    border: 0;
     color: white;
 
+
+}
+
+button:hover.btn.btn-success{
+    background-color: #6610f2;
+    border-color: #6610f2;
 
 }
 
 .btn:not(:disabled):not(.disabled).active, .btn:not(:disabled):not(.disabled):active{
     background-color: #6610f2;
     border-color: #6610f2;
+}
+
+.page-item.active .page-link{
+    background-color: #6610f2;
+    border-color: #6610f2;
+
+}
+
+.pagination > .active > a:hover{
+        background-color: #6610d2;
+    border-color: #6610d2;
+}
+
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+            background-color: #6610d2;
+    border-color: #6610d2;
 }
