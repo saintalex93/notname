@@ -34,7 +34,7 @@
 
 
 .btn.btn-primary.btn-sm.active{
-    background: #6610f2;
+    background: #6f42c1;
     border-color: #4e555b;
 
 }
@@ -45,7 +45,7 @@
 }
 
 button.btn.btn-success{
-    background: #6610f2;
+    background: #6f42c1;
     border: 0;
     color: white;
 
@@ -53,29 +53,75 @@ button.btn.btn-success{
 }
 
 button:hover.btn.btn-success{
-    background-color: #6610f2;
-    border-color: #6610f2;
+    background-color: #6f42c1;
+    border-color: #6f42c1;
 
 }
 
-.btn:not(:disabled):not(.disabled).active, .btn:not(:disabled):not(.disabled):active{
+ .btn:not(:disabled):not(.disabled):active{
     background-color: #6610f2;
     border-color: #6610f2;
 }
 
-.page-item.active .page-link{
-    background-color: #6610f2;
-    border-color: #6610f2;
+.page-item.active .page-link, .btn-primary{
+    background-color: #6f42c1;
+    border-color: #6f42c1;
 
 }
 
 .pagination > .active > a:hover{
-        background-color: #6610d2;
-    border-color: #6610d2;
+    background-color: #6610f2;
+    border-color: #6610f2;
 }
 
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
-            background-color: #6610d2;
-    border-color: #6610d2;
+    background-color: #6610f2;
+    border-color: #6610f2;
 }
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+
+
+}
+
+.dt-buttons .dt-button{
+    background-color: #6f42c1;
+
+}
+
+.customtab li a.nav-link.active, .profile-tab li a.nav-link.active{
+    color: #6610f2;
+
+}
+
+.customtab li a.nav-link.active, .profile-tab li a.nav-link.active{
+    border-color: #6610f2;
+}
+
+.sidebar-nav > ul > li.active > a{
+    color: #6610f2;
+
+}
+.sidebar-nav ul li a:hover{
+    color: #6610f2;
+
+}
+
+.sidebar-nav ul li a.active, .sidebar-nav > ul > li.active > a i, .sidebar-nav > ul > li.active > a i{
+    color: #6f42c1;
+
+}
+
+.sidebar-nav ul li a:hover i{
+    color: #6610f2;
+
+}
+
+.text-primary{
+    color: #6f42c1 !important;
+
+}
+
