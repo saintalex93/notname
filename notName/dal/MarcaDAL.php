@@ -81,7 +81,7 @@ class MarcaDAL
         
         $sql = "INSERT INTO MARCA (MARCA_cDESC, MARCA_nSTATUS) VALUES ('$descMarca','$statusMarca')";
             
-        MarcaDAL::$connection->executeSQLwithoutTransaction($sql);
+        MarcaDAL::$connection->sqlNoTransact($sql);
         
         return MarcaDAL::$connection->returnID();
         

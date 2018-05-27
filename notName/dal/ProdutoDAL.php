@@ -27,24 +27,22 @@ class ProdutoDAL
         $prodStatus = $prod->getStatusProd();
         $marcaID = $prod->getIdMarca();
         $categID = $prod->getIdCateg();
-
         
         $sql = "INSERT INTO PRODUTO (PRODUTO_cDESC, PRODUTO_cDESCCOMPLETA, PRODUTO_cSTATUS, MARCA_nID)
         VALUES ('$descProd','$descComp','$prodStatus',$marcaID)";
         
-        return ProdutoDAL::$connection->executarSQL($sql);
-        
-//         ProdutoDAL::buscaProduto($prod);
-        
-//         $id =  ProdutoDAL::$connection->returnID();
-        
-//         foreach ($categID as $cId){
+        if (ProdutoDAL::$connection->sqlNoTransact($sql)) {
             
-//             $sql = "INSERT INTO PRODUTO_CATEGORIA (CATEGORIA_nID, PRODUTO_nID) VALUES ($cId,$id)";
-//             ProdutoDAL::$connection->executarSQL($sql);
-//         }
-        
-        
+            $id = ProdutoDAL::$connection->returnID();
+            
+            foreach ($categID as $cId) {
+                
+                $sql = "INSERT INTO PRODUTO_CATEGORIA (CATEGORIA_nID, PRODUTO_nID) VALUES ($cId,$id)";
+                ProdutoDAL::$connection->executarSQL($sql);
+            }
+            
+            return $id;
+        }
     }
 
     public static function atualizaProduto(Produto $prod): string
@@ -65,11 +63,11 @@ class ProdutoDAL
         return ProdutoDAL::$connection->executarSQL($sql);
     }
 
-    public static function buscaProduto(Produto $prod)
+    public static function buscaProduto()
     {
         ProdutoDAL::connect();
         
-        $idProd = $prod->getIdProd();
+//         $idProd = $prod->getIdProd();
         
         $sql = "SELECT * FROM PRODUTO";
         
@@ -80,23 +78,22 @@ class ProdutoDAL
         $arrayProd = array();
         
         foreach ($resultados as $resultado) {
-
+            
             $resultProduto = new Produto();
             
             $resultProduto->setIdProd($resultado['PRODUTO_nID']);
             $resultProduto->setDescProd($resultado['PRODUTO_cDESC']);
             $resultProduto->setDescCompletaProd($resultado['PRODUTO_cDESCCOMPLETA']);
-            $resultProduto->setStatusProd($resultado['PRODUTO_nSTATUS']);
+            $resultProduto->setStatusProd($resultado['PRODUTO_cSTATUS']);
             $resultProduto->setIdMarca($resultado['MARCA_nID']);
             
-            $arrayProd = $resultProduto;
+            $arrayProd[] = $resultProduto;
         }
         
         return $arrayProd;
     }
 
-
-    public static function deletaProduto(Produto $prod) :string
+    public static function deletaProduto(Produto $prod): string
     {
         ProdutoDAL::connect();
         $idProd = $prod->getIdProd();
@@ -104,11 +101,8 @@ class ProdutoDAL
         
         try {
             ProdutoDAL::$connection->executarSQL($sql);
-            
         } catch (Exception $e) {
             echo $e;
-
         }
-
     }
 }

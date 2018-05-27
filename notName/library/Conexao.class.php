@@ -25,7 +25,6 @@ class Database
             
             // Modo de erro: Só avisa quando fodeu.
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
         } catch (Exception $e) {
             
             // Comentar essa linha para produção;
@@ -73,23 +72,24 @@ class Database
         
         return TRUE;
     }
-    
-    public function executeSQLwithoutTransaction(string $sql){
-        
+
+    public function sqlNoTransact(string $sql)
+    {
         $this->conectar();
         
         $this->resutado = null;
         
-        try{
+        try {
             
             $this->resutado = $this->connection->prepare($sql);
             
             $this->resutado->execute();
-        }catch (Exception $e){
             
+            return true;
+        } catch (Exception $e) {
+            echo "Não foi possível inserir o produto. Erro: {$e}";
             return false;
         }
-        
     }
 
     public function executaProcedure(string $sql)
@@ -127,7 +127,6 @@ class Database
         $this->fecharConexao();
         
         return $lastid;
-        
     }
 }
    
