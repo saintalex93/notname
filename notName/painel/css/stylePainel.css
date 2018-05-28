@@ -105,7 +105,7 @@ button:hover.btn.btn-success{
     color: #6610f2;
 
 }
-.sidebar-nav ul li a:hover{
+.sidebar-nav ul li a:hover, .login-form label a{
     color: #6610f2;
 
 }
@@ -123,5 +123,10 @@ button:hover.btn.btn-success{
 .text-primary{
     color: #6f42c1 !important;
 
+}
+
+.fotoPainel img{
+    max-width: 250px;
+    max-height: 220px;
 }
 

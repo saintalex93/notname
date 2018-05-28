@@ -169,26 +169,21 @@ $pageName = ucfirst(str_replace(".php", "", $url));
                     <li> <a href="dashboard.php" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a></li>
 
                     <li class="nav-label">Loja</li>
-                    <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Produtos</span></a>
+                    <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Cadastro</span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href="cadastro.php">Cadastro</a></li>
-                            <li><a href="#">Compras</a></li>
+                            <li><a href="produto.php">Produtos</a></li>
+                            <li><a href="categoria.php">Categorias</a></li>
+                            <li><a href="marca.php">Marcas</a></li>
+                            <li><a href="#">Modelos</a></li>
                             <li><a href="#">Promoções</a></li>
-                            <li><a href="#">Relatórios</a></li>
-
                         </ul>
                     </li>
 
                     <li class="nav-label">Gerenciamento</li>
-
+                    
                     <li> <a href="perfil.php" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Contas</span></a></li>
-                    <li class="nav-label">Charts</li>
-
-                    <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Charts</span></a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li><a href="chart-morris.php">Morris</a></li>
-                        </ul>
-                    </li>
+                    <li> <a href="perfil.php" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Compras</span></a></li>
+                    <li> <a href="perfil.php" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Relatórios</span></a></li>
 
                     <li class="nav-label">Features</li>
 
@@ -203,46 +198,6 @@ $pageName = ucfirst(str_replace(".php", "", $url));
                         <ul aria-expanded="false" class="collapse">
                             <li><a href="form-editor.php">Editor</a></li>
                             <li><a href="form-dropzone.php">Dropzone</a></li>
-                        </ul>
-                    </li>
-                    <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Tables</span></a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li><a href="table-bootstrap.php">Basic Tables</a></li>
-                            <li><a href="table-datatable.php">Data Tables</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-label">EXTRA</li>
-                    <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu">Pages <span class="label label-rouded label-success pull-right">8</span></span></a>
-                        <ul aria-expanded="false" class="collapse">
-
-                            <li><a href="#" class="has-arrow">Authentication <span class="label label-rounded label-success">6</span></a>
-                                <ul aria-expanded="false" class="collapse">
-                                    <li><a href="page-login.php">Login</a></li>
-                                    <li><a href="page-invoice.php">Invoice</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#" class="has-arrow">Error Pages</a>
-                                <ul aria-expanded="false" class="collapse">
-                                    <li><a href="page-error-404.php">404</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-level-down"></i><span class="hide-menu">Multi level dd</span></a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li><a href="#">item 1.1</a></li>
-                            <li><a href="#">item 1.2</a></li>
-                            <li> <a class="has-arrow" href="#" aria-expanded="false">Menu 1.3</a>
-                                <ul aria-expanded="false" class="collapse">
-                                    <li><a href="#">item 1.3.1</a></li>
-                                    <li><a href="#">item 1.3.2</a></li>
-                                    <li><a href="#">item 1.3.3</a></li>
-                                    <li><a href="#">item 1.3.4</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">item 1.4</a></li>
                         </ul>
                     </li>
                 </ul>

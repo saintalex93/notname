@@ -187,6 +187,7 @@ include_once 'header.php';
             </div>
         </div>
     </div>
+
     <div class="col-lg-9">
         <div class="card">
             <div class="card-title">
@@ -257,6 +258,15 @@ include_once 'header.php';
         </div>
     </div>
 </div>
+
+   <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Bar Chart</h4>
+                                <div id="morris-bar-chart"></div>
+                            </div>
+                        </div>
+                    </div>
 
 
 <div class="row">
