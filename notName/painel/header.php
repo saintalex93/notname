@@ -174,7 +174,7 @@ $pageName = ucfirst(str_replace(".php", "", $url));
                             <li><a href="produto.php">Produtos</a></li>
                             <li><a href="categoria.php">Categorias</a></li>
                             <li><a href="marca.php">Marcas</a></li>
-                            <li><a href="#">Modelos</a></li>
+                            <li><a href="modelo.php">Modelos</a></li>
                             <li><a href="#">Promoções</a></li>
                         </ul>
                     </li>
@@ -194,12 +194,7 @@ $pageName = ucfirst(str_replace(".php", "", $url));
                             <li><a href="uc-toastr.php">Toastr</a></li>
                         </ul>
                     </li>
-                    <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-wpforms"></i><span class="hide-menu">Forms</span></a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li><a href="form-editor.php">Editor</a></li>
-                            <li><a href="form-dropzone.php">Dropzone</a></li>
-                        </ul>
-                    </li>
+                   
                 </ul>
             </nav>
             <!-- End Sidebar navigation -->
