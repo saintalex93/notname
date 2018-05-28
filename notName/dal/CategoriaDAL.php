@@ -17,7 +17,7 @@ class CategoriaDAL {
         }
     }
 
-    public static function insereCategoria(Categoria $cat): string {
+    public static function insereCategoriaPai(Categoria $cat): string {
         CategoriaDAL::connect();
 
         $nomeCat = $cat->getDescCateg();
@@ -26,6 +26,18 @@ class CategoriaDAL {
 
         $sql = "INSERT INTO CATEGORIA (CATEGORIA_cDESC, CATEGORIA_cSTATUS) VALUES('$nomeCat','$descCat')";
 
+        return CategoriaDAL::$connection->executarSQL($sql);
+    }
+    public static function insereCategoriaFilho(Categoria $cat) : string {
+        
+        CategoriaDAL::connect();
+        
+        $nomeCategfilha = $cat->getDescCateg();
+        $statusCategFilha = $cat->getStatusCateg();
+        $idCategPai = $cat->getCodPai();
+        
+        $sql = "";
+        
         return CategoriaDAL::$connection->executarSQL($sql);
     }
 
