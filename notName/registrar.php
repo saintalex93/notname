@@ -93,7 +93,7 @@ include "superior.php";
 						<div class="text-center">
 							<input type="hidden" name="logaCli" value="Entrar">
 
-							<button type="button" class="btn btn-primary logaCli" name="logaCli"
+							<button type="button" class="btn btn-primary logaCli" name="logaCli">
 								
 								<i class="fa fa-sign-in"></i>Entrar
 							</button>
