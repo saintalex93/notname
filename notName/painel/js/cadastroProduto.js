@@ -39,6 +39,26 @@ $("#btnCadastroCategoria").click(function() {
 
 });
 
+$("#btnCadastroCategoriaFilha").click(function() {
+	carregando();
+
+	var form = $('#formCategoriaFilha');
+
+	$.ajax( {
+		type: "POST",
+		url: './controller/controllerProduto.php?action=insereCategoriaFilha',
+		data: form.serialize(),
+		success: function( response ) {
+			alert( response );
+
+			parar();
+		}
+	} );
+
+	
+
+});
+
 $("#btnCadastroProduto").click(function() {
 
 	carregando();
@@ -141,7 +161,7 @@ $(function () {
 
 	$("#statusProduto").val("Ativo");
 	$("#statusCategoria").val("Ativo");
-
+	$("#statusCategoriaFilha").val("Ativo");
 	$("#statusMarca").val("Ativo");
 
 
