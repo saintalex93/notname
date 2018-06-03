@@ -6,6 +6,7 @@ class Categoria {
     private $descCateg;
     private $statusCateg;
     private $codPai;
+    private $descPai;
 
     public function getIdCateg() {
         return $this->idCateg;
@@ -39,5 +40,15 @@ class Categoria {
     public function setCodPai($codpai){
         $this->codPai = $codpai;
     }
+
+     public function getDescPai(){
+        
+        return $this->descPai;
+    }
+    
+    public function setDescPai($descPai){
+        $this->descPai = $descPai;
+    }
+
 
 }

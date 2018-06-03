@@ -29,3 +29,19 @@ DELIMITER $$
 
 	END $$
 DELIMITER ;
+
+
+
+
+DELIMITER $$
+create function buscaDescCategoriaPai(idCatPai int)
+returns varchar(50)
+begin
+declare nomeCategoria varchar(50);
+select CATEGORIA_cDESC into nomeCategoria
+from CATEGORIA
+where CATEGORIA_nID = idCatPai;
+return nomeCategoria;
+end $$
+DELIMITER ;
+

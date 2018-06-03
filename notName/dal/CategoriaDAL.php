@@ -85,4 +85,40 @@ class CategoriaDAL {
 
     }
 
+        public static function buscaCategoriaFilha(): array {
+        CategoriaDAL::connect();
+
+
+        $sql = "SELECT *, buscaDescCategoriaPai(CATEGORIA_nCODPAI) as descCategoriaPai from CATEGORIA where CATEGORIA_nCODPAI is not null";
+
+        CategoriaDAL::$connection->executarSQL($sql);
+
+        $resultados = CategoriaDAL::$connection->getResultados();
+
+
+        $arrayCategoria = array();
+
+        foreach ($resultados as $resultado) {
+            $cat = new Categoria();
+            
+            $id = $resultado['CATEGORIA_nID'];
+            $descricao = $resultado['CATEGORIA_cDESC'];
+            $status = $resultado['CATEGORIA_cSTATUS'];
+            $idCodPai = $resultado['CATEGORIA_nCODPAI'];
+            $descPai = $resultado['descCategoriaPai'];
+
+            
+            $cat->setIdCateg($id);
+            $cat->setDescCateg($descricao);
+            $cat->setStatusCateg($status);
+            $cat->setCodPai($idCodPai);
+            $cat->setDescPai($descPai);
+
+
+            $arrayCategoria[] = $cat;
+        }
+        return $arrayCategoria;
+
+    }
+
 }
