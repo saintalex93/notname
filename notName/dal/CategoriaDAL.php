@@ -17,15 +17,27 @@ class CategoriaDAL {
         }
     }
 
-    public static function insereCategoria(Categoria $cat): string {
+    public static function insereCategoriaPai(Categoria $cat): string {
         CategoriaDAL::connect();
 
         $nomeCat = $cat->getDescCateg();
         $descCat = $cat->getStatusCateg();
 
 
-        $sql = "INSERT INTO CATEGORIA (CATEGORIA_cDESC, CATEGORIA_cSTATUS) VALUES('$nomeCat','$descCat')";
+        $sql = "INSERT INTO CATEGORIA (CATEGORIA_cDESC, CATEGORIA_cSTATUS,CATEGORIA_nCODPAI) VALUES('$nomeCat','$descCat',NULL)";
 
+        return CategoriaDAL::$connection->executarSQL($sql);
+    }
+    public static function insereCategoriaFilho(Categoria $cat) : string {
+        
+        CategoriaDAL::connect();
+        
+        $nomeCategfilha = $cat->getDescCateg();
+        $statusCategFilha = $cat->getStatusCateg();
+        $idCategPai = $cat->getCodPai();
+        
+        $sql = "INSERT INTO CATEGORIA(CATEGORIA_cDESC,CATEGORIA_cSTATUS,CATEGORIA_nCODPAI) VALUES('$nomeCategfilha','$statusCategFilha','$idCategPai')";
+        
         return CategoriaDAL::$connection->executarSQL($sql);
     }
 
@@ -60,10 +72,12 @@ class CategoriaDAL {
             $id = $resultado['CATEGORIA_nID'];
             $descricao = $resultado['CATEGORIA_cDESC'];
             $status = $resultado['CATEGORIA_cSTATUS'];
-
+            $idCodPai = $resultado['CATEGORIA_nCODPAI'];
+            
             $cat->setIdCateg($id);
             $cat->setDescCateg($descricao);
             $cat->setStatusCateg($status);
+            $cat->setCodPai($idCodPai);
 
             $arrayCategoria[] = $cat;
         }
