@@ -7,8 +7,6 @@ $marcas = MarcaDAL::buscaMarca();
 
 ?>
 
-
-
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-12">
@@ -40,7 +38,7 @@ $marcas = MarcaDAL::buscaMarca();
 													<a class="btn btn-secondary btn-sm notActive"
 													data-toggle="statusMarca" data-title="Inativo">Inativo</a>
 												</div>
-												<input type="hidden" name="statusMarca" id="statusMarca">
+												<input type="hidden" name="statusMarca" id="statusMarca" value="Ativo">
 											</div>
 										</div>
 									</div>

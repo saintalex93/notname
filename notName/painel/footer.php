@@ -129,6 +129,8 @@ echo $url;
 <script src="./../js/ajaxLoading.js"></script>
 
 <script src="./../js/jquery.maskedinput.min.js"></script>
+<script src="./../js/jquery.maskMoney.min.js"></script>
+
 
 
 </body>

@@ -89,7 +89,7 @@ class CategoriaDAL {
         CategoriaDAL::connect();
 
 
-        $sql = "SELECT *, buscaDescCategoriaPai(CATEGORIA_nCODPAI) as descCategoriaPai from CATEGORIA where CATEGORIA_nCODPAI is not null";
+        $sql = "SELECT *, fn_buscaDescCategoriaPai(CATEGORIA_nCODPAI) as descCategoriaPai from CATEGORIA where CATEGORIA_nCODPAI is not null";
 
         CategoriaDAL::$connection->executarSQL($sql);
 

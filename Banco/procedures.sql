@@ -34,7 +34,7 @@ DELIMITER ;
 
 
 DELIMITER $$
-create function buscaDescCategoriaPai(idCatPai int)
+create function fn_buscaDescCategoriaPai(idCatPai int)
 returns varchar(50)
 begin
 declare nomeCategoria varchar(50);
@@ -44,4 +44,48 @@ where CATEGORIA_nID = idCatPai;
 return nomeCategoria;
 end $$
 DELIMITER ;
+
+
+select fn_buscaDescTamanho(1);
+
+DELIMITER $$
+create function fn_buscaDescCor(idCor int)
+returns varchar(10)
+begin
+declare descCor varchar(10);
+select COR_cDESC into descCor
+from COR
+where COR_nID = idCor;
+return descCor;
+end $$
+DELIMITER ;
+
+DELIMITER $$
+create function fn_buscaDescProduto(idProduto int)
+returns varchar(80)
+begin
+declare descProduto varchar(80);
+select PRODUTO_cDESC into descProduto
+from PRODUTO
+where PRODUTO_nID = idProduto;
+return descProduto;
+end $$
+DELIMITER ;
+
+DELIMITER $$
+create function fn_buscaDescTamanho(idTamanho int)
+returns varchar(20)
+begin
+declare descTamanho varchar(20);
+select TAMANHO_cTAMANHO into descTamanho
+from TAMANHO
+where TAMANHO_nID = idTamanho;
+return descTamanho;
+end $$
+DELIMITER ;
+
+
+
+
+
 

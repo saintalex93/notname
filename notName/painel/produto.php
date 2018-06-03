@@ -79,7 +79,7 @@ $produtos = ProdutoDAL::buscaProduto();
 									data-toggle="statusProduto" data-title="Inativo">Inativo</a>
 								</div>
 								<input type="hidden" name="statusProduto"
-								id="statusProduto">
+								id="statusProduto" value="Ativo">
 							</div>
 						</div>
 					</div>

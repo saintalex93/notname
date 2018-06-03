@@ -61,7 +61,7 @@ class TamanhoDAL
             $descricao = $resultado['TAMANHO_cDESC'];
             
             $Tamanho->setIdTamanho($id);
-            $Tamanho->setSiglaTamanho($siglaTamanho);
+            $Tamanho->setSiglaTamanho($sigla);
             $Tamanho->setDescTamanho($descricao);
             
             $arrayTamanho[] = $Tamanho;

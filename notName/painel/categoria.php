@@ -52,7 +52,7 @@ $categoriasFilhas = CategoriaDAL::buscaCategoriaFilha();
 																		data-toggle="statusCategoria" data-title="Inativo">Inativo</a>
 																	</div>
 																	<input type="hidden" name="statusCategoria"
-																	id="statusCategoria">
+																	id="statusCategoria" value="Ativo">
 																</div>
 															</div>
 														</div>
@@ -165,7 +165,7 @@ $categoriasFilhas = CategoriaDAL::buscaCategoriaFilha();
 															data-toggle="statusMarca" data-title="Inativo">Inativo</a>
 														</div>
 														<input type="hidden" name="statusCategoriaFilha"
-														id="statusCategoriaFilha">
+														id="statusCategoriaFilha" value="Ativo">
 													</div>
 												</div>
 											</div>

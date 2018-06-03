@@ -45,7 +45,7 @@ class CorDAL
     {
         CorDAL::connect();
         
-        $sql = "SELECT * FROM COR";
+        $sql = "SELECT * FROM COR ORDER BY COR_cDESC ASC";
         
         CorDAL::$connection->executarSQL($sql);
         

@@ -69,6 +69,8 @@ $("#btnCadastroProduto").click(function() {
 });
 
 
+// Ajax para produto com imagem.
+
 $("#formProduto").submit(function () {
 
 	var formData = new FormData(this);
@@ -98,15 +100,7 @@ $("#formProduto").submit(function () {
 });
 
 
-
-
-
-
-
-
-
-
-
+// Botão para Imagem produto
 
 
 $(document).ready( function() {
@@ -148,23 +142,9 @@ $(document).ready( function() {
 
 
 
-
-
-
-
-
-
-
-
-
 $(function () {
 
-	$("#statusProduto").val("Ativo");
-	$("#statusCategoria").val("Ativo");
-	$("#statusCategoriaFilha").val("Ativo");
-	$("#statusMarca").val("Ativo");
-
-
+// CheckBox Categorias produtos
 
 
 	$('.button-checkbox').each(function () {
@@ -224,6 +204,10 @@ $(function () {
 					}
 					init();
 				});
+
+
+// Status produto, modelo e categorias
+
 
 
 	$('#radioBtn a').on('click', function(){
