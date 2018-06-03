@@ -1,6 +1,6 @@
 <?php
-require_once '../model/Modelo.php';
-require_once '../library/Conexao.class.php';
+require_once __DIR__ . '/../model/Modelo.php';
+require_once __DIR__ . '/../library/Conexao.class.php';
 
 class ModeloDAL
 {
@@ -24,27 +24,71 @@ class ModeloDAL
         ModeloDAL::connect();
         
         $nomeMod = $mod->getNomeModelo();
-        $tamanhoMod = $mod->getTamanhoModelo();
-        $corMod = $mod->getCormodelo();
         $vlrVendaMod = $mod->getVlrVendaModelo();
         $statusMod = $mod->getStatusModelo();
-        $vlrCompraMod = $mod->getVlrCompraModelo();
-        $dataCompraMod = $mod->getDtCompraModelo();
         $descontoMod = $mod->getDescontoModelo();
         $qtdeEstMod = $mod->getQtdEstoqueModelo();
+        $corMod = $mod->getCormodelo();
+        $tamanhoMod = $mod->getTamanhoModelo();
+        $produtoIdModelo = $mod->getProdutoIdModelo();
         
-        $sql = "";
+        $sql = "INSERT INTO MODELO (MODELO_cNOME, MODELO_nVLR_VENDA, MODELO_nSTATUS, MODELO_nDESCONTO, MODELO_nQTD_ESTOQUE,
+ COR_nID, TAMANHO_nID, PRODUTO_nID) 
+VALUES ('$nomeMod', $vlrVendaMod, '$statusMod', $descontoMod, $qtdeEstMod, $corMod, $tamanhoMod,$produtoIdModelo)";
+        
+        if (ModeloDAL::$connection->sqlNoTransact($sql)) {
+            
+            $id = ModeloDAL::$connection->returnID();
+            
+            return $id;
+        }
+    }
+
+    public static function buscaModeloTabela()
+    {
+        ModeloDAL::connect();
+        
+        $sql = "select *,
+ fn_buscaDescTamanho(TAMANHO_nID) as descTamanho, fn_buscaDescProduto(PRODUTO_nID) as descProduto, fn_buscaDescCor(COR_nID) as descCor 
+ from MODELO";
         
         ModeloDAL::$connection->executarSQL($sql);
         
-        return ModeloDAL::$connection->returnID();
+        $resultado = ModeloDAL::$connection->getResultados();
+        
+        $arrayModelo = array();
+        
+        
+        
+        foreach ($resultado as $resul) {
+            
+            $resultModelo = new Modelo();
+            
+            $resultModelo->setIdModelo($resul['MODELO_nID']);
+            $resultModelo->setNomeModelo($resul['MODELO_cNOME']);
+            $resultModelo->setVlrVendaModelo($resul['MODELO_nVLR_VENDA']);
+            $resultModelo->setStatusModelo($resul['MODELO_nSTATUS']);
+            $resultModelo->setDescontoModelo($resul['MODELO_nDESCONTO']);
+            $resultModelo->setQtdEstoqueModelo($resul['MODELO_nQTD_ESTOQUE']);
+            $resultModelo->setCormodelo($resul['COR_nID']);
+            $resultModelo->setTamanhoModelo($resul['TAMANHO_nID']);
+            $resultModelo->setProdutoIdModelo($resul['PRODUTO_nID']);
+            
+            $resultModelo->setDescCor($resul['descCor']);
+            $resultModelo->setDescProduto($resul['descProduto']);
+            $resultModelo->setDescTamanho($resul['descTamanho']);
+            
+            $arrayModelo[] = $resultModelo;
+        }
+        
+        return $arrayModelo;
     }
 
     public static function buscaModelo(Modelo $mod): array
     {
         ModeloDAL::connect();
         
-        $sql = "";
+        $sql = "select * from MODELO";
         
         ModeloDAL::$connection->executarSQL($sql);
         
@@ -58,14 +102,13 @@ class ModeloDAL
             
             $resultModelo->setIdModelo($resultado['MODELO_nID']);
             $resultModelo->setNomeModelo($resultado['MODELO_cNOME']);
-            $resultModelo->setTamanhoModelo($resultado['MODELO_cTAMANHO']);
-            $resultModelo->setCormodelo($resultado['MODELO_cCOR']);
             $resultModelo->setVlrVendaModelo($resultado['MODELO_nVLR_VENDA']);
             $resultModelo->setStatusModelo($resultado['MODELO_nSTATUS']);
-            $resultModelo->setVlrCompraModelo($resultado['MODELO_nVLR_COMPRA']);
-            $resultModelo->setDtCompraModelo($resultado['MODELO_dDATA_COMPRA']);
             $resultModelo->setDescontoModelo($resultado['MODELO_nDESCONTO']);
             $resultModelo->setQtdEstoqueModelo('MODELO_nQTD_ESTOQUE');
+            $resultModelo->setCormodelo($resultado['COR_nID']);
+            $resultModelo->setTamanhoModelo($resultado['TAMANHO_nID']);
+            $resultModelo->setProdutoIdModelo($resultado['PRODUTO_nID']);
             
             $arrayModelo = $resultModelo;
         }

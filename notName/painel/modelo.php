@@ -4,10 +4,13 @@ include_once 'header.php';
 include_once '../dal/CorDAL.php';
 include_once '../dal/TamanhoDAL.php';
 include_once '../dal/ProdutoDAL.php';
+include_once '../dal/ModeloDAL.php';
 
 $cor = CorDAL::buscaCor();
 $tamanho = TamanhoDAL::buscaTamanho();
 $produto = ProdutoDAL::buscaProduto();
+$modelo = ModeloDAL::buscaModeloTabela();
+
 ?>
 
 <!-- Container fluid  -->
@@ -81,7 +84,7 @@ $produto = ProdutoDAL::buscaProduto();
 
     <div class="row">
 
-        <div class="col-md-6">
+        <div class="col-md-5">
             <div class="form-group">
                 <label class="control-label">Produto</label> 
                 <select class="form-control " name="produtoModelo" id = "produtoModelo">
@@ -103,7 +106,15 @@ $produto = ProdutoDAL::buscaProduto();
             </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="control-label">Quantidade</label> 
+                <input type="number" id="quantidadeModelo" name = "quantidadeModelo" class="form-control" value = "0"> 
+            </div>
+        </div>
+
+
+        <div class="col-md-2">
             <div class="form-group">
 
                 <label class="control-label mb-3">Status</label>
@@ -198,7 +209,16 @@ $produto = ProdutoDAL::buscaProduto();
     <thead>
         <tr>
             <th>ID</th>
-            <th>Categoria</th>
+
+            <th hidden>Cor ID</th>
+            <th hidden>Tamanho ID</th>
+            <th hidden>Produto ID</th>
+
+            <th>Descrição</th>
+            <th>Tamanho</th>
+            <th>Cor</th>
+            <th>Produto</th>
+            <th>Valor</th>
             <th>Status</th>
             <th class="text-center">Ações</th>
 
@@ -206,24 +226,34 @@ $produto = ProdutoDAL::buscaProduto();
     </thead>
 
     <tbody>
+        <?php 
 
-       <!--  <?php
+        foreach ($modelo as $md) {
+            echo "
+            <tr id = 'rowModelo{$md->getIdModelo()}'>
+            <td>{$md->getIdModelo()}</td>
 
-        foreach ($categorias as $categoriaTabela) {
-            if ($categoriaTabela->getCodPai() == NULL) {
-                echo "
-                <tr>
+            <td hidden>{$md->getCormodelo()}</td>
+            <td hidden>{$md->getTamanhoModelo()}</td>
+            <td hidden>{$md->getProdutoIdModelo()}</td>
 
-                <td>" . $categoriaTabela->getIdCateg() . "</td>
-                <td>" . $categoriaTabela->getDescCateg() . "</td>
-                <td><span class = 'badge badge-success'>" . $categoriaTabela->getStatusCateg() . "</span></td>
-                <td class='text-center'><button class='btn btn-inverse' id = '" . $categoriaTabela->getIdCateg() . "'>Alterar</button></td>
-                </tr>
-                ";
-            }
+
+            <td>{$md->getNomeModelo()}</td>
+            <td>{$md->getDescTamanho()}</td>
+            <td>{$md->getDescCor()}</td>
+            <td>{$md->getDescProduto()}</td>
+            <td>R$ ".number_format($md->getVlrVendaModelo(), 2, ',', '.')."</td>
+            <td>{$md->getStatusModelo()}</td>
+            <td class='text-center'><button class='btn btn-inverse' id = '" . $md->getIdModelo() . "' onclick = 'alterarModelo(this.id);'>Alterar</button></td>
+
+            </tr>
+
+
+            ";
         }
 
-        ?> -->
+        ?>
+
     </tbody>
 </table>
 </div>
@@ -238,53 +268,7 @@ $produto = ProdutoDAL::buscaProduto();
 </div>
 <!-- End Container fluid  -->
 <?php include_once 'footer.php'; ?>
-
-
-
-<script>
-
-    $("#corModelo").change(function(event) {
-        $cor =  ($("#corModelo option:selected").attr('class'));
-
-        $("#txtCor").css('background', $cor);
-    });
-
-
-    function trocaCapa() {
-
-        var oArq = new FileReader();
-
-        oArq.onloadend = function() {
-            document.getElementById('capaImg').src = oArq.result;
-
-
-        }
-        if (document.all.capaInput.files[0]) {
-            oArq.readAsDataURL(document.all.capaInput.files[0]); // Comando para carregar imagem na memória.
-            document.getElementById('capaImg').style.display = "inline-block";
-
-
-        } else {
-
-            document.all.imgBanner.style.display = "none";
-
-        }
-    }
-
-    $("#txtValorModelo").maskMoney({prefix:'R$', allowNegative: true, thousands:'.', decimal:',', affixesStay: true});
-
-
-
-    $('#radioBtn a').on('click', function(){
-        var sel = $(this).data('title');
-        var tog = $(this).data('toggle');
-        $('#'+tog).prop('value', sel);
-
-        $('a[data-toggle="'+tog+'"]').not('[data-title="'+sel+'"]').removeClass('active').addClass('notActive');
-        $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').addClass('active');
-    })
-
-</script>
+<script src="js/modelo.js"></script>
 
 <?php 
 echo "<script>";
@@ -317,7 +301,6 @@ for ($i=1; $i <= 3; $i++) {
     }
 
     echo "</script>";
-
 
     ?>
 
