@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <div class="card card-default sidebar-menu">
+                    <div class="card card-default sidebar-menu py-3 px-3">
 
                         <div class="card-heading">
                             <h3 class="cardcard-title text-center">Fale Conosco</h3>
@@ -28,12 +28,12 @@
                                 <li>
                                     <a href="contato.php">Contato</a><br>
                                 </li>
-                            </div>
+                            
                             
                                 <li>
                                     <a href="faq.php">FAQ</a>
                                 </li>
-                            
+                            </div>
 
                             </ul>
                         </div>

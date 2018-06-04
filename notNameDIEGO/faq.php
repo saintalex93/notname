@@ -16,24 +16,24 @@
 
             </div>
             <div class="col-md-3">
-                <div class="card card-default sidebar-menu">
+                <div class="card card-default sidebar-menu px-3 py-3">
 
                     <div class="card-heading">
-                        <h3 class="cardcard-title text-center">Titulo</h3>
+                        <h3 class="cardcard-title text-center">FAQ</h3>
                     </div>
 
-                    <div class="card-body">
-                        <ul class="nav nav-pills nav-stacked">
+                    <div class="card-body ">
+                        <ul class="nav nav-pills ">
                             <div class="menuContato">
                                 <li>
-                                    <a href="contato.php">Contato</a>
+                                    <a href="contato.php">Contato</a><br>
+                                </li>
+
+
+                                <li>
+                                    <a href="faq.php">FAQ</a>
                                 </li>
                             </div>
-
-
-                            <li>
-                                <a href="faq.php">FAQ</a>
-                            </li>
 
                         </ul>
                     </div>
@@ -67,22 +67,16 @@
                         <div class="">
                             <h4 class="">
 
-                                <a data-toggle="collapse" data-parent="#accordion" href="#faq1">
+                                <a data-toggle="collapse" href="#faq1">
                                        - O que fazer se ainda não recebi o pedido?
 
 					    </a>
 
                             </h4>
                         </div>
-                        <div id="faq1" class=" collapse">
+                        <div id="faq1" class="collapse" data-parent="#accordion">
                             <div class="">
                                 <p>Envie um email para notname@notname.com.br que vamos encontrar o problema e solucionar pra você! </p>
-                                <ul>
-                                    <li></li>
-                                    <li>
-                                        <li>
-                                            <li></li>
-                                </ul>
                             </div>
                         </div>
 
@@ -91,7 +85,7 @@
                         <div class="">
                             <h4 class="">
 
-                                <a data-toggle="collapse" data-parent="#accordion" href="#faq2faq2">
+                                <a data-toggle="collapse" href="#faq2">
 
 						- Qual o prazo e custo da entrega?
 
@@ -99,7 +93,7 @@
 
                             </h4>
                         </div>
-                        <div id="faq2faq2" class=" collapse">
+                        <div id="faq2" class="collapse" data-parent="#accordion">
                             <div class="">
                                 <p>Os pedidos por Sedex podem levar até 7 dias úteis. Já os pedidos por PAC podem levar até 20 dias úteis, dependendo da localidade. O custo é calculado no foguete de compras e varia de acordo com a quantidade de camisetas e a cidade. Os pagamentos por boleto podem levar até 3 dias a mais pela demora dos bancos na confirmação do pagamento. </p>
                             </div>
@@ -111,7 +105,7 @@
                         <div class="">
                             <h4 class="">
 
-                                <a data-toggle="collapse" data-parent="#accordion" href="#faq3">
+                                <a data-toggle="collapse" href="#faq3">
 
 						- Como funciona a troca?
 
@@ -119,7 +113,7 @@
 
                             </h4>
                         </div>
-                        <div id="faq3" class=" collapse">
+                        <div id="faq3" class="collapse" data-parent="#accordion">
                             <div>
                                 <p>A 1º troca é grátis. Envie um email para notname@notname.com.br com o número do pedido que informaremos o que fazer. </p>
                             </div>
@@ -130,7 +124,7 @@
                         <div class="">
                             <h4 class="">
 
-                                <a data-toggle="collapse" data-parent="#accordion" href="#faq4">
+                                <a data-toggle="collapse"  href="#faq4">
 
                        - É seguro comprar na Not Name Company?
 
@@ -138,7 +132,7 @@
 
                             </h4>
                         </div>
-                        <div id="faq4" class=" collapse">
+                        <div id="faq4" class=" collapse" data-parent="#accordion">
                             <div>
                                 <p>Sim, todas as transações são feitas pelo Pagseguro, que possui o mais alto nível de segurança e encriptação de informações usando SSL. Pode ficar tranquilo! </p>
                             </div>
@@ -146,7 +140,7 @@
                         <div class="">
                             <h4 class="">
 
-                                <a data-toggle="collapse" data-parent="#accordion" href="#faq5">
+                                <a data-toggle="collapse"  href="#faq5">
 
                         - Quais as formas de pagamento?
 
@@ -154,7 +148,7 @@
 
                             </h4>
                         </div>
-                        <div id="faq5" class=" collapse">
+                        <div id="faq5" class=" collapse " data-parent="#accordion">
                             <div>
                                 <p>Aceitamos cartões de crédito Visa e Master e também aceitamos pagamento por boleto bancário. </p>
                             </div>
@@ -163,7 +157,7 @@
                         <div class="">
                             <h4 class="">
 
-                                <a data-toggle="collapse" data-parent="#accordion" href="#faq6">
+                                <a data-toggle="collapse"  href="#faq6">
 
                                   - Posso parcelar?
 
@@ -171,7 +165,7 @@
 
                             </h4>
                         </div>
-                        <div id="faq6" class=" collapse">
+                        <div id="faq6" class=" collapse" data-parent="#accordion">
                             <div>
                                 <p>Sim, em até 12 vezes pelo Pagseguro! </p>
                             </div>
@@ -180,7 +174,7 @@
                         <div class="">
                             <h4 class="">
 
-                                <a data-toggle="collapse" data-parent="#accordion" href="#faq7">
+                                <a data-toggle="collapse"  href="#faq7">
 
                                    - Quais os cuidados que devo ter com a camiseta?
 
@@ -188,19 +182,11 @@
 
                             </h4>
                         </div>
-                        <div id="faq7" class=" collapse">
+                        <div id="faq7" class=" collapse" data-parent="#accordion">
                             <div>
                                 <p>Lave com cuidado (procure não colocar em máquinas de secar) e evite usar alvejantes. </p>
                             </div>
                         </div>
-
-
-
-
-
-
-
-
 
 
                     </div>

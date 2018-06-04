@@ -5,10 +5,10 @@ include "superior.php";
 ?>
 
 
-<div id="content">
-	<div class="container">
 
-		<div class="col-md-12">
+	<div class="container mb-4">
+
+		<div class="col-md-12 my-3">
 
 
 			<nav aria-label="breadcrumb">
@@ -25,8 +25,8 @@ include "superior.php";
 
 
 		<div class="row">
-			<div class="col-md-6 d-flex flex-row my-4">
-				<div class="card">
+			<div class="col-md-6 d-flex flex-row">
+				<div class="card py-3 px-3">
 					<h1>Nova conta</h1>
 
 					<p class="lead">Não é nosso cliente cadastrado ainda?</p>
@@ -67,8 +67,8 @@ include "superior.php";
 				</div>
 			</div>
 
-			<div class="col-md-6 d-flex flex-row my-4">
-				<div class="card">
+			<div class="col-md-6 d-flex flex-row ">
+				<div class="card py-3 px-3">
 					<h1>Entrar</h1>
 
 					<p class="lead">Já é nosso cliente?</p>
@@ -106,7 +106,6 @@ include "superior.php";
 		</div>
 	</div>
 
-</div>
 
 
 

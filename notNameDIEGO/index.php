@@ -34,7 +34,7 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-   
+</div>
         <div id="vantagens">
 <div class="row mt-4 ">
               
@@ -89,10 +89,7 @@
                 </div>
             </div>
                     </div>
-                    <!-- /.row -->
-
-                
-                <!-- /.container -->
+                 
 </div>
             
 
@@ -115,80 +112,98 @@
 
 
 
-            <div class="col-sm-6 col-md-3 mb-3 col-xs-6 ">
-                <div class="card  ">
-                    <img class="card-img-top " src="assets/produtos/1.jpg" alt="">
-                    <div class="card-body text-center">
-                        <h4 class="card-title">
-                            Go Vegan
+           <!--produto1-->
 
-                        </h4>
-                        <p class="card-text">R$35,00</p>
-                        <a class="card-link" href="produto.php">ver mais detalhes</a>
+        <div class="col-sm-6 col-md-3 mb-3 card-container">
+            <div class="card">
+                <div class="card-flip">
 
+
+                    <div class="card front">
+                        <div class="card-block">
+                            <img class="card-img-top" src="assets/produtos/5.jpg" alt="">
+                        </div>
                     </div>
+
+
+                    <div class="card back">
+                        <div class="card-block">
+                            <img class="card-img-top " src="assets/produtos/2.jpg" alt="">
+                        </div>
+                    </div>
+
+
                 </div>
+
+                <div class="card-body text-center">
+                    <h4 class="card-title">Amarola</h4>
+                    <p class="card-text price"><del>R$200</del> R$199,99</p>
+                    <a class="card-link" href="">ver mais detalhes</a>
+                </div>
+
             </div>
+        </div>
 
 
-            <div class="col-sm-6 col-md-3 mb-3 col-xs-6">
-                <div class="card ">
-                    <img class="card-img-top " src="assets/produtos/2.jpg" alt="">
-                    <div class="card-body text-center">
-                        <h4 class="card-title">
-                            Fight Like a Girl
 
-                        </h4>
-                        <p class="card-text">R$35,00</p>
-                        <a class="card-link" href="">ver mais detalhes</a>
+<!--produto2-->
+        <div class="col-sm-6 col-md-3 mb-3 card-container">
+            <div class="card">
+                <div class="card-flip">
 
+
+                    <div class="card front">
+                        <div class="card-block">
+                            <img class="card-img-top" src="assets/produtos/1.jpg" alt="">
+                        </div>
                     </div>
-                </div>
-                  <div class="fitaTagProduto promocaoTag">
-                    <div class="fitaTag">Promoção</div>
-                    <div class="fitaTagProduto-background"></div>
-                </div>
 
 
-                <div class="fitaTagProduto novo">
-                    <div class="fitaTag">Novo</div>
-                    <div class="fitaTagProduto-background"></div>
+                    <div class="card back">
+                        <div class="card-block">
+                            <img class="card-img-top " src="assets/produtos/2.jpg" alt="">
+                        </div>
+                    </div>
+
+
                 </div>
+
+                <div class="card-body text-center">
+                    <h4 class="card-title">Amarola</h4>
+                    <p class="card-text price"><del>R$200</del> R$199,99</p>
+                    <a class="card-link" href="">ver mais detalhes</a>
+                </div>
+
             </div>
+        </div>
 
 
+<!--produto3-->
+        <div class="col-sm-6 col-md-3 mb-3 card-container">
+            <div class="card">
+                <div class="card-flip">
 
 
-            <div class="col-sm-6 col-md-3 mb-3 col-xs-6">
-                <div class="card ">
-                    <img class="card-img-top " src="assets/produtos/3.jpg" alt="">
-                    <div class="card-body text-center">
-                        <h4 class="card-title">
-                            Believe
-
-                        </h4>
-                        <p class="card-text">R$35,00</p>
-                        <a class="card-link" href="">ver mais detalhes</a>
-
+                    <div class="card front">
+                        <div class="card-block">
+                            <img class="card-img-top" src="assets/produtos/3.jpg" alt="">
+                        </div>
                     </div>
+
+
+                    <div class="card back">
+                        <div class="card-block">
+                            <img class="card-img-top " src="assets/produtos/4.jpg" alt="">
+                        </div>
+                    </div>
+
+
                 </div>
-            </div>
 
-
-
-
-            <div class="col-sm-6 col-md-3 mb-3">
-                <div class="card ">
-                    <img class="card-img-top " src="assets/produtos/5.jpg" alt="">
-                    <div class="card-body text-center">
-                        <h4 class="card-title">
-                            Amarola
-
-                        </h4>
-                        <p class="card-text price"><del>R$200</del> R$199,99</p>
-                        <a class="card-link" href="">ver mais detalhes</a>
-
-                    </div>
+                <div class="card-body text-center">
+                    <h4 class="card-title">Amarola</h4>
+                    <p class="card-text price"><del>R$200</del> R$199,99</p>
+                    <a class="card-link" href="">ver mais detalhes</a>
                 </div>
                 <div class="fitaTagProduto promocaoTag">
                     <div class="fitaTag">Promoção</div>
@@ -210,6 +225,41 @@
 
         </div>
 
-</div>
+
+
+<!--produto4-->
+        <div class="col-sm-6 col-md-3 mb-3 card-container">
+            <div class="card">
+                <div class="card-flip">
+
+
+                    <div class="card front">
+                        <div class="card-block">
+                            <img class="card-img-top" src="assets/produtos/5.jpg" alt="">
+                        </div>
+                    </div>
+
+
+                    <div class="card back">
+                        <div class="card-block">
+                            <img class="card-img-top " src="assets/produtos/2.jpg" alt="">
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="card-body text-center">
+                    <h4 class="card-title">Amarola</h4>
+                    <p class="card-text price"><del>R$200</del> R$199,99</p>
+                    <a class="card-link" href="">ver mais detalhes</a>
+                </div>
+
+            </div>
+        </div>
+
+        </div>
+
+
     
    <?php include_once "inferior.php";?>

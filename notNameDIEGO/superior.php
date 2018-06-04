@@ -220,7 +220,7 @@ a:hover {
 			</div>
 
 		</div>
-		<div class=" col-md-12 caixaNav ">
+		<div class=" col-md-12 caixaNav pb-3">
 			<div class="collapse clearfix col-md-12 " id="search">
 
 				<form class="col-md-5 navbar-form botaoPesquisar" role="search">
