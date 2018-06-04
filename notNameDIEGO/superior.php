@@ -88,23 +88,24 @@ a:hover {
 							<h4 class="modal-title" id="Login">Login do cliente</h4>
 						</div>
 						<div class="modal-body">
-							<form id="formLogCli">
+							<form class="formLogCli" >
 								<div class="form-group">
-									<input type="text" class="form-control" id="emailLog"
+									<input type="text" class="form-control emailLog" 
 										name="emailLog" placeholder="Email">
 								</div>
 
 								<div class="form-group">
-									<input type="password" class="form-control" id="senha"
+									<input type="password" class="form-control senha" 
 										name="senha" placeholder="Senha">
 								</div>
 
 								<p class="text-center">
 									<input type="hidden" name="logaCli" value="Entrar">
-									<button type="button" class="btn btn-primary" name="logaCli"
-										id="logaCli">
+									<button type="button" class="btn btn-primary logaCli" name="logaCli"
+										>
 										<i class="fa fa-sign-in"></i>Entrar
 									</button>
+									<label class="returnFormLogCli"></label>
 								</p>
 							</form>
 							<p class="text-center text-muted">

@@ -149,3 +149,4 @@
 </body>
 
 </html>
+<script src="./js/loginCli.js"></script>

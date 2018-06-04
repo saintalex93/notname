@@ -1,0 +1,17 @@
+***********************************Pagina Checkout***********************************************
+
+1 - Dados do cliente no checkout endereço precisa ser removido deixar somente dados referente a endereço	
+2 - Remover o campo pais, pois não há necessidade.
+3 - Criar um checkout Cliente, para preenchimento das demais informações.
+4 - Criar o Campo modo de entrega no banco de dados.
+5 - Criar o campo de método de pagamento no banco de dados.
+
+*******************************Pagina Index******************************************************
+1 - Incluir referencia aos produtos.
+2 - Index, crir link no rodapé para mandar para a pagina de cadastro quando clicar em inscrever-se
+
+*****************************Pagina categoria/produtos*******************************************
+
+1 - Mostrar somente Nome do produto, imagem e valor, quando clicar em ver detalhes, enviar para 
+pagina com descrições totais do produto.
+2 - Criar um json para criar uma tabela com todas as informações do produto.
