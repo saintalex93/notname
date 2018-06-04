@@ -175,7 +175,7 @@ $produtos = ProdutoDAL::buscaProduto();
 				echo "
 
 				<div class='col-lg-3 col-md-6 m-b-20 fotoPainel' id = '{$prod->getIdProd()}' onclick = \"alert(this.id)\">
-				<img src='../img/Produto{$prod->getIdProd()}' class='img-responsive radius' />
+				<img src='../img/Produtos/Produto{$prod->getIdProd()}' class='img-responsive radius' />
 				<div class='like-comm'>
 				{$prod->getDescProd()}
 				</div>

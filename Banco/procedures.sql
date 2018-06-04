@@ -46,7 +46,6 @@ end $$
 DELIMITER ;
 
 
-select fn_buscaDescTamanho(1);
 
 DELIMITER $$
 create function fn_buscaDescCor(idCor int)

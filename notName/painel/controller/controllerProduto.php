@@ -61,7 +61,7 @@ if ($_REQUEST['action'] == 'insereProduto') {
         $cod = "Produto" . $id;
         $imagem = $_FILES['fotoProduto']['name'];
         
-        if (move_uploaded_file($_FILES['fotoProduto']['tmp_name'], "{$raiz}img/" . $cod)) {
+        if (move_uploaded_file($_FILES['fotoProduto']['tmp_name'], "{$raiz}img/Produtos/" . $cod.".jpg")) {
             echo "Gravou";
         } else {
             echo 'nao gravou';

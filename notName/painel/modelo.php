@@ -21,7 +21,7 @@ $modelo = ModeloDAL::buscaModeloTabela();
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Modelos</h4>
-                    <form action="controller/controllerModelo.php" method="POST" enctype="multipart/form-data"
+                    <form id="formModelo" method="POST" enctype="multipart/form-data"
                     id="formProduto">
 
                     <div class="row p-t-20">
@@ -123,9 +123,9 @@ $modelo = ModeloDAL::buscaModeloTabela();
                     <div class="col-sm-7 col-md-7">
                         <div class="input-group">
                             <div id="radioBtn" class="btn-group">
-                                <a class="btn btn-primary btn-sm active"
+                                <a class="btn btn-primary btn-sm active" id="btnSactive" 
                                 data-toggle="statusModelo" data-title="Ativo">Ativo</a>
-                                <a class="btn btn-secondary btn-sm notActive"
+                                <a class="btn btn-secondary btn-sm notActive" id="btnSinactive" 
                                 data-toggle="statusModelo" data-title="Inativo">Inativo</a>
                             </div>
                             <input type="hidden" name="statusModelo" value="Ativo" 
@@ -152,7 +152,7 @@ $modelo = ModeloDAL::buscaModeloTabela();
                 <iframe src="" frameborder="0" name="gravaCapa" style = "display: none;"></iframe>
                 <div class="cameraCapaModelo col-12 text-center border-white" onclick="document.all.capaInput.click();">
 
-                    <img name = "imageEstbl" src="images/logoNot.png"  class="col-12  avatar1 border-white" id = "capaImg" onerror='this.src="images/logoNot.png";parar();') >
+                    <img name = "imageEstbl" src="images/logoNot.png"  class="col-12  avatar1 border-white" id = "capaImg" onerror='this.src="images/logoNot.png"'>
                 </div>
             </div>
 
@@ -170,7 +170,7 @@ $modelo = ModeloDAL::buscaModeloTabela();
                 ';
 
                 echo '
-                <div class="cameraModeloFoto'.$i.' cameraModelo col-12 border-white" onclick="document.all.foto'.$i.'.click(); "> <img name = "imageEstbl" src="images/logoNot.png"  class="col-12 avatar1 border-white" id = "foto'.$i.'Img" onerror=\'this.src="images/logoNot.png" parar();\') ></div><br>
+                <div class="cameraModeloFoto'.$i.' cameraModelo col-12 border-white" onclick="document.all.foto'.$i.'.click(); "> <img name = "imageEstbl" src="images/logoNot.png"  class="col-12 avatar1 border-white" id = "foto'.$i.'Img" onerror=\'this.src="images/logoNot.png"\') ></div><br>
 
                 </div>
                 ';
@@ -184,14 +184,12 @@ $modelo = ModeloDAL::buscaModeloTabela();
         <!-- /CAPA -->
     </div>
 
-    <input type="submit" value = "vaiPorra">
-
 </form>
 
 
 <div class="form-actions text-center mt-3">
     <button type="button" class="btn btn-success"
-    id="btnCadastroProduto">
+    id="btnCadastraModelo">
     <i class="fa fa-check"></i> Cadastrar
 </button>
 <button type="button" class="btn btn-inverse">
@@ -214,11 +212,13 @@ $modelo = ModeloDAL::buscaModeloTabela();
             <th hidden>Tamanho ID</th>
             <th hidden>Produto ID</th>
 
+
             <th>Descrição</th>
             <th>Tamanho</th>
             <th>Cor</th>
             <th>Produto</th>
             <th>Valor</th>
+            <th>Quantidade</th>
             <th>Status</th>
             <th class="text-center">Ações</th>
 
@@ -236,6 +236,8 @@ $modelo = ModeloDAL::buscaModeloTabela();
             <td hidden>{$md->getCormodelo()}</td>
             <td hidden>{$md->getTamanhoModelo()}</td>
             <td hidden>{$md->getProdutoIdModelo()}</td>
+            
+
 
 
             <td>{$md->getNomeModelo()}</td>
@@ -243,6 +245,8 @@ $modelo = ModeloDAL::buscaModeloTabela();
             <td>{$md->getDescCor()}</td>
             <td>{$md->getDescProduto()}</td>
             <td>R$ ".number_format($md->getVlrVendaModelo(), 2, ',', '.')."</td>
+            <td>{$md->getQtdEstoqueModelo()}</td>
+            
             <td>{$md->getStatusModelo()}</td>
             <td class='text-center'><button class='btn btn-inverse' id = '" . $md->getIdModelo() . "' onclick = 'alterarModelo(this.id);'>Alterar</button></td>
 

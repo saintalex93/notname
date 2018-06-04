@@ -58,8 +58,6 @@ VALUES ('$nomeMod', $vlrVendaMod, '$statusMod', $descontoMod, $qtdeEstMod, $corM
         
         $arrayModelo = array();
         
-        
-        
         foreach ($resultado as $resul) {
             
             $resultModelo = new Modelo();
@@ -125,5 +123,18 @@ VALUES ('$nomeMod', $vlrVendaMod, '$statusMod', $descontoMod, $qtdeEstMod, $corM
         ModeloDAL::$connection->executarSQL($sql);
         
         return ModeloDAL::$connection->returnID();
+    }
+
+    public static function removeModelo(Modelo $mod)
+    {
+        ModeloDAL::connect();
+        
+        
+        
+        $sql = "DELETE FROM MODELO WHERE MODELO_nID = {$mod->getIdModelo()}";
+        
+        if(!ModeloDAL::$connection->executarSQL($sql)){
+          return "Erro ao deletar modelo";  
+        }
     }
 }

@@ -209,4 +209,8 @@ INSERT INTO COR VALUES (0, "Azul", "#0000CD"), (0, "Azul Claro", "#6495ED"), (0,
 
 select *, buscaDescCategoriaPai(CATEGORIA_nCODPAI) as descCategoriaPai from CATEGORIA where CATEGORIA_nCODPAI is not null;
 
+select *,
+ fn_buscaDescTamanho(TAMANHO_nID) as descTamanho, fn_buscaDescProduto(PRODUTO_nID) as descProduto, fn_buscaDescCor(COR_nID) as descCor 
+ from MODELO;
+ 
 
