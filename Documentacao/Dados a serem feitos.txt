@@ -15,3 +15,10 @@
 1 - Mostrar somente Nome do produto, imagem e valor, quando clicar em ver detalhes, enviar para 
 pagina com descrições totais do produto.
 2 - Criar um json para criar uma tabela com todas as informações do produto.
+
+**************************Responsividade Index***************************************************
+1 - Remover a tag de oferta do dia para melhor layout.
+2 - Ajeitar logo e menu hamburguer e ajeitar o menu superior pois está mais pra direita do que pra esquerda.
+
+**************************Responsividade Contato*************************************************
+1 - Mapa está quebrando layout
