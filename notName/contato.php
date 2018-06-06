@@ -68,7 +68,7 @@
                                 <h3><i class="fa fa-map-marker"></i> Endereço</h3>
                                 <p>
                                     <br>São Paulo - SP
-                                    <br
+                                    <br>
                                     <br>
                                     <strong>Brasil</strong>
                                 </p>

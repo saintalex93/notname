@@ -4,6 +4,17 @@ class Cor{
 	private $idCor;
 	private $descCor;
 	private $hexCor;
+	private $count;
+
+    public function getCount()
+    {
+        return $this->count;
+    }
+
+    public function setCount($count)
+    {
+        $this->count = $count;
+    }
 
     public function getIdCor()
     {
