@@ -84,6 +84,7 @@ class CategoriaDAL {
         return $arrayCategoria;
 
     }
+    
 
         public static function buscaCategoriaFilha(): array {
         CategoriaDAL::connect();
