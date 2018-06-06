@@ -166,12 +166,18 @@ button:hover.btn.btn-success{
     }
 
     .cameraCapaModelo img, .cameraModelo img {
-     width: 250px;
-     height: 150px;
-     max-width: 100%;
-     border: 2px solid #333;
+       width: 100%;
+       height: 150px;
+       max-width: 100%;
+       border: 2px solid #333;
+       padding: 0;
 
- }
+   }
+
+
+   .IMGmodelo{
+    border: 2px solid black;
+}
 
 
 .cameraModeloFoto1::after {

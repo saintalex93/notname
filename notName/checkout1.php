@@ -1,26 +1,37 @@
-<?php include "./superior.php";?>
+<?php include "superior.php";?>
 
 
     <div id="content">
-    <div class="container">
+    <div class="container mb-4">
         <div class="row">
+           <div class="col-md-12 my-3">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Carrinho</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Endereço</li>
+                        </ol>
+                    </nav>
+
+                </div>
+           
             <div class="col-md-9">
 
-                <div class="card">
-                    <form method="post" action="checkout2.php">
-                        <h1>Checkout</h1>
+                <div class="card btnCheckout ">
+                    <form method="post" action="checkout2.php" class="">
+                        <h1 class="mx-3 my-3">Checkout</h1>
                         <ul class="nav nav-pills nav-justified">
-                            <li class="active"><a href="#"><i class="fas fa-map-marker"></i><br>Endereço</a>
+                            <li class="active text-center"><a href="#"><i class="fas fa-map-marker"></i><br>Endereço</a>
                             </li>
-                            <li class="disabled"><a href="#"><i class="fas fa-truck"></i><br>Método de Entrega</a>
+                            <li class="disabled checkout1 text-center"><a href="#" style="cursor:no-drop;"><i class="fas fa-truck"></i><br>Método de Entrega</a>
                             </li>
-                            <li class="disabled"><a href="#"><i class="far fa-money-bill-alt"></i><br>Método de pagamento</a>
+                            <li class="disabled checkout1 text-center"><a href="#"style="cursor:no-drop;"><i class="far fa-money-bill-alt"></i><br>Método de pagamento</a>
                             </li>
-                            <li class="disabled"><a href="#"><i class="fas fa-eye"></i><br>Revisão da encomenda</a>
+                            <li class="disabled checkout1 text-center"><a href="#"style="cursor:no-drop;"><i class="fas fa-eye"></i><br>Revisão da encomenda</a>
                             </li>
                         </ul>
 
-                        <div class="content">
+                        <div class="content mx-3">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -158,4 +169,4 @@
         </div>
     </div>
 
-    <?php include_once "./inferior.php";?>
+    <?php include_once "inferior.php";?>

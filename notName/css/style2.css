@@ -47,6 +47,42 @@
  	color:blue;
  }
 
+ .imgPequena/*pagCarrinho mudei o tamanho da imagem*/
+ {
+ 	width: 40px;
+ 	height: 50px;
+ }
+
+/*card2,3 e imgTamanho é da pagIndex*/
+ .card2
+ {
+  width: 350px;
+  height: 340px;
+ }
+
+ .card3
+ {
+
+  width: 250px;
+  height: 470px;
+ }
+
+.imgTamanho
+{
+	width: 230px;
+	height:290px;
+}
+
+.checkout1/*espaçamento dos checkouts 1,2,3,4 */
+{
+	padding-left:70px;
+}
+
+.card4/*pagCategoria tirei o bg-info para modificar a cor dos cards*/
+{
+	background-color: #fff;
+
+}
 
 
 

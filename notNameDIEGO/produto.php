@@ -1,4 +1,7 @@
-<?php include "superior.php";?>
+<?php 
+include "superior.php";
+
+?>
 
 
 

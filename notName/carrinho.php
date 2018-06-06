@@ -1,4 +1,4 @@
-<?php include "./superior.php";?>
+<?php include "superior.php";?>
 
 
 
@@ -8,15 +8,26 @@
  <div id="content">
 
     <div class="container">
+<div class="col-md-12 my-3">
 
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+
+                            <li class="breadcrumb-item active" aria-current="page">Carrinho</li>
+                        </ol>
+                    </nav>
+
+                </div>
         <div class="row">
             <div class="col-md-9">
 
                 <div class="card ">
 
-                    <form method="post" action="checkout1.php">
+                    <form method="post" action="checkout1.php" class="mx-3">
 
-                        <h1>Carrinho de compras</h1>
+                        <h1 class="">Carrinho de compras</h1>
                         <p>Você tem atualmente 3 item (s) no seu carrinho.</p>
                         <div class="table-responsive ">
                             <table class="table">
@@ -33,7 +44,7 @@
                                     <tr>
                                         <td>
                                             <a href="#">
-                                                    <img src="./assets/produtos/frenteProduto1.jpg" alt="">
+                                                    <img class="imgPequena" src="assets/produtos/frenteProduto1.jpg" alt="">
                                                 </a>
                                         </td>
                                         <td><a href="#">Produto 1</a>
@@ -50,7 +61,7 @@
                                     <tr>
                                         <td>
                                             <a href="#">
-                                                    <img src="./assets/produtos/versoProduto2.jpg" alt="Black Blouse Armani">
+                                                    <img class="imgPequena" src="assets/produtos/versoProduto2.jpg" alt="Black Blouse Armani">
                                                 </a>
                                         </td>
                                         <td><a href="#">Produto 2</a>
@@ -77,14 +88,16 @@
                    
 
                         <div class="card-footer">
-                            <div class="pull-left">
+                           
+                            <div class="float-left pull-left col-6">
                                 <a href="categoria.php" class="btn btn-default"><i class="fa fa-chevron-left"></i> Continue comprando</a>
                             </div>
-                            <div class="pull-right">
+                            
+                            <div class="float-right pull-right col-6" style="padding:0px 0 20px 0 ">                             
                                 <button class="btn btn-default"><i class="fas fa-sync-alt"></i>  Atualizar cesta</button>
-                                <button type="submit" class="btn btn-primary">Fazer o check-out <i class="fas fa-chevron-right"></i>
-                                    </button>
+                                <button type="submit" class="btn btn-primary">Fazer o check-out <i class="fas fa-chevron-right"></i></button>
                             </div>
+                            
                         </div>
 
                     </form>
@@ -93,16 +106,14 @@
             
 
 
-                <div class="row same-height-row my-4">
+                <div class="row same-height-row my-4 ">
 
                     <div class="col-md-3 col-sm-6  d-flex flex-row">
                         <div class="card">
 
-                            <div class="card-body text-center">
-                                <h4 class="card-title">
+                            <div class="card-body text-center ">
+                                <h4 class="card-title my-5">
                                     Você também pode gostar destes produtos </h4>
-
-
                             </div>
                         </div>
                     </div>
@@ -110,7 +121,7 @@
 
                     <div class="col-md-3 col-sm-6">
                         <div class="card">
-                            <img class="card-img-top" src="./assets/produtos/frenteProduto1.jpg" alt="">
+                            <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="">
                             <div class="card-body text-center">
                                 <h4 class="card-title">
                                     Produto 6
@@ -124,7 +135,7 @@
 
                     <div class="col-md-3 col-sm-6">
                         <div class="card">
-                            <img class="card-img-top" src="./assets/produtos/frenteProduto1.jpg" alt="">
+                            <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="">
                             <div class="card-body text-center">
                                 <h4 class="card-title">
                                     Produto 6
@@ -139,7 +150,7 @@
 
                     <div class="col-md-3 col-sm-6">
                         <div class="card">
-                            <img class="card-img-top" src="./assets/produtos/frenteProduto1.jpg" alt="">
+                            <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="">
                             <div class="card-body text-center">
                                 <h4 class="card-title">
                                     Produto 6
@@ -159,12 +170,12 @@
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-header">
-                        <h3>Resumo do pedido</h3>
+                        <h3 class="mx-3">Resumo do pedido</h3>
                     </div>
-                    <p class="text-muted">Envio e custos adicionais são calculados com base nos valores que você inseriu.</p>
+                    <p class="text-muted text-center">Envio e custos adicionais são calculados com base nos valores que você inseriu.</p>
 
-                    <div class="table-responsive">
-                        <table class="table">
+                    <div class="table-responsive ">
+                        <table class="table text-center">
                             <tbody>
                                 <tr>
                                     <td>Subtotal do pedido</td>
@@ -189,19 +200,19 @@
                 </div>
 
 
-                <div class="card">
+                <div class="card my-4">
                     <div class="card-header">
                         <h4>Código do cupom</h4>
                     </div>
-                    <p class="text-muted">Se você tiver um código de cupom, insira-o na caixa abaixo.</p>
+                    <p class="text-muted mb-3 text-center">Se você tiver um código de cupom, insira-o na caixa abaixo.</p>
                     <form>
-                        <div class="input-group">
+                        <div class="input-group mb-3">
 
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control ml-3">
 
                             <span class="input-group-btn">
 
-					<button class="btn btn-primary" type="button"><i class="fas fa-gift"></i></button>
+					<button class="btn btn-primary mr-3 " type="button"><i class="fas fa-gift"></i></button>
 
 				    </span>
                         </div>
@@ -212,5 +223,5 @@
     </div>
     </div>
 
-    <?php include_once "./inferior.php";?>
+    <?php include_once "inferior.php";?>
 

@@ -1,12 +1,94 @@
 // Declaração das variaveis
-$primary: #e84058
+$primary: #3eb091
 $body-bg: #f0f0f0
 $breadcrumb-divider: quote(">")
+$preto: #000
+$cinza: #434146
+$cinza-claro: rgba(0,0,0,0.07)
+
+
+
+#vantagens 
+  text-align: center
+
+#vantagens .card .icon 
+  position: absolute
+  font-size: 120px
+  width: 100%
+  text-align: center
+  top: -20px
+  left: 0
+  height: 100%
+  float: left
+  color: #eeeeee
+  -webkit-transition: all 0.2s ease-out
+  -moz-transition: all 0.2s ease-out
+  transition: all 0.2s ease-out
+  z-index: 1
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+
+#vantagens .card h3 
+  position: relative
+  margin: 0 0 20px
+  font-weight: 300
+  text-transform: uppercase
+  z-index: 2
+
+#vantagens .card h3 a:hover 
+  text-decoration: none
+
+#vantagens .card p 
+  position: relative
+  color: #555555
+  z-index: 2
+
+
+.icon
+    position: absolute
+    font-size: 120px
+    width: 100%
+    text-align: center
+    top: -20px
+    left: 0
+    height: 100%
+    float: left
+    color: #eeeeee
+    -webkit-transition: all 0.2s ease-out
+    -moz-transition: all 0.2s ease-out
+    transition: all 0.2s ease-out
+    z-index: 100
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    box-sizing: border-box
+           
+
+.fab 
+    display: inline-block
+    
+
+
+.titulo-categoria-menu
+    background: $cinza-claro
+    color: $primary
+    
+.titulo-categoria-menu h3
+    padding: 10px
+    
+.text-black a
+    color: $cinza
 
 .jumbotron
     background-color: #5048f0!important
     
-.teste
+.modal-title
+    padding: 10px 10px 10px 10px 
+    
+    
+.close
+    padding-right: 10px
+    padding-top: 5px
     background: red
 
 ul 
@@ -21,13 +103,82 @@ ul li
     color: #777!important
     
 #topo 
-    background: #555555
-    font-size: 12px
+    background: $preto
+    font-size: 14px
     text-align: center
     padding: 10px 0
+    color: #fff
     
 #topo a
     color: #fff
+    
+#topo h4
+    color: #000
+    
+/*footer*/ 
+
+#footer 
+  background: #e0e0e0
+  padding: 20px 0
+ 
+
+#footer ul 
+  padding-left: 0
+  list-style: none
+
+#footer ul a 
+  color: #999999 
+#footer ul li
+  display: block
+  
+
+#footer .social 
+  text-align: left
+
+#footer .social a 
+  margin: 0 10px 0 0
+  color: #fff
+  display: inline-block
+  width: 30px
+  height: 30px
+  border-radius: 15px
+  line-height: 26px
+  font-size: 15px
+  text-align: center
+  -webkit-transition: all 0.2s ease-out
+  -moz-transition: all 0.2s ease-out
+  transition: all 0.2s ease-out
+  vertical-align: bottom
+  background-color: #555555
+
+#footer .social a i 
+  vertical-align: bottom
+  line-height: 30px
+
+#footer .social a.facebook:hover 
+  background-color: #4460ae
+
+#footer .social a.gplus:hover 
+  background-color: #c21f25
+
+#footer .social a.twitter:hover 
+  background-color: #3cf
+
+#footer .social a.instagram:hover 
+  background-color: #cd4378
+
+#footer .social a.email:hover 
+  background-color: #4a7f45
+
+#copyright 
+  background: #333
+  color: #ccc
+  padding: 20px 0
+  font-size: 12px
+
+#copyright p 
+  margin: 0
+
         
 /* TAGS - PROMOÇÃO NOVO PRESENTE */
 
@@ -38,6 +189,7 @@ ul li
     z-index: 20
 
 
+    
 .fitaTagProduto-background 
     position: absolute
     top: 0
