@@ -171,10 +171,7 @@ $modelo = ModeloDAL::buscaModeloIndex();
                 <div class='fitaTagProduto-background'></div>
             </div>
 
-            <div class='fitaTagProduto presente'>
-                <div class='fitaTag'>Presente</div>
-                <div class='fitaTagProduto-background'></div>
-            </div>
+           
 
             <div class='fitaTagProduto promocaoTag'>
                 <div class='fitaTag'>Promoção</div>
@@ -191,10 +188,7 @@ $modelo = ModeloDAL::buscaModeloIndex();
                 <div class='fitaTagProduto-background'></div>
             </div>
 
-            <div class='fitaTagProduto presente'>
-                <div class='fitaTag'>Presente</div>
-                <div class='fitaTagProduto-background'></div>
-            </div>
+           
 
           ";
         }
