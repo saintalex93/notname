@@ -98,7 +98,7 @@
 
                         <span class="input-group-btn">
 
-			    <button class="btn btn-default" type="button">Se inscrever!</button>
+			    <button class="btn btn-default btn-green" type="button">Se inscrever!</button>
 
 			</span>
 
