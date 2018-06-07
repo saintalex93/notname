@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../model/Produto.php';
 require_once __DIR__ . '/../library/Conexao.class.php';
 
-class ProdutoDAL
+class ProdutoDAL extends Modelo
 {
 
     /**
@@ -18,10 +18,10 @@ class ProdutoDAL
         }
     }
 
-    public static function insereProduto(Produto $prod): string
+    public static function insereProduto(Produto $prod, Modelo $mod): string
     {
         ProdutoDAL::connect();
-        
+               
         $descProd = $prod->getDescProd();
         $descComp = $prod->getDescCompletaProd();
         $prodStatus = $prod->getStatusProd();
