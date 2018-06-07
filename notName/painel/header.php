@@ -173,7 +173,6 @@ $pageName = ucfirst(str_replace(".php", "", $url));
                         <ul aria-expanded="false" class="collapse">
                             <li><a href="produto.php">Produtos</a></li>
                             <li><a href="categoria.php">Categorias</a></li>
-                            <li><a href="marca.php">Marcas</a></li>
                             <li><a href="modelo.php">Modelos</a></li>
                             <li><a href="#">Promoções</a></li>
                         </ul>

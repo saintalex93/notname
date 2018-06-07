@@ -1,5 +1,14 @@
 @charset "UTF-8";
 
+.card .card-block img{
+   width: 100%;
+    height: 300px;
+}
+
+.card .imgP img{
+   width: 100%;
+    height: 230px;
+}
 
 
 .card-container {
@@ -238,17 +247,17 @@ ul li {
   border-style: solid;
   border-color: #c63c97 #c63c97 transparent transparent; }
 
-.fitaTagProduto.promocaoTag {
+.fitaTagProduto.novo {
   top: 0; }
 
-.fitaTagProduto.novo {
+.fitaTagProduto.promocaoTag {
   top: 50px; }
 
-.fitaTagProduto.novo .fitaTag {
+.fitaTagProduto.promocaoTag .fitaTag {
   background-color: #5bc0de;
   text-shadow: 0px 1px 2px #bbb; }
 
-.fitaTagProduto.novo .fitaTag:after {
+.fitaTagProduto.promocaoTag .fitaTag:after {
   border-color: #2390b0 #2390b0 transparent transparent; }
 
 .fitaTagProduto.presente {
@@ -570,6 +579,10 @@ sub {
 
 sup {
   top: -.5em; }
+
+.btn-green{
+    color: #3eb091;
+}
 
 a {
   color: #3eb091;
