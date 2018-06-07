@@ -1,11 +1,10 @@
 <?php
 include_once 'header.php';
 
-require_once '../dal/MarcaDAL.php';
 require_once '../dal/CategoriaDAL.php';
 require_once '../dal/ProdutoDAL.php';
 
-$marcas = MarcaDAL::buscaMarca();
+
 $categorias = CategoriaDAL::buscaCategoria();
 $produtos = ProdutoDAL::buscaProduto();
 
@@ -22,7 +21,7 @@ $produtos = ProdutoDAL::buscaProduto();
 				<form action="#" method="POST" enctype="multipart/form-data"
 				id="formProduto">
 				<div class="row p-t-20">
-					<div class="col-md-6">
+					<div class="col-md-5">
 						<div class="form-group">
 							<label class="control-label">Descrição do Produto</label> <input
 							type="text" id="firstName" class="form-control"
@@ -32,39 +31,18 @@ $produtos = ProdutoDAL::buscaProduto();
 						help </small>
 					</div>
 				</div>
-				<!--/span-->
-				<div class="col-md-6">
-					<div class="form-group has-danger">
-						<label class="control-label">Descrição Completa</label>
-						<textarea class="form-control form-control-danger"
-						name="txtDescricaoProduto"> </textarea>
-						<small class="form-control-feedback text-danger"> This field
-						has error. </small>
-					</div>
-				</div>
-				<!--/span-->
-			</div>
-
-			<div class="row">
-
-				<div class="col-md-6">
+				
+				<div class="col-md-4">
 					<div class="form-group">
-						<label class="control-label">Marca</label> <select
-						class="form-control " data-placeholder="Choose a Category"
-						tabindex="1" name="marcaProduto">
+						<label class="control-label">Categoria Principal</label> <select
+						class="form-control " tabindex="1" name="catPrincipal">
 						<option value="">Selecione...</option>
-						<?php
-						foreach ($marcas as $marcaCmb) {
-							if ($marcaCmb->getStatusMarca() == "Ativo") {
-								echo "<option value = '{$marcaCmb->getIdMarca()}'>{$marcaCmb->getDescMarca()}</option>";
-							}
-						}
-
-						?>
+						
 					</select>
 				</div>
 			</div>
-			<div class="col-md-6">
+				
+				<div class="col-md-3">
 				<div class="form-group">
 
 					<label class="control-label mb-3">Status</label>
@@ -85,11 +63,29 @@ $produtos = ProdutoDAL::buscaProduto();
 					</div>
 				</div>
 			</div>
+				
+				<!--/span-->
+				
+				<!--/span-->
+			</div>
+
+			<div class="row">
+
+				<div class="col-md-12">
+					<div class="form-group has-danger">
+						<label class="control-label">Descrição Completa</label>
+						<textarea class="form-control" style = "height: 70px;"
+						name="txtDescricaoProduto"> </textarea>
+						<small class="form-control-feedback text-danger"> This field
+						has error. </small>
+					</div>
+				</div>
+			
 
 		</div>
 		<!-- CATEGORIA -->
 		<div class="content">
-			<h3 class="box-title m-t-40 text-center">Categorias</h3>
+			<h3 class="box-title m-t-10 text-center">Categorias Filhas</h3>
 			<div class="text-center">
 				<div class="col-md-12 mb-3">
 
@@ -175,7 +171,7 @@ $produtos = ProdutoDAL::buscaProduto();
 				echo "
 
 				<div class='col-lg-3 col-md-6 m-b-20 fotoPainel' id = '{$prod->getIdProd()}' onclick = \"alert(this.id)\">
-				<img src='../img/Produtos/Produto{$prod->getIdProd()}' class='img-responsive radius' />
+				<img src='../img/Produtos/Produto{$prod->getIdProd()}.jpg' class='img-responsive radius' onerror=\"this.src='../img/logo.png'\" />
 				<div class='like-comm'>
 				{$prod->getDescProd()}
 				</div>

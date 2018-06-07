@@ -181,9 +181,10 @@ $modelo = ModeloDAL::buscaModeloIndex();
                 <div class='fitaTagProduto-background'></div>
             </div>";
         } else {
+            $valor = 'R$' . number_format($md->getVlrVendaModelo(), 2, ',', '.');
             echo "
-                <p class='card-text price'>R$199,99</p>
-                <a class='card-link' href=''>ver mais detalhes</a>
+                <p class='card-text price'>$valor</p>
+          <a class='card-link' href='produto.php?id={$md->getProdutoIdModelo()}'>ver mais detalhes</a>
             </div>
 
             <div class='fitaTagProduto novo'>

@@ -25,11 +25,11 @@ class ProdutoDAL
         $descProd = $prod->getDescProd();
         $descComp = $prod->getDescCompletaProd();
         $prodStatus = $prod->getStatusProd();
-        $marcaID = $prod->getIdMarca();
+        
         $categID = $prod->getIdCateg();
         
-        $sql = "INSERT INTO PRODUTO (PRODUTO_cDESC, PRODUTO_cDESCCOMPLETA, PRODUTO_cSTATUS, MARCA_nID)
-        VALUES ('$descProd','$descComp','$prodStatus',$marcaID)";
+        $sql = "INSERT INTO PRODUTO (PRODUTO_cDESC, PRODUTO_cDESCCOMPLETA, PRODUTO_cSTATUS)
+        VALUES ('$descProd','$descComp','$prodStatus')";
         
         if (ProdutoDAL::$connection->sqlNoTransact($sql)) {
             
@@ -53,7 +53,6 @@ class ProdutoDAL
         $descProd = $prod->getDescProd();
         $descComp = $prod->getDescCompletaProd();
         $prodStatus = $prod->getStatusProd();
-        $marcaID = $prod->getIdMarca();
         $modeloID = $prod->getIdModelo();
         $categID = $prod->getIdCateg();
         $categoriaDesc = $prod->getDescCateg();
@@ -63,13 +62,21 @@ class ProdutoDAL
         return ProdutoDAL::$connection->executarSQL($sql);
     }
 
-    public static function buscaProduto()
+    public static function buscaProduto($id = null)
     {
         ProdutoDAL::connect();
         
-//         $idProd = $prod->getIdProd();
-        
-        $sql = "SELECT * FROM PRODUTO";
+        if (!empty($id)) {
+            
+//             $id = $prod->getIdProd();
+            
+            $sql = "SELECT * FROM PRODUTO
+                       INNER JOIN MODELO ON PRODUTO.PRODUTO_nID = MODELO.PRODUTO_nID
+                         WHERE PRODUTO_cSTATUS LIKE 'Ativo' and MODELO_nSTATUS like 'Ativo' and 
+                            MODELO_nQTD_ESTOQUE > 0 and PRODUTO.PRODUTO_nID = $id";
+        } else {
+            $sql = "SELECT * FROM PRODUTO";
+        }
         
         ProdutoDAL::$connection->executarSQL($sql);
         
@@ -85,7 +92,6 @@ class ProdutoDAL
             $resultProduto->setDescProd($resultado['PRODUTO_cDESC']);
             $resultProduto->setDescCompletaProd($resultado['PRODUTO_cDESCCOMPLETA']);
             $resultProduto->setStatusProd($resultado['PRODUTO_cSTATUS']);
-            $resultProduto->setIdMarca($resultado['MARCA_nID']);
             
             $arrayProd[] = $resultProduto;
         }

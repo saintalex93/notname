@@ -1,6 +1,19 @@
 <?php 
 include "superior.php";
+include_once "dal/ProdutoDAL.php";
 
+$codProduto = $_REQUEST['id'];
+
+if(!isset($_REQUEST['id'])){
+    echo "<script>window.location.href='index.php'</script>";
+}
+else{
+    $produto = ProdutoDAL::buscaProduto($codProduto);
+    
+    var_dump($produto[0]->getDescProd());
+    
+  
+}
 ?>
 
 
@@ -53,7 +66,7 @@ include "superior.php";
                                 <div class="card ">
                                     <div class="card-body text-center">
                                         <h4 class="card-title">
-                                            Nome do produto
+                                            <?php echo $produto[0]->getDescProd();?>
 
                                         </h4>
                                         <p class="card-text goToDescription"><a href="#details" class="scroll-to">Role para detalhes do produto, material e cuidado e dimensionamento</a>
@@ -97,10 +110,10 @@ include "superior.php";
                     </div>
 
 
-                    <div class="card">
+                    <div class="card container">
                         <p>
                             <h4>Detalhes do produto</h4>
-                            <p>Top de renda branca, tecido, tem um pescoço redondo, mangas curtas, tem forro de malha anexado</p>
+                            <p><?php echo $produto[0]->getDescCompletaProd();?></p>
                             <h4>Material e cuidados</h4>
                             <ul>
                                 <li>Poliéster</li>

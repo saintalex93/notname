@@ -11,11 +11,11 @@ class Produto
 
     private $statusProd;
 
-    private $idMarca;
-
     private $idCateg;
 
     private $descCateg;
+    
+    private $modelo;
 
     public function getIdProd()
     {
@@ -55,16 +55,6 @@ class Produto
     public function setStatusProd($statusProd)
     {
         $this->statusProd = $statusProd;
-    }
-
-    public function getIdMarca()
-    {
-        return $this->idMarca;
-    }
-
-    public function setIdMarca($idMarca)
-    {
-        $this->idMarca = $idMarca;
     }
 
     public function getIdModelo()
