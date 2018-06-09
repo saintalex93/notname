@@ -11,12 +11,11 @@ else{
     $produto = ProdutoDAL::buscaProduto($codProduto);
     
 }
-var_dump($produto);
-foreach ($produto as $fPro) {
 
-// var_dump($fPro);
 
-}
+
+$modelo = $produto[0]->getModelo();
+print_r($modelo[0]->getIdModelo());
 
 ?>
 
@@ -65,8 +64,8 @@ foreach ($produto as $fPro) {
                                 </p>
                                 <p class="price">$124.00</p>
                                 <p class="buttons">
-                                    <a href="" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add ao carrinho</a>
-                                    <a href="" class="btn btn-default"><i class="fa fa-heart"></i> Add a lista de desejo</a>
+                                    <a href="" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Adicionar ao Carrinho</a>
+<!--                                     <a href="" class="btn btn-default"><i class="fa fa-heart"></i> Add a lista de desejo</a> -->
                                 </p>
 
 

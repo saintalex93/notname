@@ -94,8 +94,8 @@ class ProdutoDAL
             
             $csql = 
             " 
-SELECT MODELO_cNOME, MODELO_nVLR_VENDA, MODELO_nSTATUS, MODELO_nDESCONTO, MODELO_nQTD_ESTOQUE,
- COR_nID, TAMANHO_nID, MODELO.PRODUTO_nID FROM MODELO
+SELECT MODELO_cNOME, MODELO_nID, MODELO_nVLR_VENDA, MODELO_nSTATUS, MODELO_nDESCONTO, MODELO_nQTD_ESTOQUE,
+ COR_nID, TAMANHO_nID, MODELO.PRODUTO_nID, fn_buscaDescTamanho(TAMANHO_nID) as descTamanho, fn_buscaDescCor(COR_nID) as descCor FROM MODELO
         INNER JOIN PRODUTO ON PRODUTO.PRODUTO_nID = MODELO.PRODUTO_nID
              WHERE PRODUTO_cSTATUS LIKE 'Ativo' and MODELO_nSTATUS like 'Ativo' and 
                MODELO_nQTD_ESTOQUE > 0 and PRODUTO.PRODUTO_nID =$id";
@@ -109,6 +109,7 @@ SELECT MODELO_cNOME, MODELO_nVLR_VENDA, MODELO_nSTATUS, MODELO_nDESCONTO, MODELO
          
         foreach ($resultadosMod as $rsM){
             $modelo = new Modelo();
+            $modelo->setIdModelo($rsM['MODELO_nID']);
             $modelo->setNomeModelo($rsM['MODELO_cNOME']);
             $modelo->setVlrVendaModelo($rsM['MODELO_nVLR_VENDA']);
             $modelo->setStatusModelo($rsM['MODELO_nSTATUS']);
@@ -117,6 +118,8 @@ SELECT MODELO_cNOME, MODELO_nVLR_VENDA, MODELO_nSTATUS, MODELO_nDESCONTO, MODELO
             $modelo->setCormodelo($rsM['COR_nID']);
             $modelo->setTamanhoModelo($rsM['TAMANHO_nID']);
             $modelo->setProdutoIdModelo($rsM['PRODUTO_nID']);
+            $modelo->setDescCor($rsM['descCor']);
+            $modelo->setDescTamanho($rsM['descTamanho']);
            
             $resultProduto->setModelo($modelo);
             
