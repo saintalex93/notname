@@ -42,9 +42,6 @@
 }
 
 
-
-
-
 .modal-title{
     color: black;
 }
@@ -293,6 +290,18 @@ ul li {
 
 .cor.yellow {
   background: yellow; }
+
+
+a .corProd{
+  display: inline-block;
+  border: solid 1px #555555;
+    width: 30px;
+  height: 30px;
+  content: " ";
+}
+
+
+
 
 /* pagination */
 .paginacao {

@@ -12,10 +12,41 @@ else{
     
 }
 
-
-
 $modelo = $produto[0]->getModelo();
-print_r($modelo[0]->getIdModelo());
+
+$arrModelo = array();
+
+echo "<pre>";
+
+
+
+// print_r($modelo[0]->getIdModelo());
+
+
+
+
+// echo $modelo[array_search(2, array_column($modelo, ))];
+
+print_r($modelo[array_search(2, array_column($modelo, 'ID'))]->getIdModelo());
+
+
+
+// foreach ($modelo as $m) {
+
+
+
+//     if ($m->getIdModelo() == $_REQUEST['md']) {
+
+//         $arrModelo[] = array("ID" => $m->getIdModelo(), "NOME_MODELO" => $m->getNomeModelo(), "VALOR_MODELO" => $m->getVlrVendaModelo(), "ID_COR" => $m->getCormodelo(), "DESC_COR" => $m->getDescCor(), "ID_TAMANHO" => $m->getDescTamanho());
+//     }
+
+//     $arrModelo[] = array("ID" => $m->getIdModelo(), "NOME_MODELO" => $m->getNomeModelo(), "VALOR_MODELO" => $m->getVlrVendaModelo(), "ID_COR" => $m->getCormodelo(), "DESC_COR" => $m->getDescCor(), "ID_TAMANHO" => $m->getDescTamanho());
+
+
+// }
+
+// echo "<pre>";
+// print_r($arrModelo);
 
 ?>
 
@@ -65,7 +96,7 @@ print_r($modelo[0]->getIdModelo());
                                 <p class="price">$124.00</p>
                                 <p class="buttons">
                                     <a href="" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Adicionar ao Carrinho</a>
-<!--                                     <a href="" class="btn btn-default"><i class="fa fa-heart"></i> Add a lista de desejo</a> -->
+                                    <!--                                     <a href="" class="btn btn-default"><i class="fa fa-heart"></i> Add a lista de desejo</a> -->
                                 </p>
 
 
@@ -93,6 +124,39 @@ print_r($modelo[0]->getIdModelo());
 
                             </div>
                         </div>
+
+                    </div>
+
+                    <div class="row mt-2">
+
+                        <h3 class="text-center">Cores e Tamanhos</h3>
+
+                        <div class="container border col-md-6 text-center pb-0">
+
+                            <a href=""><span class="corProd bg-danger"></span></a>
+
+                            <a href=""><span class="corProd bg-danger"></span></a>
+
+                            <a href=""><span class="corProd bg-danger"></span></a>
+
+                            <a href=""><span class="corProd bg-danger"></span></a>
+
+
+                        </div>
+
+                        <div class="container border col-md-6 text-center pb-0">
+
+                            <a href=""><span class="corProd">P</span></a>
+
+                            <a href=""><span class="corProd">P</span></a>
+
+                            <a href=""><span class="corProd">P</span></a>
+
+                            <a href=""><span class="corProd">P</span></a>
+
+
+                        </div>
+
 
                     </div>
 
@@ -261,3 +325,4 @@ print_r($modelo[0]->getIdModelo());
 </div>
 
 <?php include_once "inferior.php";?>
+
