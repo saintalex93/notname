@@ -10,10 +10,14 @@ if(!isset($_REQUEST['id'])){
 else{
     $produto = ProdutoDAL::buscaProduto($codProduto);
     
-    var_dump($produto[0]->getDescProd());
-    
+}
+var_dump($produto);
+foreach ($produto as $fPro) {
+
+// var_dump($fPro);
 
 }
+
 ?>
 
 <div id="content">

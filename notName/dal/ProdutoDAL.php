@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../model/Produto.php';
+require_once __DIR__ . '/../model/Modelo.php';
 require_once __DIR__ . '/../library/Conexao.class.php';
 
 class ProdutoDAL
@@ -70,10 +71,8 @@ class ProdutoDAL
             
 //             $id = $prod->getIdProd();
             
-            $sql = "SELECT * FROM PRODUTO
-                       INNER JOIN MODELO ON PRODUTO.PRODUTO_nID = MODELO.PRODUTO_nID
-                         WHERE PRODUTO_cSTATUS LIKE 'Ativo' and MODELO_nSTATUS like 'Ativo' and 
-                            MODELO_nQTD_ESTOQUE > 0 and PRODUTO.PRODUTO_nID = $id";
+            $sql = " SELECT * FROM PRODUTO
+ WHERE PRODUTO_cSTATUS LIKE 'Ativo' and PRODUTO_nID = $id";
         } else {
             $sql = "SELECT * FROM PRODUTO";
         }
@@ -93,6 +92,37 @@ class ProdutoDAL
             $resultProduto->setDescCompletaProd($resultado['PRODUTO_cDESCCOMPLETA']);
             $resultProduto->setStatusProd($resultado['PRODUTO_cSTATUS']);
             
+            $csql = 
+            " 
+SELECT MODELO_cNOME, MODELO_nVLR_VENDA, MODELO_nSTATUS, MODELO_nDESCONTO, MODELO_nQTD_ESTOQUE,
+ COR_nID, TAMANHO_nID, MODELO.PRODUTO_nID FROM MODELO
+        INNER JOIN PRODUTO ON PRODUTO.PRODUTO_nID = MODELO.PRODUTO_nID
+             WHERE PRODUTO_cSTATUS LIKE 'Ativo' and MODELO_nSTATUS like 'Ativo' and 
+               MODELO_nQTD_ESTOQUE > 0 and PRODUTO.PRODUTO_nID =$id";
+            
+           
+            
+            ProdutoDAL::$connection->executarSQL($csql);
+        
+        $resultadosMod = ProdutoDAL::$connection->getResultados();
+        
+         
+        foreach ($resultadosMod as $rsM){
+            $modelo = new Modelo();
+            $modelo->setNomeModelo($rsM['MODELO_cNOME']);
+            $modelo->setVlrVendaModelo($rsM['MODELO_nVLR_VENDA']);
+            $modelo->setStatusModelo($rsM['MODELO_nSTATUS']);
+            $modelo->setDescProduto($rsM['MODELO_nDESCONTO']);
+            $modelo->setQtdEstoqueModelo($rsM['MODELO_nQTD_ESTOQUE']);
+            $modelo->setCormodelo($rsM['COR_nID']);
+            $modelo->setTamanhoModelo($rsM['TAMANHO_nID']);
+            $modelo->setProdutoIdModelo($rsM['PRODUTO_nID']);
+           
+            $resultProduto->setModelo($modelo);
+            
+           
+        }
+            
             $arrayProd[] = $resultProduto;
         }
         
@@ -100,15 +130,15 @@ class ProdutoDAL
     }
 
     public static function deletaProduto(Produto $prod): string
-    {
-        ProdutoDAL::connect();
-        $idProd = $prod->getIdProd();
-        $sql = "DELETE FROM PRODUTO WHERE PRODUTO_nID = $idProd";
-        
-        try {
-            ProdutoDAL::$connection->executarSQL($sql);
-        } catch (Exception $e) {
-            echo $e;
-        }
+{
+    ProdutoDAL::connect();
+    $idProd = $prod->getIdProd();
+    $sql = "DELETE FROM PRODUTO WHERE PRODUTO_nID = $idProd";
+    
+    try {
+        ProdutoDAL::$connection->executarSQL($sql);
+    } catch (Exception $e) {
+        echo $e;
     }
+}
 }
