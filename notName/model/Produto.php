@@ -15,7 +15,17 @@ class Produto
 
     private $descCateg;
     
-    private $modelo;
+    private $modelo = array();
+
+    public function getModelo()
+    {
+        return $this->modelo;
+    }
+
+    public function setModelo($modelo)
+    {
+        $this->modelo[] = $modelo;
+    }
 
     public function getIdProd()
     {

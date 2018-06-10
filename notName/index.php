@@ -163,7 +163,7 @@ $modelo = ModeloDAL::buscaModeloIndex();
             $desconto = 'R$' . number_format($desconto, 2, ',', '.');
             echo "
                 <p class='card-text price'><del>$valor</del> $desconto</p>
-                <a class='card-link' href='produto.php?id={$md->getProdutoIdModelo()}'>ver mais detalhes</a>
+                <a class='card-link' href='produto.php?id={$md->getProdutoIdModelo()}&md={$md->getIdModelo()}'>ver mais detalhes</a>
             </div>
 
             <div class='fitaTagProduto novo'>
@@ -182,7 +182,7 @@ $modelo = ModeloDAL::buscaModeloIndex();
             $valor = 'R$' . number_format($md->getVlrVendaModelo(), 2, ',', '.');
             echo "
                 <p class='card-text price'>$valor</p>
-          <a class='card-link' href='produto.php?id={$md->getProdutoIdModelo()}'>ver mais detalhes</a>
+          <a class='card-link' href='produto.php?id={$md->getProdutoIdModelo()}&md={$md->getIdModelo()}'>ver mais detalhes</a>
 
             </div>
 
