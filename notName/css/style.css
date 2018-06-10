@@ -292,7 +292,7 @@ ul li {
   background: yellow; }
 
 
-a .corProd{
+.corProd{
   display: inline-block;
   border: solid 1px #555555;
     width: 30px;

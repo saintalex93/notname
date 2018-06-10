@@ -95,7 +95,7 @@ class ProdutoDAL
             $csql = 
             " 
 SELECT MODELO_cNOME, MODELO_nID, MODELO_nVLR_VENDA, MODELO_nSTATUS, MODELO_nDESCONTO, MODELO_nQTD_ESTOQUE,
- COR_nID, TAMANHO_nID, MODELO.PRODUTO_nID, fn_buscaDescTamanho(TAMANHO_nID) as descTamanho, fn_buscaDescCor(COR_nID) as descCor FROM MODELO
+ COR_nID, TAMANHO_nID, MODELO.PRODUTO_nID, fn_buscaDescTamanho(TAMANHO_nID) as descTamanho, fn_buscaDescCor(COR_nID) as descCor, fn_buscaHexCor(COR_nID) as hexCor FROM MODELO
         INNER JOIN PRODUTO ON PRODUTO.PRODUTO_nID = MODELO.PRODUTO_nID
              WHERE PRODUTO_cSTATUS LIKE 'Ativo' and MODELO_nSTATUS like 'Ativo' and 
                MODELO_nQTD_ESTOQUE > 0 and PRODUTO.PRODUTO_nID =$id";
@@ -120,6 +120,8 @@ SELECT MODELO_cNOME, MODELO_nID, MODELO_nVLR_VENDA, MODELO_nSTATUS, MODELO_nDESC
             $modelo->setProdutoIdModelo($rsM['PRODUTO_nID']);
             $modelo->setDescCor($rsM['descCor']);
             $modelo->setDescTamanho($rsM['descTamanho']);
+            $modelo->setHexCor($rsM['hexCor']);
+            
            
             $resultProduto->setModelo($modelo);
             
