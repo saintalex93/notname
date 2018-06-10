@@ -9,25 +9,53 @@ include 'header.php';
 				
 				<h3 class="box-title">Usuarios</h3>
 				<form action="#" method="POST" enctype="multipart/form-data"
-				id="formProduto">
+				id="formUsrSys">
 				<div class="row p-t-20">
 					<div class="col-md-6">
 						<div class="form-group">
 							<label class="control-label">Nome do usuario</label> <input
 							type="text" id="txtNomeUsr" class="form-control"
-							placeholder="Usuario"
+							placeholder="Nome"
 							name="txtNomeUsr"> <small
 							class="form-control-feedback text-danger"> Insira um nome de usuario</small>
 					</div>
 				</div>
 				<!--/span-->
-				<div class="col-md-4">
+				<div class="col-md-6">
+					<div class="form-group has-danger">
+						<label class="control-label">Email</label>
+						<input type="email" id="txtEmail" class="form-control"
+							placeholder="Email"
+							name="txtEmail">
+						<small class="form-control-feedback text-danger">Insira o email do usuario do sistema</small>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group has-danger">
+						<label class="control-label">Login</label>
+						<input type="text" id="txtLogin" class="form-control"
+							placeholder="Login"
+							name="txtLogin">
+						<small class="form-control-feedback text-danger">Insira seu usuario de acesso ao sistema</small>
+					</div>
+				</div>
+				<div class="col-md-6">
 					<div class="form-group has-danger">
 						<label class="control-label">Senha</label>
 						<input type="password" id="txtSenhaUsr" class="form-control"
 							placeholder="Senha"
 							name="txtSenhaUsr">
 						<small class="form-control-feedback text-danger">Insira uma senha com 6 caracteres no minimo</small>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group has-danger">
+						<label class="control-label">Senha</label>
+						<select name="permissao" id="permissao" class="form-control">
+							<option value="0">Selecione uma permissao</option>
+							<option value="adm">Administrador</option>
+						</select>
+						<small class="form-control-feedback text-danger">Selecione a permissao do usuario</small>
 					</div>
 				</div>
 				<!--/span-->
@@ -60,7 +88,7 @@ include 'header.php';
 
 		<div class="form-actions text-center">
 			<button type="button" class="btn btn-success"
-			id="btnCadastroProduto">
+			id="btnCadastroUsr">
 			<i class="fa fa-check"></i> Cadastrar
 		</button>
 		<button type="button" class="btn btn-inverse">
@@ -107,3 +135,4 @@ include 'header.php';
 
 
 <?php include_once 'footer.php';?>
+<script src="./js/CadastraUsrSys.js"></script>
