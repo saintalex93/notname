@@ -87,8 +87,72 @@
                             <h4 class="card-title">Produto 6</h4>
                             <p class="card-text">R$111,00</p>
                             <p class="buttons">
-                                <a href="" class="btn btn-default">Ver detalhes</a>
-                                <a href="" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add no carrinho</a>
+                                <a href="produto.php" class="btn btn-default">Ver detalhes</a>
+                                <a href="carrinho.php" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add no carrinho</a>
+                            </p>
+                            <div class="fitaTagProduto promocaoTag">
+                                <div class="fitaTag">Promoção</div>
+                                <div class="fitaTagProduto-background"></div>
+                            </div>
+                            <div class="fitaTagProduto novo">
+                                <div class="fitaTag">Novo</div>
+                                <div class="fitaTagProduto-background"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                     <div class="col-sm-12 col-md-4 mb-3 text-center">
+                        <div class="card card-container ">
+                            <div class="card-flip">
+                                <div class="card front">
+                                    <div class="card-block">
+                                        <img class="card-img-top" src="img/Produtos/Produto1.jpg" alt="Foto da Capa do Modelo">
+                                    </div>
+                                </div>
+                                <div class="card back">
+                                    <div class="card-block">
+                                        <img class="card-img-top " src="img/Produtos/Produto2.jpg" alt="Foto do Modelo">
+                                    </div>
+                                </div>
+                            </div>
+                            <h4 class="card-title">Produto 6</h4>
+                            <p class="card-text">R$111,00</p>
+                           <p class="buttons">
+                                <a href="produto.php" class="btn btn-default">Ver detalhes</a>
+                                <a href="carrinho.php" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add no carrinho</a>
+                            </p>
+                            <div class="fitaTagProduto promocaoTag">
+                                <div class="fitaTag">Promoção</div>
+                                <div class="fitaTagProduto-background"></div>
+                            </div>
+                            <div class="fitaTagProduto novo">
+                                <div class="fitaTag">Novo</div>
+                                <div class="fitaTagProduto-background"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                     <div class="col-sm-12 col-md-4 mb-3 text-center">
+                        <div class="card card-container ">
+                            <div class="card-flip">
+                                <div class="card front">
+                                    <div class="card-block">
+                                        <img class="card-img-top" src="img/Produtos/Produto1.jpg" alt="Foto da Capa do Modelo">
+                                    </div>
+                                </div>
+                                <div class="card back">
+                                    <div class="card-block">
+                                        <img class="card-img-top " src="img/Produtos/Produto2.jpg" alt="Foto do Modelo">
+                                    </div>
+                                </div>
+                            </div>
+                            <h4 class="card-title">Produto 6</h4>
+                            <p class="card-text">R$111,00</p>
+                           <p class="buttons">
+                                <a href="produto.php" class="btn btn-default">Ver detalhes</a>
+                                <a href="carrinho.php" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add no carrinho</a>
                             </p>
                             <div class="fitaTagProduto promocaoTag">
                                 <div class="fitaTag">Promoção</div>
@@ -119,8 +183,8 @@
                             <h4 class="card-title">Produto 6</h4>
                             <p class="card-text">R$111,00</p>
                             <p class="buttons">
-                                <a href="" class="btn btn-default">Ver detalhes</a>
-                                <a href="" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add no carrinho</a>
+                                <a href="produto.php" class="btn btn-default">Ver detalhes</a>
+                                <a href="carrinho.php" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add no carrinho</a>
                             </p>
                             <div class="fitaTagProduto promocaoTag">
                                 <div class="fitaTag">Promoção</div>
@@ -151,8 +215,8 @@
                             <h4 class="card-title">Produto 6</h4>
                             <p class="card-text">R$111,00</p>
                             <p class="buttons">
-                                <a href="" class="btn btn-default">Ver detalhes</a>
-                                <a href="" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add no carrinho</a>
+                                <a href="produto.php" class="btn btn-default">Ver detalhes</a>
+                                <a href="carrinho.php" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add no carrinho</a>
                             </p>
                             <div class="fitaTagProduto promocaoTag">
                                 <div class="fitaTag">Promoção</div>
@@ -183,72 +247,8 @@
                             <h4 class="card-title">Produto 6</h4>
                             <p class="card-text">R$111,00</p>
                             <p class="buttons">
-                                <a href="" class="btn btn-default">Ver detalhes</a>
-                                <a href="" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add no carrinho</a>
-                            </p>
-                            <div class="fitaTagProduto promocaoTag">
-                                <div class="fitaTag">Promoção</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
-                            <div class="fitaTagProduto novo">
-                                <div class="fitaTag">Novo</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                     <div class="col-sm-12 col-md-4 mb-3 text-center">
-                        <div class="card card-container ">
-                            <div class="card-flip">
-                                <div class="card front">
-                                    <div class="card-block">
-                                        <img class="card-img-top" src="img/Produtos/Produto1.jpg" alt="Foto da Capa do Modelo">
-                                    </div>
-                                </div>
-                                <div class="card back">
-                                    <div class="card-block">
-                                        <img class="card-img-top " src="img/Produtos/Produto2.jpg" alt="Foto do Modelo">
-                                    </div>
-                                </div>
-                            </div>
-                            <h4 class="card-title">Produto 6</h4>
-                            <p class="card-text">R$111,00</p>
-                            <p class="buttons">
-                                <a href="" class="btn btn-default">Ver detalhes</a>
-                                <a href="" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add no carrinho</a>
-                            </p>
-                            <div class="fitaTagProduto promocaoTag">
-                                <div class="fitaTag">Promoção</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
-                            <div class="fitaTagProduto novo">
-                                <div class="fitaTag">Novo</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                     <div class="col-sm-12 col-md-4 mb-3 text-center">
-                        <div class="card card-container ">
-                            <div class="card-flip">
-                                <div class="card front">
-                                    <div class="card-block">
-                                        <img class="card-img-top" src="img/Produtos/Produto1.jpg" alt="Foto da Capa do Modelo">
-                                    </div>
-                                </div>
-                                <div class="card back">
-                                    <div class="card-block">
-                                        <img class="card-img-top " src="img/Produtos/Produto2.jpg" alt="Foto do Modelo">
-                                    </div>
-                                </div>
-                            </div>
-                            <h4 class="card-title">Produto 6</h4>
-                            <p class="card-text">R$111,00</p>
-                            <p class="buttons">
-                                <a href="" class="btn btn-default">Ver detalhes</a>
-                                <a href="" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add no carrinho</a>
+                                <a href="produto.php" class="btn btn-default">Ver detalhes</a>
+                                <a href="carrinho.php" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add no carrinho</a>
                             </p>
                             <div class="fitaTagProduto promocaoTag">
                                 <div class="fitaTag">Promoção</div>
