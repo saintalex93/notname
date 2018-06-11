@@ -25,7 +25,7 @@
 
                 <div class="card ">
 
-                    <form method="post" action="checkout1.php" class="mx-3">
+                    <form method="post" action="#" class="mx-3">
 
                         <h1 class="">Carrinho de compras</h1>
                         <p>Você tem atualmente 3 item (s) no seu carrinho.</p>
@@ -43,7 +43,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <a href="#">
+                                            <a href="produto.php">
                                                     <img class="imgPequena" src="assets/produtos/frenteProduto1.jpg" alt="">
                                                 </a>
                                         </td>
@@ -60,11 +60,11 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <a href="#">
+                                            <a href="produto.php">
                                                     <img class="imgPequena" src="assets/produtos/versoProduto2.jpg" alt="Black Blouse Armani">
                                                 </a>
                                         </td>
-                                        <td><a href="#">Produto 2</a>
+                                        <td><a href="produto.php">Produto 2</a>
                                         </td>
                                         <td>
                                             <input type="number" value="1" class="form-control">
@@ -119,45 +119,96 @@
                     </div>
 
 
-                    <div class="col-md-3 col-sm-6">
-                        <div class="card">
-                            <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="">
+                     <div class='col-md-3 col-sm-6 mb-3 card-container'>
+                        <div class='card'>
+                            <a href="produto.php">
+                            <div class='card-flip imgP'>
+                                <div class='card front'>
+                                    <div class='card-block'>
+                                        <img class='card-img-top' src='img/Produtos/Produto1.jpg' alt='Foto da Capa do Modelo'>
+                                    </div>
+                                </div>
+                                <div class='card back'>
+                                    <div class='card-block'>
+                                        <img class='card-img-top ' src='img/Produtos/Produto2.jpg' alt='Foto do Modelo'>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
                             <div class="card-body text-center">
-                                <h4 class="card-title">
-                                    Produto 6
-
-                                </h4>
-                                <p class="card-text">R$111,00</p>
-
+                                <h4 class="card-title">Amarola</h4>
+                                <p class="card-text price"><del>R$200</del> R$199,99</p>
+                            </div>
+                            <div class="fitaTagProduto novo">
+                                <div class="fitaTag">Novo</div>
+                                <div class="fitaTagProduto-background"></div>
+                            </div>
+                            <div class="fitaTagProduto promocaoTag">
+                                <div class="fitaTag">Promoção</div>
+                                <div class="fitaTagProduto-background"></div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-3 col-sm-6">
-                        <div class="card">
-                            <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="">
+                    <div class='col-md-3 col-sm-6 mb-3 card-container'>
+                        <div class='card'>
+                            <a href="produto.php">
+                            <div class='card-flip imgP'>
+                                <div class='card front'>
+                                    <div class='card-block'>
+                                        <img class='card-img-top' src='img/Produtos/Produto1.jpg' alt='Foto da Capa do Modelo'>
+                                    </div>
+                                </div>
+                                <div class='card back'>
+                                    <div class='card-block'>
+                                        <img class='card-img-top ' src='img/Produtos/Produto2.jpg' alt='Foto do Modelo'>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
                             <div class="card-body text-center">
-                                <h4 class="card-title">
-                                    Produto 6
-
-                                </h4>
-                                <p class="card-text">R$111,00</p>
-
+                                <h4 class="card-title">Amarola</h4>
+                                <p class="card-text price"><del>R$200</del> R$199,99</p>
+                            </div>
+                            <div class="fitaTagProduto novo">
+                                <div class="fitaTag">Novo</div>
+                                <div class="fitaTagProduto-background"></div>
+                            </div>
+                            <div class="fitaTagProduto promocaoTag">
+                                <div class="fitaTag">Promoção</div>
+                                <div class="fitaTagProduto-background"></div>
                             </div>
                         </div>
                     </div>
 
 
-                    <div class="col-md-3 col-sm-6">
-                        <div class="card">
-                            <img class="card-img-top" src="assets/produtos/frenteProduto1.jpg" alt="">
+                     <div class='col-md-3 col-sm-6 mb-3 card-container'>
+                        <div class='card'>
+                            <a href="produto.php">
+                            <div class='card-flip imgP'>
+                                <div class='card front'>
+                                    <div class='card-block'>
+                                        <img class='card-img-top' src='img/Produtos/Produto1.jpg' alt='Foto da Capa do Modelo'>
+                                    </div>
+                                </div>
+                                <div class='card back'>
+                                    <div class='card-block'>
+                                        <img class='card-img-top ' src='img/Produtos/Produto2.jpg' alt='Foto do Modelo'>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
                             <div class="card-body text-center">
-                                <h4 class="card-title">
-                                    Produto 6
-
-                                </h4>
-                                <p class="card-text">R$111,00</p>
-
+                                <h4 class="card-title">Amarola</h4>
+                                <p class="card-text price"><del>R$200</del> R$199,99</p>
+                            </div>
+                            <div class="fitaTagProduto novo">
+                                <div class="fitaTag">Novo</div>
+                                <div class="fitaTagProduto-background"></div>
+                            </div>
+                            <div class="fitaTagProduto promocaoTag">
+                                <div class="fitaTag">Promoção</div>
+                                <div class="fitaTagProduto-background"></div>
                             </div>
                         </div>
                     </div>
