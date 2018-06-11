@@ -227,3 +227,7 @@ DESC MODELO;
     
     desc VENDA_PRODUTO;
     
+    SELECT *, IF(USR_cSTATUS = 1,REPLACE( USR_cSTATUS,1,'Ativo'),REPLACE( USR_cSTATUS,0,'Inativo')) as USR_cSTATUS FROM USUARIO;
+    
+    
+    

@@ -13,22 +13,41 @@ $senhaUsr = $_POST['txtSenhaUsr'];
 
 $permissaoUsr = $_POST['permissao'];
 
-$usr = new UsuarioSys();
-
-$usr->setNomeUsr($nomeUsr);
-$usr->setEmail($emailUsr);
-$usr->setLoginUsr($loginUsr);
-$usr->setSenhaUsr($senhaUsr);
-$usr->setPermissionUsr($permissaoUsr);
-$usr->setStatusUsr($statusUsr);
-
-$insere = UsuarioSysDAL::insereUsuario($usr);
-
-if($insere){
+$id = $_POST['id'];
+if ($_POST['action'] == 'insere') {
+    $usr = new UsuarioSys();
     
-    echo json_encode('Inserido com sucesso');
-}
-else
+    $usr->setNomeUsr($nomeUsr);
+    $usr->setEmail($emailUsr);
+    $usr->setLoginUsr($loginUsr);
+    $usr->setSenhaUsr($senhaUsr);
+    $usr->setPermissionUsr($permissaoUsr);
+    $usr->setStatusUsr($statusUsr);
+    
+    $insere = UsuarioSysDAL::insereUsuario($usr);
+    
+    if ($insere) {
+        
+        echo json_encode('Inserido com sucesso');
+    } else {
+        echo json_encode('Erro ao cadastrar');
+    }
+}else if ($_POST['action'] == 'altera'){
+    
+    $usr = new UsuarioSys();
+    
+    $usr->setNomeUsr($nomeUsr);
+    $usr->setEmail($emailUsr);
+    $usr->setLoginUsr($loginUsr);
+    $usr->setSenhaUsr($senhaUsr);
+    $usr->setPermissionUsr($permissaoUsr);
+    $usr->setStatusUsr($statusUsr);
+    
+    $altera = UsuarioSysDAL::alteraUsuarioSys($id)
+        
+    
+        
+}else 
 {
-    echo json_encode('Erro ao cadastrar');
+    return json_encode('Erro na execução');
 }

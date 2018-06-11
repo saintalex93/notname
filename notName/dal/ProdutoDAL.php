@@ -26,11 +26,12 @@ class ProdutoDAL extends Modelo
         $descProd = $prod->getDescProd();
         $descComp = $prod->getDescCompletaProd();
         $prodStatus = $prod->getStatusProd();
+        $material = $prod->getMaterial();
         
         $categID = $prod->getIdCateg();
         
-        $sql = "INSERT INTO PRODUTO (PRODUTO_cDESC, PRODUTO_cDESCCOMPLETA, PRODUTO_cSTATUS)
-        VALUES ('$descProd','$descComp','$prodStatus')";
+        $sql = "INSERT INTO PRODUTO (PRODUTO_cDESC, PRODUTO_cDESCCOMPLETA, PRODUTO_cSTATUS,PRODUTO_tMATERIAL)
+        VALUES ('$descProd','$descComp','$prodStatus','$material')";
         
         if (ProdutoDAL::$connection->sqlNoTransact($sql)) {
             

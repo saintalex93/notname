@@ -16,6 +16,8 @@ class Produto
     private $descCateg;
     
     private $modelo = array();
+    
+    private $material;
 
     public function getModelo()
     {
@@ -95,5 +97,14 @@ class Produto
     public function setDescCateg($descCateg)
     {
         $this->descCateg = $descCateg;
+    }
+    public function getMaterial()
+    {
+        return $this->material;
+    }
+    
+    public function setMaterial($material)
+    {
+        $this->material = $material;
     }
 }
