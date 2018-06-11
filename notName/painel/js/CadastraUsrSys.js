@@ -16,7 +16,19 @@ $("#btnCadastroUsr").click(function(event){
 			url: './../controller/controllerCadasUsrSys.php',
 			data: data,
 			success: function(response){
-				alert(response);
+
+				var resposta = JSON.parse(response)
+				if (resposta == 'Inserido com sucesso') {
+
+					alert(response);
+					$("#returnCadastroUsr").text("Cadastrado com sucesso");
+					$("#returnCadastroUsr").addClass("text-success");
+
+
+				}else
+				{
+
+				}
 			}
 		});
 	}	
