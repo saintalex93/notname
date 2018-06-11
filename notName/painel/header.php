@@ -60,10 +60,10 @@ $pageName = ucfirst(str_replace(".php", "", $url));
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
-           <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
-       </div>
-       <!-- Main wrapper  -->
-       <div id="main-wrapper">
+         <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+     </div>
+     <!-- Main wrapper  -->
+     <div id="main-wrapper">
         <!-- header header  -->
         <div class="header">
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
@@ -173,7 +173,6 @@ $pageName = ucfirst(str_replace(".php", "", $url));
                         <ul aria-expanded="false" class="collapse">
                             <li><a href="produto.php">Produtos</a></li>
                             <li><a href="categoria.php">Categorias</a></li>
-                            <li><a href="marca.php">Marcas</a></li>
                             <li><a href="modelo.php">Modelos</a></li>
                             <li><a href="#">Promoções</a></li>
                         </ul>
@@ -181,7 +180,12 @@ $pageName = ucfirst(str_replace(".php", "", $url));
 
                     <li class="nav-label">Gerenciamento</li>
                     
-                    <li> <a href="perfil.php" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Contas</span></a></li>
+                    <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Contas</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="conta.php">Contas</a></li>
+                           
+                        </ul>
+                    </li>
                     <li> <a href="perfil.php" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Compras</span></a></li>
                     <li> <a href="perfil.php" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Relatórios</span></a></li>
 
@@ -194,7 +198,7 @@ $pageName = ucfirst(str_replace(".php", "", $url));
                             <li><a href="uc-toastr.php">Toastr</a></li>
                         </ul>
                     </li>
-                   
+
                 </ul>
             </nav>
             <!-- End Sidebar navigation -->

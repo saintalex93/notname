@@ -14,8 +14,19 @@ class Modelo{
     private $descProduto;
     private $descCor;
     private $descTamanho;
+    private $hexCor;
     
-    
+    public function getHexCor()
+    {
+        return $this->hexCor;
+    }
+
+    public function setHexCor($hexCor)
+    {
+        $this->hexCor = $hexCor;
+    }
+
+
     public function getIdModelo()
     {
         return $this->idModelo;

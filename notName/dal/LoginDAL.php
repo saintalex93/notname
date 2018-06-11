@@ -29,5 +29,6 @@ class LoginDAL {
 
         return LoginDal::$connection->getResultados();
     }
-
+    
+   
 }

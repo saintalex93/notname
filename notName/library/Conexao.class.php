@@ -3,6 +3,8 @@
 class Database
 {
 
+    private $lastid = -1;
+    
     // Vari�vel de resultado do sql.
     private $resutado;
 
@@ -41,6 +43,7 @@ class Database
 
     public function executarSQL(string $sql)
     {
+        $this->lastid = -1;
         
         // Conecta no banco
         $this->conectar();
@@ -58,6 +61,9 @@ class Database
             
             // Executa a string sql.
             $this->resutado->execute();
+                
+            $this->lastid = $this->connection->lastInsertId();
+            
         } catch (Exception $e) {
             // Rollback � excutado em caso de erro.
             $this->connection->rollBack();
@@ -123,10 +129,10 @@ class Database
 
     public function returnID()
     {
-        $lastid = $this->connection->lastInsertId();
-        $this->fecharConexao();
+//         $lastid = $this->connection->lastInsertId();
+//         $this->fecharConexao();
         
-        return $lastid;
+        return $this->lastid;
     }
 }
    

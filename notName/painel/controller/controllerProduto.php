@@ -26,19 +26,7 @@ if ($_REQUEST['action'] == 'insereCategoria') {
     if (CategoriaDAL::insereCategoriaFilho($categoria)) {
         echo "Inserido";
     } else {
-        echo "N�o foi possivel inserir";
-    }
-} else if ($_REQUEST['action'] == 'insereMarca') {
-    
-    $marca = new Marca();
-    
-    $marca->setDescMarca($_REQUEST['txtMarca']);
-    $marca->setStatusMarca($_REQUEST['statusMarca']);
-    
-    if ($marcaDal = MarcaDAL::insereMarca($marca)) {
-        echo "Inserido";
-    } else {
-        echo "Não foi possível inserir";
+        echo "N�o foi possivel inserir";
     }
 }
 
