@@ -95,10 +95,10 @@ $id = $usr[0]->getIdUsr();
 
 				<div class="form-actions text-center">
 					<button type="button" class="btn btn-success" id="btnCadastroUsr" value="1">
-						<i class="fa fa-check"></i> Cadastrar
+						Cadastrar
 					</button>
-					<button type="button" class="btn btn-inverse">
-						<i class="fa fa-check"></i> CANCEL
+					<button type="button" class="btn btn-inverse" id="btnCancel">
+						Cancelar
 					</button>
 
 				</div>

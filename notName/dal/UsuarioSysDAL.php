@@ -67,12 +67,11 @@ class UsuarioSysDAL
         return $arrayUsr;
     }
 
-    public static function alteraUsuarioSys($id)
+    public static function alteraUsuarioSys(UsuarioSys $usr)
     {
-        UsuarioSysDAL::connect();
-        
-        $usr = new UsuarioSys();
-        
+        UsuarioSysDAL::connect();        
+              
+        $id = $usr->getIdUsr();
         $nome = $usr->getNomeUsr();
         $login = $usr->getLoginUsr();
         $senha = $usr->getSenhaUsr();
@@ -80,14 +79,7 @@ class UsuarioSysDAL
         $permissao = $usr->getPermissionUsr();
         $email = $usr->getEmail();
         
-        $sql = "UPDATE USUARIO SET 
-                USR_cSTATUS = '$statusUsr', 
-                USR_cLOGIN = '$login',
-                USR_cSENHA = '$senha', 
-                USR_cNOME = '$nome',
-                USR_EMAIL = '$email',
-                USR_nPERMISSAO='$permissao' 
-                WHERE USR_nCOD = $id";
+        $sql = "UPDATE USUARIO SET USR_cLOGIN = '$login', USR_cSENHA = '$senha', USR_cNOME = '$nome', USR_EMAIL = '$email', USR_nPERMISSAO='$permissao' WHERE USR_nCOD = $id";
         
         return UsuarioSysDAL::$connection->executarSQL($sql);
     }

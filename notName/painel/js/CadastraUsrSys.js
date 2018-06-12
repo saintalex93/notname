@@ -1,11 +1,13 @@
 $("#btnCadastroUsr").click(function(event){
+
+
 	if($("#btnCadastroUsr").val() == 1){
 		if ($("#txtNomeUsr").val() != '' 
 			&& $("#txtEmail").val() != '' 
 			&& $("#txtLogin").val() != '' 
 			&& $("#txtSenhaUsr").val() != ''
 			&& $("#permissao").val() != '' 
-			&& $("#statusUsuario").val() != '') 
+			) 
 		{
 
 			$("#returnCadastroUsr").text("");
@@ -19,8 +21,7 @@ $("#btnCadastroUsr").click(function(event){
 				data: data,
 				success: function(response){
 
-					var resposta = JSON.parse(response)
-					if (resposta == 'Inserido com sucesso') {
+					if (response == 'Inserido com sucesso') {
 
 						$("#returnCadastroUsr").text("Cadastrado com sucesso");
 						$("#returnCadastroUsr").addClass("text-success");
@@ -32,7 +33,6 @@ $("#btnCadastroUsr").click(function(event){
 							$("#txtLogin").val("");
 							$("#txtSenhaUsr").val("");
 							$("#permissao").val("");
-							$("#statusUsuario").val("");
 						},5000);
 
 					}else
@@ -47,7 +47,6 @@ $("#btnCadastroUsr").click(function(event){
 							$("#txtLogin").val("");
 							$("#txtSenhaUsr").val("");
 							$("#permissao").val("");
-							$("#statusUsuario").val("");
 						},5000);
 					}
 				}
@@ -62,26 +61,22 @@ $("#btnCadastroUsr").click(function(event){
 			&& $("#txtEmail").val() != '' 
 			&& $("#txtLogin").val() != '' 
 			&& $("#txtSenhaUsr").val() != ''
-			&& $("#permissao").val() != '' 
-			&& $("#statusUsuario").val() != '') 
+			&& $("#permissao").val() != '') 
 		{
 
 			$("#returnCadastroUsr").text("");
 			$("#returnCadastroUsr").css("display","block");
 
 			var data = $("#formUsrSys").serialize();
-
-			var id = $("#idUsr").val();
-			
 			$.ajax({
 
 				type: 'POST',
-				url: './../controller/controllerCadasUsrSys.php?action=altera&id='+id,
+				url: './../controller/controllerCadasUsrSys.php?action=altera',
 				data: data,
 				success: function(response){
+					alert(response);
 
-					var resposta = JSON.parse(response)
-					if (resposta == 'Alterado com sucesso') {
+					if (response == 'Alterado com sucesso') {
 
 						$("#returnCadastroUsr").text("Alterado com sucesso");
 						$("#returnCadastroUsr").addClass("text-success");
@@ -92,8 +87,7 @@ $("#btnCadastroUsr").click(function(event){
 							$("#txtEmail").val("");
 							$("#txtLogin").val("");
 							$("#txtSenhaUsr").val("");
-							$("#permissao").val("");
-							$("#statusUsuario").val("");
+							$("#permissao").val(0);
 						},5000);
 
 					}else
@@ -107,8 +101,7 @@ $("#btnCadastroUsr").click(function(event){
 							$("#txtEmail").val("");
 							$("#txtLogin").val("");
 							$("#txtSenhaUsr").val("");
-							$("#permissao").val("");
-							$("#statusUsuario").val("");
+							$("#permissao").val(0);
 						},5000);
 					}
 				}
@@ -121,4 +114,19 @@ $("#btnCadastroUsr").click(function(event){
 
 	}
 
+});
+
+$("#btnCancel").click(function(event){
+	$("#txtNomeUsr").val("");
+	$("#txtEmail").val("");
+	$("#txtLogin").val("");
+	$("#txtSenhaUsr").val("");
+	$("#permissao").val(0);
+	$("#txtNomeUsr").focus();
+
+	if($("#btnCadastroUsr").val() == 2){
+		$("#btnCadastroUsr").val(1);
+		$("#btnCadastroUsr").text('Cadastrar')
+	}
+	
 });

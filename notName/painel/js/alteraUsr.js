@@ -8,7 +8,6 @@ function alteraUsr(id){
 	$("#txtLogin").val($('tr#'+idRowUsr+' td:nth-child(3)').text());
 	$("#txtSenhaUsr").val($('tr#'+idRowUsr+' td:nth-child(4)').text());
 	$("#permissao").val($('tr#'+idRowUsr+' td:nth-child(6)').text());
-	$("#statusUsuario").val($('tr#'+idRowUsr+' td:nth-child(7)').text());
 
 
 	$("#btnCadastroUsr").text("Alterar");

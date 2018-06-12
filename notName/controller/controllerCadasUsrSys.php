@@ -13,9 +13,9 @@ $senhaUsr = $_POST['txtSenhaUsr'];
 
 $permissaoUsr = $_POST['permissao'];
 
-$id = $_POST['id'];
 
-if ($_POST['action'] == 'insere') {
+if ($_GET['action'] == 'insere') {
+    
     $usr = new UsuarioSys();
     
     $usr->setNomeUsr($nomeUsr);
@@ -29,12 +29,11 @@ if ($_POST['action'] == 'insere') {
     
     if ($insere) {
         
-        echo json_encode('Inserido com sucesso');
+        echo 'Inserido com sucesso';
     } else {
-        echo json_encode('Erro ao cadastrar');
+        echo 'Erro ao cadastrar';
     }
-} else if ($_POST['action'] == 'altera') {
-    
+} else if ($_GET['action'] == 'altera') {
     $usr = new UsuarioSys();
     
     $usr->setNomeUsr($nomeUsr);
@@ -42,16 +41,18 @@ if ($_POST['action'] == 'insere') {
     $usr->setLoginUsr($loginUsr);
     $usr->setSenhaUsr($senhaUsr);
     $usr->setPermissionUsr($permissaoUsr);
-    $usr->setStatusUsr($statusUsr);
+       
+    $usr->setIdUsr($_POST['idUsr']);
     
-    $altera = UsuarioSysDAL::alteraUsuarioSys($id);
-    if($altera){
-        echo json_encode("Alterado com sucesso");
-        
+    $altera = UsuarioSysDAL::alteraUsuarioSys($usr);
+    
+    
+    if($altera == true){
+    echo 'Alterado com sucesso';
     }
     else{
-        echo json_encode("Nao foi possivel alterar");
+    echo 'Nao foi possivel alterar';
     }
 } else {
-    echo json_encode('Erro na execu��o');
+    echo 'Erro na execu��o';
 }
