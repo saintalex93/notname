@@ -27,8 +27,9 @@ foreach ($modelo as $m) {
         "DESC_TAMANHO" => $m->getDescTamanho()
     );
 }
+$idModelo = $_REQUEST['md'];
 
-$indice_array = array_search($_REQUEST['md'], array_column($arrModelo, "ID"));
+$indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 
 ?>
 
@@ -131,7 +132,7 @@ $indice_array = array_search($_REQUEST['md'], array_column($arrModelo, "ID"));
                                 foreach ($arrModelo as $arM) {
                                     echo "
 
-                             <button class='btn btn-primary' style = 'background: $arM[HEX_COR]; color: $arM[HEX_COR]'>R</button>
+                             <button class='btn btn-primary desab$arM[ID]' style = 'background: $arM[HEX_COR]; color: $arM[HEX_COR]' onclick = \" location.href = 'produto.php?id=$codProduto&md=$arM[ID]' \">R</button>
 
 
                              ";
@@ -150,7 +151,7 @@ $indice_array = array_search($_REQUEST['md'], array_column($arrModelo, "ID"));
                                 foreach ($arrModelo as $arM) {
                                     echo "
 
-                             <button class = 'btn btn-secondary'>$arM[DESC_TAMANHO]</button>
+                             <button class = 'btn btn-secondary desab$arM[ID]' onclick = \" location.href = 'produto.php?id=$codProduto&md=$arM[ID]'\">$arM[DESC_TAMANHO]</button>
 
                              ";
                                 }
@@ -470,3 +471,18 @@ $indice_array = array_search($_REQUEST['md'], array_column($arrModelo, "ID"));
 </div>
 
 <?php include_once "inferior.php";?>
+
+
+
+<script>
+$(document).ready(){
+
+	alert("FODASE");
+	$(".desab<?php echo $idModelo?>").css('border', '5px solid red');
+}
+
+
+
+</script>
+
+
