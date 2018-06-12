@@ -2,6 +2,7 @@ function alteraUsr(id){
 
 	var idRowUsr = 'rowUsr'+id;
 
+	$("#idUsr").val($('tr#'+idRowUsr+' td:nth-child(1)').text());
 	$("#txtNomeUsr").val($('tr#'+idRowUsr+' td:nth-child(2)').text());
 	$("#txtEmail").val($('tr#'+idRowUsr+' td:nth-child(5)').text());
 	$("#txtLogin").val($('tr#'+idRowUsr+' td:nth-child(3)').text());

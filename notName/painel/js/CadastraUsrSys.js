@@ -12,7 +12,6 @@ $("#btnCadastroUsr").click(function(event){
 			$("#returnCadastroUsr").css("display","block");
 
 			var data = $("#formUsrSys").serialize();
-
 			$.ajax({
 
 				type: 'POST',
@@ -71,11 +70,13 @@ $("#btnCadastroUsr").click(function(event){
 			$("#returnCadastroUsr").css("display","block");
 
 			var data = $("#formUsrSys").serialize();
+
+			var id = $("#idUsr").val();
 			
 			$.ajax({
 
 				type: 'POST',
-				url: './../controller/controllerCadasUsrSys.php?action=altera',
+				url: './../controller/controllerCadasUsrSys.php?action=altera&id='+id,
 				data: data,
 				success: function(response){
 
