@@ -45,7 +45,17 @@ return nomeCategoria;
 end $$
 DELIMITER ;
 
-
+DELIMITER $$
+create function fn_buscaHexCor(idCor int)
+returns varchar(10)
+begin
+declare hexCor varchar(10);
+select COR_cHEX into hexCor
+from COR
+where COR_nID = idCor;
+return hexCor;
+end $$
+DELIMITER ;
 
 DELIMITER $$
 create function fn_buscaDescCor(idCor int)
