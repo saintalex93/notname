@@ -89,6 +89,9 @@ $("#btnCadastroUsr").click(function(event){
 							$("#txtSenhaUsr").val("");
 							$("#permissao").val(0);
 						},5000);
+						
+						$("#btnCadastroUsr").val(1);
+						$("#btnCadastroUsr").text("Cadastrar");
 
 					}else
 					{
@@ -102,6 +105,7 @@ $("#btnCadastroUsr").click(function(event){
 							$("#txtLogin").val("");
 							$("#txtSenhaUsr").val("");
 							$("#permissao").val(0);
+							
 						},5000);
 					}
 				}
