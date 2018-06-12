@@ -39,13 +39,9 @@ echo $url;
 <script src="js/lib/morris-chart/morris-init.js"></script>
 
 <script src="js/lib/calendar-2/moment.latest.min.js"></script>
-<!-- scripit init-->
 <script src="js/lib/calendar-2/semantic.ui.min.js"></script>
-<!-- scripit init-->
 <script src="js/lib/calendar-2/prism.min.js"></script>
-<!-- scripit init-->
 <script src="js/lib/calendar-2/pignose.calendar.min.js"></script>
-<!-- scripit init-->
 <script src="js/lib/calendar-2/pignose.init.js"></script>
 
 <script src="js/lib/owl-carousel/owl.carousel.min.js"></script>
@@ -54,19 +50,17 @@ echo $url;
 <!-- scripit init-->
 
 <script src="js/lib/sweetalert/sweetalert.min.js"></script>
-<!-- scripit init-->
 <script src="js/lib/sweetalert/sweetalert.init.js"></script>
 
 
 <script src="js/lib/toastr/toastr.min.js"></script>
-<!-- scripit init-->
 <script src="js/lib/toastr/toastr.init.js"></script>
 
 <script src="js/lib/html5-editor/wysihtml5-0.3.0.js"></script>
 <script src="js/lib/html5-editor/bootstrap-wysihtml5.js"></script>
 <script src="js/lib/html5-editor/wysihtml5-init.js"></script>
 
-<script src="js/lib/dropzone/dropzone.js"></script>
+<!-- <script src="js/lib/dropzone/dropzone.js"></script> -->
 
 
 
