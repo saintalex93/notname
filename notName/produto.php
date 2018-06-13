@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 548186f3fcd61543aebedbfaa23dd27b14647494
 <?php
 include "superior.php";
 include_once "dal/ProdutoDAL.php";
@@ -9,15 +5,9 @@ include_once "dal/ProdutoDAL.php";
 $codProduto = $_REQUEST['id'];
 
 if (! isset($_REQUEST['id'])) {
-<<<<<<< HEAD
 	echo "<script>window.location.href='index.php'</script>";
 } else {
 	$produto = ProdutoDAL::buscaProduto($codProduto);
-=======
-    echo "<script>window.location.href='index.php'</script>";
-} else {
-    $produto = ProdutoDAL::buscaProduto($codProduto);
->>>>>>> 548186f3fcd61543aebedbfaa23dd27b14647494
 }
 
 $modelo = $produto[0]->getModelo();
@@ -25,7 +15,6 @@ $modelo = $produto[0]->getModelo();
 $arrModelo = array();
 
 foreach ($modelo as $m) {
-<<<<<<< HEAD
 
 	$arrModelo[] = array(
 		"ID" => $m->getIdModelo(),
@@ -38,63 +27,11 @@ foreach ($modelo as $m) {
 		"DESC_TAMANHO" => $m->getDescTamanho(),
 		"DESC_TAMANHOCOMPLETO" => $m->getDescTamanhoCompleto()
 	);
-=======
-    
-    $arrModelo[] = array(
-        "ID" => $m->getIdModelo(),
-        "NOME_MODELO" => $m->getNomeModelo(),
-        "VALOR_MODELO" => $m->getVlrVendaModelo(),
-        "ID_COR" => $m->getCormodelo(),
-        "DESC_COR" => $m->getDescCor(),
-        "HEX_COR" => $m->getHexCor(),
-        "ID_TAMANHO" => $m->getTamanhoModelo(),
-        "DESC_TAMANHO" => $m->getDescTamanho()
-    );
->>>>>>> 548186f3fcd61543aebedbfaa23dd27b14647494
 }
 $idModelo = $_REQUEST['md'];
 
 $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 
-<<<<<<< HEAD
-=======
-=======
-<?php
-include "superior.php";
-include_once "dal/ProdutoDAL.php";
-
-$codProduto = $_REQUEST['id'];
-
-if (! isset($_REQUEST['id'])) {
-    echo "<script>window.location.href='index.php'</script>";
-} else {
-    $produto = ProdutoDAL::buscaProduto($codProduto);
-}
-
-$modelo = $produto[0]->getModelo();
-
-$arrModelo = array();
-
-foreach ($modelo as $m) {
-    
-    $arrModelo[] = array(
-        "ID" => $m->getIdModelo(),
-        "NOME_MODELO" => $m->getNomeModelo(),
-        "VALOR_MODELO" => $m->getVlrVendaModelo(),
-        "ID_COR" => $m->getCormodelo(),
-        "DESC_COR" => $m->getDescCor(),
-        "HEX_COR" => $m->getHexCor(),
-        "ID_TAMANHO" => $m->getTamanhoModelo(),
-        "DESC_TAMANHO" => $m->getDescTamanho(),
-        "DESC_TAMANHOCOMPLETO" => $m->getDescTamanhoCompleto()
-    );
-}
-$idModelo = $_REQUEST['md'];
-
-$indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
-
->>>>>>> d51f79d8eea341be23d342c2050fd805da1775b2
->>>>>>> 548186f3fcd61543aebedbfaa23dd27b14647494
 ?>
 
 <div id="content">
@@ -124,23 +61,14 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 
 				<div class="row " id="productMain">
 					<div class="col-md-6 col-sm-12">
-<<<<<<< HEAD
-						<div class="card">
+						<div class="card ajustesImagemProduto">
+							
 							<?php
 							echo "
 							<img class='card-img-top' src='img/Modelos/ModeloCapa_" . $arrModelo[$indice_array]['ID'] . ".jpg' alt=''>
 
 							";
 							?>
-=======
-						<div class="card ajustesImagemProduto">
-                            <?php
-                            echo "
-                        <img class='card-img-top' src='img/Modelos/ModeloCapa_" . $arrModelo[$indice_array]['ID'] . ".jpg' alt=''>
-
-                        ";
-                            ?>
->>>>>>> 548186f3fcd61543aebedbfaa23dd27b14647494
 
 						</div>
 					</div>
@@ -176,32 +104,16 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 
 								<?php
 
-<<<<<<< HEAD
 								for ($i = 1; $i < 4; $i ++) {
 									echo "
 									<div class='col-md-4 col-sm-6'>
-									<div class='card'>
-=======
-                            <?php
-                            
-                            for ($i = 1; $i < 4; $i ++) {
-                                echo "
-                            <div class='col-md-4 col-sm-6'>
-                            <div class='card imgProdutoPequena'>
->>>>>>> 548186f3fcd61543aebedbfaa23dd27b14647494
+									<div class='card imgProdutoPequena'>
 
 									<img class='card-img-top' src='img/Modelos/ModeloImg" . $arrModelo[$indice_array]['ID'] . "_" . $i . ".jpg' alt=''>
 
 									</div>
 									</div>
 
-<<<<<<< HEAD
-=======
-                            ";
-                            }
-                            
-                            ?>
->>>>>>> 548186f3fcd61543aebedbfaa23dd27b14647494
 
 									";
 								}
@@ -212,27 +124,13 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 
 							<div class="col-md-12 mt-3 text-center">
 
-<<<<<<< HEAD
 								<div class="card">
-=======
-                                <?php
-                                
-                                foreach ($arrModelo as $arM) {
-                                    echo "
->>>>>>> 548186f3fcd61543aebedbfaa23dd27b14647494
 
 
 									<div class="row p-2">
 									<h3 class="text-center col-md-12 text-secondary card-title">Cores e Tamanhos</h3>
 
-<<<<<<< HEAD
 										<div class="container col-md-6 text-center">
-=======
-                             ";
-                                }
-                                
-                                ?>
->>>>>>> 548186f3fcd61543aebedbfaa23dd27b14647494
 
 
 											<?php
@@ -244,25 +142,11 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 												";
 											}
 
-<<<<<<< HEAD
 											?>
-=======
-                                <?php
-                                
-                                foreach ($arrModelo as $arM) {
-                                    echo "
->>>>>>> 548186f3fcd61543aebedbfaa23dd27b14647494
 
 										</div>
 
-<<<<<<< HEAD
 										<div class="container col-md-6 text-center">
-=======
-                             ";
-                                }
-                                
-                                ?>
->>>>>>> 548186f3fcd61543aebedbfaa23dd27b14647494
 
 											<?php
 
