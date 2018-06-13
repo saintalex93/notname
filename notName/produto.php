@@ -24,7 +24,8 @@ foreach ($modelo as $m) {
         "DESC_COR" => $m->getDescCor(),
         "HEX_COR" => $m->getHexCor(),
         "ID_TAMANHO" => $m->getTamanhoModelo(),
-        "DESC_TAMANHO" => $m->getDescTamanho()
+        "DESC_TAMANHO" => $m->getDescTamanho(),
+        "DESC_TAMANHOCOMPLETO" => $m->getDescTamanhoCompleto()
     );
 }
 $idModelo = $_REQUEST['md'];
@@ -181,22 +182,22 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
                         </p>
 					<h4>Material e cuidados</h4>
 					<ul>
-						<li>Poliéster</li>
-						<li>Máquina de lavar</li>
+						<li> <?php echo $produto[0]->getMaterial();?></li>
+						
 					</ul>
 					<h4>Tamanho e ajuste</h4>
 					<ul>
-						<li><?php echo $arrModelo[$indice_array]['DESC_TAMANHO'];?></li>
+						<li><?php echo "{$arrModelo[$indice_array]['DESC_TAMANHO']} - {$arrModelo[$indice_array]['DESC_TAMANHOCOMPLETO']}";?></li>
 					</ul>
 
-					<blockquote>
-						<p>
-							<em>Defina o estilo nesta temporada com a nova gama de topos da
-								Armani, trabalhada com detalhes intrincados. Criar um olhar
-								chique declaração unindo este número de renda com jeans skinny e
-								bombas.</em>
-						</p>
-					</blockquote>
+<!-- 					<blockquote> -->
+<!-- 						<p> -->
+<!-- 							<em>Defina o estilo nesta temporada com a nova gama de topos da -->
+<!-- 								Armani, trabalhada com detalhes intrincados. Criar um olhar -->
+<!-- 								chique declaração unindo este número de renda com jeans skinny e -->
+<!-- 								bombas.</em> -->
+<!-- 						</p> -->
+<!-- 					</blockquote> -->
 
 					<hr>
 					<div class="social">
