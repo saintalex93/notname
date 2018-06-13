@@ -195,7 +195,7 @@ INSERT INTO CATEGORIA (CATEGORIA_cDESC,CATEGORIA_cSTATUS) VALUES ('Amarola','Ati
 
 -- INSERT INTO CATEGORIA VALUES (0, 'Peita Periculosa', 'Ativo', 1), (0, 'Raba Devastadora', 'Ativo',2);
 INSERT INTO PRODUTO(PRODUTO_cDESC,PRODUTO_cDESCCOMPLETA,PRODUTO_cSTATUS,PRODUTO_tsCRIACAO,PRODUTO_tMATERIAL)
- VALUES ('CAMISETA','CAMISETA ','ATIVO',NOW(),'<h1>CAMISETA</h1><p>blablablblablablablablabalbalbalba</p>');
+ VALUES ('Camisetas Temáticas','Produto exclusivo da nossa loja, com estampas temáticas. ','ATIVO',NOW(),'Poliester com sublimação aplicada em prensa térmica retrocolátil a 100º');
  
 -- INSERT INTO PRODUTO (PRODUTO_cDESC, PRODUTO_cDESCCOMPLETA, PRODUTO_cSTATUS) VALUES ('Produto Piloto','Essa é uma descrição do produto que vai aparecer no contexto do index. Agora vamos testar um bold
 --  <b>Isso é um negretto</b> <h1>Isso é um H1 gambiarrístico.</h1>','Ativo');
@@ -217,8 +217,8 @@ INSERT INTO COR VALUES (0, "Azul", "#0000CD"), (0, "Azul Claro", "#6495ED"), (0,
  SELECT * FROM COR;
  INSERT INTO MODELO(MODELO_cNOME,MODELO_nVLR_VENDA,MODELO_nSTATUS,MODELO_nDESCONTO,MODELO_nQTD_ESTOQUE,MODELO_tsCRIACAO,COR_nID,TAMANHO_nID,PRODUTO_nID)
  VALUES
- ('CAMISETA',109.00,'Ativo',NULL,10,NOW(),1,1,1),
- ('CAMISETA',109.00,'Ativo',NULL,10,NOW(),2,2,1);
+ ('Camiseta Unicórnio',109.00,'Ativo',NULL,10,NOW(),3,1,1),
+ ('Camiseta Mermaids',109.00,'Ativo',NULL,10,NOW(),2,2,1);
  
  INSERT INTO CATEGORIA VALUES
  (0,'LA CASA DE PAPEL','ATIVO',3),
@@ -249,5 +249,12 @@ DESC MODELO;
 desc USUARIO;
 
 select* from USUARIO;
+
+SELECT MODELO_cNOME, MODELO_nID, MODELO_nVLR_VENDA, MODELO_nSTATUS, MODELO_nDESCONTO, MODELO_nQTD_ESTOQUE,
+ COR_nID, MODELO.TAMANHO_nID,TAMANHO_cDESC, TAMANHO.TAMANHO_cTAMANHO AS descTamanho, MODELO.PRODUTO_nID, fn_buscaDescCor(COR_nID) as descCor, fn_buscaHexCor(COR_nID) as hexCor FROM MODELO
+        INNER JOIN PRODUTO ON PRODUTO.PRODUTO_nID = MODELO.PRODUTO_nID
+        INNER JOIN TAMANHO ON MODELO.TAMANHO_nID = TAMANHO.TAMANHO_nID
+             WHERE PRODUTO_cSTATUS LIKE 'Ativo' and MODELO_nSTATUS like 'Ativo' and 
+               MODELO_nQTD_ESTOQUE > 0 and PRODUTO.PRODUTO_nID
 
     

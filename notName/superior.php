@@ -188,8 +188,8 @@ a:hover {
 
 					<div class="navbar-collapse collapse right ">
 						<a href="carrinho.php" class="btn  navbar-btn"><i
-							class="fas fa-shopping-cart"></i><span class="hidden-sm"> itens
-								no carrinho</span></a>
+							class="fas fa-shopping-cart"></i><span class="hidden-sm"> Itens
+								no carrinho</span></a><span class="badge badge-primary">9</span>
 					</div>
 					<!--/.nav-collapse -->
 
