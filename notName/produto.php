@@ -60,7 +60,7 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 
 				<div class="row " id="productMain">
 					<div class="col-md-6 col-sm-12">
-						<div class="card">
+						<div class="card ajustesImagemProduto">
                             <?php
                             echo "
                         <img class='card-img-top' src='img/Modelos/ModeloCapa_" . $arrModelo[$indice_array]['ID'] . ".jpg' alt=''>
@@ -106,7 +106,7 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
                             for ($i = 1; $i < 4; $i ++) {
                                 echo "
                             <div class='col-md-4 col-sm-6'>
-                            <div class='card'>
+                            <div class='card imgProdutoPequena'>
 
                             <img class='card-img-top' src='img/Modelos/ModeloImg" . $arrModelo[$indice_array]['ID'] . "_" . $i . ".jpg' alt=''>
 

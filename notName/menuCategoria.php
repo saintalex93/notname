@@ -25,7 +25,7 @@ foreach ($categoria as $cf) {
 		</div>
 
 		<div class="card-body">
-			<ul class="nav nav-pills flex-column category-menu">
+			<ul class="ajusteMenuCategoria nav nav-pills flex-column category-menu ">
 
              <?php
              $idPai = 0;
