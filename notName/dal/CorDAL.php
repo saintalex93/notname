@@ -25,7 +25,7 @@ class CorDAL
         $descCor = $Cor->getDescCor();
         $hexCor = $Cor->getHexCor();
         
-        $sql = "INSERT INTO COR VALUES (0, '$siglaCor', '$hexCor')";
+        $sql = "INSERT INTO COR(COR_cDESC,COR_cHEX) VALUES ('$descCor', '$hexCor')";
         return CorDAL::$connection->executarSQL($sql);
     }
 
@@ -36,7 +36,7 @@ class CorDAL
         $descCor = $Cor->getDescCor();
         $hexCor = $Cor->getHexCor();
         
-        $sql = "";
+        $sql = "UPDATE COR SET COR_cDESC = '$descCor', COR_cHEX = '$hexCor' WHERE COR_nID = '$idCor'";
         
         return CorDAL::$connection->executarSQL($sql);
     }

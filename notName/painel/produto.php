@@ -23,6 +23,7 @@ $produtos = ProdutoDAL::buscaProduto();
 				<div class="row p-t-20">
 					<div class="col-md-5">
 						<div class="form-group">
+							<input type="hidden" name="idProd" value="">
 							<label class="control-label">Descrição do Produto</label> <input
 							type="text" id="firstName" class="form-control"
 							placeholder="Calça destacadora de perseguida"
