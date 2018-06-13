@@ -20,7 +20,7 @@
                 <div class="card btnCheckout ">
                     <form method="post" action="checkout2.php" class="">
                         <h1 class="mx-3 my-3">Checkout</h1>
-                        <ul class="nav nav-pills nav-justified">
+                        <ul class="nav nav-pills nav-justified ajusteCentro">
                             <li class="active text-center"><a href="#"><i class="fas fa-map-marker"></i><br>Endereço</a>
                             </li>
                             <li class="disabled checkout1 text-center"><a href="#" style="cursor:no-drop;"><i class="fas fa-truck"></i><br>Método de Entrega</a>
