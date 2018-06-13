@@ -3,7 +3,9 @@
 class Tamanho {
     
     private $idTamanho;
+    
     private $siglaTamanho;
+    
     private $descTamanho;
     
     

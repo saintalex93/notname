@@ -1,6 +1,9 @@
 <?php
 include_once 'header.php';
 
+require_once '../dal/CorDAL.php';
+
+$cor = CorDAL::buscaCor();
 ?>
 
 <div class="container-fluid">
@@ -13,14 +16,23 @@ include_once 'header.php';
 						<div class="col-md-7">
 							<div class="form-group">
 								<label>Descrição</label> <input type="text"
-								class="form-control" id="txtCategoria" name="txtCategoria">
+								class="form-control" id="txtCategoria" name="txtCategoria" placeholder="Nome da Cor">
 							</div>
 						</div>
 
-						<div class="col-md-5">
+						<div class="col-md-2">
 							<div class="form-group">
 								<label>HexaDecimal</label> 
-								<input type="color" id="html5colorpicker" onchange="clickColor(0, -1, -1, 5)" value="#ff0000" style="width: 100%; height: 40px;">
+								<input type="text"
+								class="form-control" id="txtCor" name="txtCor" placeholder="#ff0000">
+							</div>
+						</div>
+
+
+						<div class="col-md-3">
+							<div class="form-group">
+								<label>Cor</label> 
+								<input type="color" id="html5colorpicker" onchange="document.getElementById('txtCor').value = this.value" value="#ff0000" style="width: 100%; height: 40px;">
 							</div>
 						</div>
 
@@ -30,9 +42,9 @@ include_once 'header.php';
 				<div class="form-actions">
 					<button type="submit" class="btn btn-success"
 					id="btnCadastroCategoria">
-					<i class="fa fa-check"></i> Save
+					Cadastrar
 				</button>
-				<button type="button" class="btn btn-inverse">Cancel</button>
+				<button type="button" class="btn btn-inverse">Cancelar</button>
 			</div>
 
 
@@ -45,15 +57,28 @@ include_once 'header.php';
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Categoria</th>
-						<th>Status</th>
+						<th>Nome da Cor</th>
+						<th>Hexadecimal</th>
+						<th>Cor</th>
 						<th class="text-center">Ações</th>
 
 					</tr>
 				</thead>
 
 				<tbody>
-
+					<?php 
+					foreach ($cor as $cores)
+					{
+					    echo "<tr>
+                                <td>".$cores->getIdCor()."</td>
+                                <td>".$cores->getDescCor()."</td>
+                                <td>".$cores->getHexCor()."</td>
+                                <td ><div class='corCentro' style='width: 35px; height: 35px; background-color:".$cores->getHexCor().";'></div>
+                                <td class='text-center'><button class='btn btn-inverse alterar' id='".$cores->getIdCor()."' onclick = 'alert(this.id);'>Alterar</button>
+                             </tr>";
+					}
+					
+					?>
 
 				</tbody>
 			</table>

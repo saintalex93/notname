@@ -2,8 +2,11 @@
 
 class Cor{
 	private $idCor;
+	
 	private $descCor;
+	
 	private $hexCor;
+	
 	private $count;
 
     public function getCount()
