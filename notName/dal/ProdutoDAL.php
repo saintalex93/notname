@@ -92,12 +92,14 @@ class ProdutoDAL extends Modelo
             $resultProduto->setDescProd($resultado['PRODUTO_cDESC']);
             $resultProduto->setDescCompletaProd($resultado['PRODUTO_cDESCCOMPLETA']);
             $resultProduto->setStatusProd($resultado['PRODUTO_cSTATUS']);
+            $resultProduto->setMaterial($resultado['PRODUTO_tMATERIAL']);
             
             $csql = 
             " 
 SELECT MODELO_cNOME, MODELO_nID, MODELO_nVLR_VENDA, MODELO_nSTATUS, MODELO_nDESCONTO, MODELO_nQTD_ESTOQUE,
- COR_nID, TAMANHO_nID, MODELO.PRODUTO_nID, fn_buscaDescTamanho(TAMANHO_nID) as descTamanho, fn_buscaDescCor(COR_nID) as descCor, fn_buscaHexCor(COR_nID) as hexCor FROM MODELO
+ COR_nID, MODELO.TAMANHO_nID,TAMANHO_cDESC, TAMANHO.TAMANHO_cTAMANHO AS descTamanho, MODELO.PRODUTO_nID, fn_buscaDescCor(COR_nID) as descCor, fn_buscaHexCor(COR_nID) as hexCor FROM MODELO
         INNER JOIN PRODUTO ON PRODUTO.PRODUTO_nID = MODELO.PRODUTO_nID
+        INNER JOIN TAMANHO ON MODELO.TAMANHO_nID = TAMANHO.TAMANHO_nID
              WHERE PRODUTO_cSTATUS LIKE 'Ativo' and MODELO_nSTATUS like 'Ativo' and 
                MODELO_nQTD_ESTOQUE > 0 and PRODUTO.PRODUTO_nID =$id";
             
@@ -122,6 +124,7 @@ SELECT MODELO_cNOME, MODELO_nID, MODELO_nVLR_VENDA, MODELO_nSTATUS, MODELO_nDESC
             $modelo->setDescCor($rsM['descCor']);
             $modelo->setDescTamanho($rsM['descTamanho']);
             $modelo->setHexCor($rsM['hexCor']);
+            $modelo->setDescTamanhoCompleto($rsM['TAMANHO_cDESC']);
             
            
             $resultProduto->setModelo($modelo);

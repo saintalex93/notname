@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 include "superior.php";
 include_once "dal/ProdutoDAL.php";
@@ -31,6 +32,42 @@ $idModelo = $_REQUEST['md'];
 
 $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 
+=======
+<?php
+include "superior.php";
+include_once "dal/ProdutoDAL.php";
+
+$codProduto = $_REQUEST['id'];
+
+if (! isset($_REQUEST['id'])) {
+    echo "<script>window.location.href='index.php'</script>";
+} else {
+    $produto = ProdutoDAL::buscaProduto($codProduto);
+}
+
+$modelo = $produto[0]->getModelo();
+
+$arrModelo = array();
+
+foreach ($modelo as $m) {
+    
+    $arrModelo[] = array(
+        "ID" => $m->getIdModelo(),
+        "NOME_MODELO" => $m->getNomeModelo(),
+        "VALOR_MODELO" => $m->getVlrVendaModelo(),
+        "ID_COR" => $m->getCormodelo(),
+        "DESC_COR" => $m->getDescCor(),
+        "HEX_COR" => $m->getHexCor(),
+        "ID_TAMANHO" => $m->getTamanhoModelo(),
+        "DESC_TAMANHO" => $m->getDescTamanho(),
+        "DESC_TAMANHOCOMPLETO" => $m->getDescTamanhoCompleto()
+    );
+}
+$idModelo = $_REQUEST['md'];
+
+$indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
+
+>>>>>>> d51f79d8eea341be23d342c2050fd805da1775b2
 ?>
 
 <div id="content">
@@ -181,23 +218,22 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
                         </p>
 					<h4>Material e cuidados</h4>
 					<ul>
-						<li>Poliéster</li>
-						<li>Máquina de lavar</li>
+						<li> <?php echo $produto[0]->getMaterial();?></li>
+						
 					</ul>
 					<h4>Tamanho e ajuste</h4>
 					<ul>
-						<li>Tamanho normal</li>
-						<li>O modelo (altura 5'8 "e peito 33") está usando um tamanho GG</li>
+						<li><?php echo "{$arrModelo[$indice_array]['DESC_TAMANHO']} - {$arrModelo[$indice_array]['DESC_TAMANHOCOMPLETO']}";?></li>
 					</ul>
 
-					<blockquote>
-						<p>
-							<em>Defina o estilo nesta temporada com a nova gama de topos da
-								Armani, trabalhada com detalhes intrincados. Criar um olhar
-								chique declaração unindo este número de renda com jeans skinny e
-								bombas.</em>
-						</p>
-					</blockquote>
+<!-- 					<blockquote> -->
+<!-- 						<p> -->
+<!-- 							<em>Defina o estilo nesta temporada com a nova gama de topos da -->
+<!-- 								Armani, trabalhada com detalhes intrincados. Criar um olhar -->
+<!-- 								chique declaração unindo este número de renda com jeans skinny e -->
+<!-- 								bombas.</em> -->
+<!-- 						</p> -->
+<!-- 					</blockquote> -->
 
 					<hr>
 					<div class="social">
@@ -336,7 +372,7 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 
 				</div>
 
-				<div class="row same-height-row">
+				<!-- 				<div class="row same-height-row">
 					<div class="col-md-3 col-sm-6 d-flex flex-row">
 						<div class="card">
 
@@ -461,7 +497,7 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 
 
 
-				</div>
+				</div> -->
 
 			</div>
 
