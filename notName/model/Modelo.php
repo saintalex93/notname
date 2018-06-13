@@ -14,8 +14,19 @@ class Modelo{
     private $descProduto;
     private $descCor;
     private $descTamanho;
+    private $descTamanhoCompleto;
     private $hexCor;
     
+    public function getDescTamanhoCompleto()
+    {
+        return $this->descTamanhoCompleto;
+    }
+
+    public function setDescTamanhoCompleto($descTamanhoCompleto)
+    {
+        $this->descTamanhoCompleto = $descTamanhoCompleto;
+    }
+
     public function getHexCor()
     {
         return $this->hexCor;

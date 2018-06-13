@@ -186,8 +186,7 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 					</ul>
 					<h4>Tamanho e ajuste</h4>
 					<ul>
-						<li>Tamanho normal</li>
-						<li>O modelo (altura 5'8 "e peito 33") está usando um tamanho GG</li>
+						<li><?php echo $arrModelo[$indice_array]['DESC_TAMANHO'];?></li>
 					</ul>
 
 					<blockquote>
@@ -336,7 +335,7 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 
 				</div>
 
-				<div class="row same-height-row">
+				<!-- 				<div class="row same-height-row">
 					<div class="col-md-3 col-sm-6 d-flex flex-row">
 						<div class="card">
 
@@ -461,7 +460,7 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 
 
 
-				</div>
+				</div> -->
 
 			</div>
 
