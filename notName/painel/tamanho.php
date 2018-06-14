@@ -20,14 +20,14 @@ $idTam = $tamanho[0]->getIdTamanho();
 							<div class="form-group">
 								<label>Descrição</label>
 								<input type="hidden" name="idTamanho" id="idTamanho" value="<?php echo $idTam;?>">
-								 <input type="text"	class="form-control" id="txtTamanho" name="txtTamanho" placeholder="PP ou G" maxlength="4">
+								<input type="text"	class="form-control" id="txtTamanho" name="txtTamanho" placeholder="PP ou G" maxlength="4">
 							</div>
 						</div>
 
 						<div class="col-md-3">
 							<div class="form-group">
 								<label>Tamanho</label> 
-								 <input type="text"	class="form-control" id="txtMedida" name="txtMedida" placeholder="90cm x 90cm">
+								<input type="text"	class="form-control" id="txtMedida" name="txtMedida" placeholder="90cm x 90cm" maxlength="30">
 							</div>
 						</div>
 
@@ -38,10 +38,12 @@ $idTam = $tamanho[0]->getIdTamanho();
 					<button type="submit" class="btn btn-success"
 					id="btnCadastraTamanho" value="1">
 					Cadastrar
-				</button>
-				<button type="button" id="btnCacelarTamanho" class="btn btn-inverse">Cancelar</button>
-			</div>
-
+					</button>
+					<button type="button" id="btnCacelarTamanho" class="btn btn-inverse">Cancelar</button>
+				</div>
+				<div>
+					<p id="returnCadTamanho"></p>
+				</div>
 
 			<div class="table-responsive m-t-40">
 				<h6 class="card-subtitle">Categorias Cadastradas</h6>
@@ -60,11 +62,11 @@ $idTam = $tamanho[0]->getIdTamanho();
 				</thead>
 
 				<tbody>
-			<?php 
+					<?php 
 					foreach ($tamanho as $tamanhos)
 					{
-					    echo "<tr id='rowTamanho".$tamanhos->getIdTamanho()."'>
-                        <td>".$tamanhos->getIdTamanho()."</td>
+						echo "<tr id='rowTamanho".$tamanhos->getIdTamanho()."'>
+						<td>".$tamanhos->getIdTamanho()."</td>
 						<td>".$tamanhos->getSiglaTamanho()."</td>
 						<td>".$tamanhos->getDescTamanho()."</td>
 						<td class='text-center'><button class='btn btn-inverse alterar' id='".$tamanhos->getIdTamanho()."' onclick = 'alteraTamanho(this.id);'>Alterar</button>
