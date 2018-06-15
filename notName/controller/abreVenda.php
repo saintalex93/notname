@@ -1,0 +1,10 @@
+<?php 
+
+
+$sql = "SELECT VENDA_nID FROM VENDA WHERE VENDA_cSTATUS = 'PENDENTE' AND CLI_nCOD = 1";
+
+
+
+
+
+ ?>
