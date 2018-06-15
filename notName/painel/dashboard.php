@@ -13,8 +13,8 @@ include_once 'header.php';
                         <span><i class="fa fa-usd f-s-40 color-primary"></i></span>
                     </div>
                     <div class="media-body media-text-right">
-                        <h2>568120</h2>
-                        <p class="m-b-0">Total Revenue</p>
+                        <h2>R$ 10.000,00</h2>
+                        <p class="m-b-0">Total Vendas</p>
                     </div>
                 </div>
             </div>
@@ -26,8 +26,8 @@ include_once 'header.php';
                         <span><i class="fa fa-shopping-cart f-s-40 color-success"></i></span>
                     </div>
                     <div class="media-body media-text-right">
-                        <h2>1178</h2>
-                        <p class="m-b-0">Sales</p>
+                        <h2>1000</h2>
+                        <p class="m-b-0">Vendas</p>
                     </div>
                 </div>
             </div>
@@ -39,8 +39,8 @@ include_once 'header.php';
                         <span><i class="fa fa-archive f-s-40 color-warning"></i></span>
                     </div>
                     <div class="media-body media-text-right">
-                        <h2>25</h2>
-                        <p class="m-b-0">Stores</p>
+                        <h2>50</h2>
+                        <p class="m-b-0">Produtos</p>
                     </div>
                 </div>
             </div>
@@ -52,8 +52,8 @@ include_once 'header.php';
                         <span><i class="fa fa-user f-s-40 color-danger"></i></span>
                     </div>
                     <div class="media-body media-text-right">
-                        <h2>847</h2>
-                        <p class="m-b-0">Customer</p>
+                        <h2>100</h2>
+                        <p class="m-b-0">Clientes</p>
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@ include_once 'header.php';
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Extra Area Chart</h4>
+                    <h4 class="card-title">Demonstrativo de Vendas</h4>
                     <div id="extra-area-chart"></div>
                 </div>
             </div>
@@ -77,27 +77,27 @@ include_once 'header.php';
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body browser">
-                    <p class="f-w-600">iMacs <span class="pull-right">85%</span></p>
+                    <p class="f-w-600">Camisetas Masculinas<span class="pull-right">85%</span></p>
                     <div class="progress ">
                         <div role="progressbar" style="width: 85%; height:8px;" class="progress-bar bg-danger wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
                     </div>
 
-                    <p class="m-t-30 f-w-600">iBooks<span class="pull-right">90%</span></p>
+                    <p class="m-t-30 f-w-600">Camisetas Femininas<span class="pull-right">90%</span></p>
                     <div class="progress">
                         <div role="progressbar" style="width: 90%; height:8px;" class="progress-bar bg-info wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
                     </div>
 
-                    <p class="m-t-30 f-w-600">iPhone<span class="pull-right">65%</span></p>
+                    <p class="m-t-30 f-w-600">Camisetas Temáticas<span class="pull-right">65%</span></p>
                     <div class="progress">
                         <div role="progressbar" style="width: 65%; height:8px;" class="progress-bar bg-success wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
                     </div>
 
-                    <p class="m-t-30 f-w-600">Samsung<span class="pull-right">65%</span></p>
+                    <p class="m-t-30 f-w-600">Camisetas de Séries<span class="pull-right">65%</span></p>
                     <div class="progress">
                         <div role="progressbar" style="width: 65%; height:8px;" class="progress-bar bg-warning wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
                     </div>
 
-                    <p class="m-t-30 f-w-600">android<span class="pull-right">65%</span></p>
+                    <p class="m-t-30 f-w-600">Amarola<span class="pull-right">65%</span></p>
                     <div class="progress m-b-30">
                         <div role="progressbar" style="width: 65%; height:8px;" class="progress-bar bg-success wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
                     </div>
@@ -107,7 +107,7 @@ include_once 'header.php';
         <!-- column -->
     </div>
     <div class="row">
-     <div class="col-lg-3">
+<!--        <div class="col-lg-3">
         <div class="card bg-dark">
             <div class="testimonial-widget-one p-17">
                 <div class="testimonial-widget-one owl-carousel owl-theme">
@@ -186,12 +186,12 @@ include_once 'header.php';
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <div class="col-lg-9">
+    <div class="col-lg-12">
         <div class="card">
             <div class="card-title">
-                <h4>Recent Orders </h4>
+                <h4>Vendas Recentes </h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -199,9 +199,9 @@ include_once 'header.php';
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Name</th>
-                                <th>Product</th>
-                                <th>quantity</th>
+                                <th>Nome</th>
+                                <th>Produto</th>
+                                <th>Quantidade</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -213,9 +213,9 @@ include_once 'header.php';
                                         <a href=""><img src="images/avatar/4.jpg" alt=""></a>
                                     </div>
                                 </td>
-                                <td>John Abraham</td>
-                                <td><span>iBook</span></td>
-                                <td><span>456 pcs</span></td>
+                                <td>Gabriela</td>
+                                <td><span>Camiseta</span></td>
+                                <td><span>55 pcs</span></td>
                                 <td><span class="badge badge-success">Done</span></td>
                             </tr>
                             <tr>
@@ -224,8 +224,8 @@ include_once 'header.php';
                                         <a href=""><img src="images/avatar/2.jpg" alt=""></a>
                                     </div>
                                 </td>
-                                <td>John Abraham</td>
-                                <td><span>iPhone</span></td>
+                                <td>Jadson</td>
+                                <td><span>Camiseta</span></td>
                                 <td><span>456 pcs</span></td>
                                 <td><span class="badge badge-success">Done</span></td>
                             </tr>
@@ -235,9 +235,9 @@ include_once 'header.php';
                                         <a href=""><img src="images/avatar/3.jpg" alt=""></a>
                                     </div>
                                 </td>
-                                <td>John Abraham</td>
-                                <td><span>iMac</span></td>
-                                <td><span>456 pcs</span></td>
+                                <td>Recleson</td>
+                                <td><span>Camiseta</span></td>
+                                <td><span>55 pcs</span></td>
                                 <td><span class="badge badge-warning">Pending</span></td>
                             </tr>
                             <tr>
@@ -246,9 +246,9 @@ include_once 'header.php';
                                         <a href=""><img src="images/avatar/4.jpg" alt=""></a>
                                     </div>
                                 </td>
-                                <td>John Abraham</td>
-                                <td><span>iBook</span></td>
-                                <td><span>456 pcs</span></td>
+                                <td>Jack</td>
+                                <td><span>Camiseta</span></td>
+                                <td><span>55 pcs</span></td>
                                 <td><span class="badge badge-success">Done</span></td>
                             </tr>
                         </tbody>
@@ -259,17 +259,17 @@ include_once 'header.php';
     </div>
 </div>
 
-   <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Bar Chart</h4>
-                                <div id="morris-bar-chart"></div>
-                            </div>
-                        </div>
-                    </div>
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Relatório de venda por ano</h4>
+            <div id="morris-bar-chart"></div>
+        </div>
+    </div>
+</div>
 
 
-<div class="row">
+<!-- <div class="row">
  <div class="col-lg-8">
   <div class="row">
       <div class="col-lg-6">
@@ -322,9 +322,7 @@ include_once 'header.php';
 </div>
 </div>
 </div>
-<!-- /# card -->
 </div>
-<!-- /# column -->
 <div class="col-lg-6">
    <div class="card">
     <div class="card-body">
@@ -387,7 +385,7 @@ include_once 'header.php';
 </div>
 </div>
 
-</div>
+</div> -->
 
 
 <!-- End PAge Content -->
