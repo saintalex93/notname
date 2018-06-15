@@ -51,9 +51,9 @@ a:hover {
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 ofertaDoDia animated fadeInDown">
-					<a href="#" class="btn btn-success btn-sm animated bounce">Oferta
-						do dia</a> <a href="#">Obtenha um desconto de 25% em pedidos acima
-						de R$ 200! </a>
+					<a href="#" class="btn corPadrao btn-sm animated bounce">10% Da renda será doada a ONGs</a> 
+<!--					<a href="#"></a>-->
+						
 				</div>
 
 				<div class="col-md-6  animated fadeInDown">
@@ -72,8 +72,11 @@ a:hover {
                         echo "<li><a href='registrar.php'>Cadastro</a></li>  |";
                     }
                     ?>
-                        <li><a href="contato.php">Contato</a></li> |
+                    <li><a href="contato.php">Contato</a></li>
+<!--
+                         |
 						<li><a href="#">Visto recentemente</a></li>
+-->
                           <?php if(isset($id)){  echo "| <li><a href='./controller/logoutEcom.php'>Sair</a></li>";}?>
                     </ul>
 				</div>

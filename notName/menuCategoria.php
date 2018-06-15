@@ -33,7 +33,7 @@ foreach ($categoria as $cf) {
                 if ($conCat->getCodPai() == null) {
                     echo "
 
-                    <li id = '{$conCat->getIdCateg()}'>
+                    <li class='tituloCategora' id = '{$conCat->getIdCateg()}'>
                     <a href='#'>{$conCat->getDescCateg()} <span
                     class='badge pull-right badge-primary badge-pill'></span></a>
                     ";
@@ -43,8 +43,8 @@ foreach ($categoria as $cf) {
                         
                         if ($idPai == $cf->getCodPai()) {
                             echo "
-                            <ul>
-                            <li class='text-black' id = '{$cf->getDescCateg()}'><a href=''>{$cf->getDescCateg()}</a></li>
+                            <ul class='ajusteSubCategoria' >
+                            <li class='text-black ' id = '{$cf->getDescCateg()}'><a href=''>{$cf->getDescCateg()}</a></li>
                             </ul>
                             ";
                         }

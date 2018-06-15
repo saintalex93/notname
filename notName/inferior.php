@@ -68,10 +68,9 @@
                 <h4>Onde nos encontrar</h4>
 
                 <p><strong>Not Name.</strong>
-                    <br>Rua tal
-                    <br>cep: 69696969669
+                   
                     <br>São Paulo - SP
-                    <br>11 6969 - 6969
+                    <br>11 5837-7690
                     <br>
                     
                     <strong>contato@notname.com.br</strong>
