@@ -26,7 +26,7 @@ if ($_REQUEST['action'] == 'insereCategoria') {
     if (CategoriaDAL::insereCategoriaFilho($categoria)) {
         echo "Inserido";
     } else {
-        echo "N�o foi possivel inserir";
+        echo "Não foi possivel inserir";
     }
 }
 
@@ -41,11 +41,13 @@ if ($_REQUEST['action'] == 'insereProduto') {
     
     $produto->setDescProd($_REQUEST['txtNomeProduto']);
     $produto->setDescCompletaProd($_REQUEST['txtDescricaoProduto']);
-    $produto->setIdMarca($_REQUEST['marcaProduto']);
+    // $produto->setIdMarca($_REQUEST['marcaProduto']);
     $produto->setStatusProd($_REQUEST['statusProduto']);
     
     if ($id = ProdutoDAL::insereProduto($produto)) {
         
+        echo $id;
+
         $cod = "Produto" . $id;
         $imagem = $_FILES['fotoProduto']['name'];
         

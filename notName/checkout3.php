@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-md-9">
 
-                    <div class="card btnCheckout">
+                    <div class="card btnCheckout container">
                         <form method="post" action="checkout4.php">
                             <h1 class="mx-3 my-3">Checkout - método de pagamento</h1>
                             <ul class="nav nav-pills nav-justified">

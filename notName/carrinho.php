@@ -86,21 +86,23 @@
 
                         </div>
                    
+                    </form>
 
                         <div class="card-footer">
                            
+
+
                             <div class="float-left pull-left col-6">
                                 <a href="categoria.php" class="btn btn-default"><i class="fa fa-chevron-left"></i> Continue comprando</a>
                             </div>
                             
                             <div class="float-right pull-right col-6" style="padding:0px 0 20px 0 ">                             
                                 <button class="btn btn-default"><i class="fas fa-sync-alt"></i>  Atualizar cesta</button>
-                                <button type="submit" class="btn btn-primary">Fazer o check-out <i class="fas fa-chevron-right"></i></button>
+                                <button onclick = "window.location.href = 'checkout1.php'"class="btn btn-primary">Fazer o check-out <i class="fas fa-chevron-right"></i></button>
                             </div>
                             
                         </div>
 
-                    </form>
 
                 </div>
             

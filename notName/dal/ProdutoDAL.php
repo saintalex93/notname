@@ -19,7 +19,7 @@ class ProdutoDAL extends Modelo
         }
     }
 
-    public static function insereProduto(Produto $prod, Modelo $mod): string
+    public static function insereProduto(Produto $prod): string
     {
         ProdutoDAL::connect();
                

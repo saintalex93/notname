@@ -186,10 +186,10 @@ $pageName = ucfirst(str_replace(".php", "", $url));
                     <li> <a href="conta.php"><i class="fa fa-user"></i><span class="hide-menu">Contas</span></a>
                       
                     </li>
-                    <li> <a href="perfil.php" aria-expanded="false"><i class="fa fa-card"></i><span class="hide-menu">Compras</span></a></li>
-                    <li> <a href="perfil.php" aria-expanded="false"><i class="fa fa-chart"></i><span class="hide-menu">Relatórios</span></a></li>
+                    <li> <a href="#" aria-expanded="false"><i class="fa fa-card"></i><span class="hide-menu">Compras</span></a></li>
+                    <li> <a href="#" aria-expanded="false"><i class="fa fa-chart"></i><span class="hide-menu">Relatórios</span></a></li>
 
-                    <li class="nav-label">Features</li>
+                   <!--  <li class="nav-label">Features</li>
 
                     <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Components <span class="label label-rouded label-danger pull-right">6</span></span></a>
                         <ul aria-expanded="false" class="collapse">
@@ -197,7 +197,7 @@ $pageName = ucfirst(str_replace(".php", "", $url));
                             <li><a href="uc-sweetalert.php">Sweetalert</a></li>
                             <li><a href="uc-toastr.php">Toastr</a></li>
                         </ul>
-                    </li>
+                    </li> -->
 
                 </ul>
             </nav>

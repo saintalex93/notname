@@ -21,9 +21,7 @@ $id = $usr[0]->getIdUsr();
 								<input type="hidden" id="idUsr" name="idUsr" value="<?php echo $id;?>"> 
 								<label class="control-label">Nome do usuario</label> <input
 									type="text" name="txtNomeUsr" id="txtNomeUsr"
-									class="form-control" placeholder="Nome" name="txtNomeUsr"> <small
-									class="form-control-feedback text-danger"> Insira um nome de
-									usuario</small>
+									class="form-control" placeholder="Nome" name="txtNomeUsr"> 
 							</div>
 						</div>
 						<!--/span-->
@@ -31,27 +29,27 @@ $id = $usr[0]->getIdUsr();
 							<div class="form-group has-danger">
 								<label class="control-label">Email</label> <input type="email"
 									name="txtEmail" id="txtEmail" class="form-control"
-									placeholder="Email" name="txtEmail"> <small
+									placeholder="Email" name="txtEmail"> <!-- <small
 									class="form-control-feedback text-danger">Insira o email do
-									usuario do sistema</small>
+									usuario do sistema</small> -->
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group has-danger">
 								<label class="control-label">Login</label> <input type="text"
 									name="txtLogin" id="txtLogin" class="form-control"
-									placeholder="Login" name="txtLogin"> <small
+									placeholder="Login" name="txtLogin"> <!-- <small
 									class="form-control-feedback text-danger">Insira seu usuario de
-									acesso ao sistema</small>
+									acesso ao sistema</small> -->
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group has-danger">
 								<label class="control-label">Senha</label> <input
 									type="password" name="txtSenhaUsr" id="txtSenhaUsr"
-									class="form-control" placeholder="Senha" name="txtSenhaUsr"> <small
+									class="form-control" placeholder="Senha" name="txtSenhaUsr"> <!-- <small
 									class="form-control-feedback text-danger">Insira uma senha com
-									6 caracteres no minimo</small>
+									6 caracteres no minimo</small> -->
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -61,8 +59,8 @@ $id = $usr[0]->getIdUsr();
 									class="form-control">
 									<option value="0">Selecione uma permissao</option>
 									<option value="1">Administrador</option>
-								</select> <small class="form-control-feedback text-danger">Selecione
-									a permissao do usuario</small>
+								</select> <!-- <small class="form-control-feedback text-danger">Selecione
+									a permissao do usuario</small> -->
 							</div>
 						</div>
 						<!--/span-->
