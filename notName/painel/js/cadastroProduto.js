@@ -1,22 +1,3 @@
-$("#btnCadastroMarca").click(function() {
-	carregando();
-
-	var form = $('#formMarca');
-
-	$.ajax( {
-		type: "POST",
-		url: './controller/controllerProduto.php?action=insereMarca',
-		data: form.serialize(),
-		success: function( response ) {
-			alert( response );
-
-			parar();
-		}
-	} );
-
-
-
-});
 
 
 $("#btnCadastroCategoria").click(function() {
