@@ -137,12 +137,14 @@
 }
 
 .jumbotron {
-    background-color: #5048f0 !important;
+    background-color: #41b291 !important;
 }
 
 .modal-title {
     padding: 10px 10px 10px 10px;
 }
+
+
 
 .close {
     padding-right: 10px;
@@ -327,6 +329,8 @@ ul li {
     border-color: #357935 #357935 transparent transparent;
 }
 
+
+
 .cor {
     display: inline-block;
     width: 15px;
@@ -366,7 +370,10 @@ ul li {
     content: " ";
 }
 
-
+.corPadrao{
+    background: #43af8f;
+    color: #fff;
+}
 
 
 /* pagination */

@@ -51,7 +51,7 @@ a:hover {
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 ofertaDoDia animated fadeInDown">
-					<a href="#" class="btn btn-success btn-sm animated bounce">10% Da renda será doada a ONGs</a> 
+					<a href="#" class="btn corPadrao btn-sm animated bounce">10% Da renda será doada a ONGs</a> 
 <!--					<a href="#"></a>-->
 						
 				</div>
