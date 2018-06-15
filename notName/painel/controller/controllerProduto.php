@@ -41,18 +41,17 @@ if ($_REQUEST['action'] == 'insereProduto') {
     
     $produto->setDescProd($_REQUEST['txtNomeProduto']);
     $produto->setDescCompletaProd($_REQUEST['txtDescricaoProduto']);
+    $produto->setMaterial($_REQUEST['material']);
     // $produto->setIdMarca($_REQUEST['marcaProduto']);
     $produto->setStatusProd($_REQUEST['statusProduto']);
     
     if ($id = ProdutoDAL::insereProduto($produto)) {
         
-        echo $id;
-
         $cod = "Produto" . $id;
         $imagem = $_FILES['fotoProduto']['name'];
         
         if (move_uploaded_file($_FILES['fotoProduto']['tmp_name'], "{$raiz}img/Produtos/" . $cod.".jpg")) {
-            echo "Gravou";
+            echo "Produto inserido com sucesso!";
         } else {
             echo 'nao gravou';
         }
