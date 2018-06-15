@@ -17,7 +17,7 @@ $("#insereCli").click(
 									"Cadastrado com sucesso");
 							$("#returnFormRegistrar").attr("class",
 									"text-success text-center");
-							alert("gabi nao curte lambiscada");
+							// alert("gabi nao curte lambiscada");f
 
 							setTimeout(function() {
 								$("#returnFormRegistrar").attr('class',
