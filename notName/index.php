@@ -93,11 +93,13 @@ $modelo = ModeloDAL::buscaModeloIndex();
 
 
     <div class="jumbotron jumbotron-fluid text-center rounded-0">
-        <h1 class="display-3">bootstrap 4</h1>
-        <p class="lead">um texto para dar destaque no elemento jumbotron</p>
+<!--        <h1 class="display-3">bootstrap 4</h1>-->
+        <p class="lead">Nosso objetivo é fazer com que a arte salte dos objetos<br> e seja a conexão, que ela inicie diálogos e inspire o ciclo de criatividade.</p>
+<!--
         <p class="lead">
             <a class="btn btn-primary" href="">mais um botão</a>
         </p>
+-->
     </div>
 
 
