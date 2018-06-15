@@ -1,6 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/notname/notName/url.php';
-require_once $raiz . 'dal/MarcaDAL.php';
+// require_once $raiz . 'dal/MarcaDAL.php';
 require_once $raiz . 'dal/CategoriaDAL.php';
 require_once $raiz . 'dal/ProdutoDAL.php';
 require_once $raiz . 'library/Conexao.class.php';

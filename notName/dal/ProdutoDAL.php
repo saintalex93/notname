@@ -45,6 +45,8 @@ class ProdutoDAL extends Modelo
             
             return $id;
         }
+        
+    
     }
 
     public static function atualizaProduto(Produto $prod): string
