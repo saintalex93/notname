@@ -26,7 +26,7 @@ $produtos = ProdutoDAL::buscaProduto();
 							<input type="hidden" name="idProd" value="">
 							<label class="control-label">Descrição do Produto</label> <input
 							type="text" id="firstName" class="form-control"
-							placeholder="Calça destacadora de perseguida"
+							placeholder="Produto"
 							name="txtNomeProduto"> <small
 							class="form-control-feedback text-danger"> This is inline
 						help </small>
@@ -200,7 +200,7 @@ $produtos = ProdutoDAL::buscaProduto();
 		<div class="card-body">
 			<div class="row">
 				<div class="col-lg-3 col-md-6 m-b-20">
-					<img src="images/big/img1.jpg" class="img-responsive radius" />
+					<img src="../img/Produtos/Produto1.jpg" class="img-responsive radius" />
 					<div class="like-comm">
 						<a href="javascript:void(0)" class="link m-r-10"> <i
 							class="fa fa-heart text-danger"> </i> 5 Love
@@ -208,7 +208,7 @@ $produtos = ProdutoDAL::buscaProduto();
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 m-b-20">
-					<img src="images/big/img2.jpg" class="img-responsive radius" />
+					<img src="../img/Produtos/Produto1.jpg" class="img-responsive radius" />
 					<div class="like-comm">
 						<a href="javascript:void(0)" class="link m-r-10"> <i
 							class="fa fa-heart text-danger"> </i> 5 Love
@@ -216,7 +216,7 @@ $produtos = ProdutoDAL::buscaProduto();
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 m-b-20">
-					<img src="images/big/img3.jpg" class="img-responsive radius" />
+					<img src="../img/Produtos/Produto1.jpg" class="img-responsive radius" />
 					<div class="like-comm">
 						<a href="javascript:void(0)" class="link m-r-10"> <i
 							class="fa fa-heart text-danger"> </i> 5 Love
@@ -224,7 +224,7 @@ $produtos = ProdutoDAL::buscaProduto();
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 m-b-20">
-					<img src="images/big/img4.jpg" class="img-responsive radius" />
+					<img src="../img/Produtos/Produto1.jpg" class="img-responsive radius" />
 					<div class="like-comm">
 						<a href="javascript:void(0)" class="link m-r-10"> <i
 							class="fa fa-heart text-danger"> </i> 5 Love

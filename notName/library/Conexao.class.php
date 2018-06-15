@@ -28,7 +28,7 @@ class Database
             // Modo de erro: Só avisa quando fodeu.
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (Exception $e) {
-            
+
             // Comentar essa linha para produção;
             echo $e->getMessage();
             // Return para o Sistema operacional Windão
@@ -43,7 +43,7 @@ class Database
 
     public function executarSQL(string $sql)
     {
-        $this->lastid = -1;
+        // $this->lastid = -1;
         
         // Conecta no banco
         $this->conectar();
@@ -61,7 +61,7 @@ class Database
             
             // Executa a string sql.
             $this->resutado->execute();
-                
+
             $this->lastid = $this->connection->lastInsertId();
             
         } catch (Exception $e) {
@@ -86,7 +86,7 @@ class Database
         $this->resutado = null;
         
         try {
-            
+
             $this->resutado = $this->connection->prepare($sql);
             
             $this->resutado->execute();
@@ -100,7 +100,7 @@ class Database
 
     public function executaProcedure(string $sql)
     {
-        
+
         // Conecta no banco
         $this->conectar();
         
@@ -129,10 +129,9 @@ class Database
 
     public function returnID()
     {
-//         $lastid = $this->connection->lastInsertId();
-//         $this->fecharConexao();
-        
-        return $this->lastid;
+        $lastid = $this->connection->lastInsertId();
+        $this->fecharConexao();
+        return $lastid;
     }
 }
-   
+

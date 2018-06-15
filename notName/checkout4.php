@@ -18,7 +18,7 @@
 
             <div class="col-md-9">
 
-                <div class="card btnCheckout">
+                <div class="card btnCheckout container">
                     <form method="post" action="checkout4.php">
                         <h1 class="mx-3 my-3">Checkout - Revisão do pedido</h1>
                         <ul class="nav nav-pills nav-justified">
@@ -89,7 +89,7 @@
                             <div class="pull-left">
                                 <a href="checkout3.php" class="btn btn-default"><i class="fa fa-chevron-left"></i>Voltar ao método de pagamento</a>
                             </div>
-                            <div class="pull-right">
+                            <div class="pull-right mb-2">
                                 <button type="submit" class="btn btn-primary">Fazer um pedido<i class="fa fa-chevron-right"></i>
                                     </button>
                             </div>
