@@ -20,14 +20,11 @@ if (isset($_POST['insereCli'])) {
     $cliente = new Cliente();
     
     $cliente->setEmailCli($_REQUEST['emailLog']);
-    $cliente->setSenhaCli($_REQUEST['senha']);
+    $cliente->setSenhaCli($_REQUEST['senha']);    
     
+    $login = ClienteDAL::loginCliente($cliente);    
     
-    
-    $login = ClienteDAL::loginCliente($cliente);
-    var_dump($login);
-    
-    echo $login[0]->getIdCli();
+    echo "Logado";
    
     
     session_start();
