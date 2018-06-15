@@ -128,7 +128,7 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 
 
 									<div class="row p-2">
-									<h3 class="text-center col-md-12 text-secondary card-title">Cores e Tamanhos</h3>
+										<h3 class="text-center col-md-12 text-secondary card-title">Cores e Tamanhos</h3>
 
 										<div class="container col-md-6 text-center">
 
@@ -234,7 +234,7 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 													</div>
 													<div class='card back'>
 														<div class='card-block'>
-															<img class='card-img-top ' src='img/Produtos/Produto2.jpg'
+															<img class='card-img-top ' src='img/Modelos/ModeloCapa_1.jpg'
 															alt='Foto do Modelo'>
 														</div>
 													</div>
@@ -269,7 +269,7 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 													</div>
 													<div class='card back'>
 														<div class='card-block'>
-															<img class='card-img-top ' src='img/Produtos/Produto2.jpg'
+															<img class='card-img-top ' src='img/Modelos/ModeloCapa_1.jpg'
 															alt='Foto do Modelo'>
 														</div>
 													</div>
@@ -303,7 +303,7 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 													</div>
 													<div class='card back'>
 														<div class='card-block'>
-															<img class='card-img-top ' src='img/Produtos/Produto2.jpg'
+															<img class='card-img-top ' src='img/Modelos/ModeloCapa_1.jpg'
 															alt='Foto do Modelo'>
 														</div>
 													</div>

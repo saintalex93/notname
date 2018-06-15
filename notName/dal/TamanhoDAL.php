@@ -32,11 +32,12 @@ class TamanhoDAL
     public static function alteraTamanho(Tamanho $Tamanho): string
     {
         TamanhoDAL::connect();
+        
         $idTamanho = $Tamanho->getIdTamanho();
-        $siglaTamanho = $tamanho->getSiglaTamanho();
+        $siglaTamanho = $Tamanho->getSiglaTamanho();
         $descTamanho = $Tamanho->getDescTamanho();
         
-        $sql = "";
+        $sql = "UPDATE TAMANHO SET TAMANHO_cTAMANHO = '$siglaTamanho', TAMANHO_cDESC = '$descTamanho' WHERE TAMANHO_nID = $idTamanho";
         
         return TamanhoDAL::$connection->executarSQL($sql);
     }
