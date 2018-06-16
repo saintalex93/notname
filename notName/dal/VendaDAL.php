@@ -1,6 +1,7 @@
 <?php
-require_once '../model/Venda.php';
-require_once '../library/Conexao.class.php';
+require_once __DIR__ . '/../model/Venda.php';
+require_once __DIR__ . '/../library/Conexao.class.php';
+
 
 class VendaDAL
 {
@@ -18,20 +19,24 @@ class VendaDAL
         }
     }
 
-    public static function efetuaVenda(Venda $venda): string
+    public static function abreVenda(Venda $venda): string
     {
         VendaDAL::connect();
-        
+
+        // $dtCompra = $venda->getIdVenda();
         $idCli = $venda->getIdCli();
         $totalVenda = $venda->getVlrTotalVenda();
-        $dtCompra = $venda->getIdVenda();
-        
+        $statusVenda = $venda->getStatusVenda();
+        $CodRastVenda = $venda->getCodRastVenda();
+
         // exemplo de chamada de procedure
-        $sql = "CALL atualizando_Dados (‘$action’, ‘$tipoDados’, ‘$numComparativo’, ‘$codProduto’, ‘$valor’, ‘$nomeConcorrente’,‘$obs’, ‘$registro’)";
+        $sql = "INSERT VENDA (VENDA_nVLRTOTALVENDA, VENDA_dtDTCOMPRA, VENDA_cCODRASTREIO, VANDA_cSTATUS, CLI_nCOD) VALUES ( $totalVenda,  NOW(), '$CodRastVenda', '$statusVenda', $idCli)";
         
-        VendaDAL::$connection->executarSQL($sql);
+        echo $sql;
+
+        return VendaDAL::$connection->sqlNoTransact($sql);
         
-        return VendaDAL::$connection->returnID();
+        // return VendaDAL::$connection->returnID();
     }
 
     public static function insereClienteVenda(Venda $venda)
@@ -76,7 +81,7 @@ class VendaDAL
         $arrayVenda = array();
         
         foreach ($restulado as $resultado) {
-            
+
             $resultVenda = new Venda();
             
             $resultVenda->setIdVenda($resultado['VENDA_nID']);

@@ -3,7 +3,7 @@
 class Database
 {
 
-    private $lastid = -1;
+    // private $lastid = -1;
     
     // Vari�vel de resultado do sql.
     private $resutado;

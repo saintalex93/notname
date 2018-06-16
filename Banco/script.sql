@@ -1,4 +1,5 @@
 drop database if exists notnamec_db;
+
 create database notnamec_db;
 use notnamec_db;
 
@@ -183,7 +184,6 @@ INSERT INTO CLIENTE (CLI_cNOME,CLI_cEMAIL,CLI_cSENHA,CLI_cSTATUS)
 SELECT MODELO_cNOME, MODELO_nVLR_VENDA, MODELO_nSTATUS, MODELO_nDESCONTO, MODELO_nQTD_ESTOQUE, COR_nID, TAMANHO_nID, MODELO.PRODUTO_nID FROM MODELO INNER JOIN PRODUTO ON PRODUTO.PRODUTO_nID = MODELO.PRODUTO_nID WHERE PRODUTO_cSTATUS LIKE 'Ativo' and MODELO_nSTATUS like 'Ativo' and MODELO_nQTD_ESTOQUE > 0 and PRODUTO.PRODUTO_nID =1;
 
                             
-SELECT VENDA_nID FROM VENDA WHERE VENDA_cSTATUS = 'PENDENTE' AND CLI_nCOD = 1;
 
 
 INSERT INTO CATEGORIA (CATEGORIA_cDESC,CATEGORIA_cSTATUS) VALUES ('Amarola','Ativo'),('Bela recatada e do lar','Ativo'),('Series','Ativo'),('Nerd','Ativo'), ('Believe', 'Ativo'),('Favoritas', 'Ativo');
@@ -223,35 +223,97 @@ INSERT INTO COR VALUES (0, "Azul", "#0000CD"), (0, "Azul Claro", "#6495ED"), (0,
  (0,'FLASH','ATIVO',3),
  (0,'ARROW','ATIVO',3);
 
-select *, buscaDescCategoriaPai(CATEGORIA_nCODPAI) as descCategoriaPai from CATEGORIA where CATEGORIA_nCODPAI is not null;
-
-select *,
- fn_buscaDescTamanho(TAMANHO_nID) as descTamanho, fn_buscaDescProduto(PRODUTO_nID) as descProduto, fn_buscaDescCor(COR_nID) as descCor 
- from MODELO;
- 
-SELECT * FROM CATEGORIA where CATEGORIA_cSTATUS = 'Ativo';
 
 
-DESC MODELO;
+DELIMITER $$
+	CREATE PROCEDURE USP_LOGIN(IN LOGIN VARCHAR(20), IN SENHA VARCHAR(20))
+	BEGIN
+      
+	IF EXISTS(SELECT * FROM USUARIO WHERE USR_cLOGIN = LOGIN && USR_cSENHA = SENHA)
+	THEN
+		IF EXISTS(SELECT USR_nCOD FROM USUARIO WHERE USR_cLOGIN = LOGIN AND USR_cSENHA = SENHA AND USR_cSTATUS = 'Ativo')
+        THEN
+        SELECT USR_nCOD FROM USUARIO WHERE USR_cLOGIN = LOGIN AND USR_cSENHA = SENHA INTO @HANDSHAKE;
+        
+        ELSE
+		SELECT 'Usuário Inativo' INTO @HANDSHAKE;
+        
+        END IF;
+        
+        SELECT @HANDSHAKE AS HANDSHAKE;
+	ELSE
+		SELECT 'Login ou Senha Inválidos' AS HANDSHAKE;
+	END IF;
 
-    SELECT * FROM PRODUTO 
-    INNER JOIN MODELO ON PRODUTO.PRODUTO_nID = MODELO.PRODUTO_nID
-    WHERE PRODUTO_cSTATUS LIKE 'Ativo' and MODELO_nSTATUS like 'Ativo' and MODELO_nQTD_ESTOQUE > 0 and PRODUTO.PRODUTO_nID = 1;
-    
-    
-    desc VENDA_PRODUTO;
-    
-    SELECT *, IF(USR_cSTATUS = 1,REPLACE( USR_cSTATUS,1,'Ativo'),REPLACE( USR_cSTATUS,0,'Inativo')) as USR_cSTATUS FROM USUARIO;
+	END $$
+DELIMITER ;
 
-desc USUARIO;
 
-select* from USUARIO;
 
-SELECT MODELO_cNOME, MODELO_nID, MODELO_nVLR_VENDA, MODELO_nSTATUS, MODELO_nDESCONTO, MODELO_nQTD_ESTOQUE,
- COR_nID, MODELO.TAMANHO_nID,TAMANHO_cDESC, TAMANHO.TAMANHO_cTAMANHO AS descTamanho, MODELO.PRODUTO_nID, fn_buscaDescCor(COR_nID) as descCor, fn_buscaHexCor(COR_nID) as hexCor FROM MODELO
-        INNER JOIN PRODUTO ON PRODUTO.PRODUTO_nID = MODELO.PRODUTO_nID
-        INNER JOIN TAMANHO ON MODELO.TAMANHO_nID = TAMANHO.TAMANHO_nID
-             WHERE PRODUTO_cSTATUS LIKE 'Ativo' and MODELO_nSTATUS like 'Ativo' and 
-               MODELO_nQTD_ESTOQUE > 0 and PRODUTO.PRODUTO_nID
 
-    
+DELIMITER $$
+create function fn_buscaDescCategoriaPai(idCatPai int)
+returns varchar(50)
+begin
+declare nomeCategoria varchar(50);
+select CATEGORIA_cDESC into nomeCategoria
+from CATEGORIA
+where CATEGORIA_nID = idCatPai;
+return nomeCategoria;
+end $$
+DELIMITER ;
+
+DELIMITER $$
+create function fn_buscaHexCor(idCor int)
+returns varchar(10)
+begin
+declare hexCor varchar(10);
+select COR_cHEX into hexCor
+from COR
+where COR_nID = idCor;
+return hexCor;
+end $$
+DELIMITER ;
+
+DELIMITER $$
+create function fn_buscaDescCor(idCor int)
+returns varchar(10)
+begin
+declare descCor varchar(10);
+select COR_cDESC into descCor
+from COR
+where COR_nID = idCor;
+return descCor;
+end $$
+DELIMITER ;
+
+DELIMITER $$
+create function fn_buscaDescProduto(idProduto int)
+returns varchar(80)
+begin
+declare descProduto varchar(80);
+select PRODUTO_cDESC into descProduto
+from PRODUTO
+where PRODUTO_nID = idProduto;
+return descProduto;
+end $$
+DELIMITER ;
+
+DELIMITER $$
+create function fn_buscaDescTamanho(idTamanho int)
+returns varchar(20)
+begin
+declare descTamanho varchar(20);
+select TAMANHO_cTAMANHO into descTamanho
+from TAMANHO
+where TAMANHO_nID = idTamanho;
+return descTamanho;
+end $$
+DELIMITER ;
+
+
+
+
+
+
+

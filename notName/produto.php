@@ -109,7 +109,7 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 									<div class='col-md-4 col-sm-6'>
 									<div class='card imgProdutoPequena'>
 
-									<img class='card-img-top' src='img/Modelos/ModeloImg" . $arrModelo[$indice_array]['ID'] . "_" . $i . ".jpg' alt=''>
+									<img class='card-img-top' src='img/Modelos/ModeloImg" . $i . "_" . $arrModelo[$indice_array]['ID'] . ".jpg' alt=''>
 
 									</div>
 									</div>
@@ -122,12 +122,15 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 
 							</div>
 
-							<div class="col-md-12 mt-3 text-center">
+							
+						</div>
+
+						<div class="col-md-12 mt-3 text-center">
 
 								<div class="card">
 
 
-									<div class="row p-2">
+									<div class="row p-2 pb-3">
 										<h3 class="text-center col-md-12 text-secondary card-title">Cores e Tamanhos</h3>
 
 										<div class="container col-md-6 text-center">
@@ -164,7 +167,6 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 									</div>
 								</div>
 							</div>
-						</div>
 					</div>
 
 
