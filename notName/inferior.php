@@ -145,7 +145,12 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/loginCli.js"></script>
+<script src="js/jquery.blockUI.js"></script>
+<script src="js/ajaxLoading.js"></script>
+<script src="js/jquery.mask.js"></script>
+
+
 </body>
 
 </html>
-<script src="./js/loginCli.js"></script>

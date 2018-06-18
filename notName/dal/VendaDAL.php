@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../model/Venda.php';
+require_once __DIR__ . '/../model/Modelo.php';
 require_once __DIR__ . '/../library/Conexao.class.php';
 
 
@@ -19,54 +20,36 @@ class VendaDAL
         }
     }
 
+    public static function recuperaVendaAberta(Venda $venda): array
+    {
+        VendaDAL::connect();
+
+        $idCli = $venda->getIdCli();
+        
+        $sql = "SELECT VENDA_nID FROM VENDA WHERE VENDA_cSTATUS LIKE 'PENDENTE' AND CLI_nCOD = $idCli";
+        
+
+        VendaDAL::$connection->sqlNoTransact($sql);
+        
+        return VendaDAL::$connection->getResultados();
+    }
+
     public static function abreVenda(Venda $venda): string
     {
         VendaDAL::connect();
 
-        // $dtCompra = $venda->getIdVenda();
         $idCli = $venda->getIdCli();
         $totalVenda = $venda->getVlrTotalVenda();
         $statusVenda = $venda->getStatusVenda();
         $CodRastVenda = $venda->getCodRastVenda();
 
-        // exemplo de chamada de procedure
-        $sql = "INSERT VENDA (VENDA_nVLRTOTALVENDA, VENDA_dtDTCOMPRA, VENDA_cCODRASTREIO, VANDA_cSTATUS, CLI_nCOD) VALUES ( $totalVenda,  NOW(), '$CodRastVenda', '$statusVenda', $idCli)";
+        $sql = "INSERT VENDA (VENDA_nVLRTOTALVENDA, VENDA_dtDTCOMPRA, VENDA_cCODRASTREIO, VENDA_cSTATUS, CLI_nCOD) VALUES ( 0.00,  NOW(), 'xxx', 'PENDENTE', $idCli)";
         
-        echo $sql;
-
         return VendaDAL::$connection->sqlNoTransact($sql);
         
-        // return VendaDAL::$connection->returnID();
-    }
-
-    public static function insereClienteVenda(Venda $venda)
-    {
-        VendaDAL::connect();
-        
-        $idVenda = $venda->getIdVenda();
-        $idCli = $venda->getIdCli();
-        
-        $sql = "";
-        
-        VendaDAL::$connection->executarSQL($sql);
-        
         return VendaDAL::$connection->returnID();
     }
 
-    public static function insereVendaStatus(Venda $venda)
-    {
-        VendaDAL::connect();
-        
-        $idStatus = $venda->getIdStatus();
-        $idVenda = $venda->getIdVenda();
-        $dtAtualizacao = $venda->getDtAtualizacaoVenda();
-        
-        $sql = "";
-        
-        VendaDAL::$connection->executarSQL($sql);
-        
-        return VendaDAL::$connection->returnID();
-    }
 
     public static function buscaVenda(Venda $venda): array
     {
@@ -96,20 +79,30 @@ class VendaDAL
         return $arrayVenda;
     }
 
-    public static function alteraVendaStatus(Venda $venda): string
+
+    public static function insereModeloVenda(Venda $venda, Modelo $prod): string
     {
+
+        $venda = new Venda();
+        $modelo = new Modelo();
+
+
+
         VendaDAL::connect();
         
-        $idStatus = $venda->getIdStatus();
-        $idVenda = $venda->getIdVenda();
-        $dtAtualizacao = $venda->getDtAtualizacaoVenda();
+        $venda->getIdVenda();
+        $prod->getIdProd();
+        $venda->getDTSeparacaoVendaProduto();
+        $venda->getQtdeVendaProduto();
         
         $sql = "";
         
-        return $connection->executarSQL($sql);
+        VendaDAL::$connection->executarSQL($sql);
+        
+        return VendaDAL::$connection->returnID();
     }
 
-    public static function insereVendaProduto(Venda $venda, Produto $prod): string
+    public static function apagaModeloVenda(Venda $venda, Modelo $prod): string
     {
         $connection = new Database();
         

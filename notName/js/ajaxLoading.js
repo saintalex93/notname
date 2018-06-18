@@ -9,10 +9,9 @@
         opacity: .5,
         color: '#fff'
       },
-      message: '<img src="../img/loading.gif" style="width:7%"/> Por favor aguarde...'
+      message: '<img src="./img/loading.gif" style="width:7%"/> Por favor aguarde...'
     });
   }
-
 
   function parar(){
     $.unblockUI();

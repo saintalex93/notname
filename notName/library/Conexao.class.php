@@ -4,7 +4,7 @@ class Database
 {
 
     // private $lastid = -1;
-    
+
     // Vari�vel de resultado do sql.
     private $resutado;
 
@@ -44,7 +44,7 @@ class Database
     public function executarSQL(string $sql)
     {
         // $this->lastid = -1;
-        
+
         // Conecta no banco
         $this->conectar();
         
@@ -93,7 +93,7 @@ class Database
             
             return true;
         } catch (Exception $e) {
-            echo "Não foi possível inserir o produto. Erro: {$e}";
+            echo "Erro ao executar o SQL - Erro: {$e}";
             return false;
         }
     }

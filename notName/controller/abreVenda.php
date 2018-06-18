@@ -1,40 +1,46 @@
 <?php 
 session_start();
+
 require_once './../library/Conexao.class.php';
 require_once __DIR__ . '/../dal/VendaDAL.php';
+require_once __DIR__ . '/../dal/ModeloDAL.php';
+
+
 
 $ID_USR = $_SESSION['USERCOM']['ID'];
 
-$sql = "SELECT VENDA_nID FROM VENDA WHERE VANDA_cSTATUS LIKE 'PENDENTE' AND CLI_nCOD = $ID_USR";
-
-$db = new Database();
-
-$idVenda = $db->sqlNoTransact($sql);
-
-print_r($idVenda);
-
-$id = $db->returnID();
-
-if($id != 0 || empty($id)){
 $venda = new Venda();
 
 $venda->setIdCli($ID_USR);
-$venda->setVlrTotalVenda(0.00);
-$venda->setCodRastVenda('xxx');
-$venda->setStatusVenda('PENDENTE');
 
-$idVenda = VendaDAL::abreVenda($venda);
+$idVenda = VendaDAL::recuperaVendaAberta($venda);
 
-var_dump($idVenda);
+$idVenda = $idVenda[0]['VENDA_nID'];
+
+if(!isset($_SESSION['USERCOM']['ID'])){
+
+
+	if($idVenda == 0 || empty($id)){
+
+		$idVenda = VendaDAL::abreVenda($venda);
+
+		$_SESSION['USERCOM']['ID'] = $idVenda;
+
+	}
+	else{
+
+		echo "Venda já aberta";
+
+		echo $_SESSION['USERCOM']['ID'] = $idVenda;
+
+	}
+
 }
+
 else{
-// Utilizar a venda do id;
-
-	echo "Venda já aberta";
-
-
+	echo "Venda Setada";
 }
 
-echo "ID: ".$id;
+
 
 ?>

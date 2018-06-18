@@ -11,12 +11,10 @@ $("#logaCli").click(function(event)
 			data : data,
 			success : function(response) {
 				if (response == "Logado") {
-					window.location.href = './index.php';
-
+					window.location.reload();
 				} else {
-					alert("Cagou tudo");
 					$("#returnFormLogCli").text("Usuario ou senha Invalidos");
-					$("#returnFormLogCli").attr("class","text-center text-danger");
+					$("#returnFormLogCli").attr("class","text-center text-danger d-block mt-1");
 
 				}
 			}
@@ -38,12 +36,12 @@ $(".logaCli").click(function(event)
 			data : data,
 			success : function(response) {
 				if (response == "Logado") {
-					window.location.href = './index.php';
+					window.location.reload();
 
 				} else {
 
 					$(".returnFormLogCli").text("Usuario ou senha Invalidos");
-					$(".returnFormLogCli").attr("class","text-center text-danger");
+					$(".returnFormLogCli").attr("class","text-center text-danger d-block mt-1");
 
 				}
 			}
