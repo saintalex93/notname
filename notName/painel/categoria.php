@@ -6,7 +6,7 @@ $categorias = CategoriaDAL::buscaCategoria();
 
 $categoriasFilhas = CategoriaDAL::buscaCategoriaFilha();
 
-
+$id = $categorias[0]->getIdCateg();
 ?>
 
 
@@ -32,6 +32,7 @@ $categoriasFilhas = CategoriaDAL::buscaCategoriaFilha();
 											<div class="row">
 												<div class="col-md-6 ">
 													<div class="form-group">
+														<input type="hidden" name="idCategPai" id="idCategPai" value="<?php echo $id;?>">
 														<label>Categoria</label> <input type="text"
 														class="form-control" id="txtCategoria" name="txtCategoria">
 													</div>
@@ -64,9 +65,9 @@ $categoriasFilhas = CategoriaDAL::buscaCategoriaFilha();
 										<div class="form-actions">
 											<button type="submit" class="btn btn-success"
 											id="btnCadastroCategoria">
-											<i class="fa fa-check"></i> Save
+											<i class="fa fa-check"></i> Cadastrar
 										</button>
-										<button type="button" class="btn btn-inverse">Cancel</button>
+										<button type="button" class="btn btn-inverse">Cancelar</button>
 									</div>
 
 
@@ -93,12 +94,12 @@ $categoriasFilhas = CategoriaDAL::buscaCategoriaFilha();
 											foreach ($categorias as $categoriaTabela) {
 												if ($categoriaTabela->getCodPai() == NULL) {
 													echo "
-													<tr>
+													<tr id='rowCatPai".$categoriaTabela->getIdCateg()."'>
 
 													<td>" . $categoriaTabela->getIdCateg() . "</td>
 													<td>" . $categoriaTabela->getDescCateg() . "</td>
 													<td><span class = 'badge badge-success'>" . $categoriaTabela->getStatusCateg() . "</span></td>
-													<td class='text-center'><button class='btn btn-inverse' id = '" . $categoriaTabela->getIdCateg() . "'>Alterar</button></td>
+													<td class='text-center'><button class='btn btn-inverse' id = '" . $categoriaTabela->getIdCateg() . "' onclick='alteraCategoriaPai(this.id)'>Alterar</button></td>
 													</tr>
 													";
 												}
@@ -125,8 +126,9 @@ $categoriasFilhas = CategoriaDAL::buscaCategoriaFilha();
 									<div class="row">
 										<div class="col-md-6 ">
 											<div class="form-group">
+												<input type="hidden" name="idCategFilha" id="idCategFilha" value="<?php echo $id;?>">
 												<label>Nome</label> <input type="text" class="form-control"
-												name="txtCategoriaFilho">
+												name="txtCategoriaFilho" id="txtCategoriaFilho">
 											</div>
 										</div>
 
@@ -134,7 +136,7 @@ $categoriasFilhas = CategoriaDAL::buscaCategoriaFilha();
 											<div class="form-group">
 												<label class="control-label">Categoria</label> <select
 												class="form-control " data-placeholder="Choose a Category"
-												tabindex="1" name="optCategoriaPai">
+												tabindex="1" name="optCategoriaPai" id="optCategoriaPai">
 												<option value="">Selecione...</option>
 												<?php
 
@@ -183,9 +185,9 @@ $categoriasFilhas = CategoriaDAL::buscaCategoriaFilha();
 								<button type="submit" class="btn btn-success"
 								name="btnCadastroCategoriaFilha"
 								id="btnCadastroCategoriaFilha">
-								<i class="fa fa-check"></i> Save
+								<i class="fa fa-check"></i> Cadastrar
 							</button>
-							<button type="button" class="btn btn-inverse">Cancel</button>
+							<button type="button" class="btn btn-inverse">Cancelar</button>
 						</div>
 
 						<div class="table-responsive m-t-40">
@@ -198,7 +200,7 @@ $categoriasFilhas = CategoriaDAL::buscaCategoriaFilha();
 								<tr>
 									<th>ID</th>
 									<th>Categoria</th>
-									<th>Status</th>
+									<th class='text-center'>Status</th>
 									<th>Categoria Pai</th>
 
 									<th class="text-center">Ações</th>
@@ -210,17 +212,18 @@ $categoriasFilhas = CategoriaDAL::buscaCategoriaFilha();
 								<?php
 
 								foreach ($categoriasFilhas as $categFilhaTabela) {
-										echo "
-										<tr>
+									echo "
+									<tr id='rowCatFilho".$categFilhaTabela->getIdCateg()."'>
 
-										<td>" . $categFilhaTabela->getIdCateg() . "</td>
-										<td>" . $categFilhaTabela->getDescCateg() . "</td>
-										<td><span class = 'badge badge-success'>" . $categFilhaTabela->getStatusCateg() . "</span></td>
-										<td>" . $categFilhaTabela->getDescPai() . "</td>
-										
-										<td class='text-center'><button class='btn btn-inverse' id = '" . $categFilhaTabela->getIdCateg() . "'>Alterar</button></td>
-										</tr>
-										";
+									<td>" . $categFilhaTabela->getIdCateg() . "</td>
+									<td>" . $categFilhaTabela->getDescCateg() . "</td>
+									<td class='text-center'><span class = 'badge badge-success'>" . $categFilhaTabela->getStatusCateg() . "</span></td>
+									<td hidden>". $categFilhaTabela->getCodPai() ."</td>
+									<td >" . $categFilhaTabela->getDescPai() . "</td>
+
+									<td class='text-center'><button class='btn btn-inverse' id = '" . $categFilhaTabela->getIdCateg() . "' onclick='alteraCategoriaFilha(this.id)'>Alterar</button></td>
+									</tr>
+									";
 								}
 
 								?>
@@ -241,7 +244,10 @@ $categoriasFilhas = CategoriaDAL::buscaCategoriaFilha();
 
 
 <?php include_once 'footer.php';?>
-<script src="js/cadastroProduto.js"></script>
+<script src="js/alteraCategoria.js"></script>
+<script src="js/ajaxCategoria.js"></script>
+
+
 
 
 
