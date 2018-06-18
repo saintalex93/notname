@@ -24,8 +24,8 @@ $("#btnCadastraCor").click(function(event){
 							$("#txtDescCor").val("");
 							$("#txtCor").val("");
 							$("#html5colorpicker").val("");
-							
-						},5000);
+							window.location.reload();							
+						},3000);
 
 					}else
 					{
@@ -37,7 +37,8 @@ $("#btnCadastraCor").click(function(event){
 							$("#txtDescCor").val("");
 							$("#txtCor").val("");
 							$("#html5colorpicker").val("#ff0000");
-						},5000);
+							window.location.reload();
+						},3000);
 					}
 
 				}
@@ -70,8 +71,8 @@ $("#btnCadastraCor").click(function(event){
 							$("#txtDescCor").val("");
 							$("#txtCor").val("");
 							$("#html5colorpicker").val("");
-							
-						},5000);
+							window.location.reload();							
+						},3000);
 
 					}else
 					{
@@ -83,7 +84,8 @@ $("#btnCadastraCor").click(function(event){
 							$("#txtDescCor").val("");
 							$("#txtCor").val("");
 							$("#html5colorpicker").val("#ff0000");
-						},5000);
+							window.location.reload();
+						},3000);
 					}
 
 				}

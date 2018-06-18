@@ -25,8 +25,9 @@ $("#btnCadastraTamanho").click(function(event){
 							$("#returnCadTamanho").css("display","none");
 							$("#txtTamanho").val("");
 							$("#txtMedida").val("");
+							window.location.reload();
+						},3000);
 
-						},5000);
 					}
 				}
 			});
@@ -57,8 +58,9 @@ $("#btnCadastraTamanho").click(function(event){
 							$("#returnCadTamanho").css("display","none");
 							$("#txtTamanho").val("");
 							$("#txtMedida").val("");
+							window.location.reload();
+						},3000);
 
-						},5000);
 					}
 				}
 			});
