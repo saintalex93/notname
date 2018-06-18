@@ -75,7 +75,7 @@
                         </div>
 
                         <div class="col-sm-4">
-                            <h3><i class="fab fa-whatsapp" ></i> Central de Atendimento</h3>
+                            <h3><i class="fab fa-whatsapp"></i> Central de Atendimento</h3>
                             <p class="text-muted">Whatsapp</p>
                             <p><strong>+11 5837-7690</strong>
                             </p>
@@ -134,8 +134,25 @@
                             </div>
                         </div>
                         <div class="col-sm-12 text-center">
-                            <button type="button" class="btn btn-primary" id="btnContato"><i class="fa fa-envelope-o"></i>Enviar mensagem</button>
-
+                            <button type="button" class="btn btn-primary" id="btnContato" data-toggle="modal" data-target="#myModal"><i class="fa fa-envelope-o"></i>Enviar mensagem</button>
+                            
+                            
+                            <div class="modal" id="myModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">                             <div class="modal-header">
+                                            <h4 class="modal-title text-center">Mensagem realizada com  sucesso!!</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            
+                            
                         </div>
 
                     </form>
