@@ -6,6 +6,7 @@ require_once '../dal/ProdutoDAL.php';
 
 
 $categorias = CategoriaDAL::buscaCategoria();
+$categFilho = CategoriaDAL::categoriaFilho();
 $produtos = ProdutoDAL::buscaProduto();
 
 ?>
@@ -84,7 +85,7 @@ $produtos = ProdutoDAL::buscaProduto();
 			</div>
 			<!-- CATEGORIA -->
 			<div class="content">
-				<h3 class="box-title m-t-10 text-center">Categorias Filhas</h3>
+				<h3 class="box-title m-t-10 text-center">Categorias</h3>
 				<div class="text-center">
 					<div class="col-md-12 mb-3">
 
@@ -98,6 +99,32 @@ $produtos = ProdutoDAL::buscaProduto();
 								<span class='button-checkbox mb-2 mx-1'>
 								<button type='button' class='btn mb-3' data-color='secondary'>{$categoria->getDescCateg()}</button>
 								<input type='checkbox' class='hidden' name='categoriaIdProduto[]' id = '{$categoria->getIdCateg()}' value = '{$categoria->getIdCateg()}' />
+								</span>
+
+								";
+							}
+						}
+
+						?>
+
+					</div>
+				</div>
+			</div>
+			<div class="content">
+				<h3 class="box-title m-t-10 text-center">Categorias Filho</h3>
+				<div class="text-center">
+					<div class="col-md-12 mb-3">
+
+						<?php
+
+						foreach ($categFilho as $categoriaFilho) {
+
+						    if ($categoriaFilho->getStatusCateg() == "ATIVO") {
+
+								echo "
+								<span class='button-checkbox mb-2 mx-1'>
+								<button type='button' class='btn mb-3' data-color='secondary'>{$categoriaFilho->getDescCateg()}</button>
+								<input type='checkbox' class='hidden' name='categoriaFilhoIdProduto[]' id = '{$categoriaFilho->getIdCateg()}' value = '{$categoria->getIdCateg()}' />
 								</span>
 
 								";

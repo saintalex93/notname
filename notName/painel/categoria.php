@@ -53,7 +53,7 @@ $id = $categorias[0]->getIdCateg();
 																		data-toggle="statusCategoria" data-title="Inativo">Inativo</a>
 																	</div>
 																	<input type="hidden" name="statusCategoria"
-																	id="statusCategoria" value="Ativo">
+																	id="statusCategoria" value="ATIVO">
 																</div>
 															</div>
 														</div>
@@ -170,7 +170,7 @@ $id = $categorias[0]->getIdCateg();
 															data-toggle="statusMarca" data-title="Inativo">Inativo</a>
 														</div>
 														<input type="hidden" name="statusCategoriaFilha"
-														id="statusCategoriaFilha" value="Ativo">
+														id="statusCategoriaFilha" value="ATIVO">
 													</div>
 												</div>
 											</div>

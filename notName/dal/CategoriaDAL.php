@@ -71,7 +71,7 @@ class CategoriaDAL
     {
         CategoriaDAL::connect();
         
-        $sql = "SELECT * FROM CATEGORIA";
+        $sql = "SELECT * FROM CATEGORIA Where CATEGORIA_nCODPAI IS NULL";
         
         CategoriaDAL::$connection->executarSQL($sql);
         
@@ -166,6 +166,36 @@ class CategoriaDAL
             $cat->setStatusCateg($status);
             $cat->setCodPai($idCodPai);
             $cat->setDescPai($descPai);
+            
+            $arrayCategoria[] = $cat;
+        }
+        return $arrayCategoria;
+    }
+    public static function categoriaFilho(): array
+    {
+        CategoriaDAL::connect();
+        
+        $sql = "SELECT * FROM CATEGORIA Where CATEGORIA_nCODPAI IS NOT NULL";
+        
+        CategoriaDAL::$connection->executarSQL($sql);
+        
+        $resultados = CategoriaDAL::$connection->getResultados();
+        
+        $arrayCategoria = array();
+        
+        foreach ($resultados as $resultado) {
+            $cat = new Categoria();
+            
+            $id = $resultado['CATEGORIA_nID'];
+            $descricao = $resultado['CATEGORIA_cDESC'];
+            $status = $resultado['CATEGORIA_cSTATUS'];
+            $idCodPai = $resultado['CATEGORIA_nCODPAI'];
+                        
+            $cat->setIdCateg($id);
+            $cat->setDescCateg($descricao);
+            $cat->setStatusCateg($status);
+            $cat->setCodPai($idCodPai);
+            
             
             $arrayCategoria[] = $cat;
         }
