@@ -1,34 +1,13 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/notname/notName/url.php';
 // require_once $raiz . 'dal/MarcaDAL.php';
-require_once $raiz . 'dal/CategoriaDAL.php';
+
 require_once $raiz . 'dal/ProdutoDAL.php';
 require_once $raiz . 'library/Conexao.class.php';
 
-$categoria = new Categoria();
 
-if ($_REQUEST['action'] == 'insereCategoria') {
-    
-    $categoria->setDescCateg($_REQUEST['txtCategoria']);
-    $categoria->setStatusCateg($_REQUEST['statusCategoria']);
-    
-    if ($categoriaDal = CategoriaDAL::insereCategoriaPai($categoria)) {
-        echo "Inserido";
-    } else {
-        echo "Não foi possível inserir";
-    }
-} else if ($_REQUEST['action'] == 'insereCategoriaFilha') {
-    
-    $categoria->setDescCateg($_REQUEST['txtCategoriaFilho']);
-    $categoria->setStatusCateg($_REQUEST['statusCategoriaFilha']);
-    $categoria->setCodPai($_REQUEST['optCategoriaPai']);
-    
-    if (CategoriaDAL::insereCategoriaFilho($categoria)) {
-        echo "Inserido";
-    } else {
-        echo "Não foi possivel inserir";
-    }
-}
+
+
 
 if ($_REQUEST['action'] == 'insereProduto') {
     

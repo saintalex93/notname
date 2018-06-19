@@ -20,6 +20,6 @@ function alteraCategoriaFilha(id){
 
 	
 
-	$("#btnCadastroCategoria").text("Alterar");
-	$("#btnCadastroCategoria").val("2");
+	$("#btnCadastroCategoriaFilha").text("Alterar");
+	$("#btnCadastroCategoriaFilha").val("2");
 }

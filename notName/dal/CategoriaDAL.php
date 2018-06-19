@@ -48,9 +48,21 @@ class CategoriaDAL
         CategoriaDAL::connect();
         $idCat = $cat->getIdCateg();
         $descCat = $cat->getDescCateg();
-        $descCat = $cat->getStatusCateg();
+        $statusCat = $cat->getStatusCateg();
         
-        $sql = "";
+        $sql = "UPDATE CATEGORIA SET CATEGORIA_cDESC = '$descCat', CATEGORIA_cSTATUS = '$statusCat' WHERE CATEGORIA_nID = $idCat";
+        
+        return CategoriaDAL::$connection->executarSQL($sql);
+    }
+    public static function alteraCategoriaFilho(Categoria $cat): string
+    {
+        CategoriaDAL::connect();
+        $idCat = $cat->getIdCateg();
+        $descCat = $cat->getDescCateg();
+        $statusCat = $cat->getStatusCateg();
+        $idPai = $cat->getCodPai();
+        
+        $sql = "UPDATE CATEGORIA SET CATEGORIA_cDESC = '$descCat', CATEGORIA_cSTATUS = '$statusCat', CATEGORIA_nCODPAI= $idPai WHERE CATEGORIA_nID = $idCat";
         
         return CategoriaDAL::$connection->executarSQL($sql);
     }

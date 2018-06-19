@@ -63,11 +63,14 @@ $id = $categorias[0]->getIdCateg();
 										</form>
 
 										<div class="form-actions">
-											<button type="submit" class="btn btn-success"
-											id="btnCadastroCategoria">
-											<i class="fa fa-check"></i> Cadastrar
+											<button type="button" class="btn btn-success"
+											id="btnCadastroCategoria" value="1">
+											Cadastrar
 										</button>
-										<button type="button" class="btn btn-inverse">Cancelar</button>
+										<button type="button" class="btn btn-inverse" id="btnCancelarCategPai">Cancelar</button>
+										<div>
+											<p id="returnCadCategPai"></p>
+										</div>
 									</div>
 
 
@@ -137,7 +140,7 @@ $id = $categorias[0]->getIdCateg();
 												<label class="control-label">Categoria</label> <select
 												class="form-control " data-placeholder="Choose a Category"
 												tabindex="1" name="optCategoriaPai" id="optCategoriaPai">
-												<option value="">Selecione...</option>
+												<option value="0">Selecione...</option>
 												<?php
 
 												foreach ($categorias as $cat) {
@@ -182,12 +185,15 @@ $id = $categorias[0]->getIdCateg();
 							</form>
 
 							<div class="form-actions">
-								<button type="submit" class="btn btn-success"
+								<button type="button" class="btn btn-success"
 								name="btnCadastroCategoriaFilha"
-								id="btnCadastroCategoriaFilha">
-								<i class="fa fa-check"></i> Cadastrar
+								id="btnCadastroCategoriaFilha" value="1">
+								Cadastrar
 							</button>
-							<button type="button" class="btn btn-inverse">Cancelar</button>
+							<button type="button" class="btn btn-inverse" id="btnCancelarCategFilho">Cancelar</button>
+							<div>
+								<p id="returnCadCategFilho"></p>
+							</div>
 						</div>
 
 						<div class="table-responsive m-t-40">
