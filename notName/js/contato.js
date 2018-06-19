@@ -1,6 +1,5 @@
 $("#btnContato").click(function(event) {
 
-	carregando();
 
 	carregando();
 	var data = $('#formContato').serialize();
@@ -10,10 +9,12 @@ $("#btnContato").click(function(event) {
 		data: data,  
 		success: function (response) {
 			retorno = JSON.parse(response);
-
-			alert(retorno['mensagem']);       
-
 			parar();
+			
+			$("#retornoContato").text(retorno['mensagem']);
+
+			$("#myModal").modal();
+
 
 		}
 	});
@@ -21,6 +22,6 @@ $("#btnContato").click(function(event) {
 
 });
 
-	$('#celular').mask('(00) 00000-0000');
+$('#celular').mask('(00) 00000-0000');
 
 

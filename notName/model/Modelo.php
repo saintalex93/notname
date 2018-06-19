@@ -16,7 +16,19 @@ class Modelo{
     private $descTamanho;
     private $descTamanhoCompleto;
     private $hexCor;
-    
+    private $quantidadeVendaModelo;
+
+
+    public function getQuantidadeVendaModelo()
+    {
+        return $this->quantidadeVendaModelo;
+    }
+
+    public function setQuantidadeVendaModelo($quantidadeVendaModelo)
+    {
+        $this->quantidadeVendaModelo = $quantidadeVendaModelo;
+    }
+
     public function getDescTamanhoCompleto()
     {
         return $this->descTamanhoCompleto;

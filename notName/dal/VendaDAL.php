@@ -80,22 +80,22 @@ class VendaDAL
     }
 
 
-    public static function insereModeloVenda(Venda $venda, Modelo $prod): string
+    public static function insereModeloVenda(Venda $venda, Modelo $modelo): string
     {
+        VendaDAL::connect();
 
         $venda = new Venda();
         $modelo = new Modelo();
-
-
-
-        VendaDAL::connect();
         
-        $venda->getIdVenda();
-        $prod->getIdProd();
-        $venda->getDTSeparacaoVendaProduto();
-        $venda->getQtdeVendaProduto();
+        $idVenda = $venda->getIdVenda();
+        $idModelo = $modelo->getIdModelo();
+        $qdtVendida = $modelo->getQuantidadeVendaModelo();
+        $valorModelo = $modelo->getVlrVendaModelo();
+
         
-        $sql = "";
+        $sql = "INSERT INTO VENDA_MODELO (VENDA_MODELO_tsDT_SEPARACAO, VENDA_MODELO_QDTE, VENDA_MODELO_dVLR_MODELO, 
+        VENDA_nID, MODELO_nID)
+        VALUES(NOW(), $qdtVendida, $valorModelo, $idVenda, $idModelo)";
         
         VendaDAL::$connection->executarSQL($sql);
         
