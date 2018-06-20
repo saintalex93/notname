@@ -2,7 +2,7 @@
 function alterarModelo(id){
     var idRow = "rowModelo"+id;
 
-
+    $("#idModelo").val($('tr#'+idRow+' td:nth-child(1)').text());
     $("#descModelo").val($('tr#'+idRow+' td:nth-child(5)').text());
     $("#tamanhoModelo").val($('tr#'+idRow+' td:nth-child(3)').text());
     $("#corModelo").val($('tr#'+idRow+' td:nth-child(2)').text());
@@ -10,6 +10,10 @@ function alterarModelo(id){
     $("#txtValorModelo").val($('tr#'+idRow+' td:nth-child(9)').text());
     $("#quantidadeModelo").val($('tr#'+idRow+' td:nth-child(10)').text());
     $("#statusModelo").val($('tr#'+idRow+' td:nth-child(11)').text());
+
+
+    $("#btnCadastraModelo").text("Alterar");
+    $("#btnCadastraModelo").val("2");
 
     if($('tr#'+idRow+' td:nth-child(11)').text() == "Ativo"){
 
@@ -58,6 +62,23 @@ $("#btnCadastraModelo").click(function() {
 
 });
 
+$("#btnCancelModelo").click(function(event){
+    $("#descModelo").val("");
+    $("#tamanhoModelo").val(0);
+    $("#corModelo").val(0);
+    $("#produtoModelo").val(0);
+    $("#txtValorModelo").val(0);
+    $("#quantidadeModelo").val(0);
+    $(".foto").attr('src','0');
+    $("#capaImg").attr('src','0');
+    $("#descModelo").focus();
+
+    if($("#btnCadastraModelo").val() == 2){
+        $("#btnCadastraModelo").val(1);
+        $("#btnCadastraModelo").text('Cadastrar')
+    }
+});
+
 
 // Ajax para produto com imagem.
 
@@ -67,6 +88,36 @@ $("#formModelo").submit(function () {
 
     $.ajax({
         url: './controller/controllerModelo.php?action=insereModelo',
+        type: 'POST',
+        data: formData,
+        success: function (data) {
+            parar();
+            alert(data);
+
+        },
+        cache: false,
+        contentType: false,
+        processData: false,
+        xhr: function() {  // Custom XMLHttpRequest
+            var myXhr = $.ajaxSettings.xhr();
+            if (myXhr.upload) { // Avalia se tem suporte a propriedade upload
+                myXhr.upload.addEventListener('progress', function () {
+                    /* faz alguma coisa durante o progresso do upload */
+                }, false);
+            }
+            return myXhr;
+        }
+    });
+});
+$("#formModelo").submit(function () {
+
+    var formData = new FormData(this);
+
+    alert($("#capaInput").attr('src'));
+    alert($(".foto").attr('src'));
+
+    $.ajax({
+        url: './controller/controllerModelo.php?action=alteraModelo',
         type: 'POST',
         data: formData,
         success: function (data) {

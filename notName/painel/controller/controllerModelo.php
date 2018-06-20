@@ -9,7 +9,7 @@ if ($_REQUEST['action'] == 'insereModelo') {
 		"."
 	);
 	$vlrModelo = $_REQUEST['txtValorModelo'];
-	$vlrModelo = str_replace($toReplace, "", $vlrModelo);
+	$vlrModelo = str_replace($toReplace, "", id);
 	$vlrModelo = str_replace(",", ".", $vlrModelo);
 
 	$modelo = new Modelo();
@@ -78,6 +78,9 @@ if ($_REQUEST['action'] == 'insereModelo') {
 	    ModeloDAL::removeModelo($modelo);
 	    echo "Erro ao cadastrar o modelo. Refaça o cadastro";
 	}
+}else if ($_REQUEST['action'] == 'alteraModelo')
+{
+    print_r( $_FILES['capa']);
 }
 
 

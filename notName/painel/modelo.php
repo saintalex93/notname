@@ -28,6 +28,7 @@ $modelo = ModeloDAL::buscaModeloTabela();
 
                         <div class="col-md-6">
                             <div class="form-group">
+                                <input type="hidden" name="idModelo" id="idModelo">
                                 <label class="control-label">Descrição</label> <input
                                 type="text" id="descModelo" class="form-control"
                                 placeholder="Camiseta Hell Kitty tamanho P"
@@ -41,7 +42,7 @@ $modelo = ModeloDAL::buscaModeloTabela();
                         <div class="form-group">
                             <label class="control-label">Tamanho</label> <select
                             class="form-control" name="tamanhoModelo" id= "tamanhoModelo">
-                            <option value="">Selecione...</option>
+                            <option value="0">Selecione...</option>
                             
                             <?php 
                             foreach ($tamanho as $tm){
@@ -61,7 +62,7 @@ $modelo = ModeloDAL::buscaModeloTabela();
                     <label class="control-label">Cor</label> 
                     <select
                     class="form-control " id ="corModelo" name="corModelo" >
-                    <option value="">Selecione...</option>
+                    <option value="0">Selecione...</option>
 
                     <?php 
                     foreach ($cor as $cr){
@@ -88,7 +89,7 @@ $modelo = ModeloDAL::buscaModeloTabela();
             <div class="form-group">
                 <label class="control-label">Produto</label> 
                 <select class="form-control " name="produtoModelo" id = "produtoModelo">
-                    <option value="">Selecione...</option>
+                    <option value="0">Selecione...</option>
                     <?php 
                     foreach ($produto as $prod) {
                         echo "<option value = '{$prod->getIdProd()}'>{$prod->getDescProd()}</option>";
@@ -170,7 +171,7 @@ $modelo = ModeloDAL::buscaModeloTabela();
                 ';
 
                 echo '
-                <div class="cameraModeloFoto'.$i.' cameraModelo col-12 border-white" onclick="document.all.foto'.$i.'.click(); "> <img name = "imageEstbl" src="images/logoNot.png"  class="col-12" id = "foto'.$i.'Img" onerror=\'this.src="images/logoNot.png"\') ></div><br>
+                <div class="cameraModeloFoto'.$i.' cameraModelo col-12 border-white" onclick="document.all.foto'.$i.'.click(); "> <img name = "imageEstbl" src="images/logoNot.png"  class="col-12 foto" id = "foto'.$i.'Img" onerror=\'this.src="images/logoNot.png"\') ></div><br>
 
                 </div>
                 ';
@@ -189,11 +190,11 @@ $modelo = ModeloDAL::buscaModeloTabela();
 
 <div class="form-actions text-center mt-3">
     <button type="button" class="btn btn-success"
-    id="btnCadastraModelo">
-    <i class="fa fa-check"></i> Cadastrar
+    id="btnCadastraModelo" value="1">
+    Cadastrar
 </button>
-<button type="button" class="btn btn-inverse">
-    <i class="fa fa-check"></i> CANCEL
+<button type="button" class="btn btn-inverse" id="btnCancelModelo">
+   Cancelar
 </button>
 </div>
 
