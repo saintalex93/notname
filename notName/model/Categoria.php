@@ -1,12 +1,19 @@
 <?php
 
-class Categoria {
+class Categoria implements \JsonSerializable {
 
     private $idCateg;
     private $descCateg;
     private $statusCateg;
     private $codPai;
     private $descPai;
+    
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+
+        return $vars;
+    }
 
     public function getIdCateg() {
         return $this->idCateg;

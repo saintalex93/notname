@@ -1,3 +1,5 @@
+
+
 <?php
 include_once 'header.php';
 
@@ -24,11 +26,12 @@ $produtos = ProdutoDAL::buscaProduto();
 						<div class="form-group">
 							<input type="hidden" name="idProd" value="">
 							<label class="control-label">Descrição do Produto</label> <input
-							type="text" id="firstName" class="form-control"
+							type="text" id="txtNomeProduto" class="form-control"
 							placeholder="Produto"
-							name="txtNomeProduto"> <small
+							name="txtNomeProduto"> 
+							<!-- <small
 							class="form-control-feedback text-danger"> This is inline
-						help </small>
+						help </small> -->
 					</div>
 				</div>
 				
@@ -52,12 +55,12 @@ $produtos = ProdutoDAL::buscaProduto();
 								<div class="input-group">
 									<div id="radioBtn" class="btn-group">
 										<a class="btn btn-primary btn-sm active"
-										data-toggle="statusProduto" data-title="Ativo">Ativo</a>
+										data-toggle="statusProduto" data-title="ATIVO" id="btnProdActive">Ativo</a>
 										<a class="btn btn-secondary btn-sm notActive"
-										data-toggle="statusProduto" data-title="Inativo">Inativo</a>
+										data-toggle="statusProduto" data-title="INATIVO" id="btnProdInactive">Inativo</a>
 									</div>
 									<input type="hidden" name="statusProduto"
-									id="statusProduto" value="Ativo">
+									id="statusProduto" value="ATIVO">
 								</div>
 							</div>
 						</div>
@@ -75,9 +78,9 @@ $produtos = ProdutoDAL::buscaProduto();
 					<div class="form-group has-danger">
 						<label class="control-label">Descrição Completa</label>
 						<textarea class="form-control" style = "height: 70px;"
-						name="txtDescricaoProduto"> </textarea>
-						<small class="form-control-feedback text-danger"> This field
-						has error. </small>
+						name="txtDescricaoProduto" id="txtDescricaoProduto"> </textarea>
+						<!-- <small class="form-control-feedback text-danger"> This field
+						has error. </small> -->
 					</div>
 				</div>
 
@@ -91,21 +94,21 @@ $produtos = ProdutoDAL::buscaProduto();
 
 						<?php
 
-						foreach ($categorias as $categoria) {
+					foreach ($categorias as $categoria) {
 
-							if ($categoria->getStatusCateg() == "Ativo") {
+						if ($categoria->getStatusCateg() == "Ativo") {
 
-								echo "
+							echo "
 								<span class='button-checkbox mb-2 mx-1'>
-								<button type='button' class='btn mb-3' data-color='secondary'>{$categoria->getDescCateg()}</button>
-								<input type='checkbox' class='hidden' name='categoriaIdProduto[]' id = '{$categoria->getIdCateg()}' value = '{$categoria->getIdCateg()}' />
+								<button type='button' class='btn mb-3 categCheck' data-color='secondary' id='Bctg{$categoria->getIdCateg()}'>{$categoria->getDescCateg()}</button>
+								<input type='checkbox' class='chkCat hidden' name='categoriaIdProduto[]' id = 'chkCats{$categoria->getIdCateg()}' value = '{$categoria->getIdCateg()}' />
 								</span>
 
 								";
-							}
 						}
+					}
 
-						?>
+					?>
 
 					</div>
 				</div>
@@ -117,21 +120,21 @@ $produtos = ProdutoDAL::buscaProduto();
 
 						<?php
 
-						foreach ($categFilho as $categoriaFilho) {
+					foreach ($categFilho as $categoriaFilho) {
 
-						    if ($categoriaFilho->getStatusCateg() == "ATIVO") {
+						if ($categoriaFilho->getStatusCateg() == "ATIVO") {
 
-								echo "
+							echo "
 								<span class='button-checkbox mb-2 mx-1'>
-								<button type='button' class='btn mb-3' data-color='secondary'>{$categoriaFilho->getDescCateg()}</button>
-								<input type='checkbox' class='hidden' name='categoriaFilhoIdProduto[]' id = '{$categoriaFilho->getIdCateg()}' value = '{$categoria->getIdCateg()}' />
+								<button type='button' class='btn mb-3 categCheck' data-color='secondary' id='Bctg{$categoriaFilho->getIdCateg()}'>{$categoriaFilho->getDescCateg()}</button>
+								<input type='checkbox' class='chkCat hidden' name='categoriaIdProduto[]' id = 'chkCats{$categoriaFilho->getIdCateg()}' value = '{$categoria->getIdCateg()}' />
 								</span>
 
 								";
-							}
 						}
+					}
 
-						?>
+					?>
 
 					</div>
 				</div>
@@ -192,11 +195,11 @@ $produtos = ProdutoDAL::buscaProduto();
 
 			<?php
 
-			foreach ($produtos as $prod) {
+		foreach ($produtos as $prod) {
 
-				echo "
+			echo "
 
-				<div class='col-lg-3 col-md-6 m-b-20 fotoPainel' id = '{$prod->getIdProd()}' onclick = \"alert(this.id)\">
+				<div class='col-lg-3 col-md-6 m-b-20 fotoPainel produtosCX' id = '{$prod->getIdProd()}'>
 				<img src='../img/Produtos/Produto{$prod->getIdProd()}.jpg' class='img-responsive radius' onerror=\"this.src='../img/logo.png'\" />
 				<div class='like-comm'>
 				{$prod->getDescProd()}
@@ -204,8 +207,8 @@ $produtos = ProdutoDAL::buscaProduto();
 				</div>
 
 				";
-			}
-			?>
+		}
+		?>
 
 
 		</div>
@@ -266,7 +269,7 @@ $produtos = ProdutoDAL::buscaProduto();
 
 
 
-<?php include_once 'footer.php';?>
+<?php include_once 'footer.php'; ?>
 <script src="js/cadastroProduto.js"></script>
 
 
