@@ -83,61 +83,60 @@ $("#btnCancelModelo").click(function(event){
 // Ajax para produto com imagem.
 
 $("#formModelo").submit(function () {
+    if ($("#btnCadastraModelo").val() == 1){
 
-    var formData = new FormData(this);
-
-    $.ajax({
-        url: './controller/controllerModelo.php?action=insereModelo',
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-            parar();
-            alert(data);
-
-        },
-        cache: false,
-        contentType: false,
-        processData: false,
-        xhr: function() {  // Custom XMLHttpRequest
-            var myXhr = $.ajaxSettings.xhr();
-            if (myXhr.upload) { // Avalia se tem suporte a propriedade upload
-                myXhr.upload.addEventListener('progress', function () {
-                    /* faz alguma coisa durante o progresso do upload */
-                }, false);
+        var formData = new FormData(this);
+        
+        $.ajax({
+            url: './controller/controllerModelo.php?action=insereModelo',
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+                parar();
+                alert(data);
+                
+            },
+            cache: false,
+            contentType: false,
+            processData: false,
+            xhr: function() {  // Custom XMLHttpRequest
+                var myXhr = $.ajaxSettings.xhr();
+                if (myXhr.upload) { // Avalia se tem suporte a propriedade upload
+                    myXhr.upload.addEventListener('progress', function () {
+                        /* faz alguma coisa durante o progresso do upload */
+                    }, false);
+                }
+                return myXhr;
             }
-            return myXhr;
+        });
+    } else if ($("#btnCadastraModelo").val() == 2){
+       
+
+            var formData = $("#formModelo").serialize();       
+
+            $.ajax({
+                url: './controller/controllerModelo.php?action=alteraModelo',
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    
+                    alert(response);
+
+                },
+                // cache: false,
+                // contentType: false,
+                // processData: false,
+                // xhr: function () {  // Custom XMLHttpRequest
+                //     var myXhr = $.ajaxSettings.xhr();
+                //     if (myXhr.upload) { // Avalia se tem suporte a propriedade upload
+                //         myXhr.upload.addEventListener('progress', function () {
+                //             /* faz alguma coisa durante o progresso do upload */
+                //         }, false);
+                //     }
+                //     return myXhr;
+                // }
+            });
         }
-    });
-});
-$("#formModelo").submit(function () {
-
-    var formData = new FormData(this);
-
-    alert($("#capaInput").attr('src'));
-    alert($(".foto").attr('src'));
-
-    $.ajax({
-        url: './controller/controllerModelo.php?action=alteraModelo',
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-            parar();
-            alert(data);
-
-        },
-        cache: false,
-        contentType: false,
-        processData: false,
-        xhr: function() {  // Custom XMLHttpRequest
-            var myXhr = $.ajaxSettings.xhr();
-            if (myXhr.upload) { // Avalia se tem suporte a propriedade upload
-                myXhr.upload.addEventListener('progress', function () {
-                    /* faz alguma coisa durante o progresso do upload */
-                }, false);
-            }
-            return myXhr;
-        }
-    });
 });
 
 
