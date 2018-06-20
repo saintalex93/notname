@@ -1,6 +1,6 @@
 <?php
 
-class Produto
+class Produto implements \JsonSerializable
 {
 
     private $idProd;
@@ -16,8 +16,27 @@ class Produto
     private $descCateg;
     
     private $modelo = array();
+
+    private $categoria = array();
     
     private $material;
+
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+
+        return $vars;
+    }
+
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+
+    public function setCategoria($categoria)
+    {
+        $this->categoria[] = $categoria;
+    }
 
     public function getModelo()
     {

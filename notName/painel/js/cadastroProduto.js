@@ -1,4 +1,79 @@
-$("#btnCadastroProduto").click(function() {
+
+$(".produtosCX").click(function () {
+	carregando();
+	$.ajax({
+		type: 'GET',
+		url: './controller/controllerProduto.php?action=seleciona&idProdSelected='+this.id,
+		success: function (response) {
+			parar();
+			var produto = JSON.parse(response);
+			produto = produto[0];
+			console.log(produto);
+			console.log(produto["categoria"][0]["idCateg"]);
+
+			$("#txtNomeProduto").val(produto['descProd']);
+			$("#material").val(produto['material']);
+			$("#statusProduto").val(produto['statusProd']);
+			$("#txtDescricaoProduto").val(produto['descCompletaProd']);
+
+			$("#img-upload").attr("src","./../img/Produtos/Produto"+produto["idProd"]+".jpg");
+			// $("#imgInp").value("Produto"+produto["idProd"]+".jpg");
+
+
+			$(".chkCat").each(function(){
+				$(this).removeAttr('checked', false); 
+			});
+
+
+			for (var i = 0; i < produto["categoria"].length; i++) {
+				
+				$("#Bctg"+produto["categoria"][i]["idCateg"]).addClass('active');
+				$("#Bctg" + produto["categoria"][i]["idCateg"]).addClass('btn-secondary');
+				$("#chkCats" + produto["categoria"][i]["idCateg"]).attr('checked', 'checked');
+
+			}
+
+			$(".chkCat").each(function () {
+
+				if ($(this).attr('checked')) {
+					$("#Bctg" + $(this).attr('value')).find(".state-icon").removeClass()
+						.addClass('state-icon fa fa-check-square');
+				}
+				else {
+					$("#Bctg" + $(this).attr('value')).removeClass("active");
+					$("#Bctg" + $(this).attr('value')).find(".state-icon").removeClass()
+						.addClass('state-icon fa fa-square');
+				}
+			});
+
+			// "img-upload"
+
+			if ($('#statusProduto').val() == "ATIVO") {
+
+				$("#btnProdActive").removeAttr('class', 'btn btn-primary btn-sm notActive');
+				$("#btnProdActive").attr('class', 'btn btn-primary btn-sm active');
+
+				$("#btnProdInactive").removeAttr('class', 'btn btn-secondary btn-sm active');
+				$("#btnProdInactive").attr('class', 'btn btn-secondary btn-sm notActive');
+
+			}
+			else {
+
+				$("#btnProdInactive").removeAttr('class', 'btn btn-secondary btn-sm notActive');
+				$("#btnProdInactive").attr('class', 'btn btn-secondary btn-sm active');
+
+				$("#btnProdActive").removeAttr('class', 'btn btn-primary btn-sm active');
+				$("#btnProdActive").attr('class', 'btn btn-primary btn-sm notActive');
+
+			}
+
+		}
+	});
+
+})
+
+
+$("#btnCadastroProduto").click(function () {
 
 	carregando();
 
@@ -6,7 +81,6 @@ $("#btnCadastroProduto").click(function() {
 
 
 });
-
 
 // Ajax para produto com imagem.
 
@@ -26,38 +100,38 @@ $("#formProduto").submit(function () {
 		cache: false,
 		contentType: false,
 		processData: false,
-        xhr: function() {  // Custom XMLHttpRequest
-        	var myXhr = $.ajaxSettings.xhr();
-            if (myXhr.upload) { // Avalia se tem suporte a propriedade upload
-            	myXhr.upload.addEventListener('progress', function () {
-            		/* faz alguma coisa durante o progresso do upload */
-            	}, false);
-            }
-            return myXhr;
-        }
-    });
+		xhr: function () {  // Custom XMLHttpRequest
+			var myXhr = $.ajaxSettings.xhr();
+			if (myXhr.upload) { // Avalia se tem suporte a propriedade upload
+				myXhr.upload.addEventListener('progress', function () {
+					/* faz alguma coisa durante o progresso do upload */
+				}, false);
+			}
+			return myXhr;
+		}
+	});
 });
 
 
+
+$(function () {
 // Botão para Imagem produto
 
-
-$(document).ready( function() {
-	$(document).on('change', '.btn-file :file', function() {
+	$(document).on('change', '.btn-file :file', function () {
 		var input = $(this),
-		label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+			label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
 		input.trigger('fileselect', [label]);
 	});
 
-	$('.btn-file :file').on('fileselect', function(event, label) {
+	$('.btn-file :file').on('fileselect', function (event, label) {
 
 		var input = $(this).parents('.input-group').find(':text'),
-		log = label;
+			log = label;
 
-		if( input.length ) {
+		if (input.length) {
 			input.val(log);
 		} else {
-			if( log ) alert(log);
+			if (log) alert(log);
 		}
 
 	});
@@ -73,89 +147,84 @@ $(document).ready( function() {
 		}
 	}
 
-	$("#imgInp").change(function(){
+	$("#imgInp").change(function () {
 		readURL(this);
-	}); 	
-});
+	});
 
 
-
-
-$(function () {
-
-// CheckBox Categorias produtos
-
+	// CheckBox Categorias produtos
 
 	$('.button-checkbox').each(function () {
-					// Vê se é "Radio" ou Check
-					var $widget = $(this),
-					$button = $widget.find('button'),
-					$checkbox = $widget.find('input:checkbox'),
-					color = $button.data('color'),
-					settings = {
-						on: {
-							icon: 'fa fa-check-square'
-						},
-						off: {
-							icon: 'fa fa-square'
-						}
-					};
 
-					$button.on('click', function () {
-						$checkbox.prop('checked', !$checkbox.is(':checked'));
-						$checkbox.triggerHandler('change');
-						updateDisplay();
-					});
-					$checkbox.on('change', function () {
-						updateDisplay();
-					});
+		// Vê se é "Radio" ou Check
+		var $widget = $(this),
+			$button = $widget.find('button'),
+			$checkbox = $widget.find('input:checkbox'),
+			color = $button.data('color'),
+			settings = {
+				on: {
+					icon: 'fa fa-check-square'
+				},
+				off: {
+					icon: 'fa fa-square'
+				}
+			};
 
-
-
-					function updateDisplay() {
-						var isChecked = $checkbox.is(':checked');
-
-						$button.data('state', (isChecked) ? "on" : "off");
-
-						$button.find('.state-icon')
-						.removeClass()
-						.addClass('state-icon ' + settings[$button.data('state')].icon);
-
-						if (isChecked) {
-							$button
-							.removeClass('btn-secondary')
-							.addClass('btn-' + color + ' active');
-						}
-						else {
-							$button
-							.removeClass('btn-' + color + ' active')
-							.addClass('btn-secondary');
-						}
-					}
-
-					function init() {
-
-						updateDisplay();
-
-						if ($button.find('.state-icon').length == 0) {
-							$button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
-						}
-					}
-					init();
-				});
-
-
-// Status produto, modelo e categorias
+		$button.on('click', function () {
+			$checkbox.prop('checked', !$checkbox.is(':checked'));
+			$checkbox.triggerHandler('change');
+			updateDisplay();
+		});
+		$checkbox.on('change', function () {
+			updateDisplay();
+		});
 
 
 
-	$('#radioBtn a').on('click', function(){
+		function updateDisplay() {
+			var isChecked = $checkbox.is(':checked');
+
+			$button.data('state', (isChecked) ? "on" : "off");
+
+			$button.find('.state-icon')
+				.removeClass()
+				.addClass('state-icon ' + settings[$button.data('state')].icon);
+
+			if (isChecked) {
+				$button
+					.removeClass('btn-secondary')
+					.addClass('btn-' + color + ' active');
+			}
+			else {
+				$button
+					.removeClass('btn-' + color + ' active')
+					.addClass('btn-secondary');
+			}
+		}
+
+		function init() {
+
+			updateDisplay();
+
+			if ($button.find('.state-icon').length == 0) {
+				$button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+			}
+		}
+		init();
+	});
+
+
+	// Status produto, modelo e categorias
+
+
+
+	$('#radioBtn a').on('click', function () {
 		var sel = $(this).data('title');
 		var tog = $(this).data('toggle');
-		$('#'+tog).prop('value', sel);
+		$('#' + tog).prop('value', sel);
 
-		$('a[data-toggle="'+tog+'"]').not('[data-title="'+sel+'"]').removeClass('active').addClass('notActive');
-		$('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').addClass('active');
+		$('a[data-toggle="' + tog + '"]').not('[data-title="' + sel + '"]').removeClass('active').addClass('notActive');
+		$('a[data-toggle="' + tog + '"][data-title="' + sel + '"]').removeClass('notActive').addClass('active');
 	})
 
 });
