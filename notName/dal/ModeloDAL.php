@@ -161,18 +161,15 @@ VALUES ('$nomeMod', $vlrVendaMod, '$statusMod', $descontoMod, $qtdeEstMod, $corM
         $qtdeEstMod = $mod->getQtdEstoqueModelo();
         $idTamanho = $mod->getTamanhoModelo();
         $idProduto = $mod->getProdutoIdModelo();
-        $idCor = $mod->getCormodelo();
-        
+        $idCor = $mod->getCormodelo();        
 
         $sql = "UPDATE MODELO SET 
         MODELO_cNOME = '$nome', MODELO_nVLR_VENDA = '$vlrVenda', MODELO_nSTATUS = '$statusModelo', MODELO_nDESCONTO = '$descontoModelo', 
-        MODELO_nQTD_ESTOQUE = '$qtdeEstMod', MODELO_tsCRIACAO = NOW(), COR_nID = $idCor, TAMANHO_nID = idTamanho , PRODUTO_nID = $idProduto
+        MODELO_nQTD_ESTOQUE = '$qtdeEstMod', MODELO_tsCRIACAO = NOW(), COR_nID = $idCor, TAMANHO_nID = $idTamanho , PRODUTO_nID = $idProduto
         WHERE MODELO_nID = $id";
-        
-        return $sql;
-        // ModeloDAL::$connection->executarSQL($sql);
-        
-       
+               
+        return ModeloDAL::$connection->executarSQL($sql);
+              
     }
 
     public static function removeModelo(Modelo $mod)

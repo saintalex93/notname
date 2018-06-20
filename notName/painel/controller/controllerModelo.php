@@ -79,7 +79,7 @@ if ($_REQUEST['action'] == 'insereModelo') {
 		"."
 	);
 	$vlrModelo = $_REQUEST['txtValorModelo'];
-	$vlrModelo = str_replace($toReplace, "",id);
+	$vlrModelo = str_replace($toReplace, "", $vlrModelo);
 	$vlrModelo = str_replace(",", ".", $vlrModelo);
 
 	$modelo = new Modelo();
@@ -100,46 +100,31 @@ if ($_REQUEST['action'] == 'insereModelo') {
 
 	$cod = "ModeloCapa_" . $id;
 	if (isset($_FILES['capa']['name'])) {
-		if (move_uploaded_file($_FILES['capa']['tmp_name'], "{$raiz}img/Modelos/" . $cod . ".jpg")) {
-			echo "Foto de capa alterada com sucesso";
-		} else {
-			echo "Not uploaded CAPA because of error #" . $_FILES["capa"]["error"];
-		}
+		if(move_uploaded_file($_FILES['capa']['tmp_name'], "{$raiz}img/Modelos/" . $cod . ".jpg"));
 	}
 
 	$cod1 = "ModeloImg1_" . $id;
 	if (isset($_FILES['foto1']['name'])) {
-		if (move_uploaded_file($_FILES['foto1']['tmp_name'], "{$raiz}img/Modelos/" . $cod1 . ".jpg")) {
-			echo "Foto 1 alterada com sucesso";
-		} else {
-			echo "Not uploaded CAPA because of error #" . $_FILES["foto1"]["error"];
-		}
+		if(move_uploaded_file($_FILES['foto1']['tmp_name'], "{$raiz}img/Modelos/" . $cod1 . ".jpg"));
 	}
 
 	$cod2 = "ModeloImg2_" . $id;
 	if (isset($_FILES['foto2']['name'])) {
-		if (move_uploaded_file($_FILES['foto2']['tmp_name'], "{$raiz}img/Modelos/" . $cod2 . ".jpg")) {
-			echo "Foto de capa alterada com sucesso";
-		} else {
-			echo "Not uploaded CAPA because of error #" . $_FILES["file"]["error"];
-		}
+		if(move_uploaded_file($_FILES['foto2']['tmp_name'], "{$raiz}img/Modelos/" . $cod2 . ".jpg")); 	
 	}
 
 	$cod3 = "ModeloImg3_" . $id;
 	if (isset($_FILES['foto3']['name'])) {
-		if (move_uploaded_file($_FILES['foto3']['tmp_name'], "{$raiz}img/Modelos/" . $cod . ".jpg")) {
-			echo "Foto de capa alterada com sucesso";
-		} else {
-			echo "Not uploaded CAPA because of error #" . $_FILES["file"]["error"];
-		}
+		if(move_uploaded_file($_FILES['foto3']['tmp_name'], "{$raiz}img/Modelos/" . $cod . ".jpg")); 	
 	}
 
-	if (ModeloDAL::atualizaModelo($modelo)) {
+	$atualiza = ModeloDAL::atualizaModelo($modelo);
+	
+	if ($atualiza) {
 		echo "Alterado com sucesso";
 	} else {
 		echo "Não foi possível alterar";
 	}
-
 }
 
 
