@@ -9,7 +9,7 @@ if ($_REQUEST['action'] == 'insereModelo') {
 		"."
 	);
 	$vlrModelo = $_REQUEST['txtValorModelo'];
-	$vlrModelo = str_replace($toReplace, "", id);
+	$vlrModelo = str_replace($toReplace, "", $vlrModelo);
 	$vlrModelo = str_replace(",", ".", $vlrModelo);
 
 	$modelo = new Modelo();
