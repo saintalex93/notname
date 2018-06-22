@@ -21,6 +21,7 @@ $(".produtosCX").click(function () {
 			$("#spanButton").text("ALTERAR");
 
 
+			$("#idProd").val(produto['idProd']);
 			$("#txtNomeProduto").val(produto['descProd']);
 			$("#material").val(produto['material']);
 			$("#statusProduto").val(produto['statusProd']);
@@ -77,6 +78,10 @@ $(".produtosCX").click(function () {
 
 			}
 
+
+			$("#btnCadastroProduto").text("Alterar");
+			$("#btnCadastroProduto").val("2");
+
 		}
 	});
 
@@ -130,9 +135,17 @@ $("#btnCadastroProduto").click(function () {
 
 $("#formProduto").submit(function () {
 
+<<<<<<< HEAD
+	if ($("#btnCadastroProduto").val() == 1){
+
+		
+		var formData = new FormData(this);
+		
+=======
 	var formData = new FormData(this);
 
 	if ($("#btnCadastroProduto").val() == 1) {
+>>>>>>> 2e4e802f8814020cd2567164ef0f10519543b2b7
 		$.ajax({
 			url: './controller/controllerProduto.php?action=insereProduto',
 			type: 'POST',
@@ -140,7 +153,11 @@ $("#formProduto").submit(function () {
 			success: function (data) {
 				parar();
 				alert(data);
+<<<<<<< HEAD
+				
+=======
 
+>>>>>>> 2e4e802f8814020cd2567164ef0f10519543b2b7
 			},
 			cache: false,
 			contentType: false,
@@ -155,6 +172,11 @@ $("#formProduto").submit(function () {
 				return myXhr;
 			}
 		});
+<<<<<<< HEAD
+	} else if ($("#btnCadastroProduto").val() == 2){
+		
+	}
+=======
 	}
 	else {
 		$.ajax({
@@ -186,6 +208,7 @@ $("#formProduto").submit(function () {
 
 
 
+>>>>>>> 2e4e802f8814020cd2567164ef0f10519543b2b7
 });
 
 
@@ -303,4 +326,22 @@ $(function () {
 		$('a[data-toggle="' + tog + '"][data-title="' + sel + '"]').removeClass('notActive').addClass('active');
 	})
 
+});
+
+$("#btnCancelProduto").click(function (event) {
+	$("#idProd").val("");
+	$("#txtNomeProduto").val("");
+	$("#material").val("");
+	$("#statusProduto").val("");
+	$("#txtDescricaoProduto").val("");
+	$("#img-upload").attr("src","images/logoNot.png");
+
+	$("#txtNomeProduto").focus();
+
+	if ($("#btnCancelProduto").val() == 2) {
+		$("#btnCancelProduto").val(1);
+		$("#btnCancelProduto").text('Cadastrar')
+	}
+
+	
 });
