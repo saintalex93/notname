@@ -120,7 +120,6 @@ $("#formModelo").submit(function () {
                     myXhr.upload.addEventListener('progress', function () {
                         /* faz alguma coisa durante o progresso do upload */
                     }, false);
-                    parar();
 
                 }
 
