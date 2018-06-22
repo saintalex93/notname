@@ -74,6 +74,8 @@ if ($_REQUEST['action'] == 'insereModelo') {
 		echo "Erro ao cadastrar o modelo. Refaça o cadastro";
 	}
 } else if ($_REQUEST['action'] == 'alteraModelo') {
+
+	print_r($_FILES);
 	$toReplace = array(
 		"R$",
 		"."
@@ -97,25 +99,33 @@ if ($_REQUEST['action'] == 'insereModelo') {
 	$modelo->setIdModelo($_REQUEST['idModelo']);
 
 	$id = $modelo->getIdModelo();
-
+	
 	$cod = "ModeloCapa_" . $id;
 	if (isset($_FILES['capa']['name'])) {
-		if(move_uploaded_file($_FILES['capa']['tmp_name'], "{$raiz}img/Modelos/" . $cod . ".jpg"));
+		if(move_uploaded_file($_FILES['capa']['tmp_name'], "{$raiz}img/Modelos/" . $cod . ".jpg")){
+			echo "Subiu";
+		} else {
+			echo "Not uploaded foto3 because of error #" . $_FILES["file"]["error"];
+		}
 	}
 
 	$cod1 = "ModeloImg1_" . $id;
 	if (isset($_FILES['foto1']['name'])) {
-		if(move_uploaded_file($_FILES['foto1']['tmp_name'], "{$raiz}img/Modelos/" . $cod1 . ".jpg"));
+		if(move_uploaded_file($_FILES['foto1']['tmp_name'], "{$raiz}img/Modelos/" . $cod1 . ".jpg")) {
+		}
 	}
 
 	$cod2 = "ModeloImg2_" . $id;
 	if (isset($_FILES['foto2']['name'])) {
-		if(move_uploaded_file($_FILES['foto2']['tmp_name'], "{$raiz}img/Modelos/" . $cod2 . ".jpg")); 	
+		if(move_uploaded_file($_FILES['foto2']['tmp_name'], "{$raiz}img/Modelos/" . $cod2 . ".jpg")) {
+		}	
 	}
 
 	$cod3 = "ModeloImg3_" . $id;
 	if (isset($_FILES['foto3']['name'])) {
-		if(move_uploaded_file($_FILES['foto3']['tmp_name'], "{$raiz}img/Modelos/" . $cod . ".jpg")); 	
+		if(move_uploaded_file($_FILES['foto3']['tmp_name'], "{$raiz}img/Modelos/" . $cod . ".jpg")) {
+
+		}	
 	}
 
 	$atualiza = ModeloDAL::atualizaModelo($modelo);

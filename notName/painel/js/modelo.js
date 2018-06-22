@@ -1,21 +1,21 @@
 
-function alterarModelo(id){
-    var idRow = "rowModelo"+id;
+function alterarModelo(id) {
+    var idRow = "rowModelo" + id;
 
-    $("#idModelo").val($('tr#'+idRow+' td:nth-child(1)').text());
-    $("#descModelo").val($('tr#'+idRow+' td:nth-child(5)').text());
-    $("#tamanhoModelo").val($('tr#'+idRow+' td:nth-child(3)').text());
-    $("#corModelo").val($('tr#'+idRow+' td:nth-child(2)').text());
-    $("#produtoModelo").val($('tr#'+idRow+' td:nth-child(4)').text());
-    $("#txtValorModelo").val($('tr#'+idRow+' td:nth-child(9)').text());
-    $("#quantidadeModelo").val($('tr#'+idRow+' td:nth-child(10)').text());
-    $("#statusModelo").val($('tr#'+idRow+' td:nth-child(11)').text());
+    $("#idModelo").val($('tr#' + idRow + ' td:nth-child(1)').text());
+    $("#descModelo").val($('tr#' + idRow + ' td:nth-child(5)').text());
+    $("#tamanhoModelo").val($('tr#' + idRow + ' td:nth-child(3)').text());
+    $("#corModelo").val($('tr#' + idRow + ' td:nth-child(2)').text());
+    $("#produtoModelo").val($('tr#' + idRow + ' td:nth-child(4)').text());
+    $("#txtValorModelo").val($('tr#' + idRow + ' td:nth-child(9)').text());
+    $("#quantidadeModelo").val($('tr#' + idRow + ' td:nth-child(10)').text());
+    $("#statusModelo").val($('tr#' + idRow + ' td:nth-child(11)').text());
 
 
-    $("#btnCadastraModelo").text("Alterar");
+    $("#spanButton").text("ALTERAR");
     $("#btnCadastraModelo").val("2");
 
-    if($('tr#'+idRow+' td:nth-child(11)').text() == "Ativo"){
+    if ($('tr#' + idRow + ' td:nth-child(11)').text() == "Ativo") {
 
         $("#btnSactive").removeAttr('class', 'btn btn-primary btn-sm notActive');
         $("#btnSactive").attr('class', 'btn btn-primary btn-sm active');
@@ -24,7 +24,7 @@ function alterarModelo(id){
         $("#btnSinactive").attr('class', 'btn btn-secondary btn-sm notActive');
 
     }
-    else{
+    else {
 
         $("#btnSinactive").removeAttr('class', 'btn btn-secondary btn-sm notActive');
         $("#btnSinactive").attr('class', 'btn btn-secondary btn-sm active');
@@ -35,47 +35,32 @@ function alterarModelo(id){
     }
     trocaCor();
 
-    $("#capaImg").attr('src', './../img/Modelos/ModeloCapa_'+id+'.jpg');
-    $("#foto1Img").attr('src', './../img/Modelos/ModeloImg1_'+id+'.jpg');
-    $("#foto2Img").attr('src', './../img/Modelos/ModeloImg2_'+id+'.jpg');
-    $("#foto3Img").attr('src', './../img/Modelos/ModeloImg3_'+id+'.jpg');
-
-
+    $("#capaImg").attr('src', './../img/Modelos/ModeloCapa_' + id + '.jpg');
+    $("#foto1Img").attr('src', './../img/Modelos/ModeloImg1_' + id + '.jpg');
+    $("#foto2Img").attr('src', './../img/Modelos/ModeloImg2_' + id + '.jpg');
+    $("#foto3Img").attr('src', './../img/Modelos/ModeloImg3_' + id + '.jpg');
     window.scrollTo(0, 105);
-
-
-
-
-
-
 }
 
-
-
-
-$("#btnCadastraModelo").click(function() {
-
+$("#btnCadastraModelo").click(function () {
     carregando();
-
     $('#formModelo').submit();
-
-
 });
 
-$("#btnCancelModelo").click(function(event){
+$("#btnCancelModelo").click(function (event) {
     $("#descModelo").val("");
     $("#tamanhoModelo").val(0);
     $("#corModelo").val(0);
     $("#produtoModelo").val(0);
     $("#txtValorModelo").val(0);
     $("#quantidadeModelo").val(0);
-    $(".foto").attr('src','0');
-    $("#capaImg").attr('src','0');
+    $(".foto").attr('src', '0');
+    $("#capaImg").attr('src', '0');
     $("#descModelo").focus();
 
-    if($("#btnCadastraModelo").val() == 2){
+    if ($("#btnCadastraModelo").val() == 2) {
         $("#btnCadastraModelo").val(1);
-        $("#btnCadastraModelo").text('Cadastrar')
+        $("#spanButton").text('CADASTRAR')
     }
 });
 
@@ -83,23 +68,23 @@ $("#btnCancelModelo").click(function(event){
 // Ajax para produto com imagem.
 
 $("#formModelo").submit(function () {
-    if ($("#btnCadastraModelo").val() == 1){
+    if ($("#btnCadastraModelo").val() == 1) {
 
         var formData = new FormData(this);
-        
+
         $.ajax({
             url: './controller/controllerModelo.php?action=insereModelo',
             type: 'POST',
             data: formData,
             success: function (data) {
-                parar();
                 alert(data);
-                
+                parar();
+
             },
-            cache: false,
             contentType: false,
             processData: false,
-            xhr: function() {  // Custom XMLHttpRequest
+            cache: false,
+            xhr: function () {  // Custom XMLHttpRequest
                 var myXhr = $.ajaxSettings.xhr();
                 if (myXhr.upload) { // Avalia se tem suporte a propriedade upload
                     myXhr.upload.addEventListener('progress', function () {
@@ -109,81 +94,90 @@ $("#formModelo").submit(function () {
                 return myXhr;
             }
         });
-    } else if ($("#btnCadastraModelo").val() == 2){
-       
+    } else if ($("#btnCadastraModelo").val() == 2) {
 
-            var formData = $("#formModelo").serialize();       
 
-            $.ajax({
-                url: './controller/controllerModelo.php?action=alteraModelo',
-                type: 'POST',
-                data: formData,
-                success: function (response) {
-                    
-                    alert(response);
+        var formData = new FormData(this);
 
-                },
-                // cache: false,
-                // contentType: false,
-                // processData: false,
-                // xhr: function () {  // Custom XMLHttpRequest
-                //     var myXhr = $.ajaxSettings.xhr();
-                //     if (myXhr.upload) { // Avalia se tem suporte a propriedade upload
-                //         myXhr.upload.addEventListener('progress', function () {
-                //             /* faz alguma coisa durante o progresso do upload */
-                //         }, false);
-                //     }
-                //     return myXhr;
-                // }
-            });
-        }
+        $.ajax({
+            url: './controller/controllerModelo.php?action=alteraModelo',
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+                console.log(data);
+
+
+                window.reload();
+
+
+            },
+            cache: false,
+            contentType: false,
+            processData: false,
+            xhr: function () {  // Custom XMLHttpRequest
+                var myXhr = $.ajaxSettings.xhr();
+                if (myXhr.upload) { // Avalia se tem suporte a propriedade upload
+                    myXhr.upload.addEventListener('progress', function () {
+                        /* faz alguma coisa durante o progresso do upload */
+                    }, false);
+                    parar();
+
+                }
+
+                return myXhr;
+            }
+
+        });
+
+
+    }
 });
 
 
 
 
-    // Paleta
-    $("#corModelo").change(function(event) {
-        trocaCor();
-    });
+// Paleta
+$("#corModelo").change(function (event) {
+    trocaCor();
+});
 
-    function trocaCor(){
-        $cor =  ($("#corModelo option:selected").attr('class'));
+function trocaCor() {
+    $cor = ($("#corModelo option:selected").attr('class'));
 
-        $("#txtCor").css('background', $cor);
+    $("#txtCor").css('background', $cor);
+}
+
+
+function trocaCapa() {
+
+    var oArq = new FileReader();
+
+    oArq.onloadend = function () {
+        document.getElementById('capaImg').src = oArq.result;
+
+
     }
+    if (document.all.capaInput.files[0]) {
+        oArq.readAsDataURL(document.all.capaInput.files[0]); // Comando para carregar imagem na memória.
+        document.getElementById('capaImg').style.display = "inline-block";
 
 
-    function trocaCapa() {
+    } else {
 
-        var oArq = new FileReader();
+        document.all.imgBanner.style.display = "none";
 
-        oArq.onloadend = function() {
-            document.getElementById('capaImg').src = oArq.result;
-
-
-        }
-        if (document.all.capaInput.files[0]) {
-            oArq.readAsDataURL(document.all.capaInput.files[0]); // Comando para carregar imagem na memória.
-            document.getElementById('capaImg').style.display = "inline-block";
-
-
-        } else {
-
-            document.all.imgBanner.style.display = "none";
-
-        }
     }
+}
 
-    // Status
-    $('#radioBtn a').on('click', function(){
-        var sel = $(this).data('title');
-        var tog = $(this).data('toggle');
-        $('#'+tog).prop('value', sel);
+// Status
+$('#radioBtn a').on('click', function () {
+    var sel = $(this).data('title');
+    var tog = $(this).data('toggle');
+    $('#' + tog).prop('value', sel);
 
-        $('a[data-toggle="'+tog+'"]').not('[data-title="'+sel+'"]').removeClass('active').addClass('notActive');
-        $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').addClass('active');
-    });
+    $('a[data-toggle="' + tog + '"]').not('[data-title="' + sel + '"]').removeClass('active').addClass('notActive');
+    $('a[data-toggle="' + tog + '"][data-title="' + sel + '"]').removeClass('notActive').addClass('active');
+});
 
-    $("#txtValorModelo").maskMoney({prefix:'R$', allowNegative: true, thousands:'.', decimal:',', affixesStay: true});
+$("#txtValorModelo").maskMoney({ prefix: 'R$', allowNegative: true, thousands: '.', decimal: ',', affixesStay: true });
 

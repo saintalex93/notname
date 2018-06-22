@@ -1,6 +1,5 @@
 <?php
 include_once 'header.php';
-
 include_once '../dal/CorDAL.php';
 include_once '../dal/TamanhoDAL.php';
 include_once '../dal/ProdutoDAL.php';
@@ -192,10 +191,10 @@ $modelo = ModeloDAL::buscaModeloTabela();
 <div class="form-actions text-center mt-3">
     <button type="button" class="btn btn-success"
     id="btnCadastraModelo" value="1">
-    Cadastrar
+   <i class="fa fa-check"></i> <span id="spanButton">CADASTRAR</span>
 </button>
 <button type="button" class="btn btn-inverse" id="btnCancelModelo">
-   Cancelar
+  <i class="fa fa-close"></i> CANCELAR
 </button>
 </div>
 
