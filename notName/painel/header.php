@@ -15,7 +15,6 @@ $pageName = ucfirst(str_replace(".php", "", $url));
 <html lang="pt-br">
 
 <head>
-    <meta http-equiv="pragma" content="no-cache">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->

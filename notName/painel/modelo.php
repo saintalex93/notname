@@ -153,7 +153,7 @@ $modelo = ModeloDAL::buscaModeloTabela();
                 <iframe src="" frameborder="0" name="gravaCapa" style = "display: none;"></iframe>
                 <div class="cameraCapaModelo col-12 text-center border-white" onclick="document.all.capaInput.click();">
 
-                    <img name = "imageEstbl" src="images/logoNot.png"  class="col-12" id = "capaImg" onerror='this.src="images/logoNot.png"'>
+                    <img name = "imageEstbl" src="images/logoNot.png"  class="NO-CACHE col-12" id = "capaImg" onerror='this.src="images/logoNot.png"'>
                 </div>
             </div>
 
@@ -171,7 +171,7 @@ $modelo = ModeloDAL::buscaModeloTabela();
                 ';
 
                 echo '
-                <div class="cameraModeloFoto'.$i.' cameraModelo col-12 border-white" onclick="document.all.foto'.$i.'.click(); "> <img name = "imageEstbl" src="images/logoNot.png"  class="col-12 foto" id = "foto'.$i.'Img" onerror=\'this.src="images/logoNot.png"\') ></div><br>
+                <div class="cameraModeloFoto'.$i.' cameraModelo col-12 border-white" onclick="document.all.foto'.$i. '.click(); "> <img name = "imageEstbl" src="images/logoNot.png"  class="col-12 foto NO-CACHE" id = "foto'.$i.'Img" onerror=\'this.src="images/logoNot.png"\') ></div><br>
 
                 </div>
                 ';

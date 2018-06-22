@@ -1,4 +1,3 @@
-
 function alterarModelo(id) {
     var idRow = "rowModelo" + id;
 
@@ -39,6 +38,9 @@ function alterarModelo(id) {
     $("#foto1Img").attr('src', './../img/Modelos/ModeloImg1_' + id + '.jpg');
     $("#foto2Img").attr('src', './../img/Modelos/ModeloImg2_' + id + '.jpg');
     $("#foto3Img").attr('src', './../img/Modelos/ModeloImg3_' + id + '.jpg');
+
+    $('.NO-CACHE').attr('src', function () { return $(this).attr('src') + "?a=" + Math.random() });
+
     window.scrollTo(0, 105);
 }
 
@@ -78,12 +80,18 @@ $("#formModelo").submit(function () {
             data: formData,
             success: function (data) {
                 alert(data);
-                parar();
+               window.reload();
 
             },
             contentType: false,
             processData: false,
             cache: false,
+            headers: {
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                'Pragma': 'no-cache',
+                'Expires': '0'
+            },
+            
             xhr: function () {  // Custom XMLHttpRequest
                 var myXhr = $.ajaxSettings.xhr();
                 if (myXhr.upload) { // Avalia se tem suporte a propriedade upload
@@ -114,6 +122,11 @@ $("#formModelo").submit(function () {
             cache: false,
             contentType: false,
             processData: false,
+            headers: {
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                'Pragma': 'no-cache',
+                'Expires': '0'
+            },
             xhr: function () {  // Custom XMLHttpRequest
                 var myXhr = $.ajaxSettings.xhr();
                 if (myXhr.upload) { // Avalia se tem suporte a propriedade upload
