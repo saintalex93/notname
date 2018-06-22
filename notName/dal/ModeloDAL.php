@@ -153,11 +153,23 @@ VALUES ('$nomeMod', $vlrVendaMod, '$statusMod', $descontoMod, $qtdeEstMod, $corM
     {
         ModeloDAL::connect();
         
-        $sql = "";
-        
-        ModeloDAL::$connection->executarSQL($sql);
-        
-        return ModeloDAL::$connection->returnID();
+        $id = $mod->getIdModelo();
+        $nome = $mod->getNomeModelo();
+        $vlrVenda = $mod->getVlrVendaModelo();
+        $statusModelo = $mod->getStatusModelo();
+        $descontoModelo = $mod->getDescontoModelo();
+        $qtdeEstMod = $mod->getQtdEstoqueModelo();
+        $idTamanho = $mod->getTamanhoModelo();
+        $idProduto = $mod->getProdutoIdModelo();
+        $idCor = $mod->getCormodelo();        
+
+        $sql = "UPDATE MODELO SET 
+        MODELO_cNOME = '$nome', MODELO_nVLR_VENDA = '$vlrVenda', MODELO_nSTATUS = '$statusModelo', MODELO_nDESCONTO = '$descontoModelo', 
+        MODELO_nQTD_ESTOQUE = '$qtdeEstMod', MODELO_tsCRIACAO = NOW(), COR_nID = $idCor, TAMANHO_nID = $idTamanho , PRODUTO_nID = $idProduto
+        WHERE MODELO_nID = $id";
+               
+        return ModeloDAL::$connection->executarSQL($sql);
+              
     }
 
     public static function removeModelo(Modelo $mod)

@@ -30,40 +30,36 @@ if ($_REQUEST['action'] == 'insereModelo') {
 		$cod = "ModeloCapa_" . $id;
 		$imagem = $_FILES['capa']['name'];
         // Segunda Imagem
-		if (move_uploaded_file($_FILES['capa']['tmp_name'], "{$raiz}img/Modelos/" . $cod.".jpg")) {
+		if (move_uploaded_file($_FILES['capa']['tmp_name'], "{$raiz}img/Modelos/" . $cod . ".jpg")) {
 			$controleImg++;
-		}
-		else{
-			echo "Not uploaded CAPA because of error #".$_FILES["capa"]["error"];
+		} else {
+			echo "Not uploaded CAPA because of error #" . $_FILES["capa"]["error"];
 		}
         // Segunda Imagem
 		$cod1 = "ModeloImg1_" . $id;
 		$imagem1 = $_FILES['foto1']['name'];
-		if (move_uploaded_file($_FILES['foto1']['tmp_name'], "{$raiz}img/Modelos/" . $cod1.".jpg")) {
+		if (move_uploaded_file($_FILES['foto1']['tmp_name'], "{$raiz}img/Modelos/" . $cod1 . ".jpg")) {
 			$controleImg++;
-		}
-		else{
-			echo "Not uploaded foto1 because of error #".$_FILES["foto1"]["error"];
+		} else {
+			echo "Not uploaded foto1 because of error #" . $_FILES["foto1"]["error"];
 		}
 
         // Segunda Imagem
 		$cod2 = "ModeloImg2_" . $id;
 		$imagem2 = $_FILES['foto2']['name'];
-		if (move_uploaded_file($_FILES['foto2']['tmp_name'], "{$raiz}img/Modelos/" . $cod2.".jpg")) {
+		if (move_uploaded_file($_FILES['foto2']['tmp_name'], "{$raiz}img/Modelos/" . $cod2 . ".jpg")) {
 			$controleImg++;
-		}
-		else{
-			echo "Not uploaded foto2 because of error #".$_FILES["file"]["error"];
+		} else {
+			echo "Not uploaded foto2 because of error #" . $_FILES["file"]["error"];
 		}
 
         // Segunda Imagem
 		$cod3 = "ModeloImg3_" . $id;
 		$imagem3 = $_FILES['foto3']['name'];
-		if (move_uploaded_file($_FILES['foto3']['tmp_name'], "{$raiz}img/Modelos/" . $cod3.".jpg")) {
+		if (move_uploaded_file($_FILES['foto3']['tmp_name'], "{$raiz}img/Modelos/" . $cod3 . ".jpg")) {
 			$controleImg++;
-		}
-		else{
-			echo "Not uploaded foto3 because of error #".$_FILES["file"]["error"];
+		} else {
+			echo "Not uploaded foto3 because of error #" . $_FILES["file"]["error"];
 		}
 
 
@@ -71,16 +67,64 @@ if ($_REQUEST['action'] == 'insereModelo') {
 		echo 'Erro ao cadastrar modelo';
 	}
 
-	if($controleImg == 4){
+	if ($controleImg == 4) {
 		echo "Modelo cadastrado com sucesso!";
+	} else {
+		ModeloDAL::removeModelo($modelo);
+		echo "Erro ao cadastrar o modelo. Refaça o cadastro";
 	}
-	else{
-	    ModeloDAL::removeModelo($modelo);
-	    echo "Erro ao cadastrar o modelo. Refaça o cadastro";
+} else if ($_REQUEST['action'] == 'alteraModelo') {
+	$toReplace = array(
+		"R$",
+		"."
+	);
+	$vlrModelo = $_REQUEST['txtValorModelo'];
+	$vlrModelo = str_replace($toReplace, "", $vlrModelo);
+	$vlrModelo = str_replace(",", ".", $vlrModelo);
+
+	$modelo = new Modelo();
+	$errorImg = array();
+
+
+	$modelo->setNomeModelo($_REQUEST['descModelo']);
+	$modelo->setVlrVendaModelo($vlrModelo);
+	$modelo->setStatusModelo($_REQUEST['statusModelo']);
+	$modelo->setDescontoModelo(0);
+	$modelo->setQtdEstoqueModelo($_REQUEST['quantidadeModelo']);
+	$modelo->setCormodelo($_REQUEST['corModelo']);
+	$modelo->setTamanhoModelo($_REQUEST['tamanhoModelo']);
+	$modelo->setProdutoIdModelo($_REQUEST['produtoModelo']);
+	$modelo->setIdModelo($_REQUEST['idModelo']);
+
+	$id = $modelo->getIdModelo();
+
+	$cod = "ModeloCapa_" . $id;
+	if (isset($_FILES['capa']['name'])) {
+		if(move_uploaded_file($_FILES['capa']['tmp_name'], "{$raiz}img/Modelos/" . $cod . ".jpg"));
 	}
-}else if ($_REQUEST['action'] == 'alteraModelo')
-{
-    print_r( $_FILES['capa']);
+
+	$cod1 = "ModeloImg1_" . $id;
+	if (isset($_FILES['foto1']['name'])) {
+		if(move_uploaded_file($_FILES['foto1']['tmp_name'], "{$raiz}img/Modelos/" . $cod1 . ".jpg"));
+	}
+
+	$cod2 = "ModeloImg2_" . $id;
+	if (isset($_FILES['foto2']['name'])) {
+		if(move_uploaded_file($_FILES['foto2']['tmp_name'], "{$raiz}img/Modelos/" . $cod2 . ".jpg")); 	
+	}
+
+	$cod3 = "ModeloImg3_" . $id;
+	if (isset($_FILES['foto3']['name'])) {
+		if(move_uploaded_file($_FILES['foto3']['tmp_name'], "{$raiz}img/Modelos/" . $cod . ".jpg")); 	
+	}
+
+	$atualiza = ModeloDAL::atualizaModelo($modelo);
+	
+	if ($atualiza) {
+		echo "Alterado com sucesso";
+	} else {
+		echo "Não foi possível alterar";
+	}
 }
 
 
