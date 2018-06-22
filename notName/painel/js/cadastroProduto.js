@@ -11,6 +11,7 @@ $(".produtosCX").click(function () {
 			console.log(produto);
 			console.log(produto["categoria"][0]["idCateg"]);
 
+			$("#idProd").val(produto['idProd']);
 			$("#txtNomeProduto").val(produto['descProd']);
 			$("#material").val(produto['material']);
 			$("#statusProduto").val(produto['statusProd']);
@@ -67,6 +68,10 @@ $(".produtosCX").click(function () {
 
 			}
 
+
+			$("#btnCadastroProduto").text("Alterar");
+			$("#btnCadastroProduto").val("2");
+
 		}
 	});
 
@@ -86,30 +91,36 @@ $("#btnCadastroProduto").click(function () {
 
 $("#formProduto").submit(function () {
 
-	var formData = new FormData(this);
+	if ($("#btnCadastroProduto").val() == 1){
 
-	$.ajax({
-		url: './controller/controllerProduto.php?action=insereProduto',
-		type: 'POST',
-		data: formData,
-		success: function (data) {
-			parar();
-			alert(data);
-
-		},
-		cache: false,
-		contentType: false,
-		processData: false,
-		xhr: function () {  // Custom XMLHttpRequest
-			var myXhr = $.ajaxSettings.xhr();
-			if (myXhr.upload) { // Avalia se tem suporte a propriedade upload
-				myXhr.upload.addEventListener('progress', function () {
-					/* faz alguma coisa durante o progresso do upload */
-				}, false);
+		
+		var formData = new FormData(this);
+		
+		$.ajax({
+			url: './controller/controllerProduto.php?action=insereProduto',
+			type: 'POST',
+			data: formData,
+			success: function (data) {
+				parar();
+				alert(data);
+				
+			},
+			cache: false,
+			contentType: false,
+			processData: false,
+			xhr: function () {  // Custom XMLHttpRequest
+				var myXhr = $.ajaxSettings.xhr();
+				if (myXhr.upload) { // Avalia se tem suporte a propriedade upload
+					myXhr.upload.addEventListener('progress', function () {
+						/* faz alguma coisa durante o progresso do upload */
+					}, false);
+				}
+				return myXhr;
 			}
-			return myXhr;
-		}
-	});
+		});
+	} else if ($("#btnCadastroProduto").val() == 2){
+		
+	}
 });
 
 
@@ -227,4 +238,22 @@ $(function () {
 		$('a[data-toggle="' + tog + '"][data-title="' + sel + '"]').removeClass('notActive').addClass('active');
 	})
 
+});
+
+$("#btnCancelProduto").click(function (event) {
+	$("#idProd").val("");
+	$("#txtNomeProduto").val("");
+	$("#material").val("");
+	$("#statusProduto").val("");
+	$("#txtDescricaoProduto").val("");
+	$("#img-upload").attr("src","images/logoNot.png");
+
+	$("#txtNomeProduto").focus();
+
+	if ($("#btnCancelProduto").val() == 2) {
+		$("#btnCancelProduto").val(1);
+		$("#btnCancelProduto").text('Cadastrar')
+	}
+
+	
 });
