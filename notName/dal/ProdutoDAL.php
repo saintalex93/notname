@@ -50,7 +50,7 @@ class ProdutoDAL extends Modelo
 
     }
 
-    public static function atualizaProduto(Produto $prod) : string
+    public static function atualizaProduto(Produto $prod) : bool
     {
         ProdutoDAL::connect();
 
@@ -58,13 +58,27 @@ class ProdutoDAL extends Modelo
         $descProd = $prod->getDescProd();
         $descComp = $prod->getDescCompletaProd();
         $prodStatus = $prod->getStatusProd();
-        $modeloID = $prod->getIdModelo();
+        $material = $prod->getMaterial();
+
         $categID = $prod->getIdCateg();
-        $categoriaDesc = $prod->getDescCateg();
 
-        $sql = "";
+        $sql = "UPDATE PRODUTO SET PRODUTO_cDESC = '$descProd', PRODUTO_cDESCCOMPLETA = '$descComp',
+         PRODUTO_cSTATUS = '$prodStatus',PRODUTO_tMATERIAL = '$material' WHERE PRODUTO_nID = $idProd";
 
-        return ProdutoDAL::$connection->executarSQL($sql);
+        if (ProdutoDAL::$connection->sqlNoTransact($sql)) {
+
+            $sql = "DELETE FROM PRODUTO_CATEGORIA WHERE PRODUTO_nID = $idProd";
+
+            ProdutoDAL::$connection->executarSQL($sql);
+
+            foreach ($categID as $cId) {
+
+                $sql = "INSERT INTO PRODUTO_CATEGORIA (CATEGORIA_nID, PRODUTO_nID) VALUES ($cId,$idProd)";
+                ProdutoDAL::$connection->executarSQL($sql);
+            }
+
+            return $idProd;
+        }
     }
 
     public static function buscaProduto($id = null)
@@ -76,10 +90,10 @@ class ProdutoDAL extends Modelo
             // $id = $prod->getIdProd();
 
             $sql = " SELECT * FROM PRODUTO
-                                WHERE PRODUTO_cSTATUS LIKE 'Ativo' and PRODUTO_nID = $id";
+                                WHERE PRODUTO_cSTATUS LIKE 'Ativo' and PRODUTO_nID = $id order by PRODUTO_tsCRIACAO DESC";
 
         } else {
-            $sql = "SELECT * FROM PRODUTO";
+            $sql = "SELECT * FROM PRODUTO order by PRODUTO_tsCRIACAO DESC";
         }
 
         ProdutoDAL::$connection->executarSQL($sql);
@@ -99,8 +113,7 @@ class ProdutoDAL extends Modelo
             $resultProduto->setMaterial($resultado['PRODUTO_tMATERIAL']);
 
             $csql =
-                " 
-                    SELECT MODELO_cNOME, MODELO_nID, MODELO_nVLR_VENDA, MODELO_nSTATUS, MODELO_nDESCONTO, MODELO_nQTD_ESTOQUE,
+                "SELECT MODELO_cNOME, MODELO_nID, MODELO_nVLR_VENDA, MODELO_nSTATUS, MODELO_nDESCONTO, MODELO_nQTD_ESTOQUE,
                     COR_nID, MODELO.TAMANHO_nID,TAMANHO_cDESC, TAMANHO.TAMANHO_cTAMANHO AS descTamanho, MODELO.PRODUTO_nID, 
                     fn_buscaDescCor(COR_nID) as descCor, fn_buscaHexCor(COR_nID) as hexCor FROM MODELO
                             INNER JOIN PRODUTO ON PRODUTO.PRODUTO_nID = MODELO.PRODUTO_nID

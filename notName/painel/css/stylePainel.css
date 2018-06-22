@@ -3,6 +3,11 @@
 	margin-bottom: 20px;
 }
 
+.hoverImg:hover{
+    cursor: pointer;
+    border: 1px solid rgb(61, 60, 60);
+}
+
 .btn-file {
     position: relative;
     overflow: hidden;

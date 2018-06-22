@@ -1,15 +1,25 @@
 
 $(".produtosCX").click(function () {
+	$("#idProduct").val(this.id);
+
 	carregando();
 	$.ajax({
 		type: 'GET',
-		url: './controller/controllerProduto.php?action=seleciona&idProdSelected='+this.id,
+		url: './controller/controllerProduto.php?action=seleciona&idProdSelected=' + this.id,
 		success: function (response) {
 			parar();
+			window.scrollTo(0, 100);
 			var produto = JSON.parse(response);
 			produto = produto[0];
 			console.log(produto);
 			console.log(produto["categoria"][0]["idCateg"]);
+			var btnAcao = $("#btnCadastroProduto");
+
+			btnAcao.attr("value", "2");
+			btnAcao.removeClass("btn-success");
+			btnAcao.addClass("btn-secondary");
+			$("#spanButton").text("ALTERAR");
+
 
 			$("#idProd").val(produto['idProd']);
 			$("#txtNomeProduto").val(produto['descProd']);
@@ -17,18 +27,18 @@ $(".produtosCX").click(function () {
 			$("#statusProduto").val(produto['statusProd']);
 			$("#txtDescricaoProduto").val(produto['descCompletaProd']);
 
-			$("#img-upload").attr("src","./../img/Produtos/Produto"+produto["idProd"]+".jpg");
+			$("#img-upload").attr("src", "./../img/Produtos/Produto" + produto["idProd"] + ".jpg");
 			// $("#imgInp").value("Produto"+produto["idProd"]+".jpg");
 
 
-			$(".chkCat").each(function(){
-				$(this).removeAttr('checked', false); 
+			$(".chkCat").each(function () {
+				$(this).removeAttr('checked', false);
 			});
 
 
 			for (var i = 0; i < produto["categoria"].length; i++) {
-				
-				$("#Bctg"+produto["categoria"][i]["idCateg"]).addClass('active');
+
+				$("#Bctg" + produto["categoria"][i]["idCateg"]).addClass('active');
 				$("#Bctg" + produto["categoria"][i]["idCateg"]).addClass('btn-secondary');
 				$("#chkCats" + produto["categoria"][i]["idCateg"]).attr('checked', 'checked');
 
@@ -75,7 +85,41 @@ $(".produtosCX").click(function () {
 		}
 	});
 
-})
+});
+
+$("#btnCancelar").on('click', function () {
+	cancelar();
+});
+
+function cancelar() {
+
+	window.scrollTo(0, 100);
+
+	$("#btnCadastroProduto").attr("value", "1");
+
+	$('.chkCat').prop('checked', false);
+
+	$(".state-icon").each(function () {
+		$(this).removeClass()
+			.addClass('state-icon fa fa-square');
+
+		$(".categCheck").removeClass("active");
+	});
+
+	$("#txtNomeProduto").val("");
+	$("#material").val("");
+	$("#statusProduto").val('ATIVO');
+	$("#txtDescricaoProduto").val("");
+
+	$("#btnProdActive").removeAttr('class', 'btn btn-primary btn-sm notActive');
+	$("#btnProdActive").attr('class', 'btn btn-primary btn-sm active');
+
+	$("#btnProdInactive").removeAttr('class', 'btn btn-secondary btn-sm active');
+	$("#btnProdInactive").attr('class', 'btn btn-secondary btn-sm notActive');
+
+	$("#img-upload").attr("src", "");
+
+}
 
 
 $("#btnCadastroProduto").click(function () {
@@ -91,11 +135,17 @@ $("#btnCadastroProduto").click(function () {
 
 $("#formProduto").submit(function () {
 
+<<<<<<< HEAD
 	if ($("#btnCadastroProduto").val() == 1){
 
 		
 		var formData = new FormData(this);
 		
+=======
+	var formData = new FormData(this);
+
+	if ($("#btnCadastroProduto").val() == 1) {
+>>>>>>> 2e4e802f8814020cd2567164ef0f10519543b2b7
 		$.ajax({
 			url: './controller/controllerProduto.php?action=insereProduto',
 			type: 'POST',
@@ -103,7 +153,11 @@ $("#formProduto").submit(function () {
 			success: function (data) {
 				parar();
 				alert(data);
+<<<<<<< HEAD
 				
+=======
+
+>>>>>>> 2e4e802f8814020cd2567164ef0f10519543b2b7
 			},
 			cache: false,
 			contentType: false,
@@ -118,15 +172,49 @@ $("#formProduto").submit(function () {
 				return myXhr;
 			}
 		});
+<<<<<<< HEAD
 	} else if ($("#btnCadastroProduto").val() == 2){
 		
 	}
+=======
+	}
+	else {
+		$.ajax({
+			url: './controller/controllerProduto.php?action=alteraProduto',
+			type: 'POST',
+			data: formData,
+			success: function (data) {
+				parar();
+				alert(data);
+
+			},
+			cache: false,
+			contentType: false,
+			processData: false,
+			xhr: function () {  // Custom XMLHttpRequest
+				var myXhr = $.ajaxSettings.xhr();
+				if (myXhr.upload) { // Avalia se tem suporte a propriedade upload
+					myXhr.upload.addEventListener('progress', function () {
+						/* faz alguma coisa durante o progresso do upload */
+					}, false);
+				}
+				return myXhr;
+			}
+		});
+	}
+
+
+
+
+
+
+>>>>>>> 2e4e802f8814020cd2567164ef0f10519543b2b7
 });
 
 
 
 $(function () {
-// Botão para Imagem produto
+	// Botão para Imagem produto
 
 	$(document).on('change', '.btn-file :file', function () {
 		var input = $(this),

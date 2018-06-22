@@ -127,7 +127,7 @@ $produtos = ProdutoDAL::buscaProduto();
 							echo "
 								<span class='button-checkbox mb-2 mx-1'>
 								<button type='button' class='btn mb-3 categCheck' data-color='secondary' id='Bctg{$categoriaFilho->getIdCateg()}'>{$categoriaFilho->getDescCateg()}</button>
-								<input type='checkbox' class='chkCat hidden' name='categoriaIdProduto[]' id = 'chkCats{$categoriaFilho->getIdCateg()}' value = '{$categoria->getIdCateg()}' />
+								<input type='checkbox' class='chkCat hidden' name='categoriaIdProduto[]' id = 'chkCats{$categoriaFilho->getIdCateg()}' value = '{$categoriaFilho->getIdCateg()}' />
 								</span>
 
 								";
@@ -150,19 +150,28 @@ $produtos = ProdutoDAL::buscaProduto();
 							</span>
 						</span> <input type="text" class="form-control" readonly>
 					</div>
-					<img id='img-upload' />
+					<img id='img-upload' class='img-responsive radius mt-1' />
 				</div>
 			</div>
 		</div>
+
+		<input type="hidden" id="idProduct" name="idProduct">
 	</form>
 
 	<div class="form-actions text-center">
 		<button type="button" class="btn btn-success"
 		id="btnCadastroProduto" value="1">
+<<<<<<< HEAD
 		 Cadastrar
 	</button>
 	<button type="button" class="btn btn-inverse" id="btnCancelProduto">
 		 Cancelar
+=======
+		<i class="fa fa-check"></i> <span id="spanButton">CADASTRAR</span>
+	</button>
+	<button type="button" class="btn btn-inverse" id="btnCancelar">
+		<i class="fa fa-check"></i> CANCELAR
+>>>>>>> 2e4e802f8814020cd2567164ef0f10519543b2b7
 	</button>
 </div>
 
@@ -174,20 +183,20 @@ $produtos = ProdutoDAL::buscaProduto();
 			<nav aria-label="Page navigation example">
 				<ul class="pagination justify-content-center">
 					<li class="page-item disabled"><a class="page-link" href="#"
-						tabindex="-1">Previous</a></li>
+						tabindex="-1">Anterior</a></li>
 						<li class="page-item active"><a class="page-link" href="#">1</a></li>
 						<li class="page-item"><a class="page-link" href="#">2</a></li>
 						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#">Next</a>
+						<li class="page-item"><a class="page-link" href="#">Próximo</a>
 						</li>
 					</ul>
 				</nav>
-				<div class="form-group mt-4">
+				<!-- <div class="form-group mt-4">
 					<select name="" id=""
 					class="form-control  col-md-4 offset-md-4">
 					<option value="">Selecione...</option>
 				</select>
-			</div>
+			</div> -->
 		</div>
 		<!-- Pagination -->
 
@@ -198,9 +207,8 @@ $produtos = ProdutoDAL::buscaProduto();
 		foreach ($produtos as $prod) {
 
 			echo "
-
 				<div class='col-lg-3 col-md-6 m-b-20 fotoPainel produtosCX' id = '{$prod->getIdProd()}'>
-				<img src='../img/Produtos/Produto{$prod->getIdProd()}.jpg' class='img-responsive radius' onerror=\"this.src='../img/logo.png'\" />
+				<img src='../img/Produtos/Produto{$prod->getIdProd()}.jpg' class='img-responsive radius hoverImg' onerror=\"this.src='../img/logo.png'\" />
 				<div class='like-comm'>
 				{$prod->getDescProd()}
 				</div>
@@ -228,7 +236,7 @@ $produtos = ProdutoDAL::buscaProduto();
 		<div class="card-body">
 			<div class="row">
 				<div class="col-lg-3 col-md-6 m-b-20">
-					<img src="../img/Produtos/Produto1.jpg" class="img-responsive radius" />
+					<img src="../img/Produtos/Produto1.jpg" class="img-responsive radius hoverImg" />
 					<div class="like-comm">
 						<a href="javascript:void(0)" class="link m-r-10"> <i
 							class="fa fa-heart text-danger"> </i> 5 Love
