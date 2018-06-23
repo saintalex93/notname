@@ -30,38 +30,9 @@ if ($_REQUEST['action'] == 'insereProduto') {
             echo 'nao gravou';
         }
     }
-<<<<<<< HEAD
-} 
-else if ($_REQUEST['action'] == 'alteraProduto') {
-
-    $arrCategoria = $_REQUEST['categoriaIdProduto'];
-    
-    $produto = new Produto();
-
-    $produto->setIdCateg($arrCategoria);
-    $produto->setIdProd($_REQUEST['idProd']);
-    $produto->setDescProd($_REQUEST['txtNomeProduto']);
-    $produto->setDescCompletaProd($_REQUEST['txtDescricaoProduto']);
-    $produto->setMaterial($_REQUEST['material']);
-    // $produto->setIdMarca($_REQUEST['marcaProduto']);
-    $produto->setStatusProd($_REQUEST['statusProduto']);
-
-    if (isset($_FILES['fotoProduto']['name'])) {
-
-        $cod = "Produto" . $id;
-        $imagem = $_FILES['fotoProduto']['name'];
-
-        if (move_uploaded_file($_FILES['fotoProduto']['tmp_name'], "{$raiz}img/Produtos/" . $cod . ".jpg")) {
-            echo "Produto inserido com sucesso!";
-        } else {
-            echo 'nao gravou';
-        }
-    }
-=======
 } else if ($_REQUEST['action'] == 'alteraProduto') {
 
     $id = $_REQUEST['idProduct'];
->>>>>>> 2e4e802f8814020cd2567164ef0f10519543b2b7
 
     $arrCategoria = $_REQUEST['categoriaIdProduto'];
     $produto = new Produto();

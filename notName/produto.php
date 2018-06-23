@@ -4,7 +4,7 @@ include_once "dal/ProdutoDAL.php";
 
 $codProduto = $_REQUEST['id'];
 
-if (! isset($_REQUEST['id'])) {
+if (!isset($_REQUEST['id'])) {
 	echo "<script>window.location.href='index.php'</script>";
 } else {
 	$produto = ProdutoDAL::buscaProduto($codProduto);
@@ -56,7 +56,7 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 
 		</div>
 		<div class="row">
-			<?php include "menuCategoria.php";?>
+			<?php include "menuCategoria.php"; ?>
 			<div class="col-md-9">
 
 				<div class="row " id="productMain">
@@ -64,11 +64,11 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 						<div class="card ajustesImagemProduto">
 							
 							<?php
-							echo "
+						echo "
 							<img class='card-img-top' src='img/Modelos/ModeloCapa_" . $arrModelo[$indice_array]['ID'] . ".jpg' alt=''>
 
 							";
-							?>
+						?>
 
 						</div>
 					</div>
@@ -79,7 +79,7 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 							<div class="card ">
 								<div class="card-body text-center">
 									<h4 class="card-title">
-										<?php echo $produto[0]->getDescProd();?>
+										<?php echo $produto[0]->getDescProd(); ?>
 
 									</h4>
 									<p class="card-text goToDescription">
@@ -87,14 +87,14 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 										produto, material e cuidado e dimensionamento</a>
 									</p>
 									<p class="price">
-										<?php echo "R$ ". number_format($arrModelo[$indice_array]['VALOR_MODELO'], 2, ',', '.');?>
+										<?php echo "R$ " . number_format($arrModelo[$indice_array]['VALOR_MODELO'], 2, ',', '.'); ?>
 									</p>
+									<input type="hidden" id="modeloId" value="<?php echo $idModelo; ?>">
 									<p class="buttons">
-										<a href="" class="btn btn-primary"><i
+										<a href="#" id="btnCarrinho" class="btn btn-primary"><i
 											class="fa fa-shopping-cart"></i> Adicionar ao Carrinho</a>
 											<!--                                     <a href="" class="btn btn-default"><i class="fa fa-heart"></i> Add a lista de desejo</a> -->
 										</p>
-
 
 									</div>
 								</div>
@@ -104,8 +104,8 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 
 								<?php
 
-								for ($i = 1; $i < 4; $i ++) {
-									echo "
+							for ($i = 1; $i < 4; $i++) {
+								echo "
 									<div class='col-md-4 col-sm-6'>
 									<div class='card imgProdutoPequena'>
 
@@ -116,9 +116,9 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 
 
 									";
-								}
+							}
 
-								?>
+							?>
 
 							</div>
 
@@ -138,14 +138,14 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 
 											<?php
 
-											foreach ($arrModelo as $arM) {
-												echo "
+										foreach ($arrModelo as $arM) {
+											echo "
 
 												<button class='btn btn-primary desab$arM[ID]' style = 'background: $arM[HEX_COR]; color: $arM[HEX_COR]' onclick = \" location.href = 'produto.php?id=$codProduto&md=$arM[ID]' \">R</button>
 												";
-											}
+										}
 
-											?>
+										?>
 
 										</div>
 
@@ -153,15 +153,15 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 
 											<?php
 
-											foreach ($arrModelo as $arM) {
-												echo "
+										foreach ($arrModelo as $arM) {
+											echo "
 
 												<button class = 'btn btn-secondary desab$arM[ID]' onclick = \" location.href = 'produto.php?id=$codProduto&md=$arM[ID]'\">$arM[DESC_TAMANHO]</button>
 
 												";
-											}
+										}
 
-											?>
+										?>
 
 										</div>
 									</div>
@@ -175,17 +175,17 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 							<h4>Detalhes do produto</h4>
 
 							<ul>
-								<?php echo $produto[0]->getDescCompletaProd();?>
+								<?php echo $produto[0]->getDescCompletaProd(); ?>
 							</ul>
 
 							<h4>Material e cuidados</h4>
 							<ul>
-								<li> <?php echo $produto[0]->getMaterial();?></li>
+								<li> <?php echo $produto[0]->getMaterial(); ?></li>
 
 							</ul>
 							<h4>Tamanho e ajuste</h4>
 							<ul>
-								<li><?php echo "{$arrModelo[$indice_array]['DESC_TAMANHO']} - {$arrModelo[$indice_array]['DESC_TAMANHOCOMPLETO']}";?></li>
+								<li><?php echo "{$arrModelo[$indice_array]['DESC_TAMANHO']} - {$arrModelo[$indice_array]['DESC_TAMANHOCOMPLETO']}"; ?></li>
 							</ul>
 
 							<blockquote>
@@ -465,16 +465,16 @@ $indice_array = array_search($idModelo, array_column($arrModelo, "ID"));
 
 </div>
 
-<?php include_once "inferior.php";?>
+<?php include_once "inferior.php"; ?>
 
-
+<script src="js/produto.js"></script>
 
 <script>
 
 
 	$( document ).ready(function() {
-		$(".desab<?php echo $idModelo?>").attr('disabled', 'disabled');
-		$(".desab<?php echo $idModelo?>").css('border', '3px solid black');
+		$(".desab<?php echo $idModelo ?>").attr('disabled', 'disabled');
+		$(".desab<?php echo $idModelo ?>").css('border', '3px solid black');
 
 	});
 

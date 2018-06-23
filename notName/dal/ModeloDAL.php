@@ -82,11 +82,20 @@ VALUES ('$nomeMod', $vlrVendaMod, '$statusMod', $descontoMod, $qtdeEstMod, $corM
         return $arrayModelo;
     }
 
-    public static function buscaModelo(Modelo $mod): array
+    public static function buscaModelo($idModelo = null): array
     {
         ModeloDAL::connect();
         
-        $sql = "select * from MODELO";
+        if(!$idModelo){
+            $sql = "SELECT * from MODELO";
+
+        }
+
+        else{
+        $sql = "SELECT * from MODELO WHERE MODELO_nID = $idModelo";
+
+        }
+
         
         ModeloDAL::$connection->executarSQL($sql);
         
