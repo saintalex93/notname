@@ -161,17 +161,10 @@ $produtos = ProdutoDAL::buscaProduto();
 	<div class="form-actions text-center">
 		<button type="button" class="btn btn-success"
 		id="btnCadastroProduto" value="1">
-<<<<<<< HEAD
-		 Cadastrar
-	</button>
-	<button type="button" class="btn btn-inverse" id="btnCancelProduto">
-		 Cancelar
-=======
 		<i class="fa fa-check"></i> <span id="spanButton">CADASTRAR</span>
 	</button>
 	<button type="button" class="btn btn-inverse" id="btnCancelar">
 		<i class="fa fa-check"></i> CANCELAR
->>>>>>> 2e4e802f8814020cd2567164ef0f10519543b2b7
 	</button>
 </div>
 
