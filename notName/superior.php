@@ -1,11 +1,20 @@
 <?php
 session_start();
+
 if (isset($_SESSION['USERCOM']['ID'])) {
     
     $id = $_SESSION['USERCOM']['ID'];
     $nome = $_SESSION['USERCOM']['NOME'];
     
     $firstName = explode(" ", $nome);
+}
+include_once "dal/VendaDAL.php";
+if(isset($_SESSION['ID_VENDA'])){
+	$quantidade = VendaDAL::recuperaCarrinho($_SESSION['ID_VENDA']);
+
+}
+else{
+	$quantidade = 0;
 }
 
 ?>
@@ -192,7 +201,7 @@ a:hover {
 					<div class="navbar-collapse collapse right ">
 						<a href="carrinho.php" class="btn  navbar-btn"><i
 							class="fas fa-shopping-cart"></i><span class="hidden-sm"> Itens
-								no carrinho</span></a><span class="badge badge-primary">9</span>
+								no carrinho</span></a><span class="badge badge-dark" id="itensCarrinho"><?php echo $quantidade;?></span>
 					</div>
 					<!--/.nav-collapse -->
 

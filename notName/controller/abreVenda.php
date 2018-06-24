@@ -19,33 +19,29 @@ if (isset($_SESSION['USERCOM']['ID'])) {
 
 	$venda->setIdCli($ID_USR);
 
-	$idVenda = VendaDAL::recuperaVendaAberta($venda);
+	$obVenda = VendaDAL::recuperaVendaAberta($venda);
 
-	if($idVenda){
-		$idVenda = $idVenda[0]['VENDA_nID'];
+	if ($obVenda) {
+		$idVenda = $obVenda[0]->getIdVenda();;
+	} else {
 
-	}
-	else{
 		$idVenda = 0;
 	}
 
-	echo $idVenda;
 	if (isset($_SESSION['USERCOM']['ID'])) {
-
 
 		if ($idVenda == 0) {
 
 			$idVenda = VendaDAL::abreVenda($venda);
 
 			//  $idVenda;
-			echo "Abriu Venda";
-			
+			 vendaModelo($idVenda, $idModelo);
+
 
 		} else {
 
 			// $idVenda;
-			echo "Venda ABERTA";
-			echo vendaModelo($idVenda, $idModelo);
+			 vendaModelo($idVenda, $idModelo);
 		}
 
 	}
@@ -53,22 +49,33 @@ if (isset($_SESSION['USERCOM']['ID'])) {
 	echo "Login";
 }
 
-
-
-function vendaModelo($idVenda, $idModelo){
-
+function vendaModelo($idVenda, $idModelo)
+{
+	$_SESSION['ID_VENDA'] = $idVenda;
 	$modelo = new Modelo();
 	$venda = new Venda();
 
 	$modelo->setIdModelo($idModelo);
 	$venda->setIdVenda($idVenda);
+	$venda->setIdCli($_SESSION['USERCOM']['ID']);
 
-	$modelo = ModeloDAL::buscaModelo($modelo->getIdModelo());
+	$vendaModelo = VendaDAL::recuperaVendaAberta($venda);
 
-	// $venda = VendaDAL::insereModeloVenda();
+	$modeloVenda = ModeloDAL::buscaModelo($idModelo);
 
-	var_dump($modelo);
+	$modeloVenda[0]->setQuantidadeVendaModelo(1);
+
+	$vendaModelo = VendaDAL::insereModeloVenda($vendaModelo[0], $modeloVenda[0]);
+
+	echo $vendaModelo[0]['COUNT_MODELOS'];
+	// var_dump(VendaDAL::recuperaVendaAberta($venda));
+
+	// var_dump($vendaModelo);
+
+	// var_dump($modeloVenda);
+
 }
+
 
 
 

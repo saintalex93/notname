@@ -7,13 +7,17 @@ $.ajax({
 
     success: function (response) {
 
-        alert(response);
         if (response == "Login"){
             $("#loginMoldal").modal();
         }
 
         else{
+            if (response == "SEM ESTOQUE"){
 
+            }
+            else{
+                $("#itensCarrinho").text(response);
+            }
         }
         parar();
     }

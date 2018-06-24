@@ -1,9 +1,8 @@
-<?php include "superior.php";?>
+<?php
 
+include "superior.php"; 
 
-
-
-
+?>
 
  <div id="content">
 
@@ -276,5 +275,5 @@
     </div>
     </div>
 
-    <?php include_once "inferior.php";?>
+    <?php include_once "inferior.php"; ?>
 
