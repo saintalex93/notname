@@ -70,6 +70,7 @@ if (isset($_SESSION['USERCOM']['ID'])) {
                                         $nomeModelo = $Minicar->getModelo()[0]->getNomeModelo();
                                         $quantidade = $Minicar->getModelo()[0]->getQuantidadeVendaModelo();
                                         $valorModelo = $Minicar->getModelo()[0]->getVlrVendaModelo();
+                                        $valorModeloRaw = $Minicar->getModelo()[0]->getVlrVendaModelo();
                                         $descontoModelo = $Minicar->getModelo()[0]->getDescontoModelo();
                                         $totalModelo = ($valorModelo - $descontoModelo) * $quantidade;
                                         $totalVenda = $totalVenda + $totalModelo;
@@ -106,7 +107,7 @@ if (isset($_SESSION['USERCOM']['ID'])) {
                                             </td>
 
                                             <td>
-                                                <a href='#' class='adicionaModelo' value = '$idModelo,$idVenda,$idVendaModelo'>
+                                                <a href='#' class='adicionaModelo' value = '$idModelo,$idVenda,$valorModeloRaw'>
                                                 <i class='fas fa-plus-circle'></i>
                                                 </a>
                                             </td>

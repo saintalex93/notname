@@ -170,19 +170,25 @@ class VendaDAL
         return $result[0][0];
     }
 
-    public static function apagaModeloVenda(Venda $venda, Modelo $modelo) : string
+    public static function apagaModeloVenda(Venda $venda):string
     {
         VendaDAL::connect();
+       
+        $vendaModelo = $venda->getModelo()[0]->getIdModelo();
+        $vendaId = $venda->getIdVenda();
+        $vendaModeloId = $venda->getIdVendaModelo();
+            /*
+            PROCEDURE: ID_MODELO, ID_VENDA, ID_VENDA_MODELO
+            */  
+        $sql = "CALL USP_DELETA_MODELO($vendaModelo,$vendaId,$vendaModeloId)";
 
-        $venda->getIdVenda();
-        $modelo->getIdModelo();
-        $venda->getDTSeparacaoVendaProduto();
-        $venda->getQtdeVendaProduto();
+        VendaDAL::$connection->executaProcedure($sql);
 
-        $sql = "CALL USP_DELETA_MODELO(1,1,1)";
+        $resulta = VendaDAL::$connection->getResultados();
 
-        VendaDAL::$connection->executarSQL($sql);
+        return $resulta[0]["RESULT"];
 
-        return VendaDAL::$connection->returnID();
+
+
     }
 }
