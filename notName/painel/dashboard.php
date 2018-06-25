@@ -7,52 +7,52 @@ include_once 'header.php';
     <!-- Start Page Content -->
     <div class="row">
         <div class="col-md-3">
-            <div class="card p-30">
+            <div class="card p-20">
                 <div class="media">
                     <div class="media-left meida media-middle">
-                        <span><i class="fa fa-usd f-s-40 color-primary"></i></span>
+                        <span><i class="fa fa-usd f-s-30 color-primary"></i></span>
                     </div>
                     <div class="media-body media-text-right">
-                        <h2>R$ 10.000,00</h2>
+                        <h4>R$ 5.000,00</h4>
                         <p class="m-b-0">Total Vendas</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card p-30">
+            <div class="card p-20">
                 <div class="media">
                     <div class="media-left meida media-middle">
-                        <span><i class="fa fa-shopping-cart f-s-40 color-success"></i></span>
+                        <span><i class="fa fa-shopping-cart f-s-30 color-success"></i></span>
                     </div>
                     <div class="media-body media-text-right">
-                        <h2>1000</h2>
+                        <h4>1000</h4>
                         <p class="m-b-0">Vendas</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card p-30">
+            <div class="card p-20">
                 <div class="media">
                     <div class="media-left meida media-middle">
-                        <span><i class="fa fa-archive f-s-40 color-warning"></i></span>
+                        <span><i class="fa fa-archive f-s-30 color-warning"></i></span>
                     </div>
                     <div class="media-body media-text-right">
-                        <h2>50</h2>
+                        <h4>50</h4>
                         <p class="m-b-0">Produtos</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card p-30">
+            <div class="card p-20">
                 <div class="media">
                     <div class="media-left meida media-middle">
-                        <span><i class="fa fa-user f-s-40 color-danger"></i></span>
+                        <span><i class="fa fa-user f-s-30 color-danger"></i></span>
                     </div>
                     <div class="media-body media-text-right">
-                        <h2>100</h2>
+                        <h4>100</h4>
                         <p class="m-b-0">Clientes</p>
                     </div>
                 </div>

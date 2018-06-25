@@ -6,8 +6,6 @@ include_once 'dal/ModeloDAL.php';
 $modelo = ModeloDAL::buscaModeloIndex();
 
 ?>
-
-
     <div id="carouselSite" class="carousel slide my-4" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -116,9 +114,9 @@ $modelo = ModeloDAL::buscaModeloIndex();
         <!--produto1-->
 
         <?php
-    foreach ($modelo as $md) {
-        
-        echo "
+        foreach ($modelo as $md) {
+
+            echo "
 
     <div class='col-sm-6 col-md-3 mb-3 card-container'>
         <div class='card'>
@@ -145,12 +143,12 @@ $modelo = ModeloDAL::buscaModeloIndex();
             <div class='card-body text-center'>
                 <h4 class='card-title'>{$md->getNomeModelo()}</h4>
         ";
-        
-        if ($md->getDescontoModelo() != "0.00") {
-            $valor = 'R$' . number_format($md->getVlrVendaModelo(), 2, ',', '.');
-            $desconto = $md->getVlrVendaModelo() - $md->getDescontoModelo();
-            $desconto = 'R$' . number_format($desconto, 2, ',', '.');
-            echo "
+
+            if ($md->getDescontoModelo() != "0.00") {
+                $valor = 'R$' . number_format($md->getVlrVendaModelo(), 2, ',', '.');
+                $desconto = $md->getVlrVendaModelo() - $md->getDescontoModelo();
+                $desconto = 'R$' . number_format($desconto, 2, ',', '.');
+                echo "
                 <p class='card-text price'><del>$valor</del> $desconto</p>
                 <a class='card-link' href='produto.php?id={$md->getProdutoIdModelo()}&md={$md->getIdModelo()}'>ver mais detalhes</a>
             </div>
@@ -166,10 +164,10 @@ $modelo = ModeloDAL::buscaModeloIndex();
                 <div class='fitaTag'>Promoção</div>
                 <div class='fitaTagProduto-background'></div>
             </div>";
-        } else {
+            } else {
 
-            $valor = 'R$' . number_format($md->getVlrVendaModelo(), 2, ',', '.');
-            echo "
+                $valor = 'R$' . number_format($md->getVlrVendaModelo(), 2, ',', '.');
+                echo "
                 <p class='card-text price'>$valor</p>
           <a class='card-link' href='produto.php?id={$md->getProdutoIdModelo()}&md={$md->getIdModelo()}'>ver mais detalhes</a>
 
@@ -183,26 +181,22 @@ $modelo = ModeloDAL::buscaModeloIndex();
            
 
           ";
-        }
-        
-        echo "
+            }
 
+            echo "
 
         </div>
 
     </div>
 
 ";
-    }
-    
-    ?>
+        }
 
-
-
-
+        ?>
 
     </div>
+<div class="row text-center"><a href="categoria.php" class="w-100 mb-3">Veja todos os Produtos...</a></div>
 
 
 
-    <?php include_once "inferior.php";?>
+    <?php include_once "inferior.php"; ?>

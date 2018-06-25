@@ -1,10 +1,12 @@
-<?php include "superior.php";?>
+<?php include "superior.php";
+
+include_once 'library/Conexao.class.php';
+include_once 'dal/ModeloDAL.php';
+
+$modelo = ModeloDAL::buscaModelo();
 
 
-
-
-
-
+?>
 <div id="content">
     <div class="container">
 
@@ -15,7 +17,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
 
-                    <li class="breadcrumb-item active" aria-current="page">Mulher</li>
+                    <li class="breadcrumb-item active" aria-current="page">Todos</li>
                 </ol>
             </nav>
 
@@ -25,8 +27,8 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <h1>Mulheres</h1>
-                    <p>No nosso departamento de Senhoras, oferecemos uma ampla seleção dos melhores produtos que encontramos e cuidadosamente selecionados em todo o mundo.</p>
+                    <h1>Produtos</h1>
+                    <p>Confira todos os Produtos que fizemos especialmente para você!</p>
                 </div>
 
                 <div class="card info-bar">
@@ -61,207 +63,77 @@
 
                 <div class="row">
 
+  <?php
+    foreach ($modelo as $md) {
+        echo "
+
+                     <div class='col-sm-12 col-md-4 mb-3 text-center'>
+                        <div class='card card-container '>
+                         <a class='card-link' href='produto.php?id={$md->getProdutoIdModelo()}&md={$md->getIdModelo()}'>
+                            <div class='card-flip'>
+                                <div class='card front'>
+                                    <div class='card-block'>
+                                        <img class='card-img-top' src='img/Produtos/Produto{$md->getProdutoIdModelo()}.jpg' alt='Foto da Capa do Modelo'>
+                                    </div>
+                                </div>
+                                <div class='card back'>
+                                    <div class='card-block'>
+                                        <img class='card-img-top ' src='img/Modelos/ModeloCapa_{$md->getIdModelo()}.jpg' alt='Foto do Modelo'>
+                                    </div>
+                                </div>
+                            </div>
+                         </a>
+
+                            <h4 class='card-title'>{$md->getNomeModelo()}</h4>";
+
+        if ($md->getDescontoModelo() != "0.00") {
+            $valor = 'R$' . number_format($md->getVlrVendaModelo(), 2, ',', '.');
+            $desconto = $md->getVlrVendaModelo() - $md->getDescontoModelo();
+            $desconto = 'R$' . number_format($desconto, 2, ',', '.');
+            echo "
+                <p class='card-text price'><del>$valor</del> $desconto</p>
+                <a class='card-link' href='produto.php?id={$md->getProdutoIdModelo()}&md={$md->getIdModelo()}'>ver mais detalhes</a>
+            </div>
+
+            <div class='fitaTagProduto novo'>
+                <div class='fitaTag'>Novo</div>
+                <div class='fitaTagProduto-background'></div>
+            </div>
+
+           
+
+            <div class='fitaTagProduto promocaoTag'>
+                <div class='fitaTag'>Promoção</div>
+                <div class='fitaTagProduto-background'></div>
+            </div>";
+        } else {
+
+            $valor = 'R$' . number_format($md->getVlrVendaModelo(), 2, ',', '.');
+            echo "
+                <p class='card-text price'>$valor</p>
+          <a class='card-link' href='produto.php?id={$md->getProdutoIdModelo()}&md={$md->getIdModelo()}'>ver mais detalhes</a>
+
+            </div>
+
+            <div class='fitaTagProduto novo'>
+                <div class='fitaTag'>Novo</div>
+                <div class='fitaTagProduto-background'></div>
+            </div>
+
+           
+
+          ";
+        }
+
+        echo "
+
+        </div>
 
 
-
-
-
-
-
-
-
-                    <div class="col-sm-12 col-md-4 mb-3 text-center">
-                        <div class="card card-container ">
-                            <div class="card-flip">
-                                <div class="card front">
-                                    <div class="card-block">
-                                        <img class="card-img-top" src="img/Produtos/Produto1.jpg" alt="Foto da Capa do Modelo">
-                                    </div>
-                                </div>
-                                <div class="card back">
-                                    <div class="card-block">
-                                        <img class="card-img-top " src="img/Produtos/Produto2.jpg" alt="Foto do Modelo">
-                                    </div>
-                                </div>
-                            </div>
-                            <h4 class="card-title">Produto 6</h4>
-                            <p class="card-text">R$111,00</p>
-                            <p class="buttons">
-                                <a href="produto.php" class="btn btn-default">Ver detalhes</a>
-                                <a href="carrinho.php" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add no carrinho</a>
-                            </p>
-                            <div class="fitaTagProduto promocaoTag">
-                                <div class="fitaTag">Promoção</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
-                            <div class="fitaTagProduto novo">
-                                <div class="fitaTag">Novo</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                     <div class="col-sm-12 col-md-4 mb-3 text-center">
-                        <div class="card card-container ">
-                            <div class="card-flip">
-                                <div class="card front">
-                                    <div class="card-block">
-                                        <img class="card-img-top" src="img/Produtos/Produto1.jpg" alt="Foto da Capa do Modelo">
-                                    </div>
-                                </div>
-                                <div class="card back">
-                                    <div class="card-block">
-                                        <img class="card-img-top " src="img/Produtos/Produto2.jpg" alt="Foto do Modelo">
-                                    </div>
-                                </div>
-                            </div>
-                            <h4 class="card-title">Produto 6</h4>
-                            <p class="card-text">R$111,00</p>
-                           <p class="buttons">
-                                <a href="produto.php" class="btn btn-default">Ver detalhes</a>
-                                <a href="carrinho.php" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add no carrinho</a>
-                            </p>
-                            <div class="fitaTagProduto promocaoTag">
-                                <div class="fitaTag">Promoção</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
-                            <div class="fitaTagProduto novo">
-                                <div class="fitaTag">Novo</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                     <div class="col-sm-12 col-md-4 mb-3 text-center">
-                        <div class="card card-container ">
-                            <div class="card-flip">
-                                <div class="card front">
-                                    <div class="card-block">
-                                        <img class="card-img-top" src="img/Produtos/Produto1.jpg" alt="Foto da Capa do Modelo">
-                                    </div>
-                                </div>
-                                <div class="card back">
-                                    <div class="card-block">
-                                        <img class="card-img-top " src="img/Produtos/Produto2.jpg" alt="Foto do Modelo">
-                                    </div>
-                                </div>
-                            </div>
-                            <h4 class="card-title">Produto 6</h4>
-                            <p class="card-text">R$111,00</p>
-                           <p class="buttons">
-                                <a href="produto.php" class="btn btn-default">Ver detalhes</a>
-                                <a href="carrinho.php" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add no carrinho</a>
-                            </p>
-                            <div class="fitaTagProduto promocaoTag">
-                                <div class="fitaTag">Promoção</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
-                            <div class="fitaTagProduto novo">
-                                <div class="fitaTag">Novo</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                     <div class="col-sm-12 col-md-4 mb-3 text-center">
-                        <div class="card card-container ">
-                            <div class="card-flip">
-                                <div class="card front">
-                                    <div class="card-block">
-                                        <img class="card-img-top" src="img/Produtos/Produto1.jpg" alt="Foto da Capa do Modelo">
-                                    </div>
-                                </div>
-                                <div class="card back">
-                                    <div class="card-block">
-                                        <img class="card-img-top " src="img/Produtos/Produto2.jpg" alt="Foto do Modelo">
-                                    </div>
-                                </div>
-                            </div>
-                            <h4 class="card-title">Produto 6</h4>
-                            <p class="card-text">R$111,00</p>
-                            <p class="buttons">
-                                <a href="produto.php" class="btn btn-default">Ver detalhes</a>
-                                <a href="carrinho.php" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add no carrinho</a>
-                            </p>
-                            <div class="fitaTagProduto promocaoTag">
-                                <div class="fitaTag">Promoção</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
-                            <div class="fitaTagProduto novo">
-                                <div class="fitaTag">Novo</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                     <div class="col-sm-12 col-md-4 mb-3 text-center">
-                        <div class="card card-container ">
-                            <div class="card-flip">
-                                <div class="card front">
-                                    <div class="card-block">
-                                        <img class="card-img-top" src="img/Produtos/Produto1.jpg" alt="Foto da Capa do Modelo">
-                                    </div>
-                                </div>
-                                <div class="card back">
-                                    <div class="card-block">
-                                        <img class="card-img-top " src="img/Produtos/Produto2.jpg" alt="Foto do Modelo">
-                                    </div>
-                                </div>
-                            </div>
-                            <h4 class="card-title">Produto 6</h4>
-                            <p class="card-text">R$111,00</p>
-                            <p class="buttons">
-                                <a href="produto.php" class="btn btn-default">Ver detalhes</a>
-                                <a href="carrinho.php" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add no carrinho</a>
-                            </p>
-                            <div class="fitaTagProduto promocaoTag">
-                                <div class="fitaTag">Promoção</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
-                            <div class="fitaTagProduto novo">
-                                <div class="fitaTag">Novo</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                     <div class="col-sm-12 col-md-4 mb-3 text-center">
-                        <div class="card card-container ">
-                            <div class="card-flip">
-                                <div class="card front">
-                                    <div class="card-block">
-                                        <img class="card-img-top" src="img/Produtos/Produto1.jpg" alt="Foto da Capa do Modelo">
-                                    </div>
-                                </div>
-                                <div class="card back">
-                                    <div class="card-block">
-                                        <img class="card-img-top " src="img/Produtos/Produto2.jpg" alt="Foto do Modelo">
-                                    </div>
-                                </div>
-                            </div>
-                            <h4 class="card-title">Produto 6</h4>
-                            <p class="card-text">R$111,00</p>
-                            <p class="buttons">
-                                <a href="produto.php" class="btn btn-default">Ver detalhes</a>
-                                <a href="carrinho.php" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add no carrinho</a>
-                            </p>
-                            <div class="fitaTagProduto promocaoTag">
-                                <div class="fitaTag">Promoção</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
-                            <div class="fitaTagProduto novo">
-                                <div class="fitaTag">Novo</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
+";
+    }
+    ?>
+                   
 
 
                 </div>

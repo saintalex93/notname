@@ -112,8 +112,7 @@ $("#formModelo").submit(function () {
             type: 'POST',
             data: formData,
             success: function (data) {
-                console.log(data);
-
+                alert(data);
 
                 window.reload();
 
@@ -144,9 +143,6 @@ $("#formModelo").submit(function () {
 
     }
 });
-
-
-
 
 // Paleta
 $("#corModelo").change(function (event) {

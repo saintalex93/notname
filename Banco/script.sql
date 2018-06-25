@@ -216,6 +216,34 @@ INSERT INTO COR VALUES (0, "Azul", "#0000CD"), (0, "Azul Claro", "#6495ED"), (0,
  (0,'FLASH','ATIVO',3),
  (0,'ARROW','ATIVO',3);
 
+INSERT INTO UF VALUES 
+(0, 'SP', 'São Paulo'),
+(0, 'RJ', 'Rio de Janeiro'),
+(0, 'MG', 'Minas Gerais'),
+(0, 'SC', 'Santa Catarina'),
+(0, 'AC', 'Acre'),
+(0, 'AL', 'Alagoas'),
+(0, 'AP', 'Amapá'),
+(0, 'AM', 'Amazonas'),
+(0, 'BA', 'Bahia'),
+(0, 'CE', 'Ceará'),
+(0, 'DF', 'Distrito Federal'),
+(0, 'ES', 'Espírito Santo'),
+(0, 'GO', 'Goiás'),
+(0, 'MA', 'Maranhão'),
+(0, 'MT', 'Mato Grosso'),
+(0, 'MS', 'Mato Grosso do Sul'),
+(0, 'PA', 'Pará'),
+(0, 'PB', 'Paraíba'),
+(0, 'PR', 'Paraná'),
+(0, 'PE', 'Pernambuco'),
+(0, 'PI', 'Piauí'),
+(0, 'RN', 'Rio Grande do Norte'),
+(0, 'RS', 'Rio Grande do Sul'),
+(0, 'RO', 'Rondônia'),
+(0, 'RR', 'Roraima'),
+(0, 'SE', 'Sergipe'),
+(0, 'TO', 'Tocantins');
 
 
 DELIMITER $$
@@ -298,7 +326,7 @@ begin
 declare descTamanho varchar(20);
 select TAMANHO_cTAMANHO into descTamanho
 from TAMANHO
-where TAMANHO_nID = i---pdTamanho;
+where TAMANHO_nID = idTamanho;
 return descTamanho;
 end $$
 DELIMITER ;
@@ -345,5 +373,7 @@ DELIMITER $$
 
 	END $$
 DELIMITER ;
+
+
 
 
