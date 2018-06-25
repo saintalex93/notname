@@ -83,8 +83,22 @@ class ClienteDAL
         ClienteDAL::connect();
         
         $id = $cliente->getIdCli();
-        
-        $sql = "";
+        $nome = $cliente->getNomeCli();
+        $rg = $cliente->getRgCli();
+        $cpf = $cliente->getCpfCli();
+        $nasc = $cliente->getNascCli();
+        $gen = $cliente->getGeneroCli();
+        $telFix = $cliente->getTelResiCli();
+        $telCel = $cliente->getTelCelCli();
+        $telCom = $cliente->getTelComCli();
+        $email = $cliente->getEmailCli();
+        $senha = $cliente->getSenhaCli();
+        $statusCli = $cliente->getStatusCli();
+
+        $sql = "UPDATE CLIENTE SET CLI_cNOME = '$nome', CLI_cRG = '$rg', CLI_cCPF = '$cpf', CLI_dDTNASC = '$nasc', 
+                                   CLI_cGENERO = '$gen', CLI_nTRESIDENCIAL = '$telFix', CLI_nTCELULAR = '$telCel',
+                                   CLI_nTCOMERCIAL = '$telCom', CLI_cEMAIL = '$email', CLI_cSENHA = '$senha',
+                                   CLI_cSTATUS = '$statusCli' WHERE CLI_nCOD = $id";
         
         return ClienteDAL::$connection->executarSQL($sql);
     }
