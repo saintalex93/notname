@@ -155,6 +155,7 @@ class ProdutoDAL extends Modelo
         return $arrayProd;
     }
 
+
     public static function buscaProdutoCategoria($id)
     {
         ProdutoDAL::connect();
