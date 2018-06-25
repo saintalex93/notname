@@ -128,6 +128,7 @@ if (isset($_SESSION['USERCOM']['ID'])) {
                                     }
 
                                     $totalVenda = "R$ " . number_format($totalVenda, 2, ',', '.');
+                                    $_SESSION['TOTAL_VENDA'] = $totalVenda;
 
 
                                     ?>

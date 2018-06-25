@@ -106,36 +106,7 @@
 
                 <div class="col-md-3">
 
-                    <div class="card">
-                        <div class="card-header">
-                            <h3>Resumo do pedido</h3>
-                        </div>
-                        <p class="text-muted">Envio e custos adicionais são calculados com base nos valores que você inseriu.</p>
-
-                        <div class="table-responsive">
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <td>Subtotal do pedido</td>
-                                        <th>R$446.00</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Envio e manipulação</td>
-                                        <th>R$10.00</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Imposto</td>
-                                        <th>R$0.00</th>
-                                    </tr>
-                                    <tr class="total">
-                                        <td>Total</td>
-                                        <th>R$456.00</th>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
+                <?php include_once 'descritivoVenda.php'; ?>
 
 
                 </div>

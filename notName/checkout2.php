@@ -1,4 +1,4 @@
-<?php include "superior.php";?>
+<?php include "superior.php"; ?>
 
 <div id="content">
     <div class="container mb-4">
@@ -34,7 +34,7 @@
                             <div class="col-sm-5 ml-5 my-3">
                                 <div class="card shipping-method   ">
 
-                                    <h4 class="px-3 pt-3">Correios</h4>
+                                    <h4 class="px-3 pt-3">PAC</h4>
 
                                     <p class="px-3 ">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 
@@ -44,26 +44,42 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-5 ml-5 my-3">
-                                <div class="card shipping-method">
 
-                                    <h4 class="px-3 pt-3">Transportadora</h4>
+                            <div class="col-sm-5 ml-5 my-3">
+                                <div class="card shipping-method   ">
+
+                                    <h4 class="px-3 pt-3">SEDEX</h4>
 
                                     <p class="px-3 ">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 
                                     <div class="card-footer text-center">
 
-                                        <input type="radio" name="entrega" value="entrega2">
+                                        <input type="radio" name="entrega" value="entrega1">
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-sm-5 ml-5 my-3">
+                                <div class="card shipping-method   ">
+
+                                    <h4 class="px-3 pt-3">SEDEX 10</h4>
+
+                                    <p class="px-3 ">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+
+                                    <div class="card-footer text-center">
+
+                                        <input type="radio" name="entrega" value="entrega1">
+                                    </div>
+                                </div>
+                            </div>
+                           
 
                             <div class="col-sm-5 ml-5 my-3">
                                 <div class="card shipping-method">
 
                                     <h4 class="px-3 pt-3">Retirar no Local</h4>
 
-                                    <p class="px-3 ">Endereço tal</p>
+                                    <p class="px-3 ">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 
                                     <div class="card-footer text-center">
 
@@ -96,39 +112,10 @@
 
         <div class="col-md-3">
 
-            <div class="card">
-                <div class="card-header">
-                    <h3>Resumo do pedido</h3>
-                </div>
-                <p class="text-muted">Envio e custos adicionais são calculados com base nos valores que você inseriu.</p>
-
-                <div class="table-responsive">
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <td>Subtotal do pedido</td>
-                                <th>R$446.00</th>
-                            </tr>
-                            <tr>
-                                <td>Envio e manipulação</td>
-                                <th>R$10.00</th>
-                            </tr>
-                            <tr>
-                                <td>Imposto</td>
-                                <th>R$0.00</th>
-                            </tr>
-                            <tr class="total">
-                                <td>Total</td>
-                                <th>R$456.00</th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
+                <?php include_once 'descritivoVenda.php'; ?>
 
         </div>
     </div>
 </div>
 </div>
-<?php include_once "inferior.php";?>
+<?php include_once "inferior.php"; ?>

@@ -1,4 +1,27 @@
-<?php include "superior.php";?>
+<?php
+
+include "superior.php";
+include_once "dal/VendaDAL.php";
+include_once "model/Venda.php";
+
+$venda = new Venda();
+
+if (isset($_SESSION['USERCOM']['ID'])) {
+    $venda->setIdCli($_SESSION['USERCOM']['ID']);
+
+    $carrinho = VendaDAL::buscaVenda($venda);
+
+    if (!$carrinho) {
+        echo "
+            <script>
+                alert('Você ainda não comprou nenhum item. Gaste sua grana com a nossa fodenda loja!');
+                window.location.href = 'index.php';
+            </script>
+        ";
+    }
+}
+
+?>
 
 
 <div id="content">
@@ -34,51 +57,87 @@
 
                         <div class="content">
                             <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th colspan="2">Produto</th>
-                                            <th>Quantidade</th>
-                                            <th>Preço unitario</th>
-                                            <th>Desconto</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Produto</th>
+                                        <th width="20px">Quantidade</th>
+                                        <th>Preço unitário</th>
+                                        <th>Desconto</th>
+                                        <th colspan="2">Total</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <?php
+                                    $totalVenda = 0;
+                                    foreach ($carrinho as $Minicar) {
+                                        $idVenda = $Minicar->getIdVenda();
+                                        $idVendaModelo = $Minicar->getIdVendaModelo();
+                                        $idModelo = $Minicar->getModelo()[0]->getIdModelo();
+                                        $idProduto = $Minicar->getModelo()[0]->getProdutoIdModelo();
+                                        $nomeModelo = $Minicar->getModelo()[0]->getNomeModelo();
+                                        $quantidade = $Minicar->getModelo()[0]->getQuantidadeVendaModelo();
+                                        $valorModelo = $Minicar->getModelo()[0]->getVlrVendaModelo();
+                                        $valorModeloRaw = $Minicar->getModelo()[0]->getVlrVendaModelo();
+                                        $descontoModelo = $Minicar->getModelo()[0]->getDescontoModelo();
+                                        $totalModelo = ($valorModelo - $descontoModelo) * $quantidade;
+                                        $totalVenda = $totalVenda + $totalModelo;
+                                        $valorModelo = "R$ " . number_format($valorModelo, 2, ',', '.');
+                                        $descontoModelo = "R$ " . number_format($descontoModelo, 2, ',', '.');
+                                        $totalModelo = "R$ " . number_format($totalModelo, 2, ',', '.');
+                                        $quantidadeEstoque = $Minicar->getModelo()[0]->getQtdEstoqueModelo();
+                                        echo "
                                         <tr>
                                             <td>
-                                                <a href="produto.php">
-                                                    <img class="imgPequena" src="assets/produtos/frenteProduto1.jpg" alt="">
+                                                <a href='produto.php?id=$idProduto&md=$idModelo'>
+                                                <img class='imgPequena' src='img/Modelos/ModeloCapa_$idModelo.jpg' alt=''>
                                                 </a>
                                             </td>
-                                            <td><a href="#">Nome do Produto 1</a>
-                                            </td>
-                                            <td>2</td>
-                                            <td>R$123.00</td>
-                                            <td>R$0.00</td>
-                                            <td>R$246.00</td>
-                                        </tr>
-                                        <tr>
+
                                             <td>
-                                                <a href="produto.php">
-                                                    <img class="imgPequena" src="assets/produtos/frenteProduto1.jpg" alt="">
-                                                </a>
+                                                <a href='produto.php?id=$idProduto&md=$idModelo'>$nomeModelo</a>
                                             </td>
-                                            <td><a href="#">Nome do Produto 2</a>
+
+                                            <td>
+                                                <span>$quantidade</span>
                                             </td>
-                                            <td>1</td>
-                                            <td>R$200.00</td>
-                                            <td>R$0.00</td>
-                                            <td>R$200.00</td>
+
+                                            <td>
+                                                $valorModelo
+                                            </td>
+
+                                            <td>
+                                                $descontoModelo
+                                            </td>
+                                            
+                                            <td>
+                                                $totalModelo
+                                            </td>
+
                                         </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th colspan="5">Total</th>
-                                            <th>R$446.00</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
+
+                                        
+                                        ";
+
+                                    }
+
+                                    $totalVenda = "R$ " . number_format($totalVenda, 2, ',', '.');
+                                    $_SESSION['TOTAL_VENDA'] = $totalVenda;
+
+
+                                    ?>
+
+                                   
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="6">Total</th>
+                                        <th colspan="3"><?php echo $totalVenda; ?></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
 
                             </div>
 
@@ -104,40 +163,12 @@
 
             <div class="col-md-3">
 
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Resumo do pedido</h3>
-                    </div>
-                    <p class="text-muted">Envio e custos adicionais são calculados com base nos valores que você inseriu.</p>
-
-                    <div class="table-responsive">
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td>Subtotal do pedido</td>
-                                    <th>R$446.00</th>
-                                </tr>
-                                <tr>
-                                    <td>Envio e manipulação</td>
-                                    <th>R$10.00</th>
-                                </tr>
-                                <tr>
-                                    <td>Imposto</td>
-                                    <th>R$0.00</th>
-                                </tr>
-                                <tr class="total">
-                                    <td>Total</td>
-                                    <th>R$456.00</th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
+                    
+                <?php include_once 'descritivoVenda.php'; ?>
 
 
             </div>
         </div>
     </div>
 </div>
-<?php include_once "inferior.php";?>
+<?php include_once "inferior.php"; ?>
