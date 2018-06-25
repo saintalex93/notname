@@ -13,7 +13,7 @@ $.ajax({
 
         else{
             if (response == "SEM ESTOQUE"){
-
+                alert("Infelizmente vendemos todo o estoque deste produto");
             }
             else{
                 $("#itensCarrinho").text(response);

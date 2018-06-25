@@ -55,6 +55,9 @@ class VendaDAL
         }
     }
 
+
+
+
     public static function abreVenda(Venda $venda) : string
     {
         VendaDAL::connect();
@@ -72,28 +75,54 @@ class VendaDAL
     }
 
 
-    public static function buscaVenda(Venda $venda) : array
+    public static function buscaVenda(Venda $venda)
     {
         VendaDAL::connect();
 
-        $sql = "";
+        $idCliente = $venda->getIdCli();
+
+        $sql = "SELECT *, count(M.MODELO_nID) as QDT_MODELO FROM VENDA V 
+                    INNER JOIN VENDA_MODELO VM ON V.VENDA_nID = VM.VENDA_nID 
+                    INNER JOIN MODELO M ON M.MODELO_nID = VM.MODELO_nID 
+                    WHERE V.VENDA_nID = $idCliente AND VENDA_cSTATUS LIKE 'PENDENTE' GROUP BY M.MODELO_nID";
 
         VendaDAL::$connection->executarSQL($sql);
 
         $resultado = VendaDAL::$connection->getResultados();
 
+        if(!$resultado){
+            return false;
+        }
+
         $arrayVenda = array();
 
-        foreach ($restulado as $resultado) {
+        foreach ($resultado as $resultado) {
 
             $resultVenda = new Venda();
 
             $resultVenda->setIdVenda($resultado['VENDA_nID']);
+            $resultVenda->setIdVendaModelo($resultado['VENDA_MODELO_nID']);
             $resultVenda->setVlrTotalVenda($resultado['VENDA_nVLRTOTALVENDA']);
             $resultVenda->setDtCompraVenda($resultado['VENDA_dtDTCOMPRA']);
             $resultVenda->setCodRastVenda($resultado['VENDA_cCODRASTREIO']);
-            $resultVenda->setIdVendaStatus($resultado['VENDA_STA_nID']);
-            $resultVenda->setDtAtualizacaoVenda($resultado['VENDA_STATUS_dDT_ATUALIZACAO']);
+            $resultVenda->setStatusVenda($resultado['VENDA_cSTATUS']);
+            $resultVenda->setDtCompraVenda($resultado['VENDA_dtDTCOMPRA']);
+
+            $modelo = new Modelo();
+
+            $modelo->setIdModelo($resultado['MODELO_nID']);
+            $modelo->setNomeModelo($resultado['MODELO_cNOME']);
+            $modelo->setVlrVendaModelo($resultado['MODELO_nVLR_VENDA']);
+            $modelo->setDescontoModelo($resultado['MODELO_nDESCONTO']);
+            $modelo->setQuantidadeVendaModelo($resultado['QDT_MODELO']);
+            $modelo->setProdutoIdModelo($resultado['PRODUTO_nID']);
+            $modelo->setCormodelo($resultado['COR_nID']);
+            $modelo->setQtdEstoqueModelo($resultado['MODELO_nQTD_ESTOQUE']);
+            $modelo->setStatusModelo($resultado['MODELO_nSTATUS']);
+            $modelo->setTamanhoModelo($resultado['TAMANHO_nID']);
+            
+
+            $resultVenda->setModelo($modelo);
 
             $arrayVenda[] = $resultVenda;
         }
@@ -117,16 +146,15 @@ class VendaDAL
 
         $sql = "CALL USP_VENDA_MODELO($idModelo, $idVenda, $qdtVendida, $valorModelo)";
 
-       VendaDAL::$connection->executaProcedure($sql);
+        VendaDAL::$connection->executaProcedure($sql);
 
         $result = VendaDAL::$connection->getResultados();
 
-       if($result){
-        return $result;
-       }
-       else{
-        return false;
-       }
+        if ($result) {
+            return $result;
+        } else {
+            return false;
+        }
     }
 
     public static function recuperaCarrinho($id_venda)
@@ -139,19 +167,19 @@ class VendaDAL
 
         $result = VendaDAL::$connection->getResultados();
 
-       return $result[0][0];
+        return $result[0][0];
     }
 
-    public static function apagaModeloVenda(Venda $venda, Modelo $prod) : string
+    public static function apagaModeloVenda(Venda $venda, Modelo $modelo) : string
     {
-        $connection = new Database();
+        VendaDAL::connect();
 
         $venda->getIdVenda();
-        $prod->getIdProd();
+        $modelo->getIdModelo();
         $venda->getDTSeparacaoVendaProduto();
         $venda->getQtdeVendaProduto();
 
-        $sql = "";
+        $sql = "CALL USP_DELETA_MODELO(1,1,1)";
 
         VendaDAL::$connection->executarSQL($sql);
 

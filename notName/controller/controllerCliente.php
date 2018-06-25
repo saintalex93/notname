@@ -1,5 +1,9 @@
 <?php
 require_once __DIR__ . '/../dal/ClienteDAL.php';
+require_once __DIR__ . '/../dal/VendaDAL.php';
+require_once __DIR__ . '/../model/Venda.php';
+
+
 
 if (isset($_POST['insereCli'])) {
     $cliente = new Cliente();
@@ -31,7 +35,16 @@ if (isset($_POST['insereCli'])) {
     
     $_SESSION['USERCOM']['ID'] = $login[0]->getIdCli();
     $_SESSION['USERCOM']['NOME'] = $login[0]->getNomeCli();
-   
+
+    $venda = new Venda();
+
+    $venda->setIdCli($_SESSION['USERCOM']['ID']);
+
+    $idVenda = VendaDAL::recuperaVendaAberta($venda);
+
+    if($idVenda){
+        $_SESSION['ID_VENDA']  = $idVenda[0]->getIdVenda();
+    }
     
 } else {
     

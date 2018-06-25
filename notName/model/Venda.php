@@ -5,6 +5,8 @@ class Venda
 
     private $idVenda;
 
+    private $idVendaModelo;
+
     private $vlrTotalVenda;
 
     private $dtCompraVenda;
@@ -15,6 +17,34 @@ class Venda
 
     private $statusVenda;
 
+    private $modelo = array();
+
+    public function getModelo()
+    {
+        return $this->modelo;
+    }
+
+
+    public function setModelo($modelo)
+    {
+        $this->modelo[] = $modelo;
+
+        return $this;
+    }
+
+
+    public function getIdVendaModelo()
+    {
+        return $this->idVendaModelo;
+    }
+
+
+    public function setIdVendaModelo($idVendaModelo)
+    {
+        $this->idVendaModelo = $idVendaModelo;
+
+        return $this;
+    }
 
     public function getIdVenda()
     {

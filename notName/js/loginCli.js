@@ -10,7 +10,9 @@ $("#logaCli").click(function(event)
 			url : './controller/controllerCliente.php',
 			data : data,
 			success : function(response) {
+
 				if (response == "Logado") {
+					
 					window.location.reload();
 				} else {
 					$("#returnFormLogCli").text("Usuario ou senha Invalidos");
@@ -35,6 +37,7 @@ $(".logaCli").click(function(event)
 			url : './controller/controllerCliente.php',
 			data : data,
 			success : function(response) {
+
 				if (response == "Logado") {
 					window.location.reload();
 
