@@ -79,7 +79,7 @@ $(".produtosCX").click(function () {
 			}
 
 
-			$("#btnCadastroProduto").text("Alterar");
+			$("#btnCadastroProduto").text("ALTERAR");
 			$("#btnCadastroProduto").val("2");
 
 		}
@@ -164,6 +164,8 @@ $("#formProduto").submit(function () {
 		});
 	}
 	else {
+		var formData = new FormData(this);
+
 		$.ajax({
 			url: './controller/controllerProduto.php?action=alteraProduto',
 			type: 'POST',
@@ -198,6 +200,8 @@ $("#formProduto").submit(function () {
 
 
 $(function () {
+
+	$('.NO-CACHE').attr('src', function () { return $(this).attr('src') + "?a=" + Math.random() });
 	// Botão para Imagem produto
 
 	$(document).on('change', '.btn-file :file', function () {

@@ -201,7 +201,7 @@ $produtos = ProdutoDAL::buscaProduto();
 
 			echo "
 				<div class='col-lg-3 col-md-6 m-b-20 fotoPainel produtosCX' id = '{$prod->getIdProd()}'>
-				<img src='../img/Produtos/Produto{$prod->getIdProd()}.jpg' class='img-responsive radius hoverImg' onerror=\"this.src='../img/logo.png'\" />
+				<img src='../img/Produtos/Produto{$prod->getIdProd()}.jpg' class='NO-CACHE img-responsive radius hoverImg' onerror=\"this.src='../img/logo.png'\" />
 				<div class='like-comm'>
 				{$prod->getDescProd()}
 				</div>

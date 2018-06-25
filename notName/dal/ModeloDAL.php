@@ -48,10 +48,10 @@ VALUES ('$nomeMod', $vlrVendaMod, '$statusMod', $descontoMod, $qtdeEstMod, $corM
     {
         ModeloDAL::connect();
         
-        $sql = "select *,
+        $sql = "SELECT *,
  fn_buscaDescTamanho(TAMANHO_nID) as descTamanho, fn_buscaDescProduto(PRODUTO_nID) as descProduto, fn_buscaDescCor(COR_nID) as descCor 
  from MODELO";
-        
+
         ModeloDAL::$connection->executarSQL($sql);
         
         $resultado = ModeloDAL::$connection->getResultados();

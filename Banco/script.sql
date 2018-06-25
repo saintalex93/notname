@@ -298,7 +298,7 @@ begin
 declare descTamanho varchar(20);
 select TAMANHO_cTAMANHO into descTamanho
 from TAMANHO
-where TAMANHO_nID = i---pdTamanho;
+where TAMANHO_nID = idTamanho;
 return descTamanho;
 end $$
 DELIMITER ;
@@ -345,5 +345,7 @@ DELIMITER $$
 
 	END $$
 DELIMITER ;
+
+
 
 
