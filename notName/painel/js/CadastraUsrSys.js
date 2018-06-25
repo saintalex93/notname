@@ -1,4 +1,5 @@
 $("#btnCadastroUsr").click(function(event){
+	$("#returnCadastroUsr").css("display", "none");
 
 
 	if($("#btnCadastroUsr").val() == 1){
@@ -33,6 +34,8 @@ $("#btnCadastroUsr").click(function(event){
 							$("#txtLogin").val("");
 							$("#txtSenhaUsr").val("");
 							$("#permissao").val("");
+							window.location.reload();
+
 						},5000);
 
 					}else
@@ -47,14 +50,20 @@ $("#btnCadastroUsr").click(function(event){
 							$("#txtLogin").val("");
 							$("#txtSenhaUsr").val("");
 							$("#permissao").val("");
+							window.location.reload();
+
 						},5000);
 					}
 				}
 			});
 		}	
 		else{
+				$("#returnCadastroUsr").text("Não Foi possivel cadastrar");
+				$("#returnCadastroUsr").addClass("text-danger");
 
-			alert("Preencha tudo seu animal");
+					setInterval(function(){
+						$("#returnCadastroUsr").css("display","none");
+					},5000);
 		}
 	}else if($("#btnCadastroUsr").val() == 2){
 		if ($("#txtNomeUsr").val() != '' 
@@ -74,7 +83,6 @@ $("#btnCadastroUsr").click(function(event){
 				url: './../controller/controllerCadasUsrSys.php?action=altera',
 				data: data,
 				success: function(response){
-					alert(response);
 
 					if (response == 'Alterado com sucesso') {
 
@@ -88,6 +96,8 @@ $("#btnCadastroUsr").click(function(event){
 							$("#txtLogin").val("");
 							$("#txtSenhaUsr").val("");
 							$("#permissao").val(0);
+							window.location.reload();
+
 						},5000);
 						
 						$("#btnCadastroUsr").val(1);
@@ -105,6 +115,8 @@ $("#btnCadastroUsr").click(function(event){
 							$("#txtLogin").val("");
 							$("#txtSenhaUsr").val("");
 							$("#permissao").val(0);
+							window.location.reload();
+
 							
 						},5000);
 					}
@@ -113,7 +125,13 @@ $("#btnCadastroUsr").click(function(event){
 		}	
 		else{
 
-			alert("Preencha tudo seu animal");
+
+			$("#returnCadastroUsr").text("Não Foi possivel cadastrar");
+			$("#returnCadastroUsr").addClass("text-danger");
+
+			setInterval(function () {
+				$("#returnCadastroUsr").css("display", "none");
+			}, 5000);
 		}
 
 	}
