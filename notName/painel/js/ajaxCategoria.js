@@ -83,7 +83,7 @@ $("#btnCadastroCategoriaFilha").click(function()
 				url: './controller/controllerCategoria.php?action=insereCategoriaFilha',
 				data: form.serialize(),
 				success: function( response ) {
-					if(response == 'Alterado')
+					if(response == 'Inserido')
 					{
 						$("#returnCadCategFilho").text("Cadastrado com sucesso");
 						$("#returnCadCategFilho").addClass("text-success");
