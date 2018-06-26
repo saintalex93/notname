@@ -1,4 +1,4 @@
-<?php 
+<?php
 include "superior.php";
 include_once "model/Cliente.php";
 include_once "dal/ClienteDAL.php";
@@ -7,8 +7,6 @@ include_once "dal/EnderecoDAL.php";
 include_once "model/Venda.php";
 include_once "dal/VendaDAL.php";
 include_once "controller/correios.php";
-
-
 
 $cliente = new Cliente();
 $endereco = new Endereco();
@@ -23,47 +21,124 @@ $venda->setIdCli($idCli);
 $end = EnderecoDAL::buscaEndereco($endereco);
 $ven = VendaDAL::buscaVendaCarrinho($venda);
 
-$cepOrigem = "01047000";
+$cepOrigem = "02859150";
 
 $cepDestino = $end[0]->getCep();
-$cepDestino = str_replace("-", "",$cepDestino);
+$cepDestino = str_replace("-", "", $cepDestino);
 $cepDestino = str_replace(".", "", $cepDestino);
-echo $cepDestino;
-echo $cepOrigem;
 
 $quantidadeCamisetas = count($ven);
+$peso = $quantidadeCamisetas * 0.300;
+
+if ($quantidadeCamisetas < 4) {
+    $largura = '35,3';
+    $comprimento = '18,5';
+    $altura = '2';
+    $valor = 0;
+    // echo "plastico";
+} elseif ($quantidadeCamisetas < 6) {
+    $largura = '18';
+    $comprimento = '18,5';
+    $altura = '9';
+    $valor = 4.60;
+    // echo "Caixa Flex";
+
+} elseif ($quantidadeCamisetas < 9) {
+    $largura = '18';
+    $comprimento = '16';
+    $altura = '9';
+    $valor = 4.60;
+    // echo "caixa 1";
+
+} elseif ($quantidadeCamisetas > 9) {
+    $largura = '27';
+    $comprimento = '18';
+    $altura = '9';
+    $valor = 5.80;
+    // echo "Caixa 2";
+
+}
 
 
 
-
-# 41106 PAC sem contrato
-# 40010 SEDEX sem contrato
-# 40045 SEDEX a Cobrar, sem contrato
-# 40215 SEDEX 10, sem contrato
-
-/* codigo do servico desejado */
-/* cep de origem, apenas numeros */
-/* cep de destino, apenas numeros */
-/* valor dado em Kg incluindo a embalagem. 0.1, 0.3, 1, 2 ,3 , 4 */
-/* altura do produto em cm incluindo a embalagem */
-/* altura do produto em cm incluindo a embalagem */
-/* comprimento do produto incluindo embalagem em cm */
-/* indicar 0 caso nao queira o valor declarado */
-
-
-
-$_resultado = calculaFrete(
+$sedex = calculaFrete(
     '40010',
     "$cepOrigem",
     "$cepDestino",
-    '1',
-    '15',
-    '22',
-    '32',
+    "$peso",
+    "$altura",
+    "$largura",
+    "$comprimento",
+/*valor declarado */
     0
 );
 
-var_dump($_resultado);
+$sedex10 = calculaFrete(
+    '40215',
+    "$cepOrigem",
+    "$cepDestino",
+    "$peso",
+    "$altura",
+    "$largura",
+    "$comprimento",
+/*valor declarado */
+    0
+);
+
+$pac = calculaFrete(
+    '41106',
+    "$cepOrigem",
+    "$cepDestino",
+    "$peso",
+    "$altura",
+    "$largura",
+    "$comprimento",
+/*valor declarado */
+    0
+);
+
+if ($pac) {
+    $pacValor = $pac['valor'];
+    $pacValor = str_replace(".", "", $pacValor);
+    $pacValor = str_replace(",", ".", $pacValor);
+    $pacValor = $pacValor + $valor;
+    $valorPac = "R$ " . number_format($pacValor, 2);
+    $prazoPac = $pac['prazo'];
+
+} else {
+// todo
+    $valorPac = 'R$ 0.00';
+    $prazoPac = "Indisponível";
+}
+
+if ($sedex) {
+    $sedexValor = $sedex['valor'];
+    $sedexValor = str_replace(".", "", $sedexValor);
+    $sedexValor = str_replace(",", ".", $sedexValor);
+    $sedexValor = $sedexValor + $valor;
+    $valorSedex = "R$ " . number_format($sedexValor, 2);
+    $prazoSedex = $sedex['prazo'];
+} else {
+// todo
+    $valorSedex='R$ 0.00';
+    $prazoSedex = "Indisponível";
+
+}
+
+if ($sedex10) {
+    $sedex10Valor = $sedex10['valor'];
+    $sedex10Valor = str_replace(".", "", $sedex10Valor);
+    $sedex10Valor = str_replace(",", ".", $sedex10Valor);
+    $sedex10Valor = $sedex10Valor + $valor;
+    $valorSedex10 = "R$ " . number_format($sedex10Valor, 2);
+    $prazoSedex10 = $sedex10['prazo'];
+
+} else {
+// todo
+    $valorSedex10 = 'R$ 0.00';
+    $prazoSedex10 = "Indisponível";
+
+}
 
 
 ?>
@@ -104,7 +179,9 @@ var_dump($_resultado);
 
                                     <h4 class="px-3 pt-3">PAC</h4>
 
-                                    <p class="px-3 ">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                    <span class="d-block px-3"><b>Valor: </b><?php echo $valorPac;?></span>
+                                    <span class="d-block px-3"><b>Prazo: </b><?php echo $prazoPac;?> </span>
+
 
                                     <div class="card-footer text-center">
 
@@ -118,7 +195,9 @@ var_dump($_resultado);
 
                                     <h4 class="px-3 pt-3">SEDEX</h4>
 
-                                    <p class="px-3 ">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                    <span class="d-block px-3"><b>Valor: </b><?php echo $valorSedex; ?></span>
+                                    <span class="d-block px-3"><b>Prazo: </b><?php echo $prazoSedex; ?> </span>
+
 
                                     <div class="card-footer text-center">
 
@@ -132,7 +211,9 @@ var_dump($_resultado);
 
                                     <h4 class="px-3 pt-3">SEDEX 10</h4>
 
-                                    <p class="px-3 ">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                    <span class="d-block px-3"><b>Valor: </b><?php echo $valorSedex10; ?></span>
+                                    <span class="d-block px-3"><b>Prazo: </b><?php echo $prazoSedex10; ?> </span>
+
 
                                     <div class="card-footer text-center">
 
@@ -140,14 +221,15 @@ var_dump($_resultado);
                                     </div>
                                 </div>
                             </div>
-                           
+
 
                             <div class="col-sm-5 ml-5 my-3">
                                 <div class="card shipping-method">
 
                                     <h4 class="px-3 pt-3">Retirar no Local</h4>
 
-                                    <p class="px-3 ">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                    <span class="d-block px-3">Rua Barbosa Gurgel</span>
+                                    <span class="d-block px-3">(11) 92528-9000 - Gabriela</span>
 
                                     <div class="card-footer text-center">
 
@@ -180,10 +262,10 @@ var_dump($_resultado);
 
         <div class="col-md-3">
 
-                <?php include_once 'descritivoVenda.php'; ?>
+                <?php include_once 'descritivoVenda.php';?>
 
         </div>
     </div>
 </div>
 </div>
-<?php include_once "inferior.php"; ?>
+<?php include_once "inferior.php";?>

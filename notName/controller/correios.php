@@ -31,7 +31,7 @@ if (!function_exists('calculaFrete')) {
         $correios = "http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?nCdEmpresa=&sDsSenha=&sCepOrigem=" . $cep_origem . "&sCepDestino=" . $cep_destino . "&nVlPeso=" . $peso . "&nCdFormato=1&nVlComprimento=" . $comprimento . "&nVlAltura=" . $altura . "&nVlLargura=" . $largura . "&sCdMaoPropria=n&nVlValorDeclarado=" . $valor_declarado . "&sCdAvisoRecebimento=n&nCdServico=" . $cod_servico . "&nVlDiametro=0&StrRetorno=xml";
 
         $xml = simplexml_load_file($correios);
-
+        
         $_arr_ = array();
         if ($xml->cServico->Erro == '0') :
             $_arr_['codigo'] = $xml->cServico->Codigo;
@@ -58,7 +58,7 @@ if (!function_exists('calculaFrete')) {
 /* cep de destino, apenas numeros */
 /* valor dado em Kg incluindo a embalagem. 0.1, 0.3, 1, 2 ,3 , 4 */
 /* altura do produto em cm incluindo a embalagem */
-/* altura do produto em cm incluindo a embalagem */
+/* largura do produto em cm incluindo a embalagem */
 /* comprimento do produto incluindo embalagem em cm */
 /* indicar 0 caso nao queira o valor declarado */
 
