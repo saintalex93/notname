@@ -72,7 +72,7 @@ else{
 						<?php
 
 						if (isset($id)) {
-							echo "<li><a href='#'>Olá " . $firstName[0] . "</a></li> |";
+							echo "<li><a href='./painelContaCliente.php'>Olá " . $firstName[0] . "</a></li> |";
 						} else {
 							echo "<li><a href='#' data-toggle='modal' data-target='#loginMoldal'>Login</a></li> |";
 						}
