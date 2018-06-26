@@ -29,7 +29,62 @@ function fnCep(cep) {
 
 $("#btnCliEnd").click(function (){
 
-			carregando();
+    var formId = "#formCliEnd";
+    var result = true;
+
+    $(formId+" input[type=text]").each(function(){
+        if($(this).val() == ""){
+            $(this).css("border", "1px solid red");
+            $(this).focus();
+            result = false;
+        }
+        else{
+            $(this).css("border", "1px solid #ced4da");
+        }
+    });
+    $(formId +" input[type=date]").each(function () {
+        if ($(this).val() == "") {
+            $(this).css("border", "1px solid red");
+            $(this).focus();
+            result = false;
+        }
+        else{
+            $(this).css("border", "1px solid #ced4da");
+        }
+    });
+    $(formId +" input[type=tel]").each(function () {
+        if ($(this).val() == "") {
+            $(this).css("border", "1px solid red");
+            $(this).focus();
+            result = false;
+        }
+        else{
+            $(this).css("border", "1px solid #ced4da");
+        }
+    });
+    $(formId +" input[type=email]").each(function () {
+        if ($(this).val() == "") {
+            $(this).css("border", "1px solid red");
+            $(this).focus();
+            result = false;
+        }
+        else{
+            $(this).css("border", "1px solid #ced4da");
+        }
+    });
+    $(formId +" select").each(function () {
+        if ($(this).val() == "") {
+            $(this).css("border", "1px solid red");
+            $(this).focus();
+            result = false;
+        }
+        else{
+            $(this).css("border", "1px solid #ced4da");
+        }
+    });
+
+    if(result){
+	carregando();
 
 			var form = $('#formCliEnd');
 
@@ -38,10 +93,13 @@ $("#btnCliEnd").click(function (){
 				url: './controller/controllerCliEnd.php?',
 				data: form.serialize(),
 				success: function( response ) {
-                    console.log(response);
+                    // console.log(response);
+                    location.href='checkout2.php';
 					parar();
 				}
 			} );
+    }
+		
 
 
 });

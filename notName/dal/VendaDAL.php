@@ -129,6 +129,59 @@ class VendaDAL
         return $arrayVenda;
     }
 
+    public static function buscaVendaCarrinho(Venda $venda)
+    {
+        VendaDAL::connect();
+
+        $idCliente = $venda->getIdCli();
+
+        $sql = "SELECT * FROM VENDA V 
+                    INNER JOIN VENDA_MODELO VM ON V.VENDA_nID = VM.VENDA_nID 
+                    INNER JOIN MODELO M ON M.MODELO_nID = VM.MODELO_nID 
+                    WHERE V.VENDA_nID = $idCliente AND VENDA_cSTATUS LIKE 'PENDENTE'";
+
+        VendaDAL::$connection->executarSQL($sql);
+
+        $resultado = VendaDAL::$connection->getResultados();
+
+        if (!$resultado) {
+            return false;
+        }
+
+        $arrayVenda = array();
+
+        foreach ($resultado as $resultado) {
+
+            $resultVenda = new Venda();
+
+            $resultVenda->setIdVenda($resultado['VENDA_nID']);
+            $resultVenda->setIdVendaModelo($resultado['VENDA_MODELO_nID']);
+            $resultVenda->setVlrTotalVenda($resultado['VENDA_nVLRTOTALVENDA']);
+            $resultVenda->setDtCompraVenda($resultado['VENDA_dtDTCOMPRA']);
+            $resultVenda->setCodRastVenda($resultado['VENDA_cCODRASTREIO']);
+            $resultVenda->setStatusVenda($resultado['VENDA_cSTATUS']);
+            $resultVenda->setDtCompraVenda($resultado['VENDA_dtDTCOMPRA']);
+
+            $modelo = new Modelo();
+
+            $modelo->setIdModelo($resultado['MODELO_nID']);
+            $modelo->setNomeModelo($resultado['MODELO_cNOME']);
+            $modelo->setVlrVendaModelo($resultado['MODELO_nVLR_VENDA']);
+            $modelo->setDescontoModelo($resultado['MODELO_nDESCONTO']);
+            $modelo->setProdutoIdModelo($resultado['PRODUTO_nID']);
+            $modelo->setCormodelo($resultado['COR_nID']);
+            $modelo->setQtdEstoqueModelo($resultado['MODELO_nQTD_ESTOQUE']);
+            $modelo->setStatusModelo($resultado['MODELO_nSTATUS']);
+            $modelo->setTamanhoModelo($resultado['TAMANHO_nID']);
+
+
+            $resultVenda->setModelo($modelo);
+
+            $arrayVenda[] = $resultVenda;
+        }
+        return $arrayVenda;
+    }
+
 
     public static function insereModeloVenda(Venda $venda, Modelo $modelo)
     {

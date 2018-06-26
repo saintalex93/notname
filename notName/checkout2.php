@@ -1,4 +1,72 @@
-<?php include "superior.php"; ?>
+<?php 
+include "superior.php";
+include_once "model/Cliente.php";
+include_once "dal/ClienteDAL.php";
+include_once "model/Endereco.php";
+include_once "dal/EnderecoDAL.php";
+include_once "model/Venda.php";
+include_once "dal/VendaDAL.php";
+include_once "controller/correios.php";
+
+
+
+$cliente = new Cliente();
+$endereco = new Endereco();
+$venda = new Venda();
+
+$idCli = $_SESSION['USERCOM']['ID'];
+
+$cliente->setIdCli($idCli);
+$endereco->setIdCli($idCli);
+$venda->setIdCli($idCli);
+
+$end = EnderecoDAL::buscaEndereco($endereco);
+$ven = VendaDAL::buscaVendaCarrinho($venda);
+
+$cepOrigem = "01047000";
+
+$cepDestino = $end[0]->getCep();
+$cepDestino = str_replace("-", "",$cepDestino);
+$cepDestino = str_replace(".", "", $cepDestino);
+echo $cepDestino;
+echo $cepOrigem;
+
+$quantidadeCamisetas = count($ven);
+
+
+
+
+# 41106 PAC sem contrato
+# 40010 SEDEX sem contrato
+# 40045 SEDEX a Cobrar, sem contrato
+# 40215 SEDEX 10, sem contrato
+
+/* codigo do servico desejado */
+/* cep de origem, apenas numeros */
+/* cep de destino, apenas numeros */
+/* valor dado em Kg incluindo a embalagem. 0.1, 0.3, 1, 2 ,3 , 4 */
+/* altura do produto em cm incluindo a embalagem */
+/* altura do produto em cm incluindo a embalagem */
+/* comprimento do produto incluindo embalagem em cm */
+/* indicar 0 caso nao queira o valor declarado */
+
+
+
+$_resultado = calculaFrete(
+    '40010',
+    "$cepOrigem",
+    "$cepDestino",
+    '1',
+    '15',
+    '22',
+    '32',
+    0
+);
+
+var_dump($_resultado);
+
+
+?>
 
 <div id="content">
     <div class="container mb-4">

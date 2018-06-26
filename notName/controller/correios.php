@@ -48,19 +48,34 @@ if (!function_exists('calculaFrete')) {
 # fim da funcao
 #
 
+# 41106 PAC sem contrato
+# 40010 SEDEX sem contrato
+# 40045 SEDEX a Cobrar, sem contrato
+# 40215 SEDEX 10, sem contrato
+
+/* codigo do servico desejado */
+/* cep de origem, apenas numeros */
+/* cep de destino, apenas numeros */
+/* valor dado em Kg incluindo a embalagem. 0.1, 0.3, 1, 2 ,3 , 4 */
+/* altura do produto em cm incluindo a embalagem */
+/* altura do produto em cm incluindo a embalagem */
+/* comprimento do produto incluindo embalagem em cm */
+/* indicar 0 caso nao queira o valor declarado */
+
+
     # calculando frete de um pacote (1kg) de Ubatuba/SP a Curitiba/PR
-$_resultado = calculaFrete(
-    '40010',
-    '11680000',
-    '82220000',
-    '1',
-    '15',
-    '22',
-    '32',
-    0
-);
+// $_resultado = calculaFrete(
+//     '40010',
+//     '11680000',
+//     '82220000',
+//     '1',
+//     '15',
+//     '22',
+//     '32',
+//     0
+// );
  
-    var_dump($_resultado);
+
 
 
 
