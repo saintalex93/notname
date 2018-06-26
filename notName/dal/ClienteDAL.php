@@ -40,9 +40,11 @@ class ClienteDAL
         return ClienteDAL::$connection->executarSQL($sql);
     }
 
-    public static function buscaCliente(): array
+    public static function buscaCliente(Cliente $cliente): array
     {
-        $sql = "";
+        $id = $cliente->getIdCli();
+
+        $sql = "SELECT * FROM CLIENTE WHERE CLI_nCOD = $id";
         
         ClienteDAL::connect();
         
@@ -57,7 +59,7 @@ class ClienteDAL
             // Instancia a classe cliente.
             $resultCli = new Cliente();
             // Seta os valores do resultado.
-            $resultCli->setIdCli($resultado['CLI_nID']);
+            $resultCli->setIdCli($resultado['CLI_nCOD']);
             $resultCli->setNomeCli($resultado['CLI_cNOME']);
             $resultCli->setCpfCli($resultado['CLI_nCPF']);
             $resultCli->setRgCli($resultado['CLI_cRG']);
