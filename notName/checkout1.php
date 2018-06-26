@@ -24,9 +24,7 @@ if (isset($_SESSION['USERCOM']['ID'])) {
         $numero = $end[0]->getNumero();
         $complemento = $end[0]->getComplemento();
         $tipoEnd = $end[0]->getTipo();
-        $uf = $end[0]->getId();
-
-        var_dump($end);
+        $uf = $end[0]->getUf();
 
     } else {
         $idEnd = 0;

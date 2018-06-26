@@ -19,7 +19,6 @@ $cliente->setTelResiCli($_REQUEST['telCli']);
 $cliente->setTelCelCli($_REQUEST['celCli']);
 $cliente->setEmailCli($_REQUEST['emailCli']);
 
-echo $_REQUEST['cepEnd'];
 $endereco = new Endereco();
 $endereco->setIdCli($_REQUEST['idCli']);
 $endereco->setId($_REQUEST['idEnd']);
@@ -32,15 +31,11 @@ $endereco->setComplemento($_REQUEST['compEnd']);
 $endereco->setTipo($_REQUEST['tipoEnd']);
 $endereco->setUF($_REQUEST['ufEnd']);
 
-
-
 if($_REQUEST['idEnd'] == 0){
     print_r( EnderecoDAL::insereEndereco($endereco));
 }
 else{
-// EnderecoDAL::atualizaEndereco($endereco);
-echo "oi";
-
+EnderecoDAL::atualizaEndereco($endereco);
 }
 
 // print_r($endereco);
