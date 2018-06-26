@@ -1,7 +1,50 @@
 <?php include "superior.php";
 include_once "model/Cliente.php";
 include_once "dal/ClienteDAL.php";
+include_once "model/Endereco.php";
+include_once "dal/EnderecoDAL.php";
 
+if (isset($_SESSION['USERCOM']['ID'])) {
+
+    $cliente = new Cliente();
+    $endereco = new Endereco();
+    $cliente->setIdCli($_SESSION['USERCOM']['ID']);
+    $endereco->setIdCli($_SESSION['USERCOM']['ID']);
+
+    $cli = ClienteDAL::buscaCliente($cliente);
+    $end = EnderecoDAL::buscaEndereco($endereco);
+    if ($end) {
+        echo "Foi";
+
+        $idEnd = $end[0]->getId();
+        $cep = $end[0]->getCep();
+        $logradouro = $end[0]->getLogradouro();
+        $cidade = $end[0]->getCidade();
+        $bairro = $end[0]->getBairro();
+        $numero = $end[0]->getNumero();
+        $complemento = $end[0]->getComplemento();
+        $tipoEnd = $end[0]->getTipo();
+        $uf = $end[0]->getId();
+
+    } else {
+        $idEnd = 0;
+        $cep = "";
+        $logradouro = "";
+        $cidade = "";
+        $bairro = "";
+        $numero = "";
+        $complemento = "";
+        $tipoEnd = "";
+        $uf = "";
+    }
+
+} else {
+    echo "
+            <script>
+                window.location.href = 'index.php';
+            </script>
+        ";
+}
 
 ?>
 
@@ -19,11 +62,10 @@ include_once "dal/ClienteDAL.php";
                     </nav>
 
                 </div>
-           
+
             <div class="col-md-9">
 
                 <div class="card btnCheckout ">
-                    <form method="post" action="checkout2.php" class="">
                         <h1 class="mx-3 my-3">Checkout</h1>
                         <ul class="nav nav-pills nav-justified ajusteCentro">
                             <li class="active text-center"><a href="#"><i class="fas fa-map-marker"></i><br>Endereço</a>
@@ -35,19 +77,22 @@ include_once "dal/ClienteDAL.php";
                             <li class="disabled checkout1 text-center"><a href="#"style="cursor:no-drop;"><i class="fas fa-eye"></i><br>Revisão da encomenda</a>
                             </li>
                         </ul>
+    <form action=""  id = "formCliEnd">
+<input type="hidden" name="idCli" value="<?php echo $cli[0]->getIdCli(); ?>">
+<input type="hidden" name="idEnd" value="<?php echo $idEnd; ?>">
 
                         <div class="content mx-3">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="">Nome</label>
-                                        <input type="text" class="form-control" id="primeiroNome">
+                                        <input type="text" name="nomeCli" class="form-control" id="primeiroNome" value="<?php echo $cli[0]->getNomeCli(); ?>">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="">Email</label>
-                                        <input type="email" class="form-control" id="segundoNome">
+                                        <input type="email" name="emailCli" class="form-control" id="segundoNome" value="<?php echo $cli[0]->getEmailCli(); ?>">
                                     </div>
                                 </div>
                             </div>
@@ -57,13 +102,13 @@ include_once "dal/ClienteDAL.php";
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="">CPF</label>
-                                        <input type="tel" class="form-control" id="cpf">
+                                        <input type="tel" name="cpfCli" class="form-control" id="cpf" value="<?php echo $cli[0]->getCpfCli(); ?>">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="">RG</label>
-                                        <input type="text" class="form-control" id="rg">
+                                        <input type="text" name="rgCli" class="form-control" id="rg" value="<?php echo $cli[0]->getRgCli(); ?>">
                                     </div>
                                 </div>
                             </div>
@@ -72,17 +117,17 @@ include_once "dal/ClienteDAL.php";
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                        <label for="">Gênero</label>
-                                       <select class="form-control" id="">
-                                                <option value="">..</option>
-                                                <option value="">São Paulo</option>
-                                                <option value="">Rio de Janeiro</option>
+                                       <select class="form-control" id="generoCli" name="generoCli">
+                                                <option value="">Selecione...</option>
+                                                <option value="M">Masculino</option>
+                                                <option value="F">Feminino</option>
                                             </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                          <label for="">Nascimento</label>
-                                        <input type="date" class="form-control" id="">
+                                        <input type="date" class="form-control" name="nasCli" value="<?php echo $cli[0]->getNascCli(); ?>">
                                     </div>
                                 </div>
                             </div>
@@ -91,36 +136,39 @@ include_once "dal/ClienteDAL.php";
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="">Telefone</label>
-                                        <input type="text" class="form-control" id="telefone">
+                                        <input type="text" class="form-control" name="telCli" id="telefone" value="<?php echo $cli[0]->gettelResiCli(); ?>">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="">Celular</label>
-                                        <input type="text" class="form-control" id="celular">
+                                        <input type="text" class="form-control" name="celCli" id="celular" value="<?php echo $cli[0]->getTelCelCli(); ?>">
                                     </div>
                                 </div>
                             </div>
-<label for="">Dados de entrega</label>
-<hr>
+
+
+                            <h4 class = "mt-2 text-primary">Dados de Entrega:</h4>
+                            <hr>
+
                             <div class="row">
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <label for="">Cep</label>
-                                      <input type="text" name="" id="cep" class="form-control" onkeyup ="if (this.value.length == 10) fnCep(this.value)">
+                                      <input type="text" name="cepEnd" id="cep" class="form-control" onkeyup ="if (this.value.length == 10) fnCep(this.value)" value = "<?php echo $cep; ?>">
                                     </div>
                                 </div>
                                 <div class="col-sm-7">
                                     <div class="form-group">
                                         <label for="">Endereço</label>
-                                        <input type="text" class="form-control" id="txtEndereco">
+                                        <input type="text" name="endEnd" class="form-control" id="txtEndereco" value = "<?php echo $logradouro; ?>">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-2">
                                     <div class="form-group">
                                         <label for="">Nº</label>
-                                        <input type="text" class="form-control" id="txtNumero">
+                                        <input type="text" name="nEnd" class="form-control" id="txtNumero" value = "<?php echo $numero; ?>">
                                     </div>
                                 </div>
 
@@ -128,29 +176,29 @@ include_once "dal/ClienteDAL.php";
 
                             </div> <!-- -->
  <div class="row">
+
                                 <div class="col-sm-5">
                                     <div class="form-group">
                                         <label for="">Cidade</label>
-                                      <input type="text" name="" id="txtCidade" class="form-control">
+                                      <input type="text" name="cidadeEnd" id="txtCidade" class="form-control" value = "<?php echo $cidade; ?>">
                                     </div>
                                 </div>
                                 <div class="col-sm-5">
                                     <div class="form-group">
                                         <label for="">Bairro</label>
-                                        <input type="text" class="form-control" id="txtBairro">
+                                        <input type="text" name ="bairroEnd" class="form-control" id="txtBairro" value = "<?php echo $bairro; ?>">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-2">
                                     <div class="form-group">
                                         <label for="">UF</label>
-                                       <select class="form-control" id="cmbUf">
+                                       <select class="form-control" id="cmbUf" name="ufEnd">
                                                 <option value="">Selecione</option>
                                                 <option value ='SP'>SP</option>
                                                 <option value ='RJ'>RJ</option>
                                                 <option value ='MG'>MG</option>
                                                 <option value ='PR'>PR</option>
-
                                                 <option value ='AC'>AC</option>
                                                 <option value ='AL'>AL</option>
                                                 <option value ='AP'>AP</option>
@@ -179,40 +227,39 @@ include_once "dal/ClienteDAL.php";
                                 </div>
 
 
-                               
+
                             </div> <!-- -->
 
                              <div class="row">
                                 <div class="col-sm-8">
                                     <div class="form-group">
                                         <label for="">Complemento</label>
-                                      <input type="text" name="" id="" class="form-control">
+                                      <input type="text" name="compEnd"  class="form-control" value = "<?php echo $complemento; ?>">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="">Tipo</label>
-                                        <input type="text" class="form-control" id="" placeholder="Casa">
+                                        <input type="text" name = "tipoEnd" class="form-control" placeholder="Casa" value = "<?php echo $tipoEnd; ?>">
                                     </div>
                                 </div>
 
                             </div> <!-- -->
-                            
 
+</form>
                         </div>
 
-                        
+
 
                         <div class="card-footer">
                             <div class="pull-left">
                                 <a href="carrinho.php" class="btn btn-default"><i class="fa fa-chevron-left"></i>Voltar ao carrinho</a>
                             </div>
                             <div class="pull-right">
-                                <button type="submit" class="btn btn-primary">Continuar para o método de entrega<i class="fa fa-chevron-right"></i>
+                                <button type="button" class="btn btn-primary" id="btnCliEnd">Continuar para o método de entrega<i class="fa fa-chevron-right"></i>
                                     </button>
                             </div>
                         </div>
-                    </form>
                 </div>
 
 
@@ -220,15 +267,27 @@ include_once "dal/ClienteDAL.php";
             </div>
             <div class="col-md-3">
 
-                <?php include_once 'descritivoVenda.php'; ?>
+                <?php include_once 'descritivoVenda.php';?>
 
             </div>
         </div>
         </div>
     </div>
 
-    <?php include_once "inferior.php"; ?>
+    <?php include_once "inferior.php";?>
 
     <script src="js/mask.js"></script>
     <script src="js/checkout1.js"></script>
 
+
+<?php
+$genero = $cli[0]->getGeneroCli();
+echo "<script>
+$('#generoCli').val('$genero');
+$('#cmbUf').val('$uf');
+
+
+
+</script>";
+
+?>

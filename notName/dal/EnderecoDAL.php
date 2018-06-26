@@ -1,6 +1,6 @@
 <?php
-require_once "../model/Endereco.php";
-require_once "../library/Conexao.class.php";
+require_once __DIR__ . '/../model/Endereco.php';
+require_once __DIR__ . '/../library/Conexao.class.php';
 
 class EnderecoDAL extends Cliente
 {
@@ -33,31 +33,30 @@ class EnderecoDAL extends Cliente
         $uf = $end->getUF();
         
         // recebe a string sql
-        $sql = "INSERT INTO ENDERECO (END_nCEP, END_cLOGRADOURO, END_cCIDADE, END_cBAIRRO,END_nNUMERO,END_cCOMPLEMENTO,END_cTIPO,UF_nID)
+        $sql = "INSERT INTO ENDERECO (END_nCEP, END_cLOGRADOURO, END_cCIDADE, END_cBAIRRO,END_nNUMERO,END_cCOMPLEMENTO,END_cTIPO,END_cUF)
                             VALUES ('$cep','$logradouro','$cidade','$bairro','$numero','$complemento','$tipo','$uf')";
-        
         // Executa a string sql
         EnderecoDAL::$connection->sqlNoTransact($sql);
         
         return EnderecoDAL::$connection->returnID();
     }
 
-    public static function buscaEndereco(Endereco $end): array
+    public static function buscaEndereco(Endereco $end)
     {
         EnderecoDAL::connect();
-        $cliente = new Cliente;
-
-        $id = $cliente->getIdCli;
+        $id = $end->getIdCli();
 
         // String sql
-        $sql = "SELECT * FROM ENDERECO E INNER JOIN CLIENTE_ENDERECO CE ON CE.END_nID = E.END_nID WHERE CLI_nCOD = $id";
+        $sql = "SELECT * FROM ENDERECO WHERE CLI_nCOD = $id";
         
         // Executa a string sql e atribui a variavel
         EnderecoDAL::$connection->executarSQL($sql);
         
         // Pega os resultados
         $resultado = EnderecoDAL::$connection->getResultados();
-        
+        if($resultado)
+        {
+
         // criar uma variavel globa do tipo array
         $arrayEnd = array();
         
@@ -74,6 +73,13 @@ class EnderecoDAL extends Cliente
             $resultEnd->setNumero($resultado['END_nNUMERO']);
             $resultEnd->setComplemento($resultado['END_cCOMPLEMENTO']);
             $resultEnd->setTipo($resultado['END_cTIPO']);
+            $resultEnd->setUF($resultado['END_cUF']);
+
+            $resultEnd->setIdCli($resultado['CLI_nCOD']);
+
+
+            
+
             
             // atribui os valores do resultado do select no array
             $arrayEnd[] = $resultEnd;
@@ -81,6 +87,12 @@ class EnderecoDAL extends Cliente
         
         // Retorna o array com todas as informacoes.
         return $arrayEnd;
+
+        }
+
+        else{
+            return false;
+        }
     }
 
     public static function atualizaEndereco(Endereco $end): string
@@ -95,7 +107,7 @@ class EnderecoDAL extends Cliente
         $numero = $end->getNumero();
         $complemento = $end->getComplemento();
         $tipoEnd = $end->getTipo();
-        $idUf = $end->getId();
+        $uf = $end->getId();
         
         $sql = "UPDATE ENDERECO SET END_nCEP = '$cep', END_cLOGRADOURO = '$logradouro', END_cCIDADE = '$cidade', 
                                     END_cBAIRRO = '$bairro', END_nNUMERO = '$numero', END_cCOMPLEMENTO = '$complemento', 

@@ -25,3 +25,23 @@ function fnCep(cep) {
     }
 
 }
+
+
+$("#btnCliEnd").click(function (){
+
+			carregando();
+
+			var form = $('#formCliEnd');
+
+			$.ajax( {
+				type: "POST",
+				url: './controller/controllerCliEnd.php?',
+				data: form.serialize(),
+				success: function( response ) {
+                    console.log(response);
+					parar();
+				}
+			} );
+
+
+});
