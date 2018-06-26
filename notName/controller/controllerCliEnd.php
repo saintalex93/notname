@@ -8,6 +8,7 @@ require_once '../model/Cliente.php';
 
 
 $cliente = new Cliente();
+
 $cliente->setIdCli($_REQUEST['idCli']);
 $cliente->setNomeCli($_REQUEST['nomeCli']);
 $cliente->setCpfCli($_REQUEST['cpfCli']);
@@ -18,6 +19,7 @@ $cliente->setTelResiCli($_REQUEST['telCli']);
 $cliente->setTelCelCli($_REQUEST['celCli']);
 $cliente->setEmailCli($_REQUEST['emailCli']);
 
+echo $_REQUEST['cepEnd'];
 $endereco = new Endereco();
 $endereco->setIdCli($_REQUEST['idCli']);
 $endereco->setId($_REQUEST['idEnd']);
@@ -30,15 +32,16 @@ $endereco->setComplemento($_REQUEST['compEnd']);
 $endereco->setTipo($_REQUEST['tipoEnd']);
 $endereco->setUF($_REQUEST['ufEnd']);
 
-print_r(ClienteDal::atualizaCliente($cliente));
+
 
 if($_REQUEST['idEnd'] == 0){
-
+    print_r( EnderecoDAL::insereEndereco($endereco));
 }
 else{
+// EnderecoDAL::atualizaEndereco($endereco);
+echo "oi";
 
 }
-
 
 // print_r($endereco);
 

@@ -31,11 +31,12 @@ class EnderecoDAL extends Cliente
         $complemento = $end->getComplemento();
         $tipo = $end->getTipo();
         $uf = $end->getUF();
+        $idCli = $end->getIdCli();
         
         // recebe a string sql
-        $sql = "INSERT INTO ENDERECO (END_nCEP, END_cLOGRADOURO, END_cCIDADE, END_cBAIRRO,END_nNUMERO,END_cCOMPLEMENTO,END_cTIPO,END_cUF)
-                            VALUES ('$cep','$logradouro','$cidade','$bairro','$numero','$complemento','$tipo','$uf')";
-        // Executa a string sql
+        $sql = "INSERT INTO ENDERECO (END_nCEP, END_cLOGRADOURO, END_cCIDADE, END_cBAIRRO,END_nNUMERO,END_cCOMPLEMENTO,END_cTIPO,END_cUF, CLI_nCOD)
+                            VALUES ('$cep','$logradouro','$cidade','$bairro','$numero','$complemento','$tipo','$uf', $idCli)";
+        echo $sql;
         EnderecoDAL::$connection->sqlNoTransact($sql);
         
         return EnderecoDAL::$connection->returnID();
@@ -76,6 +77,8 @@ class EnderecoDAL extends Cliente
             $resultEnd->setUF($resultado['END_cUF']);
 
             $resultEnd->setIdCli($resultado['CLI_nCOD']);
+            $resultEnd->setId($resultado['END_nID']);
+
 
 
             

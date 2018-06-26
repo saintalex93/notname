@@ -13,8 +13,8 @@ if (isset($_SESSION['USERCOM']['ID'])) {
 
     $cli = ClienteDAL::buscaCliente($cliente);
     $end = EnderecoDAL::buscaEndereco($endereco);
+
     if ($end) {
-        echo "Foi";
 
         $idEnd = $end[0]->getId();
         $cep = $end[0]->getCep();
@@ -25,6 +25,8 @@ if (isset($_SESSION['USERCOM']['ID'])) {
         $complemento = $end[0]->getComplemento();
         $tipoEnd = $end[0]->getTipo();
         $uf = $end[0]->getId();
+
+        var_dump($end);
 
     } else {
         $idEnd = 0;

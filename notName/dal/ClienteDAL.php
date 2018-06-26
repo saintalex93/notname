@@ -61,7 +61,7 @@ class ClienteDAL
             // Seta os valores do resultado.
             $resultCli->setIdCli($resultado['CLI_nCOD']);
             $resultCli->setNomeCli($resultado['CLI_cNOME']);
-            $resultCli->setCpfCli($resultado['CLI_nCPF']);
+            $resultCli->setCpfCli($resultado['CLI_cCPF']);
             $resultCli->setRgCli($resultado['CLI_cRG']);
             $resultCli->setNascCli($resultado['CLI_dDTNASC']);
             $resultCli->setGeneroCli($resultado['CLI_cGENERO']);
@@ -99,7 +99,7 @@ class ClienteDAL
 
         $sql = "UPDATE CLIENTE SET CLI_cNOME = '$nome', CLI_cRG = '$rg', CLI_cCPF = '$cpf', CLI_dDTNASC = '$nasc', 
                                    CLI_cGENERO = '$gen', CLI_nTRESIDENCIAL = '$telFix', CLI_nTCELULAR = '$telCel',
-                                   CLI_nTCOMERCIAL = '$telCom', CLI_cEMAIL = '$email', CLI_cSENHA = '$senha',
+                                   CLI_nTCOMERCIAL = '$telCom', CLI_cEMAIL = '$email',
                                    CLI_cSTATUS = '$statusCli' WHERE CLI_nCOD = $id";
         echo $sql;
         return ClienteDAL::$connection->executarSQL($sql);

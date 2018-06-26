@@ -379,9 +379,5 @@ DELIMITER ;
 
 SELECT * FROM CLIENTE ;
 
-UPDATE CLIENTE SET CLI_cNOME = 'Sistema Notname', CLI_cRG = '123123123', CLI_cCPF = '123.123.123-12', CLI_dDTNASC = '2018-05-28', 
-                                   CLI_cGENERO = 'M', CLI_nTRESIDENCIAL = '(12) 3123-1231', CLI_nTCELULAR = '(12) 31231-2312',
-                                   CLI_nTCOMERCIAL = '', CLI_cEMAIL = 'sistema@notname.com.br', CLI_cSENHA = '',
-                                   CLI_cSTATUS = '' WHERE CLI_nCOD = 1;
-                                   
-                                   SELECT * FROM CLIENTE ;
+
+                               
