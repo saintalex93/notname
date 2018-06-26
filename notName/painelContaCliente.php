@@ -184,7 +184,9 @@ $cliente = ClienteDAL::buscaCliente($idCli);
                     </div>
                 </div>
                 <!-- /.row -->
-
+                <?php
+                
+                ?>
                 <div class="row">
                     <div class="col-sm-5">
                         <div class="form-group">
@@ -272,7 +274,9 @@ $cliente = ClienteDAL::buscaCliente($idCli);
                     <div class="col-sm-6 offset-sm-3">
                         <div class="form-group">
                             <label for="novaSenha">Nova Senha</label>
-                            <input type="password" class="form-control" id="novaSenha">
+                            <input type="password" class="form-control" id="novaSenha" value="<?php
+                                                                                                echo $cliente[0]->getSenhaCli();
+                                                                                                ?>">
                         </div>
                     </div>
                 </div>
@@ -281,7 +285,9 @@ $cliente = ClienteDAL::buscaCliente($idCli);
                     <div class="col-sm-6 offset-sm-3">
                         <div class="form-group">
                             <label for="senhaNova">Confirme a Nova Senha</label>
-                            <input type="password" class="form-control" id="senhaNova">
+                            <input type="password" class="form-control" id="senhaNova" value="<?php
+                                                                                                echo $cliente[0]->getSenhaCli();
+                                                                                                ?>">
                         </div>
                     </div>
                 </div>
