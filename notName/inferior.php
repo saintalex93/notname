@@ -148,7 +148,13 @@
 <script src="js/loginCli.js"></script>
 <script src="js/jquery.blockUI.js"></script>
 <script src="js/ajaxLoading.js"></script>
-<script src="js/jquery.mask.js"></script>
+<!-- <script src="js/jquery.mask.js"></script> -->
+<script src="js/jquery.maskedinput.min.js"></script>
+
+
+
+
+
 
 
 </body>

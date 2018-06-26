@@ -23,7 +23,7 @@ $modelo = ModeloDAL::buscaModelo();
 
         </div>
         <div class="row">
-            <?php  include "menuCategoria.php";?>
+            <?php include "menuCategoria.php"; ?>
 
             <div class="col-md-9">
                 <div class="card">
@@ -135,17 +135,7 @@ $modelo = ModeloDAL::buscaModelo();
     ?>
                    
 
-
                 </div>
-
-
-
-
-
-
-
-
-
 
                 <div class="text-center">
 
@@ -178,4 +168,4 @@ $modelo = ModeloDAL::buscaModelo();
 </div>
 
 
-<?php include_once "inferior.php";?>
+<?php include_once "inferior.php"; ?>

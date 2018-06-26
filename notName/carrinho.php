@@ -22,7 +22,6 @@ if (isset($_SESSION['USERCOM']['ID'])) {
 else{
     echo "
             <script>
-                alert('Você ainda não comprou nenhum item. Gaste sua grana com a nossa fodenda loja!');
                 window.location.href = 'index.php';
             </script>
         ";

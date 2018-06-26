@@ -1,4 +1,9 @@
-<?php include "superior.php";?>
+<?php include "superior.php";
+include_once "model/Cliente.php";
+include_once "dal/ClienteDAL.php";
+
+
+?>
 
 
     <div id="content">
@@ -35,14 +40,14 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="">Primeiro nome</label>
+                                        <label for="">Nome</label>
                                         <input type="text" class="form-control" id="primeiroNome">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="">Último nome</label>
-                                        <input type="text" class="form-control" id="segundoNome">
+                                        <label for="">Email</label>
+                                        <input type="email" class="form-control" id="segundoNome">
                                     </div>
                                 </div>
                             </div>
@@ -51,70 +56,152 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="">Texto</label>
-                                        <input type="text" class="form-control" id="">
+                                        <label for="">CPF</label>
+                                        <input type="tel" class="form-control" id="cpf">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="">Rua</label>
-                                        <input type="text" class="form-control" id="">
+                                        <label for="">RG</label>
+                                        <input type="text" class="form-control" id="rg">
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-sm-6 col-md-3">
+                              <div class="row">
+                                <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="">Texto</label>
-                                        <input type="text" class="form-control" id="">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3">
-                                    <div class="form-group">
-                                        <label for="">Texto</label>
-                                        <input type="text" class="form-control" id="">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-3">
-                                    <div class="form-group">
-                                        <label for="">Estado</label>
-                                        <select class="form-control" id="">
+                                       <label for="">Gênero</label>
+                                       <select class="form-control" id="">
                                                 <option value="">..</option>
                                                 <option value="">São Paulo</option>
                                                 <option value="">Rio de Janeiro</option>
-                                                
-                                                
                                             </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-md-3">
+                                <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="">Pais</label>
-                                        <select class="form-control" id="">
-                                                
-                                                
-                                                
-                                            </select>
+                                         <label for="">Nascimento</label>
+                                        <input type="date" class="form-control" id="">
                                     </div>
                                 </div>
+                            </div>
 
+                              <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="">Telefone</label>
-                                        <input type="text" class="form-control" id="">
+                                        <input type="text" class="form-control" id="telefone">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="text" class="form-control" id="email">
+                                        <label for="">Celular</label>
+                                        <input type="text" class="form-control" id="celular">
+                                    </div>
+                                </div>
+                            </div>
+<label for="">Dados de entrega</label>
+<hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="">Cep</label>
+                                      <input type="text" name="" id="cep" class="form-control" onkeyup ="if (this.value.length == 10) fnCep(this.value)">
+                                    </div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="form-group">
+                                        <label for="">Endereço</label>
+                                        <input type="text" class="form-control" id="txtEndereco">
                                     </div>
                                 </div>
 
-                            </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label for="">Nº</label>
+                                        <input type="text" class="form-control" id="txtNumero">
+                                    </div>
+                                </div>
+
+
+
+                            </div> <!-- -->
+ <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <label for="">Cidade</label>
+                                      <input type="text" name="" id="txtCidade" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <label for="">Bairro</label>
+                                        <input type="text" class="form-control" id="txtBairro">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label for="">UF</label>
+                                       <select class="form-control" id="cmbUf">
+                                                <option value="">Selecione</option>
+                                                <option value ='SP'>SP</option>
+                                                <option value ='RJ'>RJ</option>
+                                                <option value ='MG'>MG</option>
+                                                <option value ='PR'>PR</option>
+
+                                                <option value ='AC'>AC</option>
+                                                <option value ='AL'>AL</option>
+                                                <option value ='AP'>AP</option>
+                                                <option value ='AM'>AM</option>
+                                                <option value ='BA'>BA</option>
+                                                <option value ='CE'>CE</option>
+                                                <option value ='DF'>DF</option>
+                                                <option value ='ES'>ES</option>
+                                                <option value ='GO'>GO</option>
+                                                <option value ='MA'>MA</option>
+                                                <option value ='MT'>MT</option>
+                                                <option value ='MS'>MS</option>
+                                                <option value ='PA'>PA</option>
+                                                <option value ='PB'>PB</option>
+                                                <option value ='PE'>PE</option>
+                                                <option value ='PI'>PI</option>
+                                                <option value ='RN'>RN</option>
+                                                <option value ='RS'>RS</option>
+                                                <option value ='RO'>RO</option>
+                                                <option value ='RR'>RR</option>
+                                                <option value ='SC'>SC</option>
+                                                <option value ='SE'>SE</option>
+                                                <option value ='TO'>TO</option>
+                                            </select>
+                                    </div>
+                                </div>
+
+
+                               
+                            </div> <!-- -->
+
+                             <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label for="">Complemento</label>
+                                      <input type="text" name="" id="" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="">Tipo</label>
+                                        <input type="text" class="form-control" id="" placeholder="Casa">
+                                    </div>
+                                </div>
+
+                            </div> <!-- -->
+                            
 
                         </div>
+
+                        
 
                         <div class="card-footer">
                             <div class="pull-left">
@@ -133,11 +220,15 @@
             </div>
             <div class="col-md-3">
 
-                <?php include_once 'descritivoVenda.php';?>
+                <?php include_once 'descritivoVenda.php'; ?>
 
             </div>
         </div>
         </div>
     </div>
 
-    <?php include_once "inferior.php";?>
+    <?php include_once "inferior.php"; ?>
+
+    <script src="js/mask.js"></script>
+    <script src="js/checkout1.js"></script>
+
