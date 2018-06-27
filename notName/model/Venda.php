@@ -17,6 +17,12 @@ class Venda
 
     private $statusVenda;
 
+    private $formaPagamento;
+
+    private $frete;
+
+    private $vlrFrete;
+
     private $modelo = array();
 
     public function getModelo()
@@ -124,6 +130,45 @@ class Venda
     public function setStatusVenda($statusVenda)
     {
         $this->statusVenda = $statusVenda;
+
+        return $this;
+    }
+
+
+    public function getVlrFrete()
+    {
+        return $this->vlrFrete;
+    }
+
+    public function setVlrFrete($vlrFrete)
+    {
+        $this->vlrFrete = $vlrFrete;
+
+        return $this;
+    }
+
+    public function getFormaPagamento()
+    {
+        return $this->formaPagamento;
+    }
+
+
+    public function setFormaPagamento($formaPagamento)
+    {
+        $this->formaPagamento = $formaPagamento;
+
+        return $this;
+    }
+
+    public function getFrete()
+    {
+        return $this->frete;
+    }
+
+ 
+    public function setFrete($frete)
+    {
+        $this->frete = $frete;
 
         return $this;
     }

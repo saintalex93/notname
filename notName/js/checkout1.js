@@ -95,7 +95,7 @@ $("#btnCliEnd").click(function (){
 				success: function( response ) {
                     // console.log(response);
                     location.href='checkout2.php';
-					parar();
+					// parar();
 				}
 			} );
     }

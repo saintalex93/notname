@@ -84,6 +84,15 @@
 
 }
 
+.rdEntrega{
+	display: none;
+}
+
+.pagamentoCX:hover{
+	border: 2px solid #40b190;
+	cursor: pointer;
+}
+
 
 
 

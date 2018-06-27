@@ -8,18 +8,19 @@ include_once "model/Venda.php";
 include_once "dal/VendaDAL.php";
 include_once "controller/correios.php";
 
-$cliente = new Cliente();
+// $cliente = new Cliente();
 $endereco = new Endereco();
 $venda = new Venda();
 
 $idCli = $_SESSION['USERCOM']['ID'];
 
-$cliente->setIdCli($idCli);
+// $cliente->setIdCli($idCli);
 $endereco->setIdCli($idCli);
 $venda->setIdCli($idCli);
 
 $end = EnderecoDAL::buscaEndereco($endereco);
 $ven = VendaDAL::buscaVendaCarrinho($venda);
+$idVenda = $ven[0]->getIdVenda();
 
 $cepOrigem = "02859150";
 
@@ -111,6 +112,7 @@ if ($pac) {
 
 } else {
 // todo
+    $pacValor=0;
     $valorPac = 'R$ 0.00';
     $prazoPac = "Indisponível";
 }
@@ -124,6 +126,8 @@ if ($sedex) {
     $prazoSedex = $sedex['prazo'];
 } else {
 // todo
+    $sedexValor = 0;
+
     $valorSedex = 'R$ 0.00';
     $prazoSedex = "Indisponível";
 
@@ -139,6 +143,8 @@ if ($sedex10) {
 
 } else {
 // todo
+    $sedex10Valor = 0;
+
     $valorSedex10 = 'R$ 0.00';
     $prazoSedex10 = "Indisponível";
 
@@ -163,7 +169,6 @@ if ($sedex10) {
         <div class="col-md-9">
 
             <div class="card btnCheckout container">
-                <form method="post" action="checkout3.php">
                     <h1 class="mx-3 my-3">Checkout - Método de entrega</h1>
                     <ul class="nav nav-pills nav-justified">
                         <li class="disabled text-center" ><a href="#"><i class="fas fa-map-marker"></i><br>Endereço</a>
@@ -179,68 +184,53 @@ if ($sedex10) {
                     <div class="content">
                         <div class="row">
                             <div class="col-sm-5 ml-5 my-3">
-                                <div class="card shipping-method   ">
+                                <div class="card shipping-method pagamentoCX" id="Cpac">
 
                                     <h4 class="px-3 pt-3">PAC</h4>
 
-                                    <span class="d-block px-3"><b>Valor: </b><?php echo $valorPac; ?></span>
+                                    <span class="d-block px-3 pac" id="<?php echo $pacValor; ?>"><b>Valor: </b><?php echo $valorPac; ?></span>
                                     <span class="d-block px-3"><b>Prazo: </b><?php echo $prazoPac; ?> </span>
 
 
                                     <div class="card-footer text-center">
 
-                                        <input type="radio" name="entrega" value="entrega1">
+                                        <input type="radio" name="entrega" class="rdEntrega" value="entrega1" id="pac">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-sm-5 ml-5 my-3">
-                                <div class="card shipping-method   ">
+                                <div class="card shipping-method pagamentoCX" id="Csedex">
 
                                     <h4 class="px-3 pt-3">SEDEX</h4>
 
-                                    <span class="d-block px-3"><b>Valor: </b><?php echo $valorSedex; ?></span>
+                                    <span class="d-block px-3 sedex" id="<?php echo $sedexValor; ?>"><b>Valor: </b><?php echo $valorSedex; ?></span>
                                     <span class="d-block px-3"><b>Prazo: </b><?php echo $prazoSedex; ?> </span>
 
 
                                     <div class="card-footer text-center">
 
-                                        <input type="radio" name="entrega" value="entrega1">
+                                        <input type="radio" name="entrega" value="entrega1" class="rdEntrega" id="sedex">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-sm-5 ml-5 my-3" >
-                                <div class="card shipping-method">
+                                <div class="card shipping-method pagamentoCX" id="Csedex10">
 
                                     <h4 class="px-3 pt-3">SEDEX 10</h4>
 
-                                    <span class="d-block px-3"><b>Valor: </b><?php echo $valorSedex10; ?></span>
+                                    <span class="d-block px-3 sedex10" id="<?php echo $sedex10Valor;?>"><b>Valor: </b><?php echo $valorSedex10; ?></span>
                                     <span class="d-block px-3"><b>Prazo: </b><?php echo $prazoSedex10; ?> </span>
 
 
                                     <div class="card-footer text-center">
 
-                                        <input type="radio" name="entrega" value="entrega1">
+                                        <input type="radio" name="entrega" value="entrega1" class="rdEntrega" id="sedex10">
                                     </div>
                                 </div>
                             </div>
 
-
-                            <div class="col-sm-5 ml-5 my-3">
-                                <div class="card shipping-method">
-
-                                    <h4 class="px-3 pt-3">Retirar no Local</h4>
-
-                                    <span class="d-block px-3">Rua Barbosa Gurgel</span>
-                                    <span class="d-block px-3">(11) 92528-9000 - Gabriela</span>
-
-                                    <div class="card-footer text-center">
-
-                                        <input type="radio" name="entrega" value="entrega3">
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <!-- /.row -->
 
@@ -252,14 +242,18 @@ if ($sedex10) {
                             <a href="checkout1.php" class="btn btn-default"><i class="fas fa-chevron-left"></i>Voltar para Endereços</a>
                         </div>
                         <div class="pull-right">
-                            <button type="submit" class="btn btn-primary">Continuar para o método de pagamento<i class="fas fa-chevron-right"></i>
+                            <button type="button" id="btnEntrega" class="btn btn-primary">Continuar para o método de pagamento<i class="fas fa-chevron-right"></i>
                             </button>
                         </div>
                     </div>
-                </form>
             </div>
             <!-- /.box -->
-
+            <form id="formEntrega">
+                <input type="hidden" name="vendaId" value="<?php echo $idVenda;?>">
+                <input type="hidden" name="clienteId" value="<?php echo $idCli; ?>">
+                <input type="hidden" name="valor" id="valorFrete">
+                <input type="hidden" name="frete" id="frete">
+            </form>
 
         </div>
         <!-- /.col-md-9 -->
@@ -273,3 +267,5 @@ if ($sedex10) {
 </div>
 </div>
 <?php include_once "inferior.php"; ?>
+
+<script src="js/checkout2.js"></script>
