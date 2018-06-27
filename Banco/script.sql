@@ -387,3 +387,6 @@ SELECT * FROM VENDA V
                     INNER JOIN MODELO M ON M.MODELO_nID = VM.MODELO_nID 
                     WHERE V.VENDA_nID = 1 AND VENDA_cSTATUS LIKE 'PENDENTE';
                     
+                    
+SELECT * FROM ENDERECO WHERE CLI_nCOD = 1;
+                    

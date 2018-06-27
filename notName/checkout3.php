@@ -1,4 +1,4 @@
-<?php include "superior.php";?>
+<?php include "superior.php"; ?>
 
 
     <div id="content">
@@ -17,7 +17,6 @@
                 <div class="col-md-9">
 
                     <div class="card btnCheckout container">
-                        <form method="post" action="checkout4.php">
                             <h1 class="mx-3 my-3">Checkout - método de pagamento</h1>
                             <ul class="nav nav-pills nav-justified">
                                 <li class="disabled  text-center"><a href="#"><i class="fas fa-map-marker"></i><br>Endereço</a>
@@ -31,20 +30,8 @@
                             </ul>
                             <div class="content">
                                 <div class="row">
-                                    <div class="col-sm-5 ml-5 my-3">
-                                        <div class="card payment-method">
 
-                                            <h4 class="px-3 pt-3">Paypal</h4>
-
-                                            <p class="px-3 ">Lorem ipsum dolor sit amet.</p>
-
-                                            <div class="card-footer text-center">
-
-                                                <input type="radio" name="payment" value="payment1">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5 ml-5 my-3">
+                             <div class="col-sm-5 ml-5 my-3">
                                         <div class="card payment-method">
 
                                             <h4 class="px-3 pt-3">Cartão</h4>
@@ -57,35 +44,48 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-sm-5 ml-5 my-3">
+                                     <div class="col-sm-5 ml-5 my-3">
                                         <div class="card payment-method">
 
-                                            <h4 class="px-3 pt-3">Pagseguro</h4>
+                                            <h4 class="px-3 pt-3">Boleto Bancário</h4>
 
-                                            <p class="px-3 ">Lorem ipsum dolor sit amet.</p>
+                                            <p class="px-3 ">VISA e Mastercard apenas..</p>
 
                                             <div class="card-footer text-center">
 
-                                                <input type="radio" name="payment" value="payment3">
+                                                <input type="radio" name="payment" value="payment2">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-5 ml-5 my-3">
-                                        <div class="card payment-method">
 
-                                            <h4 class="px-3 pt-3">Dinheiro na entrega</h4>
-
-                                            <p class="px-3 ">Você paga quando você consegue.</p>
-
-                                            <div class="card-footer text-center">
-
-                                                <input type="radio" name="payment" value="payment3">
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
+                                    <div class = "container card col-sm-12 border">
+                                        <form action="">
 
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <div class="form-group">
+                                                        <label for="">Cartão</label>
+                                                        <input type="text" name="nomeCli" class="form-control" id="primeiroNome" value="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label for="">CVV</label>
+                                                        <input type="email" name="emailCli" class="form-control" id="segundoNome" value="">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label for="">CPF</label>
+                                                        <input type="email" name="emailCli" class="form-control" id="segundoNome" value="">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                </div>
                             </div>
 
                             <div class="card-footer">
@@ -93,11 +93,10 @@
                                     <a href="checkout2.php" class="btn btn-default"><i class="fa fa-chevron-left"></i>Voltar ao método de envio</a>
                                 </div>
                                 <div class="pull-right">
-                                    <button type="submit" class="btn btn-primary">Continuar com a revisão do pedido<i class="fa fa-chevron-right"></i>
+                                    <button type="button" id="sessaoCad" class="btn btn-primary">Continuar com a revisão do pedido<i class="fa fa-chevron-right"></i>
                                     </button>
                                 </div>
                             </div>
-                        </form>
                     </div>
 
 
@@ -113,4 +112,13 @@
             </div>
         </div>
     </div>
-    <?php include_once "inferior.php";?>
+    <?php include_once "inferior.php"; ?>
+
+<script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
+    <script src="js/pagSeguro.js"></script>
+
+
+
+<!-- 202 - Boleto
+102 Mastercard
+101 VISA -->

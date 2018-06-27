@@ -34,6 +34,7 @@ public function iniciaPagamentoAction() { //gera o código de sessão obrigatór
 		$xml= simplexml_load_string($xml);
 		$idSessao = $xml -> id;
 		echo $idSessao;
+		return $idSessao;
 		exit;
 		//return $codigoRedirecionamento;
 
@@ -42,13 +43,13 @@ public function iniciaPagamentoAction() { //gera o código de sessão obrigatór
 public function efetuaPagamentoCartao($dados) {
 
 
-		$data['token'] ='SEU TOKEN PAGSEGURO'; //token sandbox ou produção
+		$data['token'] = '983AE2621B4D4E779029A7A38090AF0F'; //token sandbox ou produção
 		$data['paymentMode'] = 'default';
 		$data['senderHash'] = $dados['hash']; //gerado via javascript
 		$data['creditCardToken'] = $dados['creditCardToken']; //gerado via javascript
 		$data['paymentMethod'] = 'creditCard';
-		$data['receiverEmail'] = 'e-mail cadastrado no pagseguro não é o do cliente';
-		$data['senderName'] = $dados['senderName']; //nome do usuário deve conter nome e sobrenome
+		$data['receiverEmail'] = 'alexsantosinformatica@gmail.com';
+		$data['senderName'] = $dados['Alex Santos']; //nome do usuário deve conter nome e sobrenome
 		$data['senderAreaCode'] = $dados['senderAreaCode'];
 		$data['senderPhone'] = $dados['senderPhone'];
 		$data['senderEmail'] = $dados['senderEmail'];
@@ -70,14 +71,14 @@ public function efetuaPagamentoCartao($dados) {
 		$data['billingAddressCountry'] = 'Brasil';
 		$data['currency'] = 'BRL';
 		$data['itemId1'] = '01';
-		$data['itemQuantity1'] = '1';
 		$data['itemDescription1'] = 'Descrição do item';
+		$data['itemAmount1'] = $dados['itemAmount1'];
+		$data['itemQuantity1'] = '1';
 		$data['reference'] = $dados['reference']; //referencia qualquer do produto
 		$data['shippingAddressRequired'] = 'true';
-		$data['itemAmount1'] = $dados['itemAmount1'];
 
 				//$_SERVER['REMOTE_ADDR']
-		$emailPagseguro = "e-mail cadastrado no pagseguro";
+		$emailPagseguro = "alexsantosinformatica@gmail.com";
 
 		$data = http_build_query($data);
 		$url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/transactions'; //URL de teste
@@ -118,30 +119,41 @@ public function efetuaPagamentoCartao($dados) {
 
 	}
 
-	public function efetuaPagamentoBoleto($dados) {
+	public function efetuaPagamentoBoleto($hash) {
 
+		$dados = array();
+		$dados['vlrFrete'] = '20.00';
+		$dados['itemId1'] = '001';
+		$dados['itemQuantity1'] = '1';
+		$dados['itemDescription1'] = "Camiseta";
+		$dados['reference'] = 'Teste';
+		$dados['itemAmount1'] = '35.00';
+		
 
-		$data['token'] ='seu token do pagseguro disponível no login sandbox'; //token sandbox test
+		$data['hash'] = $hash;
+		$data['token'] = '983AE2621B4D4E779029A7A38090AF0F'; //token sandbox test
+		$data['receiverEmail'] = 'alexsantosinformatica@gmail.com';
 		$data['paymentMode'] = 'default';
-		$data['hash'] = $dados['hash'];
 		$data['paymentMethod'] = 'boleto';
-		$data['receiverEmail'] = 'e-mail cadastrado no pagseguro não é o do cliente';
-		$data['senderName'] = $dados['senderName'];
-		$data['senderAreaCode'] = $dados['senderAreaCode'];
-		$data['senderPhone'] = $dados['senderPhone'];
-		$data['senderEmail'] = $dados['senderEmail'];
-		if($dados['senderCPF'] != null){$data['senderCPF'] = $dados['senderCPF'];}
-		if($dados['senderCNPJ'] != null){$data['senderCNPJ'] = $dados['senderCNPJ'];}
+		$data['shippingAddressRequired'] = 'false';
 		$data['currency'] = 'BRL';
+		$data['extraAmount'] = '0.00';
+		$data['senderName'] = 'Alex';
+		$data['senderAreaCode'] = '11';
+		$data['senderPhone'] = '966953835';
+		$data['senderEmail'] = 'alexsantosinformatica@gmail.com';
+		$data['senderCPF'] = '39930586822';
+		$data['shippingCost'] = $dados['vlrFrete'];
 		$data['itemId1'] = $dados['itemId1'];
 		$data['itemQuantity1'] =$dados['itemQuantity1'];
 		$data['itemDescription1'] = $dados['itemDescription1'];
 		$data['reference'] = $dados['reference'];
-		$data['shippingAddressRequired'] = 'false';
 		$data['itemAmount1'] = $dados['itemAmount1'];
+		// if($dados['senderCNPJ'] != null){$data['senderCNPJ'] = $dados['senderCNPJ'];}
+
 
 				//$_SERVER['REMOTE_ADDR']
-		$emailPagseguro = "e-mail cadastrado no pagseguro não é o do cliente";
+		$emailPagseguro = "alexsantosinformatica@gmail.com";
 
 		$data = http_build_query($data);
 		$url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/transactions'; //URL de teste
@@ -179,8 +191,17 @@ public function efetuaPagamentoCartao($dados) {
 				'date' => $date,
 				'code' => $code
 		);
-
+		echo "chegando";
+		print_r($retornoBoleto);
 		return $retornoBoleto;
 
 	}
 }
+
+
+$pagSeguro = new PagSeguro();
+$hash = $pagSeguro->iniciaPagamentoAction();
+$boleto = $pagSeguro->efetuaPagamentoBoleto($hash);
+echo "<pre>";
+print_r($boleto);
+echo "</pre>";
