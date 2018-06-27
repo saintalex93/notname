@@ -240,7 +240,12 @@ if (isset($_SESSION['USERCOM']['ID'])) {
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="">Tipo</label>
-                                        <input type="text" name = "tipoEnd" class="form-control" placeholder="Casa" value = "<?php echo $tipoEnd; ?>">
+                                          <select class="form-control" id="tipoEnd" name="tipoEnd">
+                                            <option value="">Selecione</option>
+                                            <option value ='casa'>Casa</option>
+                                            <option value ='apartamento'>Apartamento</option>
+                                            <option value ='sobrado'>Sobrado</option>
+                                          </select>
                                     </div>
                                 </div>
 
@@ -285,8 +290,7 @@ $genero = $cli[0]->getGeneroCli();
 echo "<script>
 $('#generoCli').val('$genero');
 $('#cmbUf').val('$uf');
-
-
+$('#tipoEnd').val('$tipoEnd');
 
 </script>";
 
