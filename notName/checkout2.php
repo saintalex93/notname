@@ -124,7 +124,7 @@ if ($sedex) {
     $prazoSedex = $sedex['prazo'];
 } else {
 // todo
-    $valorSedex='R$ 0.00';
+    $valorSedex = 'R$ 0.00';
     $prazoSedex = "Indisponível";
 
 }
@@ -183,8 +183,8 @@ if ($sedex10) {
 
                                     <h4 class="px-3 pt-3">PAC</h4>
 
-                                    <span class="d-block px-3"><b>Valor: </b><?php echo $valorPac;?></span>
-                                    <span class="d-block px-3"><b>Prazo: </b><?php echo $prazoPac;?> </span>
+                                    <span class="d-block px-3"><b>Valor: </b><?php echo $valorPac; ?></span>
+                                    <span class="d-block px-3"><b>Prazo: </b><?php echo $prazoPac; ?> </span>
 
 
                                     <div class="card-footer text-center">
@@ -210,8 +210,8 @@ if ($sedex10) {
                                 </div>
                             </div>
 
-                            <div class="col-sm-5 ml-5 my-3">
-                                <div class="card shipping-method   ">
+                            <div class="col-sm-5 ml-5 my-3" >
+                                <div class="card shipping-method">
 
                                     <h4 class="px-3 pt-3">SEDEX 10</h4>
 
@@ -266,10 +266,10 @@ if ($sedex10) {
 
         <div class="col-md-3">
 
-                <?php include_once 'descritivoVenda.php';?>
+                <?php include_once 'descritivoVenda.php'; ?>
 
         </div>
     </div>
 </div>
 </div>
-<?php include_once "inferior.php";?>
+<?php include_once "inferior.php"; ?>
