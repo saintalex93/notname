@@ -6,7 +6,7 @@ if (validaForm("#forDadosClie")){
 
 			$.ajax( {
 				type: "POST",
-				url: './controller/controllerPainelClie.php?action=alteraDadoscli',
+				url: './controller/controllerPainelCli.php?action=alteraDadoscli',
 				data: form.serialize(),
 				success: function( response ) {
                     console.log(response);
@@ -26,7 +26,7 @@ if (validaForm("#formEndCli")){
 
 			$.ajax( {
 				type: "POST",
-				url: './controller/controllerPainelClie.php?action=alteraEndcli',
+				url: './controller/controllerPainelCli.php?action=alteraEndcli',
 				data: form.serialize(),
 				success: function( response ) {
                     console.log(response);
@@ -46,7 +46,7 @@ if (validaForm("#formSenhaCli")){
 
 			$.ajax( {
 				type: "POST",
-				url: './controller/controllerPainelClie.php?action=alteraSenhacli',
+				url: './controller/controllerPainelCli.php?action=alteraSenhacli',
 				data: form.serialize(),
 				success: function( response ) {
                     console.log(response);

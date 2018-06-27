@@ -95,7 +95,7 @@ if ($endereco) {
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="">Nome</label>
-                            <input type="text" class="form-control" id="txtNomeCli" maxlength="70" value="<?php
+                            <input type="text" class="form-control" id="txtNomeCli" name="txtNomeCli" maxlength="70" value="<?php
                             echo $cliente[0]->getNomeCli();
                             ?>">
                         </div>
@@ -108,7 +108,7 @@ if ($endereco) {
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="">RG</label>
-                            <input type="text" class="form-control" id="txtRgCli" maxlength="15" value="<?php
+                            <input type="text" class="form-control" id="txtRgCli" name="txtRgCli" maxlength="15" value="<?php
                             echo $cliente[0]->getRgCli();
                             ?>">
                         </div>
@@ -116,7 +116,7 @@ if ($endereco) {
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="endereco">CPF</label>
-                            <input type="text" class="form-control" id="cpf" value="<?php
+                            <input type="text" class="form-control" id="cpf" name="cpf" value="<?php
                             echo $cliente[0]->getCpfCli();
                             ?>">
                         </div>
@@ -138,7 +138,7 @@ if ($endereco) {
                     <div class="col-sm-6 col-md-4">
                         <div class="form-group">
                             <label for="">Data de Nascimento</label>
-                            <input type="date" class="form-control" id="nascimento" value="<?php
+                            <input type="date" class="form-control" id="nascimento" name="nascimento" value="<?php
                             echo $cliente[0]->getNascCli();
                             ?>">
                         </div>
@@ -147,7 +147,7 @@ if ($endereco) {
                     <div class="col-sm-6 col-md-4">
                         <div class="form-group">
                             <label for="">Telefone Fixo</label>
-                            <input type="text" class="form-control" id="telefone" value="<?php
+                            <input type="text" class="form-control" id="telefone" name="telefone" value="<?php
                             echo $cliente[0]->getTelResiCli();
                             ?>">
 
@@ -156,7 +156,7 @@ if ($endereco) {
                     <div class="col-sm-6 col-md-4">
                         <div class="form-group">
                             <label for="">Telefone Celular</label>
-                            <input type="text" class="form-control" id="celular" value="<?php
+                            <input type="text" class="form-control" id="celular" name="celular" value="<?php
                             echo $cliente[0]->getTelCelCli();
                             ?>">
                         </div>
@@ -165,7 +165,7 @@ if ($endereco) {
                     <div class="col-sm-6 col-md-4">
                         <div class="form-group">
                             <label for="">Telefone Comercial</label>
-                            <input type="text" class="form-control" id="comercial" value="<?php
+                            <input type="text" class="form-control" id="comercial" name="comercial" value="<?php
                             echo $cliente[0]->getTelComCli();
                             ?>">
                         </div>
@@ -174,13 +174,13 @@ if ($endereco) {
                     <div class="col-sm-8">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="mail" class="form-control" id="email" value="<?php
+                            <input type="mail" class="form-control" id="email" name="email" value="<?php
                             echo $cliente[0]->getEmailCli();
                             ?>">
                         </div>
                     </div>
                     <div class="col-sm-12 text-center">
-                        <button type="submit" class="btn btn-primary" id="btnAlteraDadosCliente" name="btnAlteraDadosCliente"><i class="fa fa-save"></i> Salvar alterações</button>
+                        <button type="button" class="btn btn-primary" id="btnAlteraDadosCliente" name="btnAlteraDadosCliente"><i class="fa fa-save"></i> Salvar alterações</button>
 
                     </div>
                 </div>
@@ -317,7 +317,7 @@ if ($endereco) {
                     <div class="col-sm-6 offset-sm-3">
                         <div class="form-group">
                             <label for="novaSenha">Nova Senha</label>
-                            <input type="password" class="form-control" id="novaSenha" value="<?php
+                            <input type="password" class="form-control" id="novaSenha" name="novaSenha" value="<?php
                             echo $cliente[0]->getSenhaCli();
                             ?>">
                         </div>
@@ -328,7 +328,7 @@ if ($endereco) {
                     <div class="col-sm-6 offset-sm-3">
                         <div class="form-group">
                             <label for="senhaNova">Confirme a Nova Senha</label>
-                            <input type="password" class="form-control" id="senhaNova" value="<?php
+                            <input type="password" class="form-control" id="senhaNova" name="senhaNova" value="<?php
                             echo $cliente[0]->getSenhaCli();
                             ?>">
                         </div>
@@ -337,7 +337,7 @@ if ($endereco) {
                 <!-- /.row -->
 
                 <div class="col-sm-12 text-center">
-                    <button type="submit" class="btn btn-primary" id="btnAlteraSenhaCliente" name="btnAlteraSenhaCliente"><i class="fa fa-save"></i> Salvar senha</button>
+                    <button type="button" class="btn btn-primary" id="btnAlteraSenhaCliente" name="btnAlteraSenhaCliente"><i class="fa fa-save"></i> Salvar senha</button>
                 </div>
             </form>
 
