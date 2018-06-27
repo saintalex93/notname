@@ -9,21 +9,21 @@ $modelo = ModeloDAL::buscaModeloIndex();
     <div id="carouselSite" class="carousel slide my-4" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block img-fluid" src="http://via.placeholder.com/1920x700" alt="slider">
+                <img class="d-block img-fluid" src="img/banner/banner1.png" alt="slider">
                 <div class="carousel-caption">
                     <h4>primeiro slider</h4>
                     <p>conteudo</p>
                 </div>
             </div>
             <div class="carousel-item ">
-                <img class="d-block img-fluid" src="http://via.placeholder.com/1920x700" alt="slider">
+                <img class="d-block img-fluid" src="img/banner/banner2.png" alt="slider">
                 <div class="carousel-caption">
                     <h4>segundo slider</h4>
                     <p>conteudo</p>
                 </div>
             </div>
             <div class="carousel-item ">
-                <img class="d-block img-fluid" src="http://via.placeholder.com/1920x700" alt="slider">
+                <img class="d-block img-fluid" src="img/banner/banner3.png" alt="slider">
                 <div class="carousel-caption">
                     <h4>terceiro slider</h4>
                     <p>conteudo</p>
@@ -50,7 +50,8 @@ $modelo = ModeloDAL::buscaModeloIndex();
                         </div>
 
                         <h3 class="card-title">Feito com amor</h3>
-                        <p class="card-text">Todas as nossas peças são desenvolvidas com muito carinho, desde o brainstorming inicial até a revisão final da produção. Cada design têm um propósito maior: refletir valores que acreditamos e buscamos resgatar na humanidade.</p>
+                        <p class="card-text">Cada um de nossos produtos além de serem produzidos com muito amor e responsabilidade, em um modelo de comércio justo, com mão de obra regular, contribui com a garantia de 10% da venda para ongs  sem fins lucrativos. Somos uma marca de moda consciente, porque para nós, o lucro não deve ser o único e principal objetivo das empresas. </p>
+                        
                         <a class="card-link" href="">link card</a>
 
                     </div>
@@ -92,7 +93,7 @@ $modelo = ModeloDAL::buscaModeloIndex();
 
     <div class="jumbotron jumbotron-fluid text-center rounded-0">
 <!--        <h1 class="display-3">bootstrap 4</h1>-->
-        <p class="lead">Nosso objetivo é fazer com que a arte salte dos objetos<br> e seja a conexão, que ela inicie diálogos e inspire o ciclo de criatividade.</p>
+        <p class="lead">Cada um de nossos produtos além de serem produzidos com muito amor e responsabilidade,<br> em um modelo de comércio justo, com mão de obra regular, contribui com a garantia de 10% da venda para ongs <br>sem fins lucrativos. Somos uma marca de moda consciente, porque para nós, <br>o lucro não deve ser o único e principal objetivo das empresas.</p>
 <!--
         <p class="lead">
             <a class="btn btn-primary" href="">mais um botão</a>

@@ -26,18 +26,26 @@ include "superior.php";
 
 		<div class="row">
 			<div class="col-md-6 d-flex flex-row">
-				<div class="card py-3 px-3">
+				<div class="card col-md-12 py-3 px-3">
 					<h1>Nova conta</h1>
 
-					<p class="lead">Não é nosso cliente cadastrado ainda?</p>
-					<p class="texto">Com registro conosco novo mundo da moda, descontos
-						fantásticos e muito mais se abre para você! Todo o processo não
-						levará mais que um minuto!</p>
+					<p class="lead">Crie uma conta caso não possua cadastro <br><span class="text-muted">
+						Se você tiver alguma dúvida, não hesite em <a href="contato.php">contactar-nos</a>
+<!--
+						,
+						a nossa centro de atendimento ao cliente está trabalhando para
+						você 24/7.
+-->
+					</span></p>
+<!--					<p class="texto">Já é nosso cliente faça o seu login</p>-->
+<!--
 					<p class="text-muted">
-						Se você tiver alguma dúvida, não hesite em <a href="contato.php">contactar-nos</a>,
+						Se você tiver alguma dúvida, não hesite em <a href="contato.php">contactar-nos</a>
+						,
 						a nossa centro de atendimento ao cliente está trabalhando para
 						você 24/7.
 					</p>
+-->
 
 					<hr>
 
@@ -68,17 +76,20 @@ include "superior.php";
 			</div>
 
 			<div class="col-md-6 d-flex flex-row ">
-				<div class="card py-3 px-3">
+				<div class="card col-md-12 py-3 px-3">
 					<h1>Entrar</h1>
 
 					<p class="lead">Já é nosso cliente?</p>
+<!--
 					<p class="text-muted texto">Pellentesque habitante morbi tristique
 						senectus e netus et machuada fames ac turpis egestas. Vestibulum
 						tortor quam, feugiat vitae, ultricies eget, senta-se
 						temporariamente, ante. Donec eu libero sit amet quam egestas
 						sempre. Aiean, ultricies, mi vitae, est., Mauris, placerat,
 						eleifend, leo.</p>
+-->
 
+                <p class="text-muted">Faça o seu Login</p>
 					<hr>
 
 					<form class="formLogCli">

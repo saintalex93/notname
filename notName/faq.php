@@ -54,10 +54,12 @@
 
 
                 <div class="card px-4 py-4" id="contact">
-                    <h1>Dúvidas</h1>
+                    <h1>Perguntas frequente</h1>
 
+<!--
                     <p class="lead">Você está curioso sobre alguma coisa? Você tem algum tipo de problema com nossos produtos?</p>
                     <p>Por favor, não hesite em contactar-nos, o nosso centro de atendimento ao cliente está trabalhando para você 24/7.</p>
+-->
 
                     <hr>
 

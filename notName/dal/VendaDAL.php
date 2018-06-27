@@ -271,4 +271,60 @@ class VendaDAL
         return $resulta[0]["RESULT"];
 
     }
+    public static function buscaTodasVendas(Venda $venda)
+    {
+        VendaDAL::connect();
+
+        $idCliente = $venda->getIdCli();
+
+        $sql = "SELECT *, count(M.MODELO_nID) as QDT_MODELO FROM VENDA V
+                    INNER JOIN VENDA_MODELO VM ON V.VENDA_nID = VM.VENDA_nID
+                    INNER JOIN MODELO M ON M.MODELO_nID = VM.MODELO_nID
+                    WHERE V.VENDA_nID = $idCliente  GROUP BY M.MODELO_nID";
+
+        VendaDAL::$connection->executarSQL($sql);
+
+        $resultado = VendaDAL::$connection->getResultados();
+
+        if (!$resultado) {
+            return false;
+        }
+
+        $arrayVenda = array();
+
+        foreach ($resultado as $resultado) {
+
+            $resultVenda = new Venda();
+
+            $resultVenda->setIdVenda($resultado['VENDA_nID']);
+            $resultVenda->setIdVendaModelo($resultado['VENDA_MODELO_nID']);
+            $resultVenda->setVlrTotalVenda($resultado['VENDA_nVLRTOTALVENDA']);
+            $resultVenda->setDtCompraVenda($resultado['VENDA_dtDTCOMPRA']);
+            $resultVenda->setCodRastVenda($resultado['VENDA_cCODRASTREIO']);
+            $resultVenda->setStatusVenda($resultado['VENDA_cSTATUS']);
+            $resultVenda->setDtCompraVenda($resultado['VENDA_dtDTCOMPRA']);
+            $resultVenda->setFrete($resultado['VENDA_cFRETE']);
+            $resultVenda->setVlrFrete($resultado['VENDA_nVLRFRETE']);
+            $resultVenda->setFormaPagamento($resultado['VENDA_cFORMA_PAGAMENTO']);
+
+            $modelo = new Modelo();
+
+            $modelo->setIdModelo($resultado['MODELO_nID']);
+            $modelo->setNomeModelo($resultado['MODELO_cNOME']);
+            $modelo->setVlrVendaModelo($resultado['MODELO_nVLR_VENDA']);
+            $modelo->setDescontoModelo($resultado['MODELO_nDESCONTO']);
+            $modelo->setQuantidadeVendaModelo($resultado['QDT_MODELO']);
+            $modelo->setProdutoIdModelo($resultado['PRODUTO_nID']);
+            $modelo->setCormodelo($resultado['COR_nID']);
+            $modelo->setQtdEstoqueModelo($resultado['MODELO_nQTD_ESTOQUE']);
+            $modelo->setStatusModelo($resultado['MODELO_nSTATUS']);
+            $modelo->setTamanhoModelo($resultado['TAMANHO_nID']);
+
+            $resultVenda->setModelo($modelo);
+
+            $arrayVenda[] = $resultVenda;
+        }
+        return $arrayVenda;
+    }
+
 }

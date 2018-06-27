@@ -1,4 +1,4 @@
-<?php include "superior.php"; 
+<?php include "superior.php";
 require_once "./dal/ClienteDAL.php";
 require_once "./dal/EnderecoDAL.php";
 
@@ -11,6 +11,7 @@ $idCli->setIdCli($id);
 $cliente = ClienteDAL::buscaCliente($idCli);
 $endereco = EnderecoDAL::buscaEndereco($idEnd);
 
+$idEndereco = $endereco[0]->getId();
 
 if ($endereco) {
 
@@ -95,8 +96,9 @@ if ($endereco) {
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
+                            <input type="hidden" name="txtIdCli" value="<?php echo $id;?>">
                             <label for="">Nome</label>
-                            <input type="text" class="form-control" id="" maxlength="70" value="<?php
+                            <input type="text" class="form-control" id="txtNomeCli" name="txtNomeCli" maxlength="70" value="<?php
                             echo $cliente[0]->getNomeCli();
                             ?>">
                         </div>
@@ -109,24 +111,24 @@ if ($endereco) {
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="">RG</label>
-                            <input type="text" class="form-control" id="" maxlength="15" value="<?php
-                                                                                                echo $cliente[0]->getRgCli();
-                                                                                                ?>">
+                            <input type="text" class="form-control" id="txtRgCli" name="txtRgCli" maxlength="15" value="<?php
+                            echo $cliente[0]->getRgCli();
+                            ?>">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="endereco">CPF</label>
-                            <input type="text" class="form-control" id="cpf" value="<?php
-                                                                                    echo $cliente[0]->getCpfCli();
-                                                                                    ?>">
+                            <input type="text" class="form-control" id="cpf" name="cpf" value="<?php
+                            echo $cliente[0]->getCpfCli();
+                            ?>">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="endereco">Genero</label>
-                            <select class="form-control" id="cmbGen">
-                                <option value="">Selecione</option>
+                            <select class="form-control" id="cmbGen" name="cmbGen">
+                                <option value="0">Selecione</option>
                                 <option value ='F'>Feminino</option>
                                 <option value ='M'>Masculino</option>
                             </select>
@@ -139,65 +141,73 @@ if ($endereco) {
                     <div class="col-sm-6 col-md-4">
                         <div class="form-group">
                             <label for="">Data de Nascimento</label>
-                            <input type="date" class="form-control" id="nascimento" value="<?php
-                                                                                            echo $cliente[0]->getNascCli();
-                                                                                            ?>">
+                            <input type="date" class="form-control" id="nascimento" name="nascimento" value="<?php
+                            echo $cliente[0]->getNascCli();
+                            ?>">
                         </div>
                     </div>
 
                     <div class="col-sm-6 col-md-4">
                         <div class="form-group">
                             <label for="">Telefone Fixo</label>
-                            <input type="text" class="form-control" id="telefone" value="<?php
-                                                                                        echo $cliente[0]->getTelResiCli();
-                                                                                        ?>">
+                            <input type="text" class="form-control" id="telefone" name="telefone" value="<?php
+                            echo $cliente[0]->getTelResiCli();
+                            ?>">
 
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-4">
                         <div class="form-group">
                             <label for="">Telefone Celular</label>
-                            <input type="text" class="form-control" id="celular" value="<?php
-                                                                                        echo $cliente[0]->getTelCelCli();
-                                                                                        ?>">
+                            <input type="text" class="form-control" id="celular" name="celular" value="<?php
+                            echo $cliente[0]->getTelCelCli();
+                            ?>">
                         </div>
                     </div>
 
                     <div class="col-sm-6 col-md-4">
                         <div class="form-group">
                             <label for="">Telefone Comercial</label>
-                            <input type="text" class="form-control" id="comercial" value="<?php
-                                                                                            echo $cliente[0]->getTelComCli();
-                                                                                            ?>">
+                            <input type="text" class="form-control" id="comercial" name="comercial" value="<?php
+                            echo $cliente[0]->getTelComCli();
+                            ?>">
                         </div>
                     </div>
 
                     <div class="col-sm-8">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="mail" class="form-control" id="email" value="<?php
-                                                                                        echo $cliente[0]->getEmailCli();
-                                                                                        ?>">
+                            <input type="email" class="form-control" id="email" name="email" value="<?php
+                            echo $cliente[0]->getEmailCli();
+                            ?>">
                         </div>
                     </div>
                     <div class="col-sm-12 text-center">
-                        <button type="submit" class="btn btn-primary" id="btnAlteraDadosCliente" name="btnAlteraDadosCliente"><i class="fa fa-save"></i> Salvar alterações</button>
+                        <button type="button" class="btn btn-primary" id="btnAlteraDadosCliente" name="btnAlteraDadosCliente"><i class="fa fa-save"></i> Salvar alterações</button>
 
+                    </div>
+
+                    <div class="col-sm-12 text-center">
+                        <label id="lblReturnCadCli"></label>
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
 
-            <hr>
-
+    <div class="col-md-9 offset-md-3">
+        <div class="card py-3 px-3 mb-4">
             <h3>Endereço</h3>
             <form id="formEndCli">
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="form-group">
+                            <input type="hidden" name="txtIdCliEnd" value="<?php echo $id;?>">
+                            <input type="hidden" name="txtIdEnd" value="<?php echo $idEndereco;?>">
                             <label for="">CEP</label>
-                            <input type="text" class="form-control" id="cep" onkeyup ="if (this.value.length == 10) fnCep(this.value)"maxlength="12" value="<?php
-                                                                                            echo $cep;
-                                                                                            ?>">
+                            <input type="text" class="form-control" id="cep" name="cep" onkeyup ="if (this.value.length == 10) fnCep(this.value)"maxlength="12" value="<?php
+                            echo $cep;
+                            ?>">
                         </div>
                     </div>
                 </div>
@@ -205,45 +215,43 @@ if ($endereco) {
                     <div class="col-sm-10">
                         <div class="form-group">
                             <label for="">Logradouro</label>
-                            <input type="text" class="form-control" id="txtEndereco" value="<?php
-                                                                                            echo $logradouro;
-                                                                                            ?>">
+                            <input type="text" class="form-control" id="txtEndereco" name="txtEndereco" value="<?php
+                            echo $logradouro;
+                            ?>">
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label for="">Numero</label>
-                            <input type="text" class="form-control" id="txtNumero" value="<?php
-                                                                                            echo $numero;
-                                                                                            ?>">
+                            <input type="text" class="form-control" id="txtNumero" name="txtNumero" value="<?php
+                            echo $numero;
+                            ?>">
                         </div>
                     </div>
                 </div>
                 <!-- /.row -->
-                <?php
-                
-                ?>
+
                 <div class="row">
                     <div class="col-sm-5">
                         <div class="form-group">
                             <label for="">Bairro</label>
-                            <input type="text" class="form-control" id="txtBairro" value="<?php
-                                                                                            echo $bairro;
-                                                                                            ?>">
+                            <input type="text" class="form-control" id="txtBairro" name="txtBairro" value="<?php
+                            echo $bairro;
+                            ?>">
                         </div>
                     </div>
                     <div class="col-sm-5">
                         <div class="form-group">
                             <label for="endereco">Cidade</label>
-                            <input type="text" class="form-control" id="txtCidade" value="<?php
-                                                                                            echo $cidade;
-                                                                                            ?>">
+                            <input type="text" class="form-control" id="txtCidade" name="txtCidade" value="<?php
+                            echo $cidade;
+                            ?>">
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label for="endereco">UF</label>
-                            <select class="form-control" id="cmbUf">
+                            <select class="form-control" id="cmbUf" name="cmbUf">
                                 <option value="">Selecione</option>
                                 <option value ='SP'>SP</option>
                                 <option value ='RJ'>RJ</option>
@@ -282,13 +290,13 @@ if ($endereco) {
                     <div class="col-sm-6 col-md-8">
                         <div class="form-group">
                             <label for="">Complemento</label>
-                            <input type="text" class="form-control" id="" value="<?php echo $complemento;?>">
+                            <input type="text" class="form-control" id="complemento" name="complemento" value="<?php echo $complemento;?>">
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-4">
                         <div class="form-group">
                             <label for="">Tipo de Endereço</label>
-                            <select class="form-control" id="tipoEnd">
+                            <select class="form-control" id="tipoEnd" name="tipoEnd">
                                 <option value="">Selecione</option>
                                 <option value ='casa'>Casa</option>
                                 <option value ='apartamento'>Apartamento</option>
@@ -303,9 +311,16 @@ if ($endereco) {
 
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <label id="lblReturnEndCli"></label>
+                    </div>
+                </div>
             </form>
-            <hr>
-
+        </div>
+    </div>
+    <div class="col-md-9 offset-md-3">
+        <div class="card py-3 px-3 mb-4">
             <h3 class = "text-center">Alterar senha</h3>
 
             <form id="formSenhaCli">
@@ -313,10 +328,11 @@ if ($endereco) {
                 <div class="row">
                     <div class="col-sm-6 offset-sm-3">
                         <div class="form-group">
+                            <input type="hidden" name="txtIdCliSenha" value="<?php echo $id;?>">
                             <label for="novaSenha">Nova Senha</label>
-                            <input type="password" class="form-control" id="novaSenha" value="<?php
-                                                                                                echo $cliente[0]->getSenhaCli();
-                                                                                                ?>">
+                            <input type="password" class="form-control" id="novaSenha" name="novaSenha" value="<?php
+                            echo $cliente[0]->getSenhaCli();
+                            ?>">
                         </div>
                     </div>
                 </div>
@@ -325,20 +341,24 @@ if ($endereco) {
                     <div class="col-sm-6 offset-sm-3">
                         <div class="form-group">
                             <label for="senhaNova">Confirme a Nova Senha</label>
-                            <input type="password" class="form-control" id="senhaNova" value="<?php
-                                                                                                echo $cliente[0]->getSenhaCli();
-                                                                                                ?>">
+                            <input type="password" class="form-control" id="senhaNova" name="senhaNova" value="<?php
+                            echo $cliente[0]->getSenhaCli();
+                            ?>">
                         </div>
                     </div>
                 </div>
                 <!-- /.row -->
 
                 <div class="col-sm-12 text-center">
-                    <button type="submit" class="btn btn-primary" id="btnAlteraSenhaCliente" name="btnAlteraSenhaCliente"><i class="fa fa-save"></i> Salvar senha</button>
+                    <button type="button" class="btn btn-primary" id="btnAlteraSenhaCliente" name="btnAlteraSenhaCliente"><i class="fa fa-save"></i> Salvar senha</button>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <label id="lblReturnSenhaCli"></label>
+                    </div>
                 </div>
             </form>
 
-            <hr>
 
         </div>
     </div>
@@ -349,10 +369,12 @@ if ($endereco) {
 <?php include "inferior.php";
 echo "<script>document.getElementById('cmbGen').value = '" . $cliente[0]->getGeneroCli() . "';</script>";
 echo "<script>document.getElementById('cmbUf').value = '" . $uf. "';
-        document.getElementById('tipoEnd').value = '" . $tipoEnd . "';
-    </script>";
+document.getElementById('tipoEnd').value = '" . $tipoEnd . "';
+</script>";
 
 
 ?>
 <script src="js/mask.js"></script>
 <script src="js/checkout1.js"></script>
+<script src="./js/ajaxPainelCliente.js"></script>
+
