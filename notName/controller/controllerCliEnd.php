@@ -18,7 +18,7 @@ $cliente->setTelResiCli($_REQUEST['telCli']);
 $cliente->setTelCelCli($_REQUEST['celCli']);
 $cliente->setEmailCli($_REQUEST['emailCli']);
 
-var_dump(ClienteDAL::atualizaCliente($cliente));
+ClienteDAL::atualizaCliente($cliente);
 
 $endereco = new Endereco();
 $endereco->setIdCli($_REQUEST['idCli']);

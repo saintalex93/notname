@@ -101,7 +101,7 @@ class ClienteDAL
                                    CLI_cGENERO = '$gen', CLI_nTRESIDENCIAL = '$telFix', CLI_nTCELULAR = '$telCel',
                                    CLI_nTCOMERCIAL = '$telCom', CLI_cEMAIL = '$email',
                                    CLI_cSTATUS = '$statusCli' WHERE CLI_nCOD = $id";
-        echo $sql;
+       
         return ClienteDAL::$connection->executarSQL($sql);
     }
 

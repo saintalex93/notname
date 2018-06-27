@@ -393,3 +393,5 @@ DELIMITER ;
 -- 
 
 select * from VENDA;
+
+SELECT * FROM ENDERECO WHERE CLI_nCOD = 1;
