@@ -88,7 +88,7 @@
 
                 <h4>Receba as novidades</h4>
 
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur temporibus quam numquam laborum est hic.</p>
+                <p class="text-muted">Cadastre seu e-mail para receber dicas e novidades!</p>
 
                 <form>
                     <div class="input-group">
@@ -110,11 +110,15 @@
                 <h4>Rede social</h4>
 
                 <p class="social">
-                    <a href="#" class="facebook external" data-animate-hover="shake"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="twitter external" data-animate-hover="shake"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="instagram external" data-animate-hover="shake"><i class="fab fa-instagram"></i></a>
+                    <a href="http://www.facebook.com/Not-Name-Company-200520313022950/?ref=br_rs" class="facebook external" data-animate-hover="shake"><i class="fab fa-facebook"></i></a>
+                    <a href="http://www.instagram.com/notname_company" class="instagram external" data-animate-hover="shake"><i class="fab fa-instagram"></i></a>
+                    
+<!--                    <a href="#" class="twitter external" data-animate-hover="shake"><i class="fab fa-twitter"></i></a>-->
+                    
+<!--
                     <a href="#" class="gplus external" data-animate-hover="shake"><i class="fab fa-google-plus"></i></a>
                     <a href="#" class="email external" data-animate-hover="shake"><i class="fas fa-envelope"></i></a>
+-->
                 </p>
 
 
