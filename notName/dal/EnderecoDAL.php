@@ -107,10 +107,11 @@ class EnderecoDAL extends Cliente
         $complemento = $end->getComplemento();
         $tipoEnd = $end->getTipo();
         $uf = $end->getUF();
+        $idCliente = $end->getIdCli();
         
         $sql = "UPDATE ENDERECO SET END_nCEP = '$cep', END_cLOGRADOURO = '$logradouro', END_cCIDADE = '$cidade', 
                                     END_cBAIRRO = '$bairro', END_nNUMERO = '$numero', END_cCOMPLEMENTO = '$complemento', 
-                                    END_cTIPO = '$tipoEnd', END_cUF = '$uf' WHERE END_nID = $idEnd ";
+                                    END_cTIPO = '$tipoEnd', END_cUF = '$uf', CLI_nCOD = '$idCliente'  WHERE END_nID = $idEnd ";
         return EnderecoDAL::$connection->executarSQL($sql);
     }
 

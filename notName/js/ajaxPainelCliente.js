@@ -40,7 +40,7 @@ else
 	setInterval(function(){
 		$("#lblReturnCadCli").css("display","none");
 		window.location.reload();
-	},5000);
+	},3000);
 }
 
 
@@ -50,17 +50,46 @@ $("#btnAlteraEndCliente").click(function(event){
 	if (validaForm("#formEndCli")){
 	// carregando();
 
-	var form = $('#formEndCli');
+	var form = $('#formEndCli').serialize();
 
 	$.ajax( {
 		type: "POST",
 		url: './controller/controllerPainelCli.php?action=alteraEndcli',
-		data: form.serialize(),
+		data: form,
 		success: function( response ) {
+			if(response == 'Alterado')
+			{
+				$("#lblReturnEndCli").text("Endereço alterado com sucesso");
+				$("#lblReturnEndCli").addClass("text-success");
+
+				setInterval(function(){
+					$("#lblReturnEndCli").css("display","none");
+					window.location.reload();
+				},3000);
+			}else
+			{
+				$("#lblReturnEndCli").text("Não foi possivel alterar o endereço");
+				$("#lblReturnEndCli").addClass("text-danger");
+
+				setInterval(function(){
+					$("#lblReturnEndCli").css("display","none");
+					window.location.reload();
+				},3000);
+			}
 
 					// parar();
 				}
 			} );
+}
+else
+{
+	$("#lblReturnEndCli").text("Preencha todos os campos");
+	$("#lblReturnEndCli").addClass("text-danger",);
+
+	setInterval(function(){
+		$("#lblReturnEndCli").css("display","none");
+		window.location.reload();
+	},3000);
 }
 
 

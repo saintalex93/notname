@@ -38,6 +38,30 @@ if($_REQUEST['action'] == 'alteraDadoscli'){
 }
 elseif ($_REQUEST['action'] == 'alteraEndcli') {
 
+    $cepDestino = $_POST['cep'];
+    $cepDestino = str_replace("-", "", $cepDestino);
+    $cepDestino = str_replace(".", "", $cepDestino);
+
+    $endereco = new Endereco();
+    
+
+    $endereco->setIdCli($_POST['txtIdCliEnd']);
+    $endereco->setId($_POST['txtIdEnd']);
+    $endereco->setCep($cepDestino);
+    $endereco->setLogradouro($_POST['txtEndereco']);
+    $endereco->setNumero($_POST['txtNumero']);
+    $endereco->setBairro($_POST['txtBairro']);
+    $endereco->setCidade($_POST['txtCidade']);
+    $endereco->setUF($_POST['cmbUf']);
+    $endereco->setComplemento($_POST['complemento']);
+    $endereco->setTipo($_POST['tipoEnd']);
+
+    if (EnderecoDAL::atualizaEndereco($endereco)) {
+        echo "Alterado";
+    } else {
+        echo "Não foi alterado";
+    }
+
 }
 elseif ($_REQUEST['action'] == 'alteraSenhacli') {
 

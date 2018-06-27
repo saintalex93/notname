@@ -11,6 +11,8 @@ $idCli->setIdCli($id);
 $cliente = ClienteDAL::buscaCliente($idCli);
 $endereco = EnderecoDAL::buscaEndereco($idEnd);
 
+$idEndereco = $endereco[0]->getId();
+
 if ($endereco) {
 
     $idEnd = $endereco[0]->getId();
@@ -200,8 +202,10 @@ if ($endereco) {
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="form-group">
+                            <input type="hidden" name="txtIdCliEnd" value="<?php echo $id;?>">
+                            <input type="hidden" name="txtIdEnd" value="<?php echo $idEndereco;?>">
                             <label for="">CEP</label>
-                            <input type="text" class="form-control" id="cep" onkeyup ="if (this.value.length == 10) fnCep(this.value)"maxlength="12" value="<?php
+                            <input type="text" class="form-control" id="cep" name="cep" onkeyup ="if (this.value.length == 10) fnCep(this.value)"maxlength="12" value="<?php
                             echo $cep;
                             ?>">
                         </div>
@@ -211,7 +215,7 @@ if ($endereco) {
                     <div class="col-sm-10">
                         <div class="form-group">
                             <label for="">Logradouro</label>
-                            <input type="text" class="form-control" id="txtEndereco" value="<?php
+                            <input type="text" class="form-control" id="txtEndereco" name="txtEndereco" value="<?php
                             echo $logradouro;
                             ?>">
                         </div>
@@ -219,21 +223,19 @@ if ($endereco) {
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label for="">Numero</label>
-                            <input type="text" class="form-control" id="txtNumero" value="<?php
+                            <input type="text" class="form-control" id="txtNumero" name="txtNumero" value="<?php
                             echo $numero;
                             ?>">
                         </div>
                     </div>
                 </div>
                 <!-- /.row -->
-                <?php
 
-                ?>
                 <div class="row">
                     <div class="col-sm-5">
                         <div class="form-group">
                             <label for="">Bairro</label>
-                            <input type="text" class="form-control" id="txtBairro" value="<?php
+                            <input type="text" class="form-control" id="txtBairro" name="txtBairro" value="<?php
                             echo $bairro;
                             ?>">
                         </div>
@@ -241,7 +243,7 @@ if ($endereco) {
                     <div class="col-sm-5">
                         <div class="form-group">
                             <label for="endereco">Cidade</label>
-                            <input type="text" class="form-control" id="txtCidade" value="<?php
+                            <input type="text" class="form-control" id="txtCidade" name="txtCidade" value="<?php
                             echo $cidade;
                             ?>">
                         </div>
@@ -249,7 +251,7 @@ if ($endereco) {
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label for="endereco">UF</label>
-                            <select class="form-control" id="cmbUf">
+                            <select class="form-control" id="cmbUf" name="cmbUf">
                                 <option value="">Selecione</option>
                                 <option value ='SP'>SP</option>
                                 <option value ='RJ'>RJ</option>
@@ -288,13 +290,13 @@ if ($endereco) {
                     <div class="col-sm-6 col-md-8">
                         <div class="form-group">
                             <label for="">Complemento</label>
-                            <input type="text" class="form-control" id="" value="<?php echo $complemento;?>">
+                            <input type="text" class="form-control" id="complemento" name="complemento" value="<?php echo $complemento;?>">
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-4">
                         <div class="form-group">
                             <label for="">Tipo de Endereço</label>
-                            <select class="form-control" id="tipoEnd">
+                            <select class="form-control" id="tipoEnd" name="tipoEnd">
                                 <option value="">Selecione</option>
                                 <option value ='casa'>Casa</option>
                                 <option value ='apartamento'>Apartamento</option>
