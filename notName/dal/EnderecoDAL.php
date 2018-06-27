@@ -111,7 +111,6 @@ class EnderecoDAL extends Cliente
         $sql = "UPDATE ENDERECO SET END_nCEP = '$cep', END_cLOGRADOURO = '$logradouro', END_cCIDADE = '$cidade', 
                                     END_cBAIRRO = '$bairro', END_nNUMERO = '$numero', END_cCOMPLEMENTO = '$complemento', 
                                     END_cTIPO = '$tipoEnd', END_cUF = '$uf' WHERE END_nID = $idEnd ";
-        echo $sql;
         return EnderecoDAL::$connection->executarSQL($sql);
     }
 

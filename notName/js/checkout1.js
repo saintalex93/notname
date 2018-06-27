@@ -29,77 +29,80 @@ function fnCep(cep) {
 
 $("#btnCliEnd").click(function (){
 
-    var formId = "#formCliEnd";
-    var result = true;
-
-    $(formId+" input[type=text]").each(function(){
-        if($(this).val() == ""){
-            $(this).css("border", "1px solid red");
-            $(this).focus();
-            result = false;
-        }
-        else{
-            $(this).css("border", "1px solid #ced4da");
-        }
-    });
-    $(formId +" input[type=date]").each(function () {
-        if ($(this).val() == "") {
-            $(this).css("border", "1px solid red");
-            $(this).focus();
-            result = false;
-        }
-        else{
-            $(this).css("border", "1px solid #ced4da");
-        }
-    });
-    $(formId +" input[type=tel]").each(function () {
-        if ($(this).val() == "") {
-            $(this).css("border", "1px solid red");
-            $(this).focus();
-            result = false;
-        }
-        else{
-            $(this).css("border", "1px solid #ced4da");
-        }
-    });
-    $(formId +" input[type=email]").each(function () {
-        if ($(this).val() == "") {
-            $(this).css("border", "1px solid red");
-            $(this).focus();
-            result = false;
-        }
-        else{
-            $(this).css("border", "1px solid #ced4da");
-        }
-    });
-    $(formId +" select").each(function () {
-        if ($(this).val() == "") {
-            $(this).css("border", "1px solid red");
-            $(this).focus();
-            result = false;
-        }
-        else{
-            $(this).css("border", "1px solid #ced4da");
-        }
-    });
-
-    if(result){
+    if (validaForm("#formCliEnd")){
 	carregando();
 
 			var form = $('#formCliEnd');
 
 			$.ajax( {
 				type: "POST",
-				url: './controller/controllerCliEnd.php?',
+				url: './controller/controllerCliEnd.php',
 				data: form.serialize(),
 				success: function( response ) {
-                    // console.log(response);
+                    console.log(response);
                     location.href='checkout2.php';
 					// parar();
 				}
 			} );
     }
 		
-
-
 });
+
+
+function validaForm(idForm){
+    var formId = idForm;
+    var result = true;
+
+    $(formId + " input[type=text]").each(function () {
+        if ($(this).val() == "") {
+            $(this).css("border", "1px solid red");
+            $(this).focus();
+            result = false;
+        }
+        else {
+            $(this).css("border", "1px solid #ced4da");
+        }
+    });
+    $(formId + " input[type=date]").each(function () {
+        if ($(this).val() == "") {
+            $(this).css("border", "1px solid red");
+            $(this).focus();
+            result = false;
+        }
+        else {
+            $(this).css("border", "1px solid #ced4da");
+        }
+    });
+    $(formId + " input[type=tel]").each(function () {
+        if ($(this).val() == "") {
+            $(this).css("border", "1px solid red");
+            $(this).focus();
+            result = false;
+        }
+        else {
+            $(this).css("border", "1px solid #ced4da");
+        }
+    });
+    $(formId + " input[type=email]").each(function () {
+        if ($(this).val() == "") {
+            $(this).css("border", "1px solid red");
+            $(this).focus();
+            result = false;
+        }
+        else {
+            $(this).css("border", "1px solid #ced4da");
+        }
+    });
+    $(formId + " select").each(function () {
+        if ($(this).val() == "") {
+            $(this).css("border", "1px solid red");
+            $(this).focus();
+            result = false;
+        }
+        else {
+            $(this).css("border", "1px solid #ced4da");
+        }
+    });
+
+    return result;
+}

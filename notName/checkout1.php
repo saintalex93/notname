@@ -287,6 +287,8 @@ if (isset($_SESSION['USERCOM']['ID'])) {
 
 <?php
 $genero = $cli[0]->getGeneroCli();
+
+
 echo "<script>
 $('#generoCli').val('$genero');
 $('#cmbUf').val('$uf');

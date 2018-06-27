@@ -102,6 +102,7 @@ $pac = calculaFrete(
     0
 );
 
+
 if ($pac) {
     $pacValor = $pac['valor'];
     $pacValor = str_replace(".", "", $pacValor);
@@ -149,6 +150,19 @@ if ($sedex10) {
     $prazoSedex10 = "Indisponível";
 
 }
+
+
+// echo "Peso: " . $peso;
+// echo "<br>";
+// echo "Largura: " . $largura;
+// echo "<br>";
+// echo "Comprimento: " . $comprimento;
+// echo "<br>";
+// echo "Altura: " . $altura;
+// echo "<br>";
+// echo "Cep Origem: " . $cepOrigem;
+// echo "<br>";
+// echo "Cep Destino: " . $cepDestino;
 
 
 ?>
