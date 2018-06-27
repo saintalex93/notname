@@ -1,4 +1,4 @@
-<?php include "superior.php"; 
+<?php include "superior.php";
 require_once "./dal/ClienteDAL.php";
 require_once "./dal/EnderecoDAL.php";
 
@@ -10,7 +10,6 @@ $idCli->setIdCli($id);
 
 $cliente = ClienteDAL::buscaCliente($idCli);
 $endereco = EnderecoDAL::buscaEndereco($idEnd);
-
 
 if ($endereco) {
 
@@ -96,7 +95,7 @@ if ($endereco) {
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="">Nome</label>
-                            <input type="text" class="form-control" id="" maxlength="70" value="<?php
+                            <input type="text" class="form-control" id="txtNomeCli" maxlength="70" value="<?php
                             echo $cliente[0]->getNomeCli();
                             ?>">
                         </div>
@@ -109,17 +108,17 @@ if ($endereco) {
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="">RG</label>
-                            <input type="text" class="form-control" id="" maxlength="15" value="<?php
-                                                                                                echo $cliente[0]->getRgCli();
-                                                                                                ?>">
+                            <input type="text" class="form-control" id="txtRgCli" maxlength="15" value="<?php
+                            echo $cliente[0]->getRgCli();
+                            ?>">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="endereco">CPF</label>
                             <input type="text" class="form-control" id="cpf" value="<?php
-                                                                                    echo $cliente[0]->getCpfCli();
-                                                                                    ?>">
+                            echo $cliente[0]->getCpfCli();
+                            ?>">
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -140,8 +139,8 @@ if ($endereco) {
                         <div class="form-group">
                             <label for="">Data de Nascimento</label>
                             <input type="date" class="form-control" id="nascimento" value="<?php
-                                                                                            echo $cliente[0]->getNascCli();
-                                                                                            ?>">
+                            echo $cliente[0]->getNascCli();
+                            ?>">
                         </div>
                     </div>
 
@@ -149,8 +148,8 @@ if ($endereco) {
                         <div class="form-group">
                             <label for="">Telefone Fixo</label>
                             <input type="text" class="form-control" id="telefone" value="<?php
-                                                                                        echo $cliente[0]->getTelResiCli();
-                                                                                        ?>">
+                            echo $cliente[0]->getTelResiCli();
+                            ?>">
 
                         </div>
                     </div>
@@ -158,8 +157,8 @@ if ($endereco) {
                         <div class="form-group">
                             <label for="">Telefone Celular</label>
                             <input type="text" class="form-control" id="celular" value="<?php
-                                                                                        echo $cliente[0]->getTelCelCli();
-                                                                                        ?>">
+                            echo $cliente[0]->getTelCelCli();
+                            ?>">
                         </div>
                     </div>
 
@@ -167,8 +166,8 @@ if ($endereco) {
                         <div class="form-group">
                             <label for="">Telefone Comercial</label>
                             <input type="text" class="form-control" id="comercial" value="<?php
-                                                                                            echo $cliente[0]->getTelComCli();
-                                                                                            ?>">
+                            echo $cliente[0]->getTelComCli();
+                            ?>">
                         </div>
                     </div>
 
@@ -176,8 +175,8 @@ if ($endereco) {
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="mail" class="form-control" id="email" value="<?php
-                                                                                        echo $cliente[0]->getEmailCli();
-                                                                                        ?>">
+                            echo $cliente[0]->getEmailCli();
+                            ?>">
                         </div>
                     </div>
                     <div class="col-sm-12 text-center">
@@ -186,9 +185,11 @@ if ($endereco) {
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
 
-            <hr>
-
+    <div class="col-md-9 offset-md-3">
+        <div class="card py-3 px-3 mb-4">
             <h3>Endereço</h3>
             <form id="formEndCli">
                 <div class="row">
@@ -196,8 +197,8 @@ if ($endereco) {
                         <div class="form-group">
                             <label for="">CEP</label>
                             <input type="text" class="form-control" id="cep" onkeyup ="if (this.value.length == 10) fnCep(this.value)"maxlength="12" value="<?php
-                                                                                            echo $cep;
-                                                                                            ?>">
+                            echo $cep;
+                            ?>">
                         </div>
                     </div>
                 </div>
@@ -206,38 +207,38 @@ if ($endereco) {
                         <div class="form-group">
                             <label for="">Logradouro</label>
                             <input type="text" class="form-control" id="txtEndereco" value="<?php
-                                                                                            echo $logradouro;
-                                                                                            ?>">
+                            echo $logradouro;
+                            ?>">
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label for="">Numero</label>
                             <input type="text" class="form-control" id="txtNumero" value="<?php
-                                                                                            echo $numero;
-                                                                                            ?>">
+                            echo $numero;
+                            ?>">
                         </div>
                     </div>
                 </div>
                 <!-- /.row -->
                 <?php
-                
+
                 ?>
                 <div class="row">
                     <div class="col-sm-5">
                         <div class="form-group">
                             <label for="">Bairro</label>
                             <input type="text" class="form-control" id="txtBairro" value="<?php
-                                                                                            echo $bairro;
-                                                                                            ?>">
+                            echo $bairro;
+                            ?>">
                         </div>
                     </div>
                     <div class="col-sm-5">
                         <div class="form-group">
                             <label for="endereco">Cidade</label>
                             <input type="text" class="form-control" id="txtCidade" value="<?php
-                                                                                            echo $cidade;
-                                                                                            ?>">
+                            echo $cidade;
+                            ?>">
                         </div>
                     </div>
                     <div class="col-sm-2">
@@ -304,8 +305,10 @@ if ($endereco) {
                     </div>
                 </div>
             </form>
-            <hr>
-
+        </div>
+    </div>
+    <div class="col-md-9 offset-md-3">
+        <div class="card py-3 px-3 mb-4">
             <h3 class = "text-center">Alterar senha</h3>
 
             <form id="formSenhaCli">
@@ -315,8 +318,8 @@ if ($endereco) {
                         <div class="form-group">
                             <label for="novaSenha">Nova Senha</label>
                             <input type="password" class="form-control" id="novaSenha" value="<?php
-                                                                                                echo $cliente[0]->getSenhaCli();
-                                                                                                ?>">
+                            echo $cliente[0]->getSenhaCli();
+                            ?>">
                         </div>
                     </div>
                 </div>
@@ -326,8 +329,8 @@ if ($endereco) {
                         <div class="form-group">
                             <label for="senhaNova">Confirme a Nova Senha</label>
                             <input type="password" class="form-control" id="senhaNova" value="<?php
-                                                                                                echo $cliente[0]->getSenhaCli();
-                                                                                                ?>">
+                            echo $cliente[0]->getSenhaCli();
+                            ?>">
                         </div>
                     </div>
                 </div>
@@ -349,10 +352,12 @@ if ($endereco) {
 <?php include "inferior.php";
 echo "<script>document.getElementById('cmbGen').value = '" . $cliente[0]->getGeneroCli() . "';</script>";
 echo "<script>document.getElementById('cmbUf').value = '" . $uf. "';
-        document.getElementById('tipoEnd').value = '" . $tipoEnd . "';
-    </script>";
+document.getElementById('tipoEnd').value = '" . $tipoEnd . "';
+</script>";
 
 
 ?>
 <script src="js/mask.js"></script>
 <script src="js/checkout1.js"></script>
+<script src="./js/ajaxPainelCliente.js"></script>
+
