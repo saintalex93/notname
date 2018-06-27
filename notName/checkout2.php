@@ -30,6 +30,10 @@ $cepDestino = str_replace(".", "", $cepDestino);
 $quantidadeCamisetas = count($ven);
 $peso = $quantidadeCamisetas * 0.300;
 
+$largura = '0';
+$comprimento = '0';
+$altura = '0';
+
 if ($quantidadeCamisetas < 4) {
     $largura = '35,3';
     $comprimento = '18,5';
@@ -50,7 +54,7 @@ if ($quantidadeCamisetas < 4) {
     $valor = 4.60;
     // echo "caixa 1";
 
-} elseif ($quantidadeCamisetas > 9) {
+} elseif ($quantidadeCamisetas >= 9) {
     $largura = '27';
     $comprimento = '18';
     $altura = '9';
