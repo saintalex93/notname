@@ -1,16 +1,16 @@
 <?php include "superior.php"; 
 require_once "./dal/ClienteDAL.php";
+require_once "./dal/EnderecoDAL.php";
 
-$idCli = new Cliente();
 $idEnd = new Endereco();
+$idCli = new Cliente();
 
 $idEnd->setIdCli($id);
-
 $idCli->setIdCli($id);
 
 $cliente = ClienteDAL::buscaCliente($idCli);
-
 $endereco = EnderecoDAL::buscaEndereco($idEnd);
+
 ?>
 
 
@@ -168,7 +168,9 @@ $endereco = EnderecoDAL::buscaEndereco($idEnd);
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="">CEP</label>
-                            <input type="text" class="form-control" id="cep" onkeyup ="if (this.value.length == 10) fnCep(this.value)"maxlength="12">
+                            <input type="text" class="form-control" id="cep" onkeyup ="if (this.value.length == 10) fnCep(this.value)"maxlength="12" value="<?php
+                                                                                            echo $endereco[0]->getCep();
+                                                                                            ?>">
                         </div>
                     </div>
                 </div>
@@ -176,13 +178,17 @@ $endereco = EnderecoDAL::buscaEndereco($idEnd);
                     <div class="col-sm-10">
                         <div class="form-group">
                             <label for="">Logradouro</label>
-                            <input type="text" class="form-control" id="txtEndereco">
+                            <input type="text" class="form-control" id="txtEndereco" value="<?php
+                                                                                            echo $endereco[0]->getLogradouro();
+                                                                                            ?>">
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label for="">Numero</label>
-                            <input type="text" class="form-control" id="txtNumero">
+                            <input type="text" class="form-control" id="txtNumero" value="<?php
+                                                                                            echo $endereco[0]->getNumero();
+                                                                                            ?>">
                         </div>
                     </div>
                 </div>
@@ -194,13 +200,17 @@ $endereco = EnderecoDAL::buscaEndereco($idEnd);
                     <div class="col-sm-5">
                         <div class="form-group">
                             <label for="">Bairro</label>
-                            <input type="text" class="form-control" id="txtBairro">
+                            <input type="text" class="form-control" id="txtBairro" value="<?php
+                                                                                            echo $endereco[0]->getBairro();
+                                                                                            ?>">
                         </div>
                     </div>
                     <div class="col-sm-5">
                         <div class="form-group">
                             <label for="endereco">Cidade</label>
-                            <input type="text" class="form-control" id="txtCidade">
+                            <input type="text" class="form-control" id="txtCidade" value="<?php
+                                                                                            echo $endereco[0]->getCidade();
+                                                                                            ?>">
                         </div>
                     </div>
                     <div class="col-sm-2">
@@ -245,17 +255,19 @@ $endereco = EnderecoDAL::buscaEndereco($idEnd);
                     <div class="col-sm-6 col-md-8">
                         <div class="form-group">
                             <label for="">Complemento</label>
-                            <input type="text" class="form-control" id="">
+                            <input type="text" class="form-control" id="" value="<?php
+                                                                                            echo $endereco[0]->getComplemento();
+                                                                                            ?>">
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-4">
                         <div class="form-group">
                             <label for="">Tipo de Endereço</label>
-                            <select class="form-control" id="">
+                            <select class="form-control" id="tipoEnd">
                                 <option value="">Selecione</option>
-                                <option value ='RD'>Residencial</option>
-                                <option value ='CM'>Comercial</option>
-                                <option value ='OT'>Outros</option>
+                                <option value ='casa'>Casa</option>
+                                <option value ='apartamento'>Apartamento</option>
+                                <option value ='sobrado'>Sobrado</option>
                             </select>
                         </div>
                     </div>
@@ -311,6 +323,10 @@ $endereco = EnderecoDAL::buscaEndereco($idEnd);
 
 <?php include "inferior.php";
 echo "<script>document.getElementById('cmbGen').value = '" . $cliente[0]->getGeneroCli() . "';</script>";
+echo "<script>document.getElementById('cmbUf').value = '" . $endereco[0]->getUF() . "';
+        document.getElementById('tipoEnd').value = '" . $endereco[0]->getTipo() . "';
+    </script>";
+
 
 ?>
 <script src="js/mask.js"></script>
