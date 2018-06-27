@@ -94,6 +94,7 @@ if ($endereco) {
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
+                            <input type="hidden" name="txtIdCli" value="<?php echo $id;?>">
                             <label for="">Nome</label>
                             <input type="text" class="form-control" id="txtNomeCli" name="txtNomeCli" maxlength="70" value="<?php
                             echo $cliente[0]->getNomeCli();
@@ -124,8 +125,8 @@ if ($endereco) {
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="endereco">Genero</label>
-                            <select class="form-control" id="cmbGen">
-                                <option value="">Selecione</option>
+                            <select class="form-control" id="cmbGen" name="cmbGen">
+                                <option value="0">Selecione</option>
                                 <option value ='F'>Feminino</option>
                                 <option value ='M'>Masculino</option>
                             </select>
@@ -174,7 +175,7 @@ if ($endereco) {
                     <div class="col-sm-8">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="mail" class="form-control" id="email" name="email" value="<?php
+                            <input type="email" class="form-control" id="email" name="email" value="<?php
                             echo $cliente[0]->getEmailCli();
                             ?>">
                         </div>
@@ -182,6 +183,10 @@ if ($endereco) {
                     <div class="col-sm-12 text-center">
                         <button type="button" class="btn btn-primary" id="btnAlteraDadosCliente" name="btnAlteraDadosCliente"><i class="fa fa-save"></i> Salvar alterações</button>
 
+                    </div>
+
+                    <div class="col-sm-12 text-center">
+                        <label id="lblReturnCadCli"></label>
                     </div>
                 </div>
             </form>
@@ -304,6 +309,11 @@ if ($endereco) {
 
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <label id="lblReturnEndCli"></label>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
@@ -316,6 +326,7 @@ if ($endereco) {
                 <div class="row">
                     <div class="col-sm-6 offset-sm-3">
                         <div class="form-group">
+                            <input type="hidden" name="txtIdCliSenha" value="<?php echo $id;?>">
                             <label for="novaSenha">Nova Senha</label>
                             <input type="password" class="form-control" id="novaSenha" name="novaSenha" value="<?php
                             echo $cliente[0]->getSenhaCli();
@@ -339,9 +350,13 @@ if ($endereco) {
                 <div class="col-sm-12 text-center">
                     <button type="button" class="btn btn-primary" id="btnAlteraSenhaCliente" name="btnAlteraSenhaCliente"><i class="fa fa-save"></i> Salvar senha</button>
                 </div>
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <label id="lblReturnSenhaCli"></label>
+                    </div>
+                </div>
             </form>
 
-            <hr>
 
         </div>
     </div>

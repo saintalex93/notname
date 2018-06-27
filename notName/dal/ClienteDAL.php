@@ -99,9 +99,21 @@ class ClienteDAL
 
         $sql = "UPDATE CLIENTE SET CLI_cNOME = '$nome', CLI_cRG = '$rg', CLI_cCPF = '$cpf', CLI_dDTNASC = '$nasc', 
                                    CLI_cGENERO = '$gen', CLI_nTRESIDENCIAL = '$telFix', CLI_nTCELULAR = '$telCel',
-                                   CLI_nTCOMERCIAL = '$telCom', CLI_cEMAIL = '$email',
-                                   CLI_cSTATUS = '$statusCli' WHERE CLI_nCOD = $id";
+                                   CLI_nTCOMERCIAL = '$telCom', CLI_cEMAIL = '$email'
+                                   WHERE CLI_nCOD = $id";
        
+        return ClienteDAL::$connection->executarSQL($sql);
+    }
+
+    public static function atualizaSenha(Cliente $cliente) : string
+    {
+        ClienteDAL::connect();
+
+        $id = $cliente->getIdCli();
+        $senha = $cliente->getSenhaCli();
+
+        $sql = "UPDATE CLIENTE SET CLI_cSENHA = '$senha' WHERE CLI_nCOD = $id";
+
         return ClienteDAL::$connection->executarSQL($sql);
     }
 
