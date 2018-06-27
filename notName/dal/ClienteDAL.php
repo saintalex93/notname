@@ -40,9 +40,11 @@ class ClienteDAL
         return ClienteDAL::$connection->executarSQL($sql);
     }
 
-    public static function buscaCliente(): array
+    public static function buscaCliente(Cliente $cliente): array
     {
-        $sql = "";
+        $id = $cliente->getIdCli();
+
+        $sql = "SELECT * FROM CLIENTE WHERE CLI_nCOD = $id";
         
         ClienteDAL::connect();
         
@@ -57,9 +59,9 @@ class ClienteDAL
             // Instancia a classe cliente.
             $resultCli = new Cliente();
             // Seta os valores do resultado.
-            $resultCli->setIdCli($resultado['CLI_nID']);
+            $resultCli->setIdCli($resultado['CLI_nCOD']);
             $resultCli->setNomeCli($resultado['CLI_cNOME']);
-            $resultCli->setCpfCli($resultado['CLI_nCPF']);
+            $resultCli->setCpfCli($resultado['CLI_cCPF']);
             $resultCli->setRgCli($resultado['CLI_cRG']);
             $resultCli->setNascCli($resultado['CLI_dDTNASC']);
             $resultCli->setGeneroCli($resultado['CLI_cGENERO']);
@@ -83,9 +85,35 @@ class ClienteDAL
         ClienteDAL::connect();
         
         $id = $cliente->getIdCli();
-        
-        $sql = "";
-        
+        $nome = $cliente->getNomeCli();
+        $rg = $cliente->getRgCli();
+        $cpf = $cliente->getCpfCli();
+        $nasc = $cliente->getNascCli();
+        $gen = $cliente->getGeneroCli();
+        $telFix = $cliente->getTelResiCli();
+        $telCel = $cliente->getTelCelCli();
+        $telCom = $cliente->getTelComCli();
+        $email = $cliente->getEmailCli();
+        $senha = $cliente->getSenhaCli();
+        $statusCli = $cliente->getStatusCli();
+
+        $sql = "UPDATE CLIENTE SET CLI_cNOME = '$nome', CLI_cRG = '$rg', CLI_cCPF = '$cpf', CLI_dDTNASC = '$nasc', 
+                                   CLI_cGENERO = '$gen', CLI_nTRESIDENCIAL = '$telFix', CLI_nTCELULAR = '$telCel',
+                                   CLI_nTCOMERCIAL = '$telCom', CLI_cEMAIL = '$email'
+                                   WHERE CLI_nCOD = $id";
+       
+        return ClienteDAL::$connection->executarSQL($sql);
+    }
+
+    public static function atualizaSenha(Cliente $cliente) : string
+    {
+        ClienteDAL::connect();
+
+        $id = $cliente->getIdCli();
+        $senha = $cliente->getSenhaCli();
+
+        $sql = "UPDATE CLIENTE SET CLI_cSENHA = '$senha' WHERE CLI_nCOD = $id";
+
         return ClienteDAL::$connection->executarSQL($sql);
     }
 

@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once __DIR__ . '/../dal/ClienteDAL.php';
 require_once __DIR__ . '/../dal/VendaDAL.php';
 require_once __DIR__ . '/../model/Venda.php';
@@ -31,7 +33,6 @@ if (isset($_POST['insereCli'])) {
     echo "Logado";
    
     
-    session_start();
     
     $_SESSION['USERCOM']['ID'] = $login[0]->getIdCli();
     $_SESSION['USERCOM']['NOME'] = $login[0]->getNomeCli();

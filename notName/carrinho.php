@@ -19,6 +19,13 @@ if (isset($_SESSION['USERCOM']['ID'])) {
         ";
     }
 }
+else{
+    echo "
+            <script>
+                window.location.href = 'index.php';
+            </script>
+        ";
+}
 
 ?>
 

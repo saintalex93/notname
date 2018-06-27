@@ -19,9 +19,9 @@ class Endereco
 
     private $tipo;
 
-    private $ufId;
-
     private $uf;
+
+    private $idCli;
 
     public function getId()
     {
@@ -63,14 +63,6 @@ class Endereco
         return $this->tipo;
     }
 
-    public function getUF()
-    {
-        return $this->uf;
-    }
-    public function getIdUF(){
-        return $this->ufId;
-    }
-
     public function setId($id)
     {
         $this->id = $id;
@@ -103,13 +95,27 @@ class Endereco
     {
         $this->tipo = $tipo;
     }
-    public function setUFid($ufid)
-    {
-        $this->ufId = $ufid;
-    }
+   
     public function setUF($uf)
     {
         $this->uf = $uf;
     }
+
+        public function getUF()
+    {
+        return $this->uf;
+    }
     
+    public function getIdCli()
+    {
+        return $this->idCli;
+    }
+
+
+    public function setIdCli($idCli)
+    {
+        $this->idCli = $idCli;
+
+        return $this;
+    }
 }

@@ -1,7 +1,4 @@
-
-
-<?php
-include_once 'header.php';
+<?php include_once 'header.php';
 
 require_once '../dal/CategoriaDAL.php';
 require_once '../dal/ProdutoDAL.php';
