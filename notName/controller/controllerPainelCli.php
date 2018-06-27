@@ -38,7 +38,6 @@ if($_REQUEST['action'] == 'alteraDadoscli'){
 }
 elseif ($_REQUEST['action'] == 'alteraEndcli') {
 
-
 }
 elseif ($_REQUEST['action'] == 'alteraSenhacli') {
 
