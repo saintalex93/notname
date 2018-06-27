@@ -2,12 +2,15 @@
 require_once "./dal/ClienteDAL.php";
 
 $idCli = new Cliente();
+$idEnd = new Endereco();
+
+$idEnd->setIdCli($id);
 
 $idCli->setIdCli($id);
 
 $cliente = ClienteDAL::buscaCliente($idCli);
 
-
+$endereco = EnderecoDAL::buscaEndereco($idEnd);
 ?>
 
 
@@ -109,7 +112,7 @@ $cliente = ClienteDAL::buscaCliente($idCli);
                     <div class="col-sm-6 col-md-4">
                         <div class="form-group">
                             <label for="">Data de Nascimento</label>
-                            <input type="text" class="form-control" id="nascimento" value="<?php
+                            <input type="date" class="form-control" id="nascimento" value="<?php
                                                                                             echo $cliente[0]->getNascCli();
                                                                                             ?>">
                         </div>
