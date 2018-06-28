@@ -87,7 +87,7 @@ VALUES ('$nomeMod', $vlrVendaMod, '$statusMod', $descontoMod, $qtdeEstMod, $corM
         ModeloDAL::connect();
         
         if(!$idModelo){
-            $sql = "SELECT * from MODELO";
+            $sql = "SELECT * from MODELO WHERE MODELO_nSTATUS LIKE 'Ativo'";
 
         }
 
