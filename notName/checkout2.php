@@ -170,7 +170,7 @@ if ($sedex10) {
 <div id="content">
     <div class="container mb-4">
         <div class="row">
-         <div class="col-md-12 my-3">
+           <div class="col-md-12 my-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -184,16 +184,16 @@ if ($sedex10) {
 
             <div class="card btnCheckout container">
                 <h1 class="mx-3 my-3">Método de entrega</h1>
-                    <div class="container mb-2">
-                        <ul class="nav nav-pills ">
-                            <li class="disabled text-center ml-auto"><a href="#"><i class="fas fa-map-marker"></i><br>Endereço</a>
-                            </li>
-                            <li class="active checkout1 text-center"><a href="#"><i class="fas fa-truck"></i><br>Método de Entrega</a>
-                            </li>
-                            <li class="disabled checkout1 text-center mr-auto"><a href="#"style="cursor:no-drop;"><i class="far fa-money-bill-alt"></i><br>Método de pagamento</a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="container mb-2">
+                    <ul class="nav nav-pills ">
+                        <li class="disabled text-center ml-auto"><a href="#"><i class="fas fa-map-marker"></i><br>Endereço</a>
+                        </li>
+                        <li class="active checkout1 text-center"><a href="#"><i class="fas fa-truck"></i><br>Método de Entrega</a>
+                        </li>
+                        <li class="disabled checkout1 text-center mr-auto"><a href="#"style="cursor:no-drop;"><i class="far fa-money-bill-alt"></i><br>Método de pagamento</a>
+                        </li>
+                    </ul>
+                </div>
 
 
                 <div class="content">
@@ -252,15 +252,21 @@ if ($sedex10) {
                 </div>
                 <!-- /.content -->
 
+
                 <div class="card-footer">
-                    <div class="pull-left">
-                        <a href="checkout1.php" class="btn btn-default"><i class="fas fa-chevron-left"></i>Voltar para Endereços</a>
-                    </div>
-                    <div class="pull-right">
-                        <button type="button" id="btnEntrega" class="btn btn-primary">Continuar para o método de pagamento<i class="fas fa-chevron-right"></i>
+                    <div class="row">
+                        
+                        <div class="col-12 col-md-6  text-left p-0">
+                            <a href="checkout1.php" class="btn btn-default"><i class="fas fa-chevron-left"></i>Voltar para Endereços</a>
+                        </div>
+                        <div class="col-12 col-md-6  text-right p-0">
+                            <button type="button" id="btnEntrega" class="btn btn-primary">Continuar para o método de pagamento<i class="fas fa-chevron-right"></i>
                         </button>
+                        </div>
                     </div>
+
                 </div>
+                
             </div>
             <!-- /.box -->
             <form id="formEntrega">

@@ -77,7 +77,7 @@ if (isset($_SESSION['USERCOM']['ID'])) {
                         </li>
                     </ul>
                 </div>
-                
+
                 <form action=""  id = "formCliEnd">
                     <input type="hidden" name="idCli" value="<?php echo $cli[0]->getIdCli(); ?>">
                     <input type="hidden" name="idEnd" value="<?php echo $idEnd; ?>">
@@ -258,13 +258,17 @@ if (isset($_SESSION['USERCOM']['ID'])) {
 
 
         <div class="card-footer">
-            <div class="pull-left">
+            <div class="row">
+                
+            <div class="col-12 col-md-6  text-left p-0">
                 <a href="carrinho.php" class="btn btn-default"><i class="fa fa-chevron-left"></i>Voltar ao carrinho</a>
             </div>
-            <div class="pull-right">
+            <div class="col-12 col-md-6  text-right p-0">
                 <button type="button" class="btn btn-primary" id="btnCliEnd">Continuar para o método de entrega<i class="fa fa-chevron-right"></i>
                 </button>
             </div>
+            </div>
+
         </div>
     </div>
 

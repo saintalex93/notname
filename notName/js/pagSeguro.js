@@ -1,7 +1,6 @@
 var Root = "http://"+document.location.hostname+"/";
 
-var valor = 500.00;
-
+var valor = $("#valorVenda").val();
 // iniciar Sessao de pagamento
 function iniciarSessao()
 {
@@ -30,18 +29,18 @@ function listaMeioPagamentos()
 
       // ----------------------------------------------------------------------------------------------
       // Mostrar Apenas as opções Disponíveis.
-      $(".cartaoCredito").append("<img src = https://stc.pagseguro.uol.com.br/"+
-        cart.AMEX.images.MEDIUM.path+">");
-      $(".cartaoCredito").append("<img src = https://stc.pagseguro.uol.com.br/"+
-        cart.MASTERCARD.images.MEDIUM.path+">");
-      $(".cartaoCredito").append("<img src = https://stc.pagseguro.uol.com.br/"+
-        cart.VISA.images.MEDIUM.path+">");
-      $(".cartaoCredito").append("<img src = https://stc.pagseguro.uol.com.br/"+
-        cart.DINERS.images.MEDIUM.path+">");
-      $(".cartaoCredito").append("<img src = https://stc.pagseguro.uol.com.br/"+
-        cart.HIPERCARD.images.MEDIUM.path+">");
-      $(".cartaoCredito").append("<img src = https://stc.pagseguro.uol.com.br/"+
-        cart.SOROCRED.images.MEDIUM.path+">");
+      // $(".cartaoCredito").append("<img src = https://stc.pagseguro.uol.com.br/"+
+      //   cart.AMEX.images.MEDIUM.path+">");
+      // $(".cartaoCredito").append("<img src = https://stc.pagseguro.uol.com.br/"+
+      //   cart.MASTERCARD.images.MEDIUM.path+">");
+      // $(".cartaoCredito").append("<img src = https://stc.pagseguro.uol.com.br/"+
+      //   cart.VISA.images.MEDIUM.path+">");
+      // $(".cartaoCredito").append("<img src = https://stc.pagseguro.uol.com.br/"+
+      //   cart.DINERS.images.MEDIUM.path+">");
+      // $(".cartaoCredito").append("<img src = https://stc.pagseguro.uol.com.br/"+
+      //   cart.HIPERCARD.images.MEDIUM.path+">");
+      // $(".cartaoCredito").append("<img src = https://stc.pagseguro.uol.com.br/"+
+      //   cart.SOROCRED.images.MEDIUM.path+">");
       // ----------------------------------------------------------------------------------------------
       // $.each(response.paymentMethods.CREDIT_CARD.options,function(i,obj){
       //   $(".cartaoCredito").append("<div><img src = https://stc.pagseguro.uol.com.br/"+obj.images.SMALL.path+">"+obj.name+"</div>");
@@ -75,7 +74,7 @@ $('#numeroCartao').on('keyup',function()
       success: function(response) {
         // console.log(response);
         var bandeiraImg = response.brand.name;
-        $("#bandeiraCartao").html("<img src = https://stc.pagseguro.uol.com.br//public/img/payment-methods-flags/42x20/"+bandeiraImg+".png>")
+        $("#bandeiraCartao").html("<img class = 'img-responsive text-center' src = https://stc.pagseguro.uol.com.br//public/img/payment-methods-flags/68x30/"+bandeiraImg+".png>")
         getParcelas(bandeiraImg);
       },
       error: function(response) {
@@ -91,20 +90,32 @@ $('#numeroCartao').on('keyup',function()
 
 function getParcelas(bandeira)
 {
+  var numeroParcelasSemJuros = 2;
  PagSeguroDirectPayment.getInstallments({
   amount: valor,
-  maxInstallmentNoInterest: 2,
+  maxInstallmentNoInterest: numeroParcelasSemJuros,
   brand: bandeira,
   success: function(response)
   {
+
+  var cont = 0;
+
     $.each(response.installments,function(i,object){
       $.each(object,function(i2,object2){
+        cont++;
         // console.log(object2.quantity);
         var numberValue = object2.installmentAmount;
         var valor = "R$ "+numberValue.toFixed(2).replace(".",",");
         var valorParcelas = numberValue.toFixed(2);
-        $("#quantidadeParcelas").show().append("<option value = "+object2.quantity+" id="+valorParcelas+">"+
+        if(cont <= numeroParcelasSemJuros){
+           $("#quantidadeParcelas").show().append("<option class = 'text-success p-1' value = "+object2.quantity+" id="+valorParcelas+">"+
+          object2.quantity+" parcelas de "+valor+" (S/J)</option>");
+        }
+        else{
+           $("#quantidadeParcelas").show().append("<option value = "+object2.quantity+" id="+valorParcelas+">"+
           object2.quantity+" parcelas de "+valor+"</option>");
+        }
+       
       });
     });
 

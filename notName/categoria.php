@@ -26,12 +26,12 @@ $modelo = ModeloDAL::buscaModelo();
             <?php include "menuCategoria.php"; ?>
 
             <div class="col-md-9">
-                <div class="card">
+                <div class="card container mb-2">
                     <h1>Produtos</h1>
                     <p>Confira todos os Produtos que fizemos especialmente para você!</p>
                 </div>
 
-                <div class="card info-bar">
+<!--                 <div class="card info-bar">
                     <div class="row">
                         <div class="col-sm-12 col-md-4">
                             Mostrando <strong>12</strong> de <strong>25</strong> Produtos
@@ -59,7 +59,7 @@ $modelo = ModeloDAL::buscaModelo();
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="row">
 

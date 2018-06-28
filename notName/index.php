@@ -11,22 +11,22 @@ $modelo = ModeloDAL::buscaModeloIndex();
             <div class="carousel-item active">
                 <img class="d-block img-fluid" src="img/banner/banner1.png" alt="slider">
                 <div class="carousel-caption">
-                    <h4>primeiro slider</h4>
-                    <p>conteudo</p>
+                    <!-- <h4>primeiro slider</h4>
+                    <p>conteudo</p> -->
                 </div>
             </div>
             <div class="carousel-item ">
                 <img class="d-block img-fluid" src="img/banner/banner2.png" alt="slider">
                 <div class="carousel-caption">
-                    <h4>segundo slider</h4>
-                    <p>conteudo</p>
+                    <!-- <h4>segundo slider</h4>
+                    <p>conteudo</p> -->
                 </div>
             </div>
             <div class="carousel-item ">
                 <img class="d-block img-fluid" src="img/banner/banner3.png" alt="slider">
                 <div class="carousel-caption">
-                    <h4>terceiro slider</h4>
-                    <p>conteudo</p>
+                   <!--  <h4>terceiro slider</h4>
+                    <p>conteudo</p> -->
                 </div>
             </div>
 
