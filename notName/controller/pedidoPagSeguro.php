@@ -13,7 +13,7 @@ $venda->setIdCli($idCli);
 $carrinho = VendaDAL::buscaVenda($venda);
 
 $idVenda = $carrinho[0]->getIdVenda();
-$referencia = date('d/m/Y')." - VENDA ID {$idVenda}";
+$referencia = $idVenda;
 $venda->setIdVenda($idVenda);
 
 if (!$carrinho) {

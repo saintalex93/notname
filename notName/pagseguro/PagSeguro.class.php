@@ -3,7 +3,7 @@ class PagSeguro{
 	private $email         = "alexsantosinformatica@gmail.com";
 	private $token_sandbox = "983AE2621B4D4E779029A7A38090AF0F";
 	private $token_oficial = "";
-	private $url_retorno   = "http://notname.com.br/pagseguro/notificacao.php";
+	private $url_retorno   = "https://notname.com.br/pagseguro/notificacao.php";
 	
 	//URL OFICIAL
 	//COMENTE AS 4 LINHAS ABAIXO E DESCOMENTE AS URLS DA SANDBOX PARA REALIZAR TESTES
