@@ -450,4 +450,5 @@ DELIMITER $$
 	END $$
 DELIMITER ;
 
+select * from notnamec_db.VENDA;
 
