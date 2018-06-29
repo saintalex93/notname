@@ -20,6 +20,7 @@ $venda->setIdCli($idCli);
 
 $end = EnderecoDAL::buscaEndereco($endereco);
 $ven = VendaDAL::buscaVendaCarrinho($venda);
+
 $idVenda = $ven[0]->getIdVenda();
 
 $cepOrigem = "02859150";

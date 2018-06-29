@@ -17,8 +17,8 @@ class Database
     public function conectar()
     {
         try {
-            $srtDeConexao = "mysql:host=192.185.176.119;dbname=notnamec_db;";
-            // $srtDeConexao = "mysql:host=localhost;dbname=notnamec_db;";
+            // $srtDeConexao = "mysql:host=192.185.176.119;dbname=notnamec_db;";
+            $srtDeConexao = "mysql:host=localhost;dbname=notnamec_db;";
 
             
             $arrConfig = array(

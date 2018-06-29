@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include_once "../dal/VendaDAL.php";
 include_once "../model/Venda.php";
 
@@ -8,11 +9,12 @@ $idCli = $_POST['idCli'];
 
 $venda->setIdCli($idCli);
 
+
 $carrinho = VendaDAL::buscaVenda($venda);
 
 $idVenda = $carrinho[0]->getIdVenda();
 $referencia = date('d/m/Y')." - VENDA ID {$idVenda}";
-
+$venda->setIdVenda($idVenda);
 
 if (!$carrinho) {
 	echo "
@@ -43,10 +45,12 @@ $uf=$_POST['ufPagSeguro'];
 
 $replace = array("(",")","-",".");
 $cpf = str_replace($replace, "", $cpf);
+$cep = str_replace($replace, "", $cep);
 $cod_area = str_replace($replace, "", $telefone);
 $cod_area=substr($cod_area, 0,2);
 $telefone = str_replace($replace, "", $telefone);
 $telefone=substr($telefone, 2,20);
+$telefone = trim($telefone);
 
 $nascimento = substr($nascimento, 8,2)."/".substr($nascimento,5,2)."/".substr($nascimento,0,4);
 
@@ -146,11 +150,13 @@ $retorno = curl_exec($curl);
 curl_close($curl);
 
 $xml= simplexml_load_string($retorno);
-var_dump($xml);
 
 
 if($xml->code){
 	echo $xml->code;
+	$venda->setCodRastVenda($xml->code);
+	$vendaDal = VendaDAL::atualizaVenda($venda, "Encerramento");
+	unset($_SESSION['ID_VENDA']);
 	return $xml->code;
 }
 else{
@@ -161,3 +167,5 @@ else{
 // return $xml;
 
 ?>
+
+<!-- A1FA223E-762F-4D84-A992-53565A150A27 -->

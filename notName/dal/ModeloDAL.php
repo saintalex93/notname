@@ -127,7 +127,7 @@ VALUES ('$nomeMod', $vlrVendaMod, '$statusMod', $descontoMod, $qtdeEstMod, $corM
     {
         ModeloDAL::connect();
         
-        $sql = "select * from MODELO 
+        $sql = "SELECT * from MODELO 
                   where MODELO_nSTATUS like 'Ativo' and MODELO_nQTD_ESTOQUE > 0
                     group by PRODUTO_nID 
                       order by MODELO_tsCRIACAO DESC limit 4";

@@ -86,6 +86,15 @@ class VendaDAL
 
         }
 
+        if($tipo == "Encerramento"){
+
+            $idVenda = $venda->getIdVenda();
+            $pagSeguro = $venda->getCodRastVenda();
+
+                        
+            $sql = "UPDATE VENDA SET VENDA_cFORMA_PAGAMENTO = 'Cartão de Crédito' , VENDA_cCODRASTREIO = '$pagSeguro', VENDA_cSTATUS = 'AGUARDANDO PAGAMENTO' WHERE VENDA_nID = $idVenda";
+        }
+
         else{
 
         }
@@ -108,9 +117,9 @@ class VendaDAL
         $idCliente = $venda->getIdCli();
 
         $sql = "SELECT *, count(M.MODELO_nID) as QDT_MODELO FROM VENDA V
-                    INNER JOIN VENDA_MODELO VM ON V.VENDA_nID = VM.VENDA_nID
-                    INNER JOIN MODELO M ON M.MODELO_nID = VM.MODELO_nID
-                    WHERE V.VENDA_nID = $idCliente AND VENDA_cSTATUS LIKE 'PENDENTE' GROUP BY M.MODELO_nID";
+        INNER JOIN VENDA_MODELO VM ON V.VENDA_nID = VM.VENDA_nID
+        INNER JOIN MODELO M ON M.MODELO_nID = VM.MODELO_nID
+        WHERE V.CLI_nCOD = $idCliente AND VENDA_cSTATUS LIKE 'PENDENTE' GROUP BY M.MODELO_nID";
 
         VendaDAL::$connection->executarSQL($sql);
 
@@ -164,9 +173,9 @@ class VendaDAL
         $idCliente = $venda->getIdCli();
 
         $sql = "SELECT * FROM VENDA V
-                    INNER JOIN VENDA_MODELO VM ON V.VENDA_nID = VM.VENDA_nID
-                    INNER JOIN MODELO M ON M.MODELO_nID = VM.MODELO_nID
-                    WHERE V.VENDA_nID = $idCliente AND VENDA_cSTATUS LIKE 'PENDENTE'";
+        INNER JOIN VENDA_MODELO VM ON V.VENDA_nID = VM.VENDA_nID
+        INNER JOIN MODELO M ON M.MODELO_nID = VM.MODELO_nID
+        WHERE V.CLI_nCOD = $idCliente AND VENDA_cSTATUS LIKE 'PENDENTE'";
 
         VendaDAL::$connection->executarSQL($sql);
 
@@ -278,9 +287,9 @@ class VendaDAL
         $idCliente = $venda->getIdCli();
 
         $sql = "SELECT *, count(M.MODELO_nID) as QDT_MODELO FROM VENDA V
-                    INNER JOIN VENDA_MODELO VM ON V.VENDA_nID = VM.VENDA_nID
-                    INNER JOIN MODELO M ON M.MODELO_nID = VM.MODELO_nID
-                    WHERE V.VENDA_nID = $idCliente  GROUP BY M.MODELO_nID";
+        INNER JOIN VENDA_MODELO VM ON V.VENDA_nID = VM.VENDA_nID
+        INNER JOIN MODELO M ON M.MODELO_nID = VM.MODELO_nID
+        WHERE V.VENDA_nID = $idCliente  GROUP BY M.MODELO_nID";
 
         VendaDAL::$connection->executarSQL($sql);
 

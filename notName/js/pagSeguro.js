@@ -167,6 +167,14 @@ $("#comprar").click(function(event){
       data: form,
       success: function (response) {
         console.log(response);
+        if(response){
+          window.location.href = 'painelPedidoCliente.php?codVenda='+response;
+        }
+        else{
+          alert('Não foi possível concluir a venda. Tente novamente');
+          window.location.reload();
+
+        }
         parar();
       }
     });
