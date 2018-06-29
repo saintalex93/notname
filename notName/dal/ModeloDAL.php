@@ -82,7 +82,7 @@ VALUES ('$nomeMod', $vlrVendaMod, '$statusMod', $descontoMod, $qtdeEstMod, $corM
         return $arrayModelo;
     }
 
-    public static function buscaModelo(): array
+    public static function buscaModelo($idModelo = null): array
     {
         ModeloDAL::connect();
         

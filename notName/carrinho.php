@@ -2,6 +2,7 @@
 include "superior.php";
 include_once "dal/VendaDAL.php";
 include_once "model/Venda.php";
+require_once "dal/ModeloDAL.php";
 
 $venda = new Venda();
 
@@ -12,38 +13,39 @@ if (isset($_SESSION['USERCOM']['ID'])) {
 
     if (!$carrinho) {
         echo "
-            <script>
-                alert('Você ainda não comprou nenhum item. Gaste sua grana com a nossa fodenda loja!');
-                window.location.href = 'index.php';
-            </script>
+        <script>
+        alert('Você ainda não comprou nenhum item. Gaste sua grana com a nossa fodenda loja!');
+        window.location.href = 'index.php';
+        </script>
         ";
     }
 }
 else{
     echo "
-            <script>
-                window.location.href = 'index.php';
-            </script>
-        ";
+    <script>
+    window.location.href = 'index.php';
+    </script>
+    ";
 }
 
+$modeloRand = ModeloDAL::buscaModelosRandom();
 ?>
 
- <div id="content">
+<div id="content">
 
     <div class="container">
-<div class="col-md-12 my-3">
+        <div class="col-md-12 my-3">
 
 
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
 
-                            <li class="breadcrumb-item active" aria-current="page">Carrinho</li>
-                        </ol>
-                    </nav>
+                    <li class="breadcrumb-item active" aria-current="page">Carrinho</li>
+                </ol>
+            </nav>
 
-                </div>
+        </div>
         <div class="row">
             <div class="col-md-9">
 
@@ -87,43 +89,43 @@ else{
                                         $quantidadeEstoque = $Minicar->getModelo()[0]->getQtdEstoqueModelo();
                                         echo "
                                         <tr>
-                                            <td>
-                                                <a href='produto.php?id=$idProduto&md=$idModelo'>
-                                                <img class='imgPequena' src='img/Modelos/ModeloCapa_$idModelo.jpg' alt=''>
-                                                </a>
-                                            </td>
+                                        <td>
+                                        <a href='produto.php?id=$idProduto&md=$idModelo'>
+                                        <img class='imgPequena' src='img/Modelos/ModeloCapa_$idModelo.jpg' alt=''>
+                                        </a>
+                                        </td>
 
-                                            <td>
-                                                <a href='produto.php?id=$idProduto&md=$idModelo'>$nomeModelo</a>
-                                            </td>
+                                        <td>
+                                        <a href='produto.php?id=$idProduto&md=$idModelo'>$nomeModelo</a>
+                                        </td>
 
-                                            <td>
-                                                <span>$quantidade</span>
-                                            </td>
+                                        <td>
+                                        <span>$quantidade</span>
+                                        </td>
 
-                                            <td>
-                                                $valorModelo
-                                            </td>
+                                        <td>
+                                        $valorModelo
+                                        </td>
 
-                                            <td>
-                                                $descontoModelo
-                                            </td>
-                                            
-                                            <td>
-                                                $totalModelo
-                                            </td>
+                                        <td>
+                                        $descontoModelo
+                                        </td>
+                                        
+                                        <td>
+                                        $totalModelo
+                                        </td>
 
-                                            <td>
-                                                <a href='#' class='adicionaModelo' value = '$idModelo,$idVenda,$valorModeloRaw'>
-                                                <i class='fas fa-plus-circle'></i>
-                                                </a>
-                                            </td>
+                                        <td>
+                                        <a href='#' class='adicionaModelo' value = '$idModelo,$idVenda,$valorModeloRaw'>
+                                        <i class='fas fa-plus-circle'></i>
+                                        </a>
+                                        </td>
 
-                                            <td>
-                                                <a href='#' class='removeModelo' value = '$idModelo,$idVenda,$idVendaModelo'>
-                                                <i class='far fa-trash-alt'></i>
-                                                </a>
-                                            </td>
+                                        <td>
+                                        <a href='#' class='removeModelo' value = '$idModelo,$idVenda,$idVendaModelo'>
+                                        <i class='far fa-trash-alt'></i>
+                                        </a>
+                                        </td>
 
 
 
@@ -140,7 +142,7 @@ else{
 
                                     ?>
 
-                                   
+                                    
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -151,141 +153,118 @@ else{
                             </table>
 
                         </div>
-                   
+                        
                     </form>
 
-                        <div class="card-footer">
-                           
+                    <div class="card-footer">
+                       
 
 
-                            <div class="float-left pull-left col-6">
-                                <a href="categoria.php" class="btn btn-default"><i class="fa fa-chevron-left"></i> Continue comprando</a>
-                            </div>
-                            
-                            <div class="float-right pull-right col-6" style="padding:0px 0 20px 0 ">                             
-                                <button class="btn btn-default"><i class="fas fa-sync-alt"></i>  Atualizar cesta</button>
-                                <button onclick = "window.location.href = 'checkout1.php'"class="btn btn-primary">Fazer o check-out <i class="fas fa-chevron-right"></i></button>
-                            </div>
-                            
+                        <div class="float-left pull-left col-6">
+                            <a href="categoria.php" class="btn btn-default"><i class="fa fa-chevron-left"></i> Continue comprando</a>
                         </div>
+                        
+                        <div class="float-right pull-right col-6" style="padding:0px 0 20px 0 ">                             
+                            <button class="btn btn-default"><i class="fas fa-sync-alt"></i>  Atualizar cesta</button>
+                            <button onclick = "window.location.href = 'checkout1.php'"class="btn btn-primary">Fazer o check-out <i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        
+                    </div>
 
 
                 </div>
-            
+                
 
 
-                <div class="row same-height-row my-4 ">
+                <div class="row same-height-row my-4">
 
-                    <div class="col-md-3 col-sm-6  d-flex flex-row">
+                    <div class="col-md-12 col-sm-6 ">
                         <div class="card">
 
-                            <div class="card-body text-center ">
-                                <h4 class="card-title my-5">
-                                    Você também pode gostar destes produtos </h4>
-                            </div>
-                        </div>
-                    </div>
-
-
-                     <div class='col-md-3 col-sm-6 mb-3 card-container'>
-                        <div class='card'>
-                            <a href="produto.php">
-                            <div class='card-flip imgP'>
-                                <div class='card front'>
-                                    <div class='card-block'>
-                                        <img class='card-img-top' src='img/Produtos/Produto1.jpg' alt='Foto da Capa do Modelo'>
-                                    </div>
-                                </div>
-                                <div class='card back'>
-                                    <div class='card-block'>
-                                        <img class='card-img-top ' src='img/Produtos/Produto2.jpg' alt='Foto do Modelo'>
-                                    </div>
-                                </div>
-                            </div>
-                            </a>
                             <div class="card-body text-center">
-                                <h4 class="card-title">Amarola</h4>
-                                <p class="card-text price"><del>R$200</del> R$199,99</p>
-                            </div>
-                            <div class="fitaTagProduto novo">
-                                <div class="fitaTag">Novo</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
-                            <div class="fitaTagProduto promocaoTag">
-                                <div class="fitaTag">Promoção</div>
-                                <div class="fitaTagProduto-background"></div>
+                                <h4 class="card-title">Você também pode gostar destes produtos</h4>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="row same-height-row my-4">
+                    <?php
+                    foreach ($modeloRand as $md) {
+                        echo "
 
-                    <div class='col-md-3 col-sm-6 mb-3 card-container'>
-                        <div class='card'>
-                            <a href="produto.php">
-                            <div class='card-flip imgP'>
-                                <div class='card front'>
-                                    <div class='card-block'>
-                                        <img class='card-img-top' src='img/Produtos/Produto1.jpg' alt='Foto da Capa do Modelo'>
-                                    </div>
-                                </div>
-                                <div class='card back'>
-                                    <div class='card-block'>
-                                        <img class='card-img-top ' src='img/Produtos/Produto2.jpg' alt='Foto do Modelo'>
-                                    </div>
-                                </div>
-                            </div>
-                            </a>
-                            <div class="card-body text-center">
-                                <h4 class="card-title">Amarola</h4>
-                                <p class="card-text price"><del>R$200</del> R$199,99</p>
-                            </div>
-                            <div class="fitaTagProduto novo">
-                                <div class="fitaTag">Novo</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
-                            <div class="fitaTagProduto promocaoTag">
-                                <div class="fitaTag">Promoção</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
+                        <div class='col-sm-12 col-md-3 mb-3 text-center'>
+                        <div class='card card-container '>
+                        <a class='card-link' href='produto.php?id={$md->getProdutoIdModelo()}&md={$md->getIdModelo()}'>
+                        <div class='card-flip'>
+                        <div class='card front'>
+                        <div class='card-block'>
+                        <img class='card-img-top' src='img/Produtos/Produto{$md->getProdutoIdModelo()}.jpg' alt='Foto da Capa do Modelo'>
                         </div>
-                    </div>
-
-
-                     <div class='col-md-3 col-sm-6 mb-3 card-container'>
-                        <div class='card'>
-                            <a href="produto.php">
-                            <div class='card-flip imgP'>
-                                <div class='card front'>
-                                    <div class='card-block'>
-                                        <img class='card-img-top' src='img/Produtos/Produto1.jpg' alt='Foto da Capa do Modelo'>
-                                    </div>
-                                </div>
-                                <div class='card back'>
-                                    <div class='card-block'>
-                                        <img class='card-img-top ' src='img/Produtos/Produto2.jpg' alt='Foto do Modelo'>
-                                    </div>
-                                </div>
-                            </div>
-                            </a>
-                            <div class="card-body text-center">
-                                <h4 class="card-title">Amarola</h4>
-                                <p class="card-text price"><del>R$200</del> R$199,99</p>
-                            </div>
-                            <div class="fitaTagProduto novo">
-                                <div class="fitaTag">Novo</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
-                            <div class="fitaTagProduto promocaoTag">
-                                <div class="fitaTag">Promoção</div>
-                                <div class="fitaTagProduto-background"></div>
-                            </div>
                         </div>
-                    </div>
+                        <div class='card back'>
+                        <div class='card-block'>
+                        <img class='card-img-top ' src='img/Modelos/ModeloCapa_{$md->getIdModelo()}.jpg' alt='Foto do Modelo'>
+                        </div>
+                        </div>
+                        </div>
+                        </a>
+
+                        <h5 class='card-title'>{$md->getNomeModelo()}</h4>";
+
+                        if ($md->getDescontoModelo() != "0.00") {
+                            $valor = 'R$' . number_format($md->getVlrVendaModelo(), 2, ',', '.');
+                            $desconto = $md->getVlrVendaModelo() - $md->getDescontoModelo();
+                            $desconto = 'R$' . number_format($desconto, 2, ',', '.');
+                            echo "
+                            <p class='card-text price'><del>$valor</del> $desconto</p>
+                            <a class='card-link' href='produto.php?id={$md->getProdutoIdModelo()}&md={$md->getIdModelo()}'>ver mais detalhes</a>
+                            </div>
+
+                            <div class='fitaTagProduto novo'>
+                            <div class='fitaTag'>Novo</div>
+                            <div class='fitaTagProduto-background'></div>
+                            </div>
+
+
+
+                            <div class='fitaTagProduto promocaoTag'>
+                            <div class='fitaTag'>Promoção</div>
+                            <div class='fitaTagProduto-background'></div>
+                            </div>";
+                        } else {
+
+                            $valor = 'R$' . number_format($md->getVlrVendaModelo(), 2, ',', '.');
+                            echo "
+                            <p class='card-text price'>$valor</p>
+                            <a class='card-link' href='produto.php?id={$md->getProdutoIdModelo()}&md={$md->getIdModelo()}'>ver mais detalhes</a>
+
+                            </div>
+
+                            <div class='fitaTagProduto novo'>
+                            <div class='fitaTag'>Novo</div>
+                            <div class='fitaTagProduto-background'></div>
+                            </div>
+
+
+
+                            ";
+                        }
+
+                        echo "
+
+                        </div>
+
+
+                        ";
+                    }
+                    ?>
 
                 </div>
+
 
 
             </div>
-       
+            
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-header">
@@ -319,32 +298,12 @@ else{
                     </div>
 
                 </div>
-
-
-                <div class="card my-4">
-                    <div class="card-header">
-                        <h4>Código do cupom</h4>
-                    </div>
-                    <p class="text-muted mb-3 text-center">Se você tiver um código de cupom, insira-o na caixa abaixo.</p>
-                    <form>
-                        <div class="input-group mb-3">
-
-                            <input type="text" class="form-control ml-3">
-
-                            <span class="input-group-btn">
-
-					<button class="btn btn-primary mr-3 " type="button"><i class="fas fa-gift"></i></button>
-
-				    </span>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
     </div>
-    </div>
+</div>
 
-    <?php include_once "inferior.php"; ?>
+<?php include_once "inferior.php"; ?>
 
-    <script src="js/carrinho.js"></script>
+<script src="js/carrinho.js"></script>
 
