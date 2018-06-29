@@ -1,7 +1,7 @@
-<?php
+<!-- <?php
 echo $url;
 ?>
-
+ -->
 <!-- footer -->
 <footer class="footer"> © 2018 Todos os Direitos Reservados. Desenvolvido por <a href="https://beardsweb.com.br">Beards Web</a></footer>
 <!-- End footer -->
