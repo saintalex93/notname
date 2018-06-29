@@ -22,13 +22,34 @@ if (!$carrinho) {
 	";
 }
 
-
-
 $tokenCard = $_POST['tokenCard'];
 $hashCard = $_POST['hashCard'];
 $quantidadeParcelas= $_POST['quantidadeParcelas'];
 $valorParcelas= $_POST['valorParcelas'];
 $frete= $_POST['frete'];
+
+$nome=$_POST['nomePagSeguro'];
+$cpf=$_POST['cpfPagSeguro'];
+$email=$_POST['emailPagSeguro'];
+$telefone=$_POST['celularPagSeguro'];
+$nascimento=$_POST['nascimentoPagSeguro'];
+$cep=$_POST['cepPagSeguro'];
+$rua=$_POST['ruaPagSeguro'];
+$numero=$_POST['numeroPagSeguro'];
+$complemento=$_POST['complementoPagSeguro'];
+$bairro=$_POST['bairroPagSeguro'];
+$cidade=$_POST['cidadePagSeguro'];
+$uf=$_POST['ufPagSeguro'];
+
+$replace = array("(",")","-",".");
+$cpf = str_replace($replace, "", $cpf);
+$cod_area = str_replace($replace, "", $telefone);
+$cod_area=substr($cod_area, 0,2);
+$telefone = str_replace($replace, "", $telefone);
+$telefone=substr($telefone, 2,20);
+
+$nascimento = substr($nascimento, 8,2)."/".substr($nascimento,5,2)."/".substr($nascimento,0,4);
+
 
 
 $emailPagseguro = "alexsantosinformatica@gmail.com";
@@ -51,7 +72,6 @@ foreach ($carrinho as $Minicar) {
 	$quantidade = $Minicar->getModelo()[0]->getQuantidadeVendaModelo();
 	$valorModelo = $Minicar->getModelo()[0]->getVlrVendaModelo();
 	$descontoModelo = $Minicar->getModelo()[0]->getDescontoModelo();
-	echo $valorModelo;
 	$idModeloPGS = "V".$idVenda."MID".$idModelo;
 	$valorTmodelo = $valorModelo-$descontoModelo;
 	$valorTmodelo = number_format($valorTmodelo, 2, '.', '');
@@ -68,21 +88,21 @@ foreach ($carrinho as $Minicar) {
 $data['notificationURL']='https://sualoja.com.br/notifica.html';
 
 $data['reference']=$referencia;
-$data['senderName']='Jose Comprador';
-$data['senderCPF']='22111944785';
-$data['senderAreaCode']='11';
-$data['senderPhone']='56273440';
+$data['senderName']=$nome;
+$data['senderCPF']=$cpf;
+$data['senderAreaCode']=$cod_area;
+$data['senderPhone']=$telefone;
 $data['senderEmail']='alex@sandbox.pagseguro.com.br';
 
 $data['senderHash']=$hashCard;
 
-$data['shippingAddressStreet']='Av. Brig. Faria Lima';
-$data['shippingAddressNumber']='1384';
-$data['shippingAddressComplement']='5o andar';
-$data['shippingAddressDistrict']='Jardim Paulistano';
-$data['shippingAddressPostalCode']='01452002';
-$data['shippingAddressCity']='Sao Paulo';
-$data['shippingAddressState']='SP';
+$data['shippingAddressStreet']=$rua;
+$data['shippingAddressNumber']=$numero;
+$data['shippingAddressComplement']=$complemento;
+$data['shippingAddressDistrict']=$bairro;
+$data['shippingAddressPostalCode']=$cep;
+$data['shippingAddressCity']=$cidade;
+$data['shippingAddressState']=$uf;
 $data['shippingAddressCountry']='BRA';
 // FORMA DE ENVIO: 1 PAC - 2 SEDEX - 3 FORMA DESCONHECIDA
 $data['shippingType']='1';
@@ -96,18 +116,18 @@ $data['installmentValue']=$valorParcelas;
 // Quantidade de parcelas sem Juros
 $data['noInterestInstallmentQuantity']='2';
 
-$data['creditCardHolderName']='Jose Comprador';
-$data['creditCardHolderCPF']='22111944785';
-$data['creditCardHolderBirthDate']='27/10/1987';
-$data['creditCardHolderAreaCode']='11';
-$data['creditCardHolderPhone']='56273440';
-$data['billingAddressStreet']='Av. Brig. Faria Lima';
-$data['billingAddressNumber']='1384';
-$data['billingAddressComplement']='5o andar';
-$data['billingAddressDistrict']='Jardim Paulistano';
-$data['billingAddressPostalCode']='01452002';
-$data['billingAddressCity']='Sao Paulo';
-$data['billingAddressState']='SP';
+$data['creditCardHolderName']=$nome;
+$data['creditCardHolderCPF']=$cpf;
+$data['creditCardHolderBirthDate']=$nascimento;
+$data['creditCardHolderAreaCode']=$cod_area;
+$data['creditCardHolderPhone']=$telefone;
+$data['billingAddressStreet']=$rua;
+$data['billingAddressNumber']=$numero;
+$data['billingAddressComplement']=$complemento;
+$data['billingAddressDistrict']=$bairro;
+$data['billingAddressPostalCode']=$cep;
+$data['billingAddressCity']=$cidade;
+$data['billingAddressState']=$uf;
 $data['billingAddressCountry']='BRA';
 
 
@@ -126,9 +146,18 @@ $retorno = curl_exec($curl);
 curl_close($curl);
 
 $xml= simplexml_load_string($retorno);
-
-
 var_dump($xml);
-return $xml;
+
+
+if($xml->code){
+	echo $xml->code;
+	return $xml->code;
+}
+else{
+	return false;
+}
+
+
+// return $xml;
 
 ?>

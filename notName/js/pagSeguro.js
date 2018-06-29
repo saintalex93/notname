@@ -91,37 +91,37 @@ $('#numeroCartao').on('keyup',function()
 function getParcelas(bandeira)
 {
   var numeroParcelasSemJuros = 2;
- PagSeguroDirectPayment.getInstallments({
-  amount: valor,
-  maxInstallmentNoInterest: numeroParcelasSemJuros,
-  brand: bandeira,
-  success: function(response)
-  {
+  PagSeguroDirectPayment.getInstallments({
+    amount: valor,
+    maxInstallmentNoInterest: numeroParcelasSemJuros,
+    brand: bandeira,
+    success: function(response)
+    {
 
-  var cont = 0;
+      var cont = 0;
 
-    $.each(response.installments,function(i,object){
-      $.each(object,function(i2,object2){
-        cont++;
+      $.each(response.installments,function(i,object){
+        $.each(object,function(i2,object2){
+          cont++;
         // console.log(object2.quantity);
         var numberValue = object2.installmentAmount;
         var valor = "R$ "+numberValue.toFixed(2).replace(".",",");
         var valorParcelas = numberValue.toFixed(2);
         if(cont <= numeroParcelasSemJuros){
-           $("#quantidadeParcelas").show().append("<option class = 'text-success p-1' value = "+object2.quantity+" id="+valorParcelas+">"+
+         $("#quantidadeParcelas").show().append("<option class = 'text-success p-1' value = "+object2.quantity+" id="+valorParcelas+">"+
           object2.quantity+" parcelas de "+valor+" (S/J)</option>");
-        }
-        else{
-           $("#quantidadeParcelas").show().append("<option value = "+object2.quantity+" id="+valorParcelas+">"+
+       }
+       else{
+         $("#quantidadeParcelas").show().append("<option value = "+object2.quantity+" id="+valorParcelas+">"+
           object2.quantity+" parcelas de "+valor+"</option>");
-        }
+       }
        
+     });
       });
-    });
 
-  }
+    }
 
-});
+  });
 }
 
 
@@ -153,13 +153,23 @@ function getTokenCard()
 }
 
 
-$("#comprar").on('click',function(event){
+$("#comprar").click(function(event){
   // event.preventDefault();
+  carregando();
+
   PagSeguroDirectPayment.onSenderHashReady(function(response){
-    console.log(response);
+
     $("#hashCard").val(response.senderHash);
-
-
+    var form = $("#formPagSeguro").serialize();
+    $.ajax({
+      url: './controller/pedidoPagSeguro.php',
+      type: 'post',
+      data: form,
+      success: function (response) {
+        console.log(response);
+        parar();
+      }
+    });
   });
 });
 

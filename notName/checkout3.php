@@ -1,14 +1,41 @@
 <?php include "superior.php"; 
 include_once "dal/VendaDAL.php";
 include_once "model/Venda.php";
+include_once "dal/ClienteDAL.php";
+include_once "model/Cliente.php";
+include_once "dal/EnderecoDAL.php";
+include_once "model/Endereco.php";
+
 
 $venda = new Venda();
+$cliente = new Cliente();
+$endereco = new Endereco();
+
+
 
 if (isset($_SESSION['USERCOM']['ID'])) {
-    $venda->setIdCli($_SESSION['USERCOM']['ID']);
-
+    $idCliente = $_SESSION['USERCOM']['ID'];
+    $venda->setIdCli($idCliente);
+    $cliente->setIdCli($idCliente);
+    $endereco->setIdCli($idCliente);
     $carrinho = VendaDAL::buscaVenda($venda);
     $totalVendaCarrinho = $carrinho[0]->getVlrTotalVenda()+$carrinho[0]->getVlrFrete();
+
+    $cli = ClienteDAL::buscaCliente($cliente);
+    $end = EnderecoDAL::buscaEndereco($endereco);
+
+    $nome=$cli[0]->getNomeCli();
+    $cpf=$cli[0]->getCpfCli();
+    $email=$cli[0]->getEmailCli();
+    $telefone=$cli[0]->getTelResiCli();
+    $nascimento=$cli[0]->getNascCli();
+    $cep=$end[0]->getCep();
+    $rua=$end[0]->getLogradouro();
+    $numero=$end[0]->getNumero();
+    $complemento=$end[0]->getComplemento();
+    $bairro=$end[0]->getBairro();
+    $cidade=$end[0]->getCidade();
+    $uf=$end[0]->getUf();
 
 
 
@@ -180,13 +207,13 @@ if (isset($_SESSION['USERCOM']['ID'])) {
 
                         </div>
 
-                        <form action="controller/pedidoPagSeguro.php" method="POST">
-                            <input type="text" name="tokenCard" id="tokenCard">
-                            <input type="text" name="hashCard" id="hashCard">
-                            <input type="text" name="valorParcelas" id="valorParcelas">
-                            <input type="text" name="frete" id="frete" value="<?php echo $carrinho[0]->getVlrFrete(); ?>">
-                            <input type="text" name="valorVenda" id="valorVenda" value="<?php echo number_format($totalVendaCarrinho, 2, '.', '');?>">
-                            <input type="text" name="idCli" id="idCli" value="<?php echo $_SESSION['USERCOM']['ID']?>">
+                        <form  id="formPagSeguro">
+                            <input type="hidden" name="tokenCard" id="tokenCard">
+                            <input type="hidden" name="hashCard" id="hashCard">
+                            <input type="hidden" name="valorParcelas" id="valorParcelas">
+                            <input type="hidden" name="frete" id="frete" value="<?php echo $carrinho[0]->getVlrFrete(); ?>">
+                            <input type="hidden" name="valorVenda" id="valorVenda" value="<?php echo number_format($totalVendaCarrinho, 2, '.', '');?>">
+                            <input type="hidden" name="idCli" id="idCli" value="<?php echo $_SESSION['USERCOM']['ID']?>">
 
 
                             <div class="row">
@@ -226,47 +253,121 @@ if (isset($_SESSION['USERCOM']['ID'])) {
 
                      <div class="row">
 
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="">Nome</label>
-                                <input type="email" name="cpfCartao" class="form-control" id="cpfCartao" value="" disabled>
+                                <input type="text" name="nomePagSeguro" class="form-control" id="nomePagSeguro" value="<?php echo $nome;?>" readonly>
                             </div>
                         </div>
 
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="">CPF</label>
-                                <input type="email" name="cpfCartao" class="form-control" id="cpfCartao" value="" disabled>
-                            </div>
-                        </div>
 
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="">Email</label>
-                                <input type="email" name="cpfCartao" class="form-control" id="cpfCartao" value="" disabled>
+                                <input type="text" name="emailPagSeguro" class="form-control" id="emailPagSeguro" value="<?php echo $email;?>" readonly>
                             </div>
                         </div>
 
                     </div>
 
 
+                    <div class="row">
+
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="">CPF</label>
+                            <input type="text" name="cpfPagSeguro" class="form-control" id="cpfPagSeguro" value="<?php echo $cpf;?>" readonly>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="">Nascimento</label>
+                            <input type="date" name="nascimentoPagSeguro" class="form-control" id="nascimentoPagSeguro" value="<?php echo $nascimento;?>" readonly>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="">Celular</label>
+                            <input type="text" name="celularPagSeguro" class="form-control" id="celularPagSeguro" value="<?php echo $telefone;?>" readonly>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="">CEP</label>
+                            <input type="text" name="cepPagSeguro" class="form-control" id="cepPagSeguro" value="<?php echo $cep;?>" readonly>
+                        </div>
+                    </div>
+
                 </div>
-                <input type="submit" name="comprar" value="comprar" id="comprar">
+
+
+                <div class="row">
+
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="">Rua</label>
+                            <input type="text" name="ruaPagSeguro" class="form-control" id="ruaPagSeguro" value="<?php echo $rua;?>" readonly>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="">Nº</label>
+                            <input type="text" name="numeroPagSeguro" class="form-control" id="numeroPagSeguro" value="<?php echo $numero;?>" readonly>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="">Bairro</label>
+                            <input type="text" name="bairroPagSeguro" class="form-control" id="bairroPagSeguro" value="<?php echo $bairro;?>" readonly>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="">cidade</label>
+                            <input type="text" name="cidadePagSeguro" class="form-control" id="cidadePagSeguro" value="<?php echo $bairro;?>" readonly>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="">UF</label>
+                            <input type="text" name="ufPagSeguro" class="form-control" id="ufPagSeguro" value="<?php echo $uf;?>" readonly>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="">Complemento</label>
+                            <input type="text" name="complementoPagSeguro" class="form-control" id="complementoPagSeguro" value="<?php echo $complemento;?>" readonly>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
+    </div>
 
-        <div class="card-footer">
-            <div class="row">
+    <div class="card-footer">
+        <div class="row">
 
-                <div class="col-12 col-md-6  text-left p-0">
-                 <a href="checkout2.php" class="btn btn-default"><i class="fa fa-chevron-left"></i>Voltar ao método de envio</a>
-             </div>
-             <div class="col-12 col-md-6  text-right p-0">
-                <button type="button" id="sessaoCad" class="btn btn-primary">Finalizar Compra  <i class="fa fa-check"></i>
-                </button>
-            </div>
+            <div class="col-12 col-md-6  text-left p-0">
+             <a href="checkout2.php" class="btn btn-default"><i class="fa fa-chevron-left"></i>Voltar ao método de envio</a>
+         </div>
+         <div class="col-12 col-md-6  text-right p-0">
+            <button type="button" id="comprar" class="btn btn-primary">Finalizar Compra  <i class="fa fa-check"></i>
+            </button>
         </div>
     </div>
+</div>
 
 </div>
 
