@@ -16,7 +16,7 @@ if(isset($_SESSION['USERCOM']['ID'])){
 
 <div class="container">
     <div class="row">
-     <div class="col-md-12 my-3">
+       <div class="col-md-12 my-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -92,83 +92,84 @@ if(isset($_SESSION['USERCOM']['ID'])){
                 <tbody>
 
                     <?php 
+                    if($vendas){
+                        foreach ($vendas as $v) {
+                            $total = $v->getVlrTotalVenda() + $v->getVlrFrete();
+                            $total = "R$ ".number_format($total, 2, ',','.');
+                            $frete = strtoupper($v->getFrete());
+                            switch ($v->getStatusVenda()) {
 
-                    foreach ($vendas as $v) {
-                        $total = $v->getVlrTotalVenda() + $v->getVlrFrete();
-                        $total = "R$ ".number_format($total, 2, ',','.');
-                        $frete = strtoupper($v->getFrete());
-                        switch ($v->getStatusVenda()) {
+                                case 'PAGA':
+                                echo "
+                                <tr>
+                                <th>{$v->getIdVenda()}</th>
+                                <td>{$v->getDtCompraVenda()}</td>
+                                <td>{$frete}</td>
+                                <td>{$total}</td>
+                                <td><span class='badge badge-success'>{$v->getStatusVenda()}</span>
+                                </td>
+                                <td><a href='painelPedidoCliente.php?v={$v->getIdVenda()}' class='btn btn-primary btn-sm'>Ver</a>
+                                </td>
+                                </tr>
 
-                            case 'PAGA':
-                            echo "
-                            <tr>
-                            <th>{$v->getIdVenda()}</th>
-                            <td>{$v->getDtCompraVenda()}</td>
-                            <td>{$frete}</td>
-                            <td>{$total}</td>
-                            <td><span class='badge badge-success'>{$v->getStatusVenda()}</span>
-                            </td>
-                            <td><a href='painelPedidoCliente.php?v={$v->getIdVenda()}' class='btn btn-primary btn-sm'>Ver</a>
-                            </td>
-                            </tr>
-
-                            ";
+                                ";
 
 
-                            break;
+                                break;
 
-                            case 'AGUARDANDO PAGAMENTO':
-                            echo "
-                            <tr>
-                            <th>{$v->getIdVenda()}</th>
-                            <td>{$v->getDtCompraVenda()}</td>
-                            <td>{$frete}</td>
-                            <td>{$total}</td>
-                            <td><span class='badge badge-warning'>{$v->getStatusVenda()}</span>
-                            </td>
-                            <td><a href='painelPedidoCliente.php?v={$v->getIdVenda()}' class='btn btn-primary btn-sm'>Ver</a>
-                            </td>
-                            </tr>
+                                case 'AGUARDANDO PAGAMENTO':
+                                echo "
+                                <tr>
+                                <th>{$v->getIdVenda()}</th>
+                                <td>{$v->getDtCompraVenda()}</td>
+                                <td>{$frete}</td>
+                                <td>{$total}</td>
+                                <td><span class='badge badge-warning'>{$v->getStatusVenda()}</span>
+                                </td>
+                                <td><a href='painelPedidoCliente.php?v={$v->getIdVenda()}' class='btn btn-primary btn-sm'>Ver</a>
+                                </td>
+                                </tr>
 
-                            ";
-                            break;
+                                ";
+                                break;
 
-                            case 'CANCELADA':
-                            echo "
-                            <tr>
-                            <th>{$v->getIdVenda()}</th>
-                            <td>{$v->getDtCompraVenda()}</td>
-                            <td>{$frete}</td>
-                            <td>{$total}</td>
-                            <td><span class='badge badge-danger'>{$v->getStatusVenda()}</span>
-                            </td>
-                            <td><a href='painelPedidoCliente.php?v={$v->getIdVenda()}' class='btn btn-primary btn-sm'>Ver</a>
-                            </td>
-                            </tr>
+                                case 'CANCELADA':
+                                echo "
+                                <tr>
+                                <th>{$v->getIdVenda()}</th>
+                                <td>{$v->getDtCompraVenda()}</td>
+                                <td>{$frete}</td>
+                                <td>{$total}</td>
+                                <td><span class='badge badge-danger'>{$v->getStatusVenda()}</span>
+                                </td>
+                                <td><a href='painelPedidoCliente.php?v={$v->getIdVenda()}' class='btn btn-primary btn-sm'>Ver</a>
+                                </td>
+                                </tr>
 
-                            ";
-                            break;
+                                ";
+                                break;
 
-                            
-                            default:
-                            case 'CANCELADA':
-                            echo "
-                            <tr>
-                            <th>{$v->getIdVenda()}</th>
-                            <td>{$v->getDtCompraVenda()}</td>
-                            <td>{$frete}</td>
-                            <td>{$total}</td>
-                            <td><span class='badge badge-secondary'>{$v->getStatusVenda()}</span>
-                            </td>
-                            <td><a href='painelPedidoCliente.php?v={$v->getIdVenda()}' class='btn btn-primary btn-sm'>Ver</a>
-                            </td>
-                            </tr>
+                                
+                                default:
+                                case 'CANCELADA':
+                                echo "
+                                <tr>
+                                <th>{$v->getIdVenda()}</th>
+                                <td>{$v->getDtCompraVenda()}</td>
+                                <td>{$frete}</td>
+                                <td>{$total}</td>
+                                <td><span class='badge badge-secondary'>{$v->getStatusVenda()}</span>
+                                </td>
+                                <td><a href='painelPedidoCliente.php?v={$v->getIdVenda()}' class='btn btn-primary btn-sm'>Ver</a>
+                                </td>
+                                </tr>
 
-                            ";
-                            break;
+                                ";
+                                break;
+                            }
+
+
                         }
-
-
                     }
                     ?>
 

@@ -146,8 +146,8 @@ $modeloRand = ModeloDAL::buscaModelosRandom();
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th colspan="6">Total</th>
-                                        <th colspan="3"><?php echo $totalVenda; ?></th>
+                                        <th colspan="4">Total</th>
+                                        <th colspan="4" class="text-right"><?php echo $totalVenda; ?></th>
                                     </tr>
                                 </tfoot>
                             </table>
