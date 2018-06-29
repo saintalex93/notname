@@ -55,11 +55,21 @@ elseif ($_REQUEST['action'] == 'alteraEndcli') {
     $endereco->setUF($_POST['cmbUf']);
     $endereco->setComplemento($_POST['complemento']);
     $endereco->setTipo($_POST['tipoEnd']);
-
-    if (EnderecoDAL::atualizaEndereco($endereco)) {
-        echo "Alterado";
-    } else {
-        echo "Não foi alterado";
+    
+    if($endereco->getId() == 0){
+        if(EnderecoDAL::insereEndereco($endereco))
+        {
+            echo "Alterado";
+        }
+        else {
+            echo "Não foi alterado";
+        }
+    }else{
+        if (EnderecoDAL::atualizaEndereco($endereco)) {
+            echo "Alterado";
+        } else {
+            echo "Não foi alterado";
+        }
     }
 
 }

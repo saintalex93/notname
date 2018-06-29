@@ -11,7 +11,6 @@ $idCli->setIdCli($id);
 $cliente = ClienteDAL::buscaCliente($idCli);
 $endereco = EnderecoDAL::buscaEndereco($idEnd);
 
-$idEndereco = $endereco[0]->getId();
 
 if ($endereco) {
 
@@ -36,9 +35,6 @@ if ($endereco) {
     $tipoEnd = "";
     $uf = "";
 }
-
-
-
 ?>
 
 
@@ -203,7 +199,18 @@ if ($endereco) {
                     <div class="col-sm-3">
                         <div class="form-group">
                             <input type="hidden" name="txtIdCliEnd" value="<?php echo $id;?>">
-                            <input type="hidden" name="txtIdEnd" value="<?php echo $idEndereco;?>">
+                            <input type="hidden" name="txtIdEnd" value="
+                            <?php
+                            if($idEnd == 0){
+
+                                echo 0;
+                            }else{
+
+                                echo $idEnd;
+                            }                           
+                            
+                            ?>
+                            ">
                             <label for="">CEP</label>
                             <input type="text" class="form-control" id="cep" name="cep" onkeyup ="if (this.value.length == 10) fnCep(this.value)"maxlength="12" value="<?php
                             echo $cep;
