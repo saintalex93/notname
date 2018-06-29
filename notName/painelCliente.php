@@ -1,13 +1,17 @@
-<?php include "superior.php";
+<?php 
+include_once "superior.php";
+include_once "dal/VendaDAL.php";
+include_once "model/Venda.php";
 
+if(isset($_SESSION['USERCOM']['ID'])){
+    $venda = new Venda();
+    $venda->setIdCli($_SESSION['USERCOM']['ID']);
+
+    $vendas = VendaDAL::buscaTodasVendas($venda);
+
+}
 
 ?>
-
-
-
-
-
-
 
 
 <div class="container">
@@ -17,13 +21,13 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item"><a href="#">Carrinho</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Método de pagamento</li>
+                <li class="breadcrumb-item active" aria-current="page">Pedidos</li>
             </ol>
         </nav>
 
     </div>
     <style>.teste ul li{
-      
+
         width: 100%;
         
     }
@@ -31,7 +35,7 @@
     
     
     .teste1 li a{
-        
+
         text-align: left;
     }
     
@@ -77,60 +81,99 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Pedidos</th>
+                        <th>Pedido</th>
                         <th>Data</th>
+                        <th>Frete</th>
                         <th>Total</th>
                         <th>Status</th>
                         <th>Ação</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th># 1735</th>
-                        <td>22/06/2018</td>
-                        <td>R$ 150,00</td>
-                        <td><span class="badge badge-info">Estar preparado</span>
-                        </td>
-                        <td><a href="painelPedidoCliente.php" class="btn btn-primary btn-sm">Visão</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th># 1793</th>
-                        <td>22/07/2018</td>
-                        <td>R$ 150,00</td>
-                        <td><span class="badge badge-info">Estar preparado</span>
-                        </td>
-                        <td><a href="painelPedidoCliente.php" class="btn btn-primary btn-sm">Visão</a>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <th># 1829</th>
-                        <td>22/08/2018</td>
-                        <td>R$ 150,00</td>
-                        <td><span class="badge badge-success">	Recebido</span>
-                        </td>
-                        <td><a href="painelPedidoCliente.php" class="btn btn-primary btn-sm">Visão</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th># 1849</th>
-                        <td>22/06/2018</td>
-                        <td>R$ 150,00</td>
-                        <td><span class="badge badge-danger">Cancelado</span>
-                        </td>
-                        <td><a href="painelPedidoCliente.php" class="btn btn-primary btn-sm">Visão</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th># 1863</th>
-                        <td>22/08/2019</td>
-                        <td>R$ 150,00</td>
-                        <td><span class="badge badge-warning">Em espera</span>
-                        </td>
-                        <td><a href="painelPedidoCliente.php" class="btn btn-primary btn-sm">Visão</a>
-                        </td>
-                    </tr>
+
+                    <?php 
+
+                    foreach ($vendas as $v) {
+                        $total = $v->getVlrTotalVenda() + $v->getVlrFrete();
+                        $total = "R$ ".number_format($total, 2, ',','.');
+                        $frete = strtoupper($v->getFrete());
+                        switch ($v->getStatusVenda()) {
+
+                            case 'PAGA':
+                            echo "
+                            <tr>
+                            <th>{$v->getIdVenda()}</th>
+                            <td>{$v->getDtCompraVenda()}</td>
+                            <td>{$frete}</td>
+                            <td>{$total}</td>
+                            <td><span class='badge badge-success'>{$v->getStatusVenda()}</span>
+                            </td>
+                            <td><a href='painelPedidoCliente.php?v={$v->getIdVenda()}' class='btn btn-primary btn-sm'>Ver</a>
+                            </td>
+                            </tr>
+
+                            ";
+
+
+                            break;
+
+                            case 'AGUARDANDO PAGAMENTO':
+                            echo "
+                            <tr>
+                            <th>{$v->getIdVenda()}</th>
+                            <td>{$v->getDtCompraVenda()}</td>
+                            <td>{$frete}</td>
+                            <td>{$total}</td>
+                            <td><span class='badge badge-warning'>{$v->getStatusVenda()}</span>
+                            </td>
+                            <td><a href='painelPedidoCliente.php?v={$v->getIdVenda()}' class='btn btn-primary btn-sm'>Ver</a>
+                            </td>
+                            </tr>
+
+                            ";
+                            break;
+
+                            case 'CANCELADA':
+                            echo "
+                            <tr>
+                            <th>{$v->getIdVenda()}</th>
+                            <td>{$v->getDtCompraVenda()}</td>
+                            <td>{$frete}</td>
+                            <td>{$total}</td>
+                            <td><span class='badge badge-danger'>{$v->getStatusVenda()}</span>
+                            </td>
+                            <td><a href='painelPedidoCliente.php?v={$v->getIdVenda()}' class='btn btn-primary btn-sm'>Ver</a>
+                            </td>
+                            </tr>
+
+                            ";
+                            break;
+
+                            
+                            default:
+                            case 'CANCELADA':
+                            echo "
+                            <tr>
+                            <th>{$v->getIdVenda()}</th>
+                            <td>{$v->getDtCompraVenda()}</td>
+                            <td>{$frete}</td>
+                            <td>{$total}</td>
+                            <td><span class='badge badge-secondary'>{$v->getStatusVenda()}</span>
+                            </td>
+                            <td><a href='painelPedidoCliente.php?v={$v->getIdVenda()}' class='btn btn-primary btn-sm'>Ver</a>
+                            </td>
+                            </tr>
+
+                            ";
+                            break;
+                        }
+
+
+                    }
+                    ?>
+
+
+
                 </tbody>
             </table>
         </div>

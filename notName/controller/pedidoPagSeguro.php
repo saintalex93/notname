@@ -156,7 +156,11 @@ if($xml->code){
 	echo $xml->code;
 	$venda->setCodRastVenda($xml->code);
 	$vendaDal = VendaDAL::atualizaVenda($venda, "Encerramento");
+	
 	unset($_SESSION['ID_VENDA']);
+	unset($_SESSION['FRETE']);
+	unset($_SESSION['TOTAL_VENDA']);
+	
 	return $xml->code;
 }
 else{

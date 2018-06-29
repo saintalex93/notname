@@ -168,7 +168,7 @@ $("#comprar").click(function(event){
       success: function (response) {
         console.log(response);
         if(response){
-          window.location.href = 'painelPedidoCliente.php?codVenda='+response;
+          window.location.href = 'painelPedidoCliente.php?tk='+response;
         }
         else{
           alert('Não foi possível concluir a venda. Tente novamente');
