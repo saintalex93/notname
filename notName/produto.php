@@ -48,7 +48,7 @@ $modeloRand = ModeloDAL::buscaModelosRandom();
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#">Home</a></li>
 					<li class="breadcrumb-item " aria-current="page">Modelos</li>
-					<li class="breadcrumb-item active" aria-current="page"><?php echo $arrModelo[0]["NOME_MODELO"]; ?>	
+					<li class="breadcrumb-item active" aria-current="page"><?php echo $arrModelo[0]["NOME_MODELO"]; ?>
 				</li>
 
 			</ol>
@@ -62,7 +62,7 @@ $modeloRand = ModeloDAL::buscaModelosRandom();
 			<div class="row " id="productMain">
 				<div class="col-md-6 col-sm-12">
 					<div class="card ajustesImagemProduto">
-						
+
 						<?php
 						echo "
 						<img class='card-img-top' src='img/Modelos/ModeloCapa_" . $arrModelo[$indice_array]['ID'] . ".jpg' alt=''>
@@ -122,7 +122,7 @@ $modeloRand = ModeloDAL::buscaModelosRandom();
 
 						</div>
 
-						
+
 					</div>
 
 					<div class="col-md-12 mt-3 text-center">
@@ -263,7 +263,7 @@ $modeloRand = ModeloDAL::buscaModelosRandom();
 										<div class='fitaTagProduto-background'></div>
 										</div>
 
-										
+
 
 										<div class='fitaTagProduto promocaoTag'>
 										<div class='fitaTag'>Promoção</div>
@@ -283,7 +283,7 @@ $modeloRand = ModeloDAL::buscaModelosRandom();
 										<div class='fitaTagProduto-background'></div>
 										</div>
 
-										
+
 
 										";
 									}
