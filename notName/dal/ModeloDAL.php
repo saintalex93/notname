@@ -87,12 +87,12 @@ VALUES ('$nomeMod', $vlrVendaMod, '$statusMod', $descontoMod, $qtdeEstMod, $corM
         ModeloDAL::connect();
         
         if(!$idModelo){
-            $sql = "SELECT * from MODELO WHERE MODELO_nSTATUS LIKE 'Ativo'";
+            $sql = "SELECT DISTINCT * from MODELO WHERE MODELO_nSTATUS LIKE 'Ativo' GROUP BY MODELO_cNOME";
 
         }
 
         else{
-        $sql = "SELECT * from MODELO WHERE MODELO_nID = $idModelo";
+        $sql = "SELECT DISTINCT * from MODELO WHERE MODELO_nID = $idModelo GROUP BY MODELO_cNOME";
 
         }
 

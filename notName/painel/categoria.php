@@ -46,7 +46,7 @@ $id = $categorias[0]->getIdCateg();
 														<div class="form-group">
 															<div class="col-sm-7 col-md-7">
 																<div class="input-group">
-																	<div id="radioBtn" class="btn-group">
+																	<div id="radioBtnCateg" class="btn-group">
 																		<a class="btn btn-primary btn-sm active"
 																		data-toggle="statusCategoria" data-title="Ativo">Ativo</a>
 																		<a class="btn btn-secondary btn-sm notActive"
