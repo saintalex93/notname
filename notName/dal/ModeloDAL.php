@@ -82,7 +82,7 @@ VALUES ('$nomeMod', $vlrVendaMod, '$statusMod', $descontoMod, $qtdeEstMod, $corM
         return $arrayModelo;
     }
 
-    public static function buscaModelo($idModelo = null): array
+    public static function buscaModelo(): array
     {
         ModeloDAL::connect();
         
@@ -192,5 +192,44 @@ VALUES ('$nomeMod', $vlrVendaMod, '$statusMod', $descontoMod, $qtdeEstMod, $corM
         if(!ModeloDAL::$connection->executarSQL($sql)){
           return "Erro ao deletar modelo";  
         }
+    }
+
+    public static function buscaModelosRandom() : array
+    {
+        ModeloDAL::connect();
+
+  
+        $sql = "SELECT DISTINCT * from MODELO M 
+                    INNER JOIN PRODUTO P ON P.PRODUTO_nID = M.PRODUTO_nID 
+                        INNER JOIN PRODUTO_CATEGORIA PC ON PC.PRODUTO_nID = P.PRODUTO_nID 
+                            INNER JOIN CATEGORIA  C ON C.CATEGORIA_nID = PC.CATEGORIA_nID
+                                 WHERE M.MODELO_nSTATUS LIKE 'Ativo'  
+                                    GROUP BY MODELO_cNOME 
+                                        ORDER BY RAND() LIMIT 4";
+
+        ModeloDAL::$connection->executarSQL($sql);
+
+        $resultado = ModeloDAL::$connection->getResultados();
+
+        $arrayModelo = array();
+
+        foreach ($resultado as $resultado) {
+
+            $resultModelo = new Modelo();
+
+            $resultModelo->setIdModelo($resultado['MODELO_nID']);
+            $resultModelo->setNomeModelo($resultado['MODELO_cNOME']);
+            $resultModelo->setVlrVendaModelo($resultado['MODELO_nVLR_VENDA']);
+            $resultModelo->setStatusModelo($resultado['MODELO_nSTATUS']);
+            $resultModelo->setDescontoModelo($resultado['MODELO_nDESCONTO']);
+            $resultModelo->setQtdEstoqueModelo('MODELO_nQTD_ESTOQUE');
+            $resultModelo->setCormodelo($resultado['COR_nID']);
+            $resultModelo->setTamanhoModelo($resultado['TAMANHO_nID']);
+            $resultModelo->setProdutoIdModelo($resultado['PRODUTO_nID']);
+
+            $arrayModelo[] = $resultModelo;
+        }
+
+        return $arrayModelo;
     }
 }

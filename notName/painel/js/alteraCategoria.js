@@ -10,24 +10,7 @@ function alteraCategoriaPai(id){
 	$("#btnCadastroCategoria").text("Alterar");
 	$("#btnCadastroCategoria").val("2");
 
-	if ($('tr#' + idrowCatPai + ' td:nth-child(2)').text() == "Ativo") {
-
-        $("#radioBtnCateg").removeAttr('class', 'btn btn-primary btn-sm notActive');
-        $("#radioBtnCateg").attr('class', 'btn btn-primary btn-sm active');
-
-        $("#radioBtnCateg").removeAttr('class', 'btn btn-secondary btn-sm active');
-        $("#radioBtnCateg").attr('class', 'btn btn-secondary btn-sm notActive');
-
-    }
-    else {
-
-        $("#radioBtnCateg").removeAttr('class', 'btn btn-secondary btn-sm notActive');
-        $("#radioBtnCateg").attr('class', 'btn btn-secondary btn-sm active');
-
-        $("#radioBtnCateg").removeAttr('class', 'btn btn-primary btn-sm active');
-        $("#radioBtnCateg").attr('class', 'btn btn-primary btn-sm notActive');
-
-    }
+	
 }
 
 function alteraCategoriaFilha(id){
@@ -43,22 +26,5 @@ function alteraCategoriaFilha(id){
 	$("#btnCadastroCategoriaFilha").text("Alterar");
 	$("#btnCadastroCategoriaFilha").val("2");
 
-	if ($('tr#' + idrowCatFilho + ' td:nth-child(11)').text() == "Ativo") {
-
-        $("#btnSactive").removeAttr('class', 'btn btn-primary btn-sm notActive');
-        $("#btnSactive").attr('class', 'btn btn-primary btn-sm active');
-
-        $("#btnSinactive").removeAttr('class', 'btn btn-secondary btn-sm active');
-        $("#btnSinactive").attr('class', 'btn btn-secondary btn-sm notActive');
-
-    }
-    else {
-
-        $("#btnSinactive").removeAttr('class', 'btn btn-secondary btn-sm notActive');
-        $("#btnSinactive").attr('class', 'btn btn-secondary btn-sm active');
-
-        $("#btnSactive").removeAttr('class', 'btn btn-primary btn-sm active');
-        $("#btnSactive").attr('class', 'btn btn-primary btn-sm notActive');
-
-    }
+	
 }
