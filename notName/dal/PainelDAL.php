@@ -51,6 +51,24 @@ class PainelDAL{
     	return $restulado;
     }
 
+     public static function insereEmail($email)
+    {
+        PainelDAL::connect();
+
+        $sql = "INSERT INTO MAILMARKETING VALUES (0, '$email')";
+
+        PainelDAL::$connection->sqlNoTransact($sql);
+
+        $resultado = PainelDAL::$connection->returnID();
+
+        if($resultado){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 }
 
 

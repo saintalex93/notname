@@ -1,8 +1,8 @@
 <?php
 include_once 'header.php';
-include_once '../dal/VendaPainelCountDAL.php';
+include_once '../dal/PainelDAL.php';
 
-$count = VendaPainelCountDAL::recuperaVendaAberta();
+$count = PainelDAL::recuperaVendaAberta();
 
 $total = $count[0]['VALOR_VENDA'];
 $vendas = $count[0]['CLI_VENDAS'];
@@ -11,7 +11,7 @@ $modelos = $count[0]['NUMERO_MODELOS'];
 
 $total = "R$ ".number_format($total, 2, ",",".");
 
-$tablePainel = VendaPainelCountDAL::vendasPainel();
+$tablePainel = PainelDAL::vendasPainel();
 
 
 ?>

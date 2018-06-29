@@ -91,22 +91,20 @@
                 <p class="text-muted">Cadastre seu e-mail para receber dicas e novidades!</p>
 
                 <div class="input-group">
-
-                    <input type="email" class="form-control" id="textEmail">
-                     <button class="btn btn-primary btn-green" type="button" id="btnEmail">Cadastrar</button>
-
-             </div>
+                        <input type="email" class="form-control" id="textEmail">
+                        <button class="btn btn-primary btn-green" type="button" id="btnEmail" required>Cadastrar</button>
+                </div>
 
 
-             <hr>
+                <hr>
 
-             <h4>Rede social</h4>
+                <h4>Rede social</h4>
 
-             <p class="social">
-                <a href="http://www.facebook.com/Not-Name-Company-200520313022950/?ref=br_rs" class="facebook external" data-animate-hover="shake"><i class="fab fa-facebook"></i></a>
-                <a href="http://www.instagram.com/notname_company" class="instagram external" data-animate-hover="shake"><i class="fab fa-instagram"></i></a>
+                <p class="social">
+                    <a href="http://www.facebook.com/Not-Name-Company-200520313022950/?ref=br_rs" class="facebook external" data-animate-hover="shake"><i class="fab fa-facebook"></i></a>
+                    <a href="http://www.instagram.com/notname_company" class="instagram external" data-animate-hover="shake"><i class="fab fa-instagram"></i></a>
 
-                <!--                    <a href="#" class="twitter external" data-animate-hover="shake"><i class="fab fa-twitter"></i></a>-->
+                    <!--                    <a href="#" class="twitter external" data-animate-hover="shake"><i class="fab fa-twitter"></i></a>-->
 
 <!--
                     <a href="#" class="gplus external" data-animate-hover="shake"><i class="fab fa-google-plus"></i></a>
@@ -147,14 +145,21 @@
 <script src="js/ajaxLoading.js"></script>
 <!-- <script src="js/jquery.mask.js"></script> -->
 <script src="js/jquery.maskedinput.min.js"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script type="">
     $("#btnEmail").click(function(event) {
-        carregando();
+        // carregando();
 
-        
-        
+        $.ajax({
+            url: 'controller/mailMarketing.php?email='+$("#textEmail").val(),
+
+            success: function( response ) {
+
+                swal("EmailMarketing", response, "success");
+            }
+
+        });
     });
 </script>
 

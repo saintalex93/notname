@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
-
+.swal-button{
+background: #43af8f;
+}
  .ajusteSubCategoria{
         padding-left: 14px;
         display: inline-grid;
